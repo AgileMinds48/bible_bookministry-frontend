@@ -1,0 +1,1 @@
+export {default as mainbook} from "./Home/mainbook.png"
