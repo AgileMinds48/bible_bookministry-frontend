@@ -12,7 +12,7 @@ const Header = () => {
     { label: 'Catalog', href: '/catalog' },
   ];
   return (
-    <nav className="p-4 flex justify-between w-full bg-[#B0D4E3] px-10">
+    <nav className="p-4 flex justify-between w-full bg-[#B0D4E3] px-10 ">
       <div className="flex w-[30%] items-center justify-between">
         <div className="bg-gray-400 h-8 w-8 rounded-full"></div>
         <ul className="flex justify-between w-[80%] text-sm ">
@@ -24,7 +24,7 @@ const Header = () => {
         </ul>
       </div>
       <div className="w-[15%] flex justify-between">
-        <button className="flex items-center gap-1  cursor-pointer">
+        <button className="flex items-center gap-1  cursor-pointer text-sm">
           <FaRegUser />
           Login
         </button>
