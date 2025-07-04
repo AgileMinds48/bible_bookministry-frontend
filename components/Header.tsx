@@ -12,10 +12,10 @@ const Header = () => {
     { label: 'Catalog', href: '/catalog' },
   ];
   return (
-    <nav className="p-4 flex justify-between w-full bg-[#B0D4E3] px-10 ">
+    <nav className="p-4 flex justify-between w-full bg-[#B0D4E3] px-10 poppins antialiased">
       <div className="flex w-[30%] items-center justify-between">
         <div className="bg-gray-400 h-8 w-8 rounded-full"></div>
-        <ul className="flex justify-between w-[80%] text-sm ">
+        <ul className="flex justify-between w-[80%] text-lg">
           {navItems.map(({ label, href }, idx) => (
             <Link key={idx} href={href}>
               <li className="cursor-pointer">{label}</li>
