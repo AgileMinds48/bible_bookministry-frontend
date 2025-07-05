@@ -1,11 +1,23 @@
+"use client"
 import { mainbook } from '@/public';
 import Image from 'next/image';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { GrNext } from 'react-icons/gr';
 
 const Landing = () => {
+   const [scrolled, setScrolled] = useState<boolean>(false);
+    useEffect(() => {
+      const handleScroll = () => {
+        setScrolled(window.scrollY > 100);
+      }
+      window.addEventListener("scroll", handleScroll);
+  
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }, [])
   return (
-    <main className='h-[100dvh] pt-20 bg-gradient-to-r from-[#F5F5F5] to-[#b0d4e3b2] overflow-hidden '>
+    <main className={`h-[100dvh] pt-20 bg-gradient-to-r from-[#F5F5F5] to-[#b0d4e3b2] overflow-hidden transition duration-[4s] ${scrolled?" ":""}`} >
       <div className='grid grid-cols-[2fr_1fr] h-[80%] w-full '>
         <div className='b w-full p-10 content-center'>
           <h1 className='text-6xl font-medium w-[80%] font-crimson text-[#5D8AA8]'>Grow in Grace with <span className='bg-gradient-to-tr from-[#E6C17C] to-[#d6a13e] text-transparent bg-clip-text'>Trusted</span> Christian Literature</h1>
