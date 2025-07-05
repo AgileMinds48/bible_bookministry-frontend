@@ -19,3 +19,24 @@
   font-family: 'Poppins', sans-serif;
   font-style: normal;
 }
+
+@theme {
+  --animate-bubble: bubble 0.5s ease-in;
+  @keyframes bubble {
+    /* from {
+      scale: 1.3;
+    }
+    to {
+      scale: 1;
+    } */
+    0% {
+      scale: 1.4;
+    }
+    50% {
+      scale: 1;
+    }
+    100 {
+      scale: 1.2;
+    }
+  }
+}
