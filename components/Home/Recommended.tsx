@@ -7,10 +7,15 @@ import { FaCartPlus, FaStar } from 'react-icons/fa'
 import { MdFavorite } from 'react-icons/md'
 
 const Recommended = () => {
-  const [isFav, setIsFav] = useState<boolean>(false);
+  const [isFav, setIsFav] = useState(
+    Object.fromEntries(recommendedBooks.map((_,idx)=>[idx, false]))
+  );
 
-  const handleFav:MouseEventHandler = () => {
-    setIsFav(!isFav);
+  const handleFav = (index:number) => {
+    setIsFav((prev:{[key:number]:boolean}) => ({
+      ...prev,
+      [index]:!prev[index]
+    }));
   }
   return (
     <section className='poppins px-10 py-10 bg-[#FAF3E0] h-max'>
@@ -20,9 +25,9 @@ const Recommended = () => {
           <div className='flex w-max gap-4'>
           {
             recommendedBooks.map(({img,title,author,price,rating},idx) => (
-              <div className='min-w-36 max-w-[30%] gap-4 min-h-48 overflow-hidden grid grid-cols-2 p-4 '>
+              <div key={idx} className='min-w-36 max-w-[30%] gap-4 min-h-48 overflow-hidden grid grid-cols-2 p-4 '>
               <div className='relative border border-[#5D8AA8] h-full shadow-2xl'>
-                <MdFavorite className={`absolute right-0 top-2 z-10 text-xl ${isFav ?"text-red-500 animate-bubble":""}`} onClick={handleFav} />
+                <MdFavorite className={`absolute right-0 top-2 z-10 text-xl cursor-pointer ${isFav[idx] ?"text-red-500 animate-bubble":""}`} onClick={()=>handleFav(idx)} />
                 <Image src={img} alt="image of book" className='w-full h-full object-cover'/>
               </div>
               <div className='relative min-h-full h-max min-w-full flex flex-col'>
