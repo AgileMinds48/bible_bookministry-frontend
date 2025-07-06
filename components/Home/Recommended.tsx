@@ -23,7 +23,7 @@ const Recommended = () => {
               <div className='min-w-36 max-w-[30%] gap-4 min-h-48 overflow-hidden grid grid-cols-2 p-4 '>
               <div className='relative border border-[#5D8AA8] h-full shadow-2xl'>
                 <MdFavorite className={`absolute right-0 top-2 z-10 text-xl ${isFav ?"text-red-500 animate-bubble":""}`} onClick={handleFav} />
-                <Image src={bk1} alt="image of book" className='w-full h-full object-cover'/>
+                <Image src={img} alt="image of book" className='w-full h-full object-cover'/>
               </div>
               <div className='relative min-h-full h-max min-w-full flex flex-col'>
               <div className='h-[50%] flex flex-col  gap-4'>
