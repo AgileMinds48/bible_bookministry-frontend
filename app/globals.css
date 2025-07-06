@@ -11,6 +11,7 @@
   --font-garamond: 'Cormorant Garamond';
   --font-poppins: 'Poppins';
   --font-crimson: 'Crimson Text';
+  --font-sans: 'Open Sans';
 }
 
 .poppins {
@@ -20,6 +21,9 @@
 
 .sans {
   font-family: 'Open Sans';
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: 'wdth' 100;
 }
 @theme {
   --animate-bubble: bubble 0.5s ease-in;

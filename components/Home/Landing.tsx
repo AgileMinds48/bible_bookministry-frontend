@@ -20,7 +20,7 @@ const Landing = () => {
     <main className={`h-[100dvh] pt-20 bg-gradient-to-r from-[#F5F5F5] to-[#b0d4e3b2] overflow-hidden transition duration-[4s] ${scrolled?" ":""}`} >
       <div className='grid grid-cols-[2fr_1fr] h-[80%] w-full '>
         <div className='b w-full p-10 content-center'>
-          <h1 className='text-6xl font-medium w-[80%] sans text-[#5D8AA8]'>Grow in Grace with <span className='bg-gradient-to-tr from-[#E6C17C] to-[#d6a13e] text-transparent bg-clip-text'>Trusted</span> Christian Literature</h1>
+          <h1 className='text-7xl  w-[80%] font-sans sans text-[#5D8AA8]'>Grow in Grace with <span className='bg-gradient-to-tr from-[#E6C17C] to-[#d6a13e] text-transparent bg-clip-text'>Trusted</span> Christian Literature</h1>
           <p className='w-[50%] mt-4 text-lg poppins font-medium'>Explore our collection of Bibles and non-charismatic books rooted in scripture and truth.</p>
           <div className='mt-10 flex gap-4'>
             <button className='px-10 py-4 bg-gradient-to-r from-[#5a88a7] to-[#426074] text-white hover:shadow-lg rounded-lg cursor-pointer  transition duration-300 hover:bg-[#426074] hover: flex items-center gap-2 group poppins font-medium antialiased'>Read Now
