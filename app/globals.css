@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import 'tailwindcss';
 
 :root {
@@ -12,7 +11,6 @@
   --font-garamond: 'Cormorant Garamond';
   --font-poppins: 'Poppins';
   --font-crimson: 'Crimson Text';
-  --font-sans: 'Noto Sans';
 }
 
 .poppins {
@@ -20,8 +18,12 @@
   font-style: normal;
 }
 
+.sans {
+  font-family: 'Open Sans';
+}
 @theme {
   --animate-bubble: bubble 0.5s ease-in;
+
   @keyframes bubble {
     /* from {
       scale: 1.3;
@@ -39,4 +41,12 @@
       scale: 1.2;
     }
   }
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }
