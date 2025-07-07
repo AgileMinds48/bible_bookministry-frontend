@@ -1,2 +1,8 @@
 export {default as mainbook} from "./Home/mainbook.png"
+export {default as bk2} from "./Home/bk2.jpg"
+export {default as bk3} from "./Home/bk3.jpg"
+export {default as bk4} from "./Home/bk4.jpg"
+export {default as bk5} from "./Home/bk5.jpg"
+export {default as bk6} from "./Home/bk6.jpg"
 export {default as bk1} from "./Home/bk1.jpg"
+export {default as bk7} from "./Home/bk7.jpg"

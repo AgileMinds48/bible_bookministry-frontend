@@ -1,4 +1,4 @@
-import { bk1 } from "@/public"
+import { bk1, bk2, bk3, bk4, bk5, bk6, bk7 } from "@/public"
 import { StaticImageData } from "next/image"
 
 interface Book{
@@ -18,21 +18,21 @@ export const recommendedBooks:Book[] = [
     price: 20,
     rating:3.2
 }, {
-  img: bk1,
+  img: bk2,
   title: "Walking in Faith",
   author: "Sarah Thompson",
   price: 35,
   rating: 4.7
 },
 {
-  img: bk1,
+  img: bk3,
   title: "Grace Unveiled",
   author: "Michael Johnson",
   price: 28,
   rating: 4.2
 },
 {
-  img: bk1,
+  img: bk4,
   title: "The Heart of Prayer",
   author: "Rebecca Miller",
   price: 45,
@@ -46,24 +46,31 @@ export const recommendedBooks:Book[] = [
   rating: 4.1
 },
 {
-  img: bk1,
+  img: bk3,
   title: "Light in Darkness",
   author: "Emma Davis",
   price: 38,
   rating: 4.6
 },
 {
-  img: bk1,
+  img: bk6,
   title: "Foundations of Truth",
   author: "Joshua Brown",
   price: 42,
   rating: 4.4
 },
 {
-  img: bk1,
+  img: bk5,
   title: "Hope Renewed",
   author: "Rachel Green",
   price: 29,
   rating: 4.3
+},
+{
+  img: bk7,
+  title: "Light in Darkness",
+  author: "Emma Davis",
+  price: 38,
+  rating: 4.6
 }
 ]

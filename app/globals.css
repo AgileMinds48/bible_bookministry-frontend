@@ -14,6 +14,10 @@
   --font-sans: 'Open Sans';
 }
 
+.center {
+  align-items: center;
+  justify-content: space-between;
+}
 .poppins {
   font-family: 'Poppins', sans-serif;
   font-style: normal;

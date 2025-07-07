@@ -25,8 +25,8 @@ const Header = () => {
     };
   }, [])
   return (
-    <nav className={`p-4 flex justify-between px-10 poppins antialiased transition-all duration-1000 ease-in-out z-50 fixed  ${scrolled ? " top-4 rounded-lg  left-10 right-10 shadow-sm backdrop-blur-xl bg-[#B0D4E3]/50 " : "relative top-0 w-full bg-[#B0D4E3]"}`}>
-      <div className="flex w-[30%] items-center justify-between">
+    <nav className={`p-4 flex justify-between px-10 poppins antialiased transition-all duration-1000 ease-in-out z-50 fixed shrink-0 ${scrolled ? " top-4 rounded-lg  left-10 right-10 shadow-sm backdrop-blur-xl bg-[#B0D4E3]/50 " : "relative top-0 w-full bg-[#B0D4E3]"}`}>
+      <div className="flex w-[30%] items-center justify-between 0">
         <div className="bg-gray-400 h-8 w-8 rounded-full"></div>
         <ul className="flex justify-between w-[80%] text-sm">
           {navItems.map(({ label, href }, idx) => (
