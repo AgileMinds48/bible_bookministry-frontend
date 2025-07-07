@@ -41,7 +41,10 @@ const Recommended = () => {
   return (
     <section className='poppins px-10 py-10 bg-[#FAF3E0] h-max  antialiased'>
       <div className='relative'>
-        <h1 className='text-4xl font-semibold text-[#3D3D3D] mb-4'> <span className=' text-transparent bg-clip-text bg-gradient-to-r from-[#5a88a7] to-[#426074]'> Recommended</span> for  you </h1>
+        <div className='flex justify-between items-baseline'>
+          <h1 className='text-4xl font-semibold text-[#3D3D3D] mb-4'> <span className=' text-transparent bg-clip-text bg-gradient-to-r from-[#5a88a7] to-[#426074]'> Recommended</span> for  you </h1>
+          <p className='underline cursor-pointer flex center gap-4'>View all books <span className='-translate-0.5'><GrNext/></span></p>
+          </div>
         <div className='min-h-max overflow-x-scroll hide-scrollbar ' ref={scrollDivRef}>
 
           <div className={`flex shrink-0 gap-4 pl-8 `} >

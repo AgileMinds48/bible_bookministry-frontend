@@ -13,8 +13,8 @@ const PopularBooks = () => {
           {recommendedBooks.map(({img,title,author,price,rating},index) => (
              <div key={index} className='rounded-2xl'>
           <div className='grid grid-cols-1 grid-rows-[60%_40%] cursor-pointer hover:shadow-xl transition duration-100 h-[22em]  w-[14em] shadow-lg rounded-2xl overflow-hidden'>
-            <div className='h-full relative before:absolute before:inset-x-0 before:bottom-0'>
-              <Image src={img} alt='' className='h-full w-full object-cover rounded-2xl'/>
+            <div className='h-full relative before:absolute before:inset-x-0 before:bottom-0 rounded-2xl overflow-hidden'>
+              <Image src={img} alt='' className='h-full w-full object-cover '/>
             </div>
               <div className='p-4 px-2 flex flex-col h-full'>
                   <p className='line-clamp-2 text-lg font-semibold text-[#426074] leading-[1.1em] mb-1'>{title}</p>
