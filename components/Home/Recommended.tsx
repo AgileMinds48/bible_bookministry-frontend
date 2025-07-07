@@ -39,7 +39,7 @@ const Recommended = () => {
     }));
   }
   return (
-    <section className='poppins px-10 py-10 bg-[#FAF3E0] h-max '>
+    <section className='poppins px-10 py-10 bg-[#FAF3E0] h-max  antialiased'>
       <div className='relative'>
         <h1 className='text-4xl font-semibold text-[#3D3D3D] mb-4'> <span className=' text-transparent bg-clip-text bg-gradient-to-r from-[#5a88a7] to-[#426074]'> Recommended</span> for  you </h1>
         <div className='min-h-max overflow-x-scroll hide-scrollbar ' ref={scrollDivRef}>
