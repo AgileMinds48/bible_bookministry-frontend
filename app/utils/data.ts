@@ -74,3 +74,75 @@ export const recommendedBooks:Book[] = [
   rating: 4.6
 }
 ]
+export const popularBooks: Book[] = [
+  {
+    img: bk4,
+    title: "The Heart of Prayer",
+    author: "Rebecca Miller",
+    price: 45,
+    rating: 4.9
+  },
+  {
+    img: bk2,
+    title: "Walking in Faith",
+    author: "Sarah Thompson",
+    price: 35,
+    rating: 4.7
+  },
+  {
+    img: bk7,
+    title: "Light in Darkness",
+    author: "Emma Davis",
+    price: 38,
+    rating: 4.6
+  },
+  {
+    img: bk6,
+    title: "Foundations of Truth",
+    author: "Joshua Brown",
+    price: 42,
+    rating: 4.4
+  },
+  {
+    img: bk5,
+    title: "Hope Renewed",
+    author: "Rachel Green",
+    price: 29,
+    rating: 4.3
+  },
+  {
+    img: bk3,
+    title: "Grace Unveiled",
+    author: "Michael Johnson",
+    price: 28,
+    rating: 4.2
+  },
+  {
+    img: bk2,
+    title: "Walking in Faith",
+    author: "Sarah Thompson",
+    price: 35,
+    rating: 4.7
+  },
+  {
+    img: bk7,
+    title: "Light in Darkness",
+    author: "Emma Davis",
+    price: 38,
+    rating: 4.6
+  },
+  {
+    img: bk6,
+    title: "Foundations of Truth",
+    author: "Joshua Brown",
+    price: 42,
+    rating: 4.4
+  },
+  {
+    img: bk5,
+    title: "Hope Renewed",
+    author: "Rachel Green",
+    price: 29,
+    rating: 4.3
+  }
+]
