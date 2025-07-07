@@ -57,7 +57,7 @@ const Recommended = () => {
                     <div className=''>
                       <h3 className='line-clamp-3 font-garamond font-semibold leading-8 text-2xl'>{title}</h3>
                       <div>
-                        <p className='line-clamp-1 poppins font-medium text-[1.2em] text-gray-500'>{author}</p>
+                        <p className='line-clamp-1 poppins font-medium text-xl text-gray-500'>{author}</p>
 
                       </div>
                     </div>

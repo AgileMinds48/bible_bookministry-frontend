@@ -1,4 +1,4 @@
-import { popularBooks } from '@/app/utils/data'
+import { popularBooks, recommendedBooks } from '@/app/utils/data'
 import { bk8 } from '@/public'
 import Image from 'next/image'
 import React from 'react'
@@ -10,8 +10,8 @@ const PopularBooks = () => {
       <div className='p-4 py-10 poppins'>
         <h1 className='text-4xl poppins font-semibold text-[#3D3D3D]'>Our most <span className='text-transparent bg-clip-text bg-gradient-to-r from-[#5a88a7] to-[#426074]'>popular</span>  books</h1>
         <div className='flex shrink-0 px-16 p-8 overflow-hidden gap-8 gap-y-14 flex-wrap'>
-          {popularBooks.map(({img,title,author,price,rating}) => (
-             <div className='rounded-2xl'>
+          {recommendedBooks.map(({img,title,author,price,rating},index) => (
+             <div key={index} className='rounded-2xl'>
           <div className='grid grid-cols-1 grid-rows-[60%_40%] cursor-pointer hover:shadow-xl transition duration-100 h-[22em]  w-[14em] shadow-lg rounded-2xl overflow-hidden'>
             <div className='h-full relative before:absolute before:inset-x-0 before:bottom-0'>
               <Image src={img} alt='' className='h-full w-full object-cover rounded-2xl'/>

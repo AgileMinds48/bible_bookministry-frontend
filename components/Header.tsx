@@ -8,9 +8,9 @@ import { MdFavoriteBorder } from 'react-icons/md';
 const Header = () => {
   const navItems = [
     { label: 'Home', href: '/' },
-    { label: 'About us', href: '/about' },
-    { label: 'Contact', href: '/contact' },
     { label: 'Catalog', href: '/catalog' },
+    { label: 'E-books', href: '/cart' },
+    { label: 'About us', href: '/about' },
   ];
 
   const [scrolled, setScrolled] = useState<boolean>(false);
