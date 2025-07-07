@@ -44,7 +44,7 @@ const Header = () => {
         
       
         <button className="relative cursor-pointer text-2xl">
-          <span className="absolute top-1 text-[0.4em] -right-2 bg-gray-400/60  min-h-4 min-w-4 flex items-center justify-center rounded-full">
+          <span className="absolute top-1 text-[0.4em] -right-2 bg-[#5a88a7]/60 text-white  min-h-4 min-w-4 flex items-center justify-center rounded-full">
             3
           </span>
           <CiShoppingCart />
