@@ -11,21 +11,21 @@ interface Book{
 }
 
 
-export const recommendedBooks:Book[] = [
+export const Books:Book[] = [
   {
     img: bk1,
     title: "Die with a smile",
     author: "Kyeiwaa",
     price: 20,
     rating: 3.2,
-    category:"Popular"
+    category:"Recommended"
 }, {
   img: bk2,
   title: "Walking in Faith",
   author: "Sarah Thompson",
   price: 35,
     rating: 4.7,
-  category:"Popular"
+  category:"Recommended"
 },
 {
   img: bk3,
@@ -33,7 +33,7 @@ export const recommendedBooks:Book[] = [
   author: "Michael Johnson",
   price: 28,
   rating: 4.2,
-  category:"Popular"
+  category:"Recommended"
 },
 {
   img: bk4,
@@ -41,7 +41,7 @@ export const recommendedBooks:Book[] = [
   author: "Rebecca Miller",
   price: 45,
   rating: 4.9,
-  category:"Popular"
+  category:"Recommended"
 },
 {
   img: bk8,
@@ -49,7 +49,7 @@ export const recommendedBooks:Book[] = [
   author: "David Williams",
   price: 32,
   rating: 4.1,
-  category:"Popular"
+  category:"Recommended"
 },
 {
   img: bk7,
@@ -57,7 +57,7 @@ export const recommendedBooks:Book[] = [
   author: "Emma Davis",
   price: 38,
   rating: 4.6,
-  category:"Popular"
+  category:"Recommended"
 },
 {
   img: bk6,
@@ -65,7 +65,7 @@ export const recommendedBooks:Book[] = [
   author: "Joshua Brown",
   price: 42,
   rating: 4.4,
-  category:"Popular"
+  category:"Recommended"
 },
 {
   img: bk5,
@@ -73,7 +73,7 @@ export const recommendedBooks:Book[] = [
   author: "Rachel Green",
   price: 29,
   rating: 4.3,
-  category:"Popular"
+  category:"Recommended"
 },
 {
   img: bk7,
@@ -81,7 +81,7 @@ export const recommendedBooks:Book[] = [
   author: "Emma Davis",
   price: 38,
   rating: 4.6,
-  category:"Popular"
+  category:"Recommended"
 },
   {
     img: bk4,
@@ -89,7 +89,7 @@ export const recommendedBooks:Book[] = [
     author: "Rebecca Miller",
     price: 45,
     rating: 4.9,
-    category:"Popular"
+    category:"Recommended"
   },
   {
     img: bk2,
