@@ -10,6 +10,18 @@ interface Book{
   category:string
 }
 
+export const sortOptions = [
+  { value: 'title-asc', label: 'Title: A - Z ' },
+  { value: 'title-desc', label: 'Title: Z - A' },
+  { value: 'author-asc', label: 'Author: A - Z' },
+  { value: 'author-desc', label: 'Author: Z - A' },
+  { value: 'price-asc', label: 'Price: Low to High' },
+  { value: 'price-desc', label: 'Price: High to Low' },
+  { value: 'rating-desc', label: 'Highest Rated' },
+  { value: 'rating-asc', label: 'Lowest Rated' },
+  // { value: 'newest', label: 'Newest First' },
+  // { value: 'popular', label: 'Most Popular' }
+];
 
 export const Books:Book[] = [
   {

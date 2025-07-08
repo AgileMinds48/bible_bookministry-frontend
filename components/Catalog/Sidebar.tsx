@@ -2,13 +2,14 @@
 import React, { useState } from 'react'
 import { FaStar, FaChevronDown, FaChevronUp } from 'react-icons/fa'
 import { MdClear } from 'react-icons/md'
+import {sortOptions} from "@/app/utils/data"
 
 const Sidebar = () => {
   // State for collapsible sections
   const [expandedSections, setExpandedSections] = useState({
     sort: true,
-    price: true,
-    rating: true
+    price: false,
+    rating: false
   });
 
   // Filter states
@@ -18,10 +19,20 @@ const Sidebar = () => {
 
   // Toggle section expansion
   const toggleSection = (section: keyof typeof expandedSections) => {
-    setExpandedSections(prev => ({
-      ...prev,
+    setExpandedSections(prev => {
+      if (prev[section]) {
+        return {
+           ...prev,
       [section]: !prev[section]
-    }));
+        }
+      }
+      return {
+        sort: false,
+        price: false,
+        rating: false,
+        [section]:true
+     }
+    });
   };
 
   // Clear all filters
@@ -32,24 +43,13 @@ const Sidebar = () => {
   };
 
   // Sort options
-  const sortOptions = [
-    { value: 'title-asc', label: 'A-Z (Title)' },
-    { value: 'title-desc', label: 'Z-A (Title)' },
-    { value: 'author-asc', label: 'A-Z (Author)' },
-    { value: 'author-desc', label: 'Z-A (Author)' },
-    { value: 'price-asc', label: 'Price: Low to High' },
-    { value: 'price-desc', label: 'Price: High to Low' },
-    { value: 'rating-desc', label: 'Highest Rated' },
-    { value: 'rating-asc', label: 'Lowest Rated' },
-    { value: 'newest', label: 'Newest First' },
-    { value: 'popular', label: 'Most Popular' }
-  ];
+
 
   return (
     <aside className='bg-white shadow-2xl rounded-lg p-6 h-fit sticky top-24 poppins'>
       {/* Header */}
       <div className='flex justify-between items-center mb-6'>
-        <h2 className='text-xl font-semibold text-[#3D3D3D] poppins'>Filters</h2>
+        <h2 className='text-xl font-medium text-[#3D3D3D] poppins'>Filters</h2>
         <button
           onClick={clearAllFilters}
           className='text-sm text-[#5a88a7] hover:text-[#426074] transition-colors duration-200 flex items-center gap-1'
@@ -63,7 +63,7 @@ const Sidebar = () => {
       <div className='mb-6'>
         <button
           onClick={() => toggleSection('sort')}
-          className='flex justify-between items-center w-full py-2 text-left'
+          className='flex justify-between items-center w-full py-2 text-left border-b'
         >
           <h3 className='text-lg font-medium text-[#3D3D3D] poppins'>Sort By</h3>
           {expandedSections.sort ? <FaChevronUp className='text-gray-500' /> : <FaChevronDown className='text-gray-500' />}
@@ -71,18 +71,18 @@ const Sidebar = () => {
         
         {expandedSections.sort && (
           <div className='mt-3 space-y-2'>
-            {sortOptions.map((option) => (
-              <label key={option.value} className='flex items-center space-x-2 cursor-pointer group'>
+            {sortOptions.map(({value,label}) => (
+              <label key={value} className='flex items-center space-x-2 cursor-pointer group'>
                 <input
                   type='radio'
                   name='sort'
-                  value={option.value}
-                  checked={sortBy === option.value}
+                  value={value}
+                  checked={sortBy === value}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className='w-4 h-4 text-[#5a88a7] border-gray-300 focus:ring-[#5a88a7] focus:ring-2'
+                  className='w-4 h-4 text-[#5a88a7] border-gray-300 focus:ring-[#5a88a7] cursor-pointer'
                 />
                 <span className='text-sm text-gray-700 group-hover:text-[#5a88a7] transition-colors duration-200'>
-                  {option.label}
+                  {label}
                 </span>
               </label>
             ))}
@@ -94,7 +94,7 @@ const Sidebar = () => {
       <div className='mb-6'>
         <button
           onClick={() => toggleSection('price')}
-          className='flex justify-between items-center w-full py-2 text-left'
+          className='flex justify-between items-center w-full py-2 text-left border-b'
         >
           <h3 className='text-lg font-medium text-[#3D3D3D] poppins'>Price Range</h3>
           {expandedSections.price ? <FaChevronUp className='text-gray-500' /> : <FaChevronDown className='text-gray-500' />}
@@ -185,7 +185,7 @@ const Sidebar = () => {
       <div className='mb-6'>
         <button
           onClick={() => toggleSection('rating')}
-          className='flex justify-between items-center w-full py-2 text-left'
+          className='flex justify-between items-center w-full py-2 text-left border-b'
         >
           <h3 className='text-lg font-medium text-[#3D3D3D] poppins'>Minimum Rating</h3>
           {expandedSections.rating ? <FaChevronUp className='text-gray-500' /> : <FaChevronDown className='text-gray-500' />}
