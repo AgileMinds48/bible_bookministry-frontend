@@ -1,11 +1,13 @@
 "use client"
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { CiSearch, CiShoppingCart } from 'react-icons/ci';
 import { FaRegUser, FaSearch } from 'react-icons/fa';
 import { MdFavoriteBorder } from 'react-icons/md';
 
 const Header = () => {
+  const pathName = usePathname();
   const navItems = [
     { label: 'Home', href: '/' },
     { label: 'Catalogue', href: '/catalogue' },
@@ -30,8 +32,8 @@ const Header = () => {
         <div className="bg-gray-400 h-8 w-8 rounded-full"></div>
         <ul className="flex justify-between w-[80%] text-sm">
           {navItems.map(({ label, href }, idx) => (
-            <Link key={idx} href={href}>
-              <li className="cursor-pointer hover:scale-[1.1] transition duration-300">{label}</li>
+            <Link key={idx}  href={href}>
+              <li className={`cursor-pointer hover:scale-[1.1] transition duration-300 ${pathName===href?"text-blue-400":"text-black"}`}>{label}</li>
             </Link>
           ))}
         </ul>

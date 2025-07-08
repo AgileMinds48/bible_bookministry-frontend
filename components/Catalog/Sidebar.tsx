@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { FaStar, FaChevronDown, FaChevronUp } from 'react-icons/fa'
 import { MdClear } from 'react-icons/md'
-import {sortOptions} from "@/app/utils/data"
+import {quickPriceFilters, sortOptions} from "@/app/utils/data"
 
 const Sidebar = () => {
   // State for collapsible sections
@@ -134,14 +134,14 @@ const Sidebar = () => {
             {/* Price Range Slider */}
             <div className='space-y-2'>
               <label className='block text-xs text-gray-600'>Price Range: ₵{priceRange.min} - ₵{priceRange.max}</label>
-              <div className='relative'>
+              {/* <div className='relative '>
                 <input
                   type='range'
                   min='0'
                   max='200'
                   value={priceRange.min}
                   onChange={(e) => setPriceRange(prev => ({ ...prev, min: Number(e.target.value) }))}
-                  className='absolute w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-thumb'
+                  className='absolute w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-thumb mt-4'
                   style={{ zIndex: 1 }}
                 />
                 <input
@@ -153,27 +153,22 @@ const Sidebar = () => {
                   className='absolute w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-thumb'
                   style={{ zIndex: 2 }}
                 />
-              </div>
+              </div> */}
             </div>
 
             {/* Quick Price Filters */}
             <div className='flex flex-wrap gap-2'>
-              {[
-                { label: 'Under ₵20', min: 0, max: 20 },
-                { label: '₵20-₵40', min: 20, max: 40 },
-                { label: '₵40-₵60', min: 40, max: 60 },
-                { label: 'Over ₵60', min: 60, max: 200 }
-              ].map((range) => (
+              {quickPriceFilters.map(({min,max,label}) => (
                 <button
-                  key={range.label}
-                  onClick={() => setPriceRange({ min: range.min, max: range.max })}
+                  key={label}
+                  onClick={() => setPriceRange({ min: min, max: max })}
                   className={`px-3 py-1 text-xs rounded-full border transition-colors duration-200 ${
-                    priceRange.min === range.min && priceRange.max === range.max
+                    priceRange.min === min && priceRange.max === max
                       ? 'bg-[#5a88a7] text-white border-[#5a88a7]'
                       : 'bg-white text-gray-700 border-gray-300 hover:border-[#5a88a7]'
                   }`}
                 >
-                  {range.label}
+                  {label}
                 </button>
               ))}
             </div>

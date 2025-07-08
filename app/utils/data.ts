@@ -23,6 +23,14 @@ export const sortOptions = [
   // { value: 'popular', label: 'Most Popular' }
 ];
 
+export const quickPriceFilters =
+  [
+    { label: 'Under ₵20', min: 0, max: 20 },
+    { label: '₵20-₵40', min: 20, max: 40 },
+    { label: '₵40-₵60', min: 40, max: 60 },
+    { label: 'Over ₵60', min: 60, max: 200 }
+  ]
+
 export const Books:Book[] = [
   {
     img: bk1,
