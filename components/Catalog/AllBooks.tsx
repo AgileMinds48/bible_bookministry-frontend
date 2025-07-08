@@ -32,7 +32,7 @@ const AllBooks = () => {
         </h1>
         <div
           ref={carouselRef}
-          className="flex shrink-0  py-8 overflow-scroll hide-scrollbar gap-8 gap-y-14 "
+          className="flex flex-wrap items-center  shrink-0  py-8 overflow-hidden  gap-8 gap-y-14 "
         >
           {Books.map(({ img, title, author, price, rating }, index) => (
             <div key={index} className="rounded-2xl">
