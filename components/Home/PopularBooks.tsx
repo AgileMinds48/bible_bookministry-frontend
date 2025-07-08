@@ -6,6 +6,7 @@ import { FaCartPlus, FaStar } from 'react-icons/fa'
 import { GrNext } from 'react-icons/gr'
 import { ImBooks } from 'react-icons/im'
 import { MdFavorite } from 'react-icons/md'
+import { RiMoneyDollarCircleLine } from 'react-icons/ri'
 import { SiBookstack } from 'react-icons/si'
 
 const PopularBooks = () => {
@@ -50,8 +51,9 @@ const PopularBooks = () => {
                 </div>
                   <div className=' flex center mt-auto pr-4'>
                     <div className='flex gap-2'>
-                      <span className=''>₵{price}.00</span>
-                      <p title='available copies' className='flex items-center'><ImBooks /> 15</p>
+                      <p className='flex gap-1 items-center'><RiMoneyDollarCircleLine /> ₵{price}.00</p>
+                      <span className='border-r border'></span>
+                      <p title='available copies' className='flex items-center gap-1'><ImBooks /> 15</p>
                     </div>
                   <button className='text-3xl text-[#5a88a7] '><FaCartPlus/></button>
                 </div>
