@@ -10,7 +10,8 @@ import { GrNext, GrPrevious } from 'react-icons/gr'
 import { MdFavorite } from 'react-icons/md'
 
 const Recommended = () => {
-  const [translate, setTranslate] = useState<number>(0);
+const recommendedBooks= Books.filter((book)=>book.category==="Recommended")
+
   const [isFav, setIsFav] = useState(
     Object.fromEntries(Books.map((_, idx) => [idx, false]))
   );
@@ -53,7 +54,7 @@ const Recommended = () => {
           <div className={`flex shrink-0 gap-4 pl-8 `} >
             <button onClick={handlePrevious} className='absolute top-[50%] -translate-y-[50%] left-0 p-4 bg-black/15 rounded-full hover:bg-black/40 z-10 cursor-pointer text-2xl text-white'><GrPrevious /></button>
             {
-              Books.map(({ img, title, author, price, rating }, idx) => (
+            recommendedBooks.map(({ img, title, author, price, rating }, idx) => (
                 <div key={idx} className='group  cursor-pointer min-w-[25em] max-w-[5%] gap-4 min-h-36 overflow-hidden grid grid-cols-2 p-4  hover:scale-97 transition duration-500'>
                   <div className='relative border border-[#5D8AA8] h-full shrink-0 group-hover:shadow-lg transition duration-300'>
                     <MdFavorite className={`absolute right-0 top-2 z-10 text-xl cursor-pointer   ${isFav[idx] ? "text-red-500 animate-bubble" : "text-[#FAF3E0]"}`} onClick={() => handleFav(idx)} />
