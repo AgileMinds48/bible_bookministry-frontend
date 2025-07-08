@@ -8,7 +8,7 @@ import { MdFavoriteBorder } from 'react-icons/md';
 const Header = () => {
   const navItems = [
     { label: 'Home', href: '/' },
-    { label: 'Catalog', href: '/catalog' },
+    { label: 'Catalogue', href: '/catalogue' },
     { label: 'E-books', href: '/cart' },
     { label: 'About us', href: '/about' },
   ];

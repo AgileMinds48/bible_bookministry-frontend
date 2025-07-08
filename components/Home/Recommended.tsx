@@ -45,7 +45,7 @@ const recommendedBooks= Books.filter((book)=>book.category==="Recommended")
       <div className='relative'>
         <div className='flex justify-between items-baseline'>
           <h1 className='text-4xl font-semibold text-[#3D3D3D] mb-4'> <span className=' text-transparent bg-clip-text bg-gradient-to-r from-[#5a88a7] to-[#426074]'> Recommended</span> for  you </h1>
-          <Link href={"catalog"}>
+          <Link href={"catalogue"}>
             <p className='underline cursor-pointer flex center gap-2 group'>View all books <span className='-translate-0.5 group-hover:translate-x-2  delay-100 duration-100 transition '><GrNext /></span></p>
             </Link>
           </div>
