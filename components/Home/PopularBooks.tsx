@@ -55,7 +55,7 @@ const PopularBooks = () => {
                       <span className='border-r border'></span>
                       <p title='available copies' className='flex items-center gap-1'><ImBooks /> 15</p>
                     </div>
-                  <button className='text-3xl text-[#5a88a7] '><FaCartPlus/></button>
+                  <button className='text-3xl text-[#5a88a7] cursor-pointer'><FaCartPlus/></button>
                 </div>
               </div>
             </div>

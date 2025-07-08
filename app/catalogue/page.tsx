@@ -5,7 +5,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div>
+    <div className='pl-[20em]'>
       <CatalogueHeader />
       <PopularBooks/>
       <AllBooks />

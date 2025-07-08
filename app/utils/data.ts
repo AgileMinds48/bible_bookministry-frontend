@@ -14,7 +14,7 @@ interface Book{
 export const Books:Book[] = [
   {
     img: bk1,
-    title: "Die with a smile",
+    title: "Die with a smile or live",
     author: "Kyeiwaa",
     price: 20,
     rating: 3.2,
@@ -161,6 +161,14 @@ category:"Popular"
     author: "Rachel Green",
     price: 29,
     rating: 4.3,
+    category:"Popular"
+  },
+  {
+    img: bk1,
+    title: "Grace Unveiled",
+    author: "Michael Johnson",
+    price: 28,
+    rating: 4.2,
     category:"Popular"
   }
 ]

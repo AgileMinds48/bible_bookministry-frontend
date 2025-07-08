@@ -7,6 +7,7 @@ import { GrPrevious, GrNext } from 'react-icons/gr';
 import { ImBooks } from 'react-icons/im';
 import { MdFavorite } from 'react-icons/md';
 import { RiMoneyDollarCircleLine } from 'react-icons/ri';
+import Sidebar from './Sidebar';
 
 const AllBooks = () => {
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -32,11 +33,14 @@ const AllBooks = () => {
         </h1>
         <div
           ref={carouselRef}
-          className="flex flex-wrap items-center  shrink-0  py-8 overflow-hidden  gap-8 gap-y-14 "
+          className="flex flex-wrap relative   shrink-0  py-8 overflow-hidden  gap-8 gap-y-14  justify-center"
         >
+          <div className='fixed bottom-28 top-24 w-[20em] left-0'>
+            <Sidebar/>
+          </div>
           {Books.map(({ img, title, author, price, rating }, index) => (
             <div key={index} className="rounded-2xl">
-              <div className="grid grid-cols-1 grid-rows-[60%_40%] cursor-pointer hover:shadow-xl transition duration-100 h-[22em]  w-[14em] shadow-lg rounded-2xl overflow-hidden">
+              <div className="grid grid-cols-1 grid-rows-[58%_42%] cursor-pointer hover:shadow-xl transition duration-100 h-[22em]  w-[12em] shadow-lg rounded-2xl overflow-hidden">
                 <div className="group h-full relative before:absolute before:inset-0 before:bottom-0 before:bg-linear-to-t  before:from-black/30 before:from-0% before:via-black/10 before:via-60% before:to-black/0 before:to-100% before:opacity-0 hover:before:opacity-100 before:transition before:duration-500  rounded-2xl overflow-hidden">
                   <Image
                     src={img}
@@ -58,8 +62,8 @@ const AllBooks = () => {
                     </div>
                   }
                 </div>
-                <div className="p-4 px-2 flex flex-col h-full">
-                  <p className="line-clamp-2 text-lg font-semibold text-[#426074] leading-[1.1em] mb-1">
+                <div className="p-2 px-2 flex flex-col h-full">
+                  <p className="line-clamp-1 text-[1.1em] font-semibold text-[#426074] leading-[1.1em] mb-1">
                     {title}
                   </p>
                   <div className="w-full flex items-center gap-2 mt-2">
@@ -69,7 +73,8 @@ const AllBooks = () => {
                       <FaStar className="text-[#eca624]" /> {rating}{' '}
                     </span>
                   </div>
-                  <div className=" flex center mt-auto pr-4">
+                  <div className='flex flex-col mt-auto'>
+                  <div className=" flex center  pr-2">
                     <div className="flex gap-2">
                       <p className="flex gap-1 items-center">
                         <RiMoneyDollarCircleLine /> ₵{price}.00
@@ -77,14 +82,16 @@ const AllBooks = () => {
                       <span className="border-r border"></span>
                       <p
                         title="available copies"
-                        className="flex items-center gap-1"
+                        className="flex items-center gap-0.5 text-sm"
                       >
                         <ImBooks /> 15
                       </p>
                     </div>
-                    <button className="text-3xl text-[#5a88a7] ">
-                      <FaCartPlus />
-                    </button>
+                   
+                  </div>
+                  <button className="mt-2 p-[0.4em] rounded-lg text-sm transition duration-150 text-[#5a88a7] hover:text-white cursor-pointer flex items-center justify-center gap-2 bg-white hover:bg-[#5a88a7]  border border-[#5a88a7]">
+                      <FaCartPlus /> Add to cart
+                  </button>
                   </div>
                 </div>
               </div>
