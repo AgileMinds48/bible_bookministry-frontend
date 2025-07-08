@@ -1,11 +1,24 @@
-import { popularBooks, recommendedBooks } from '@/app/utils/data'
-import { bk8 } from '@/public'
+"use client"
+import { recommendedBooks } from '@/app/utils/data'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import { FaCartPlus, FaStar } from 'react-icons/fa'
 import { MdFavorite } from 'react-icons/md'
 
 const PopularBooks = () => {
+  const [isFav, setisFav] = useState(
+    Object.fromEntries(recommendedBooks.map((_,idx)=>[idx,false]))
+  )
+  const handleFav = (index:number) => {
+
+    setisFav((prev) => ({
+      ...prev,
+      [index]:!isFav[index]
+    }))
+
+  }
+
+  
   return (
     <section>
       <div className='p-4 py-10 poppins'>
@@ -16,7 +29,8 @@ const PopularBooks = () => {
           <div className='grid grid-cols-1 grid-rows-[60%_40%] cursor-pointer hover:shadow-xl transition duration-100 h-[22em]  w-[14em] shadow-lg rounded-2xl overflow-hidden'>
             <div className='group h-full relative before:absolute before:inset-0 before:bottom-0 before:bg-linear-to-t  before:from-black/30 before:from-0% before:via-black/10 before:via-60% before:to-black/0 before:to-100% before:opacity-0 hover:before:opacity-100 before:transition before:duration-500  rounded-2xl overflow-hidden'>
                   <Image src={img} alt='' className='h-full w-full object-cover ' />
-                  <div className='absolute bottom-2 right-2'><MdFavorite className='text-3xl text-white opacity-0 group-hover:opacity-100 transition duration-500'/></div>
+                  {
+                    <div className='absolute bottom-2 right-2' onClick={() => handleFav(index)}><MdFavorite className={`text-3xl  opacity-0 group-hover:opacity-100 transition duration-500 ${isFav[index]?"text-red-500 animate-bubble":"text-white"}`} /></div>}
             </div>
               <div className='p-4 px-2 flex flex-col h-full'>
                   <p className='line-clamp-2 text-lg font-semibold text-[#426074] leading-[1.1em] mb-1'>{title}</p>
