@@ -211,7 +211,7 @@ const Sidebar = () => {
                 step='0.5'
                 value={ratingFilter}
                 onChange={(e) => setRatingFilter(Number(e.target.value))}
-                className='w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-thumb'
+                className='w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-grab slider-thumb'
               />
             </div>
 

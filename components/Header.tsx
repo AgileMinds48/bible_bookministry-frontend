@@ -29,12 +29,12 @@ const Header = () => {
     };
   }, [])
   return (
-    <nav className={`p-4 flex justify-between px-10 poppins antialiased transition-all duration-1000 ease-in-out z-50 fixed shrink-0 ${scrolled ? " top-4 rounded-lg  left-10 right-10 shadow-sm backdrop-blur-xl bg-[#B0D4E3]/50 " : "relative top-0 w-full bg-[#B0D4E3]"}`}>
+    <nav className={`p-4 flex justify-between px-10 poppins antialiased transition-all duration-1000 ease-in-out z-50 fixed shrink-0 overflow-hidden ${scrolled ? " top-4 rounded-lg  left-10 right-10 shadow-sm backdrop-blur-xl bg-[#B0D4E3]/50 " : "relative top-0 w-full bg-[#B0D4E3]"}`}>
       <div className="flex w-[30%] items-center justify-between 0">
-        <div className="h-8 w-8 rounded-full">
+        <div className="h-8 w-12 object-cover rounded-full">
           <Image  src={logo} alt="Bible and Book ministries logo" className='h-full w-full'/>
         </div>
-        <ul className="flex justify-between w-[80%] text-sm">
+        <ul className="flex justify-between w-[80%] text-sm overflow-hidden">
           {navItems.map(({ label, href }, idx) => (
             <Link key={idx}  href={href}>
               <li className={`cursor-pointer hover:scale-[1.1] transition duration-300 ${pathName===href?"text-blue-400":"text-black"}`}>{label}</li>

@@ -93,7 +93,7 @@
   height: 20px;
   border-radius: 50%;
   background: #5a88a7;
-  cursor: pointer;
+  cursor: grabbing;
   border: 2px solid #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
@@ -103,7 +103,7 @@
   height: 20px;
   border-radius: 50%;
   background: #5a88a7;
-  cursor: pointer;
+  cursor: grabbing;
   border: 2px solid #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
