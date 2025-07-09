@@ -52,7 +52,7 @@ const Sidebar = () => {
         <h2 className='text-xl font-medium text-[#3D3D3D] poppins'>Filters</h2>
         <button
           onClick={clearAllFilters}
-          className='text-sm text-[#5a88a7] hover:text-[#426074] transition-colors duration-200 flex items-center gap-1'
+          className='text-sm cursor-pointer text-[#5a88a7] hover:text-[#426074] transition-colors duration-200 flex items-center gap-1'
         >
           <MdClear className='text-base' />
           Clear All

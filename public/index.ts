@@ -1,4 +1,5 @@
-export {default as mainbook} from "./Home/mainbook.png"
+export {default as logo} from "./logo.png"
+export { default as mainbook } from "./Home/mainbook.png"
 export {default as bk2} from "./Home/bk2.jpg"
 export {default as bk3} from "./Home/bk3.jpg"
 export {default as bk4} from "./Home/bk4.jpg"
