@@ -44,7 +44,7 @@ const PopularBooks = () => {
   }
   
   return (
-    <section>
+    <section id='popular-books' className='scroll-mt-16'>
       <div className=' py-10 poppins px-10 relative'>
           <h1 className='text-4xl poppins font-semibold text-[#3D3D3D]'>Our most <span className='text-transparent bg-clip-text bg-gradient-to-r from-[#5a88a7] to-[#426074]'>popular</span>  books</h1>
            

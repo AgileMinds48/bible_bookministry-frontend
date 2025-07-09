@@ -1,10 +1,9 @@
 "use client"
 import { Books} from '@/app/utils/data'
-import { bk1 } from '@/public'
-import { transform } from 'next/dist/build/swc/generated-native'
+
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { MouseEventHandler, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { FaCartPlus, FaStar } from 'react-icons/fa'
 import { GrNext, GrPrevious } from 'react-icons/gr'
 import { MdFavorite } from 'react-icons/md'

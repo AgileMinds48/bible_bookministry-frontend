@@ -6,8 +6,8 @@ interface Book{
   title: string,
   author: string,
   price:number,
-  rating: number,
-  category:string
+  rating?: number,
+  category?:string
 }
 
 export const sortOptions = [

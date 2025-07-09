@@ -2,15 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import 'tailwindcss';
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 @theme {
-  --font-poppins: 'Poppins';
+  --font-poppins: Poppins;
   --font-crimson: 'Crimson Text';
   --font-sans: 'Open Sans';
+  --color-brue: blue;
 }
 
 .farro {
@@ -54,6 +54,30 @@
   }
 }
 
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes loading {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.progress-bar {
+  animation: slideIn;
+  animation-timeline: view();
+}
 .hide-scrollbar {
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: none; /* Firefox */

@@ -21,7 +21,7 @@ const AllBooks = () => {
     }));
   };
   return (
-    <section className="px-8 poppins pb-56">
+    <section className="px-8 font-poppins pb-56">
       <div>
         <h1 className="text-5xl text-center font-bold bg-gradient-to-br rounded-2xl from-[#5a88a7]/40 to-[#5a88a7]/20  py-10">
           All
@@ -99,6 +99,7 @@ const AllBooks = () => {
           ))}
         </div>
       </div>
+      <div className="progress-bar w-full h-4 animate "></div>
     </section>
   );
 };

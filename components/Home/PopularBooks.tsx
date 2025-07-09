@@ -1,6 +1,7 @@
 "use client"
 import { Books } from '@/app/utils/data'
 import Image from 'next/image'
+import Link from 'next/link'
 import React, { useState } from 'react'
 import { FaCartPlus, FaStar } from 'react-icons/fa'
 import { GrNext } from 'react-icons/gr'
@@ -31,7 +32,9 @@ const PopularBooks = () => {
       <div className=' py-10 poppins px-10'>
         <div className='flex items-baseline justify-between'>
           <h1 className='text-4xl poppins font-semibold text-[#3D3D3D]'>Our most <span className='text-transparent bg-clip-text bg-gradient-to-r from-[#5a88a7] to-[#426074]'>popular</span>  books</h1>
+          <Link href={"catalogue#popular-books"}>
             <p className='underline cursor-pointer flex center gap-2 group'>See all <span className='-translate-0.5 group-hover:translate-x-2  delay-100 duration-100 transition '><GrNext /></span></p>
+            </Link>
           </div>
         <div className='flex shrink-0 px-16 p-8 overflow-hidden gap-8 gap-y-14 flex-wrap'>
           {popularBooks.map(({img,title,author,price,rating},index) => (
