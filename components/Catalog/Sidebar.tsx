@@ -2,15 +2,28 @@
 import React, { useState } from 'react'
 import { FaStar, FaChevronDown, FaChevronUp } from 'react-icons/fa'
 import { MdClear } from 'react-icons/md'
-import {quickPriceFilters, sortOptions} from "@/app/utils/data"
+import {Book, quickPriceFilters, sortOptions} from "@/app/utils/data"
+ //sorting function
+export const sortByTitleAZ = (books: Book[]): Book[] => {
+  const copyOfBooks = [...books]; //I don't wanna change the original array
+  return copyOfBooks.sort((a, b) => a.title.localeCompare(b.title));
+}
 
-const Sidebar = () => {
+interface SidebarProps{
+  onSortChange:(sortValue:string)=>void
+}
+const Sidebar:React.FC<SidebarProps> = ({onSortChange}) => {
   // State for collapsible sections
   const [expandedSections, setExpandedSections] = useState({
     sort: true,
     price: false,
     rating: false
   });
+
+  const handleSortChange = (sortValue:string) => {
+    setSortBy(sortValue);
+    onSortChange(sortValue);
+}
 
   // Filter states
   const [sortBy, setSortBy] = useState<string>('');
@@ -71,21 +84,22 @@ const Sidebar = () => {
         
         {expandedSections.sort && (
           <div className='mt-3 space-y-2'>
-            {sortOptions.map(({value,label}) => (
-              <label key={value} className='flex items-center space-x-2 cursor-pointer group'>
+            {sortOptions.map(({ value, label, icon }) => {
+              const Icon= icon;
+              return (<label key={value} className='flex items-center space-x-2 cursor-pointer group'>
                 <input
                   type='radio'
                   name='sort'
                   value={value}
                   checked={sortBy === value}
-                  onChange={(e) => setSortBy(e.target.value)}
+                  onChange={(e) => handleSortChange(e.target.value)}
                   className='w-4 h-4 text-[#5a88a7] border-gray-300 focus:ring-[#5a88a7] cursor-pointer'
                 />
-                <span className='text-sm text-gray-700 group-hover:text-[#5a88a7] transition-colors duration-200'>
-                  {label}
+                <span className='text-sm text-gray-700 group-hover:text-[#5a88a7] transition-colors duration-200 flex gap-1 items-center'>
+                {icon && React.createElement(icon, { className: 'text-[#5a88a7] text-xl' })} {/* Only render if icon exists */}                  {label}
                 </span>
-              </label>
-            ))}
+              </label>)
+            })}
           </div>
         )}
       </div>
@@ -252,9 +266,9 @@ const Sidebar = () => {
       </div>
 
       {/* Apply Filters Button */}
-      <button className='w-full bg-gradient-to-r from-[#5a88a7] to-[#426074] text-white py-3 px-4 rounded-lg hover:shadow-lg transition-all duration-300 font-medium poppins'>
+      {/* <button onClick={handleSortChange} className='w-full bg-gradient-to-r from-[#5a88a7] to-[#426074] text-white py-3 px-4 rounded-lg hover:shadow-lg transition-all duration-300 font-medium poppins'>
         Apply Filters
-      </button>
+      </button> */}
     </aside>
   );
 };

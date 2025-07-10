@@ -1,7 +1,9 @@
 import { bk1, bk2, bk3, bk4, bk5, bk6, bk7, bk8 } from "@/public"
 import { StaticImageData } from "next/image"
+import { ComponentType } from "react";
+import { BsSortAlphaDown, BsSortAlphaUp, BsSortDown, BsSortUp } from "react-icons/bs";
 
-interface Book{
+export interface Book{
   img:StaticImageData,
   title: string,
   author: string,
@@ -9,14 +11,18 @@ interface Book{
   rating?: number,
   category?:string
 }
-
+interface sortOptions{
+  value: string,
+  label: string,
+  icon?:ComponentType
+}
 export const sortOptions = [
-  { value: 'title-asc', label: 'Title: A - Z ' },
-  { value: 'title-desc', label: 'Title: Z - A' },
-  { value: 'author-asc', label: 'Author: A - Z' },
-  { value: 'author-desc', label: 'Author: Z - A' },
-  { value: 'price-asc', label: 'Price: Low to High' },
-  { value: 'price-desc', label: 'Price: High to Low' },
+  { value: 'title-asc', label: 'Title: A - Z ',icon: BsSortAlphaDown },
+  { value: 'title-desc', label: 'Title: Z - A' ,icon: BsSortAlphaUp },
+  { value: 'author-asc', label: 'Author: A - Z',icon:BsSortAlphaDown  },
+  { value: 'author-desc', label: 'Author: Z - A',icon:BsSortAlphaUp },
+  { value: 'price-asc', label: 'Price: Low to High',icon:BsSortUp  },
+  { value: 'price-desc', label: 'Price: High to Low',icon:BsSortDown  },
   { value: 'rating-desc', label: 'Highest Rated' },
   { value: 'rating-asc', label: 'Lowest Rated' },
   // { value: 'newest', label: 'Newest First' },

@@ -1,15 +1,26 @@
 'use client';
 import { Books } from '@/app/utils/data';
 import Image from 'next/image';
-import React, { useRef, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { FaStar, FaCartPlus } from 'react-icons/fa';
-import { GrPrevious, GrNext } from 'react-icons/gr';
 import { ImBooks } from 'react-icons/im';
 import { MdFavorite } from 'react-icons/md';
 import { RiMoneyDollarCircleLine } from 'react-icons/ri';
-import Sidebar from './Sidebar';
+import Sidebar, { sortByTitleAZ } from './Sidebar';
 
 const AllBooks = () => {
+  const [currentSort, setCurrentsort] = useState<string>("");
+
+  const sortedBooks = useMemo(() => {
+    if (currentSort === "title-asc") {
+      return sortByTitleAZ(Books)
+    }
+
+    return Books;
+  },[currentSort])
+  const handleSortChange = (sortValue: string)=>{
+    setCurrentsort(sortValue);
+  }
   const carouselRef = useRef<HTMLDivElement>(null);
   const [isFav, setisFav] = useState(
     Object.fromEntries(Books.map((_, idx) => [idx, false]))
@@ -36,9 +47,9 @@ const AllBooks = () => {
           className="flex flex-wrap relative   shrink-0  py-8 overflow-hidden  gap-8 gap-y-14  justify-start mx-auto pl-4"
         >
           <div className='fixed bottom-28 top-24 w-[20em] left-0'>
-            <Sidebar/>
+            <Sidebar onSortChange={handleSortChange} />
           </div>
-          {Books.map(({ img, title, author, price, rating }, index) => (
+          {sortedBooks?.map(({ img, title, author, price, rating }, index) => (
             <div key={index} className="rounded-2xl">
               <div className="grid grid-cols-1 grid-rows-[58%_42%] cursor-pointer hover:shadow-xl transition duration-100 h-[22em]  w-[12em] shadow-lg rounded-2xl overflow-hidden">
                 <div className="group h-full relative before:absolute before:inset-0 before:bottom-0 before:bg-linear-to-t  before:from-black/30 before:from-0% before:via-black/10 before:via-60% before:to-black/0 before:to-100% before:opacity-0 hover:before:opacity-100 before:transition before:duration-500  rounded-2xl overflow-hidden">
