@@ -6,7 +6,8 @@ import { FaStar, FaCartPlus } from 'react-icons/fa';
 import { ImBooks } from 'react-icons/im';
 import { MdFavorite } from 'react-icons/md';
 import { RiMoneyDollarCircleLine } from 'react-icons/ri';
-import Sidebar, { sortByTitleAZ } from './Sidebar';
+import Sidebar from './Sidebar';
+import { sortByTitleAZ } from './Filters';
 
 const AllBooks = () => {
   const [currentSort, setCurrentsort] = useState<string>("");

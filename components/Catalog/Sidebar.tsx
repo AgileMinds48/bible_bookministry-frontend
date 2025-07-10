@@ -3,11 +3,7 @@ import React, { useState } from 'react'
 import { FaStar, FaChevronDown, FaChevronUp } from 'react-icons/fa'
 import { MdClear } from 'react-icons/md'
 import {Book, quickPriceFilters, sortOptions} from "@/app/utils/data"
- //sorting function
-export const sortByTitleAZ = (books: Book[]): Book[] => {
-  const copyOfBooks = [...books]; //I don't wanna change the original array
-  return copyOfBooks.sort((a, b) => a.title.localeCompare(b.title));
-}
+
 
 interface SidebarProps{
   onSortChange:(sortValue:string)=>void
@@ -85,7 +81,7 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange}) => {
         {expandedSections.sort && (
           <div className='mt-3 space-y-2'>
             {sortOptions.map(({ value, label, icon }) => {
-              const Icon= icon;
+            
               return (<label key={value} className='flex items-center space-x-2 cursor-pointer group'>
                 <input
                   type='radio'
