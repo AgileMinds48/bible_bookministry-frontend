@@ -2,13 +2,15 @@ import { bk1, bk2, bk3, bk4, bk5, bk6, bk7, bk8 } from "@/public"
 import { StaticImageData } from "next/image"
 import { ComponentType } from "react";
 import { BsSortAlphaDown, BsSortAlphaUp, BsSortDown, BsSortUp } from "react-icons/bs";
+import { GiStarsStack } from "react-icons/gi";
+import { WiStars } from "react-icons/wi";
 
 export interface Book{
   img:StaticImageData,
   title: string,
   author: string,
   price:number,
-  rating?: number,
+  rating: number,
   category?:string
 }
 interface sortOptions{
@@ -23,8 +25,8 @@ export const sortOptions = [
   { value: 'author-desc', label: 'Author: Z - A',icon:BsSortAlphaUp },
   { value: 'price-asc', label: 'Price: Low to High',icon:BsSortUp  },
   { value: 'price-desc', label: 'Price: High to Low',icon:BsSortDown  },
-  { value: 'rating-desc', label: 'Highest Rated' },
-  { value: 'rating-asc', label: 'Lowest Rated' },
+  { value: 'rating-desc', label: 'Highest Rated',icon: GiStarsStack  },
+  { value: 'rating-asc', label: 'Lowest Rated' ,icon: WiStars},
   // { value: 'newest', label: 'Newest First' },
   // { value: 'popular', label: 'Most Popular' }
 ];

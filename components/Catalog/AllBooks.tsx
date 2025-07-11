@@ -7,7 +7,7 @@ import { ImBooks } from 'react-icons/im';
 import { MdFavorite } from 'react-icons/md';
 import { RiMoneyDollarCircleLine } from 'react-icons/ri';
 import Sidebar from './Sidebar';
-import { sortByTitleAZ } from './Filters';
+import { sortByAuthorAZ, sortByAuthorZA, sortByPriceHL, sortByPriceLH, sortByRatingH, sortByRatingL, sortByTitleAZ, sortByTitleZA } from './Filters';
 
 const AllBooks = () => {
   const [currentSort, setCurrentsort] = useState<string>("");
@@ -17,6 +17,28 @@ const AllBooks = () => {
       return sortByTitleAZ(Books)
     }
 
+    if (currentSort === "title-desc") {
+      return sortByTitleZA(Books);
+    }
+
+    if (currentSort === "author-asc") {
+      return sortByAuthorAZ(Books);
+    }
+    if (currentSort === "author-desc") {
+      return sortByAuthorZA(Books);
+    }
+    if (currentSort === "price-asc") {
+      return sortByPriceLH(Books);
+    }
+    if (currentSort === "price-desc") {
+      return sortByPriceHL(Books);
+    }
+    if (currentSort === "rating-desc") {
+      return sortByRatingH(Books);
+    }
+    if (currentSort === "rating-asc") {
+      return sortByRatingL(Books);
+    }
     return Books;
   },[currentSort])
   const handleSortChange = (sortValue: string)=>{
@@ -57,7 +79,7 @@ const AllBooks = () => {
                   <Image
                     src={img}
                     alt=""
-                    className="h-full w-full object-cover "
+                    className="h-full w-full object-cover object-center"
                   />
                   {
                     <div
