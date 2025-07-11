@@ -1,6 +1,6 @@
 'use client';
 import { Books } from '@/app/utils/data';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import React, { useMemo, useRef, useState } from 'react';
 import { FaStar, FaCartPlus } from 'react-icons/fa';
 import { ImBooks } from 'react-icons/im';
@@ -8,10 +8,37 @@ import { MdFavorite } from 'react-icons/md';
 import { RiMoneyDollarCircleLine } from 'react-icons/ri';
 import Sidebar from './Sidebar';
 import { sortByAuthorAZ, sortByAuthorZA, sortByPriceHL, sortByPriceLH, sortByRatingH, sortByRatingL, sortByTitleAZ, sortByTitleZA } from './Filters';
+import CartPopup from '../CartPopup';
 
+interface popupDetails {
+  bookName: string
+  image:StaticImageData | undefined
+}
 const AllBooks = () => {
-  const [currentSort, setCurrentsort] = useState<string>("");
+const [showPopup,setShowPopup]= useState<boolean>(false)
+const [popupBookDetails, setPopupBookDetails] = useState<popupDetails>({
+    bookName: "",
+    image:undefined
+})
 
+  const handleAddToCart = (bookName:string,img:StaticImageData) => {
+    setPopupBookDetails(() => ({
+      bookName: bookName,
+      image:img
+    }))
+    setShowPopup(true);
+        console.log(popupBookDetails);
+    console.log(showPopup);
+    return () => {
+      setTimeout(() => {
+      setShowPopup(false)
+      }, 2000)
+    }
+
+  }
+  //current sorting method
+  const [currentSort, setCurrentsort] = useState<string>("");
+//list of sorts pulling algorithms from Filter.tsx
   const sortedBooks = useMemo(() => {
     if (currentSort === "title-asc") {
       return sortByTitleAZ(Books)
@@ -54,8 +81,10 @@ const AllBooks = () => {
       [index]: !isFav[index],
     }));
   };
+
+
   return (
-    <section className="px-8 pb-56 poppins">
+    <section className="px-8 pb-56 poppins ">
       <div>
         <h1 className="text-5xl text-center font-bold bg-gradient-to-br rounded-2xl from-[#5a88a7]/40 to-[#5a88a7]/20  py-10">
           All
@@ -123,17 +152,23 @@ const AllBooks = () => {
                     </div>
                    
                   </div>
-                  <button className="mt-2 p-[0.4em] rounded-lg text-sm transition duration-150 text-[#5a88a7] hover:text-white cursor-pointer flex items-center justify-center gap-2 bg-white hover:bg-[#5a88a7]  border border-[#5a88a7]">
+                    <button className="mt-2 p-[0.4em] rounded-lg text-sm transition duration-150 text-[#5a88a7] hover:text-white cursor-pointer flex items-center justify-center gap-2 bg-white hover:bg-[#5a88a7]  border border-[#5a88a7]"
+                    onClick={()=>handleAddToCart(title,img)}>
                       <FaCartPlus /> Add to cart
                   </button>
                   </div>
                 </div>
               </div>
+              
             </div>
+        
           ))}
         </div>
       </div>
-      <div className="progress-bar w-full h-4 animate "></div>
+      <div className='fixed bottom-10 right-4 h-32 w-[26em] bg-gray-300/40 rounded-2xl backdrop-blur-2xl'>
+        <CartPopup bookName={popupBookDetails.bookName} image={popupBookDetails.image} />
+        </div>
+      
     </section>
   );
 };
