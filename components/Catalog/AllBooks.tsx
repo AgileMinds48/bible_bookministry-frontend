@@ -29,11 +29,11 @@ const [popupBookDetails, setPopupBookDetails] = useState<popupDetails>({
     setShowPopup(true);
         console.log(popupBookDetails);
     console.log(showPopup);
-    return () => {
+   
       setTimeout(() => {
       setShowPopup(false)
-      }, 2000)
-    }
+      }, 4000)
+    
 
   }
   //current sorting method
@@ -165,9 +165,10 @@ const [popupBookDetails, setPopupBookDetails] = useState<popupDetails>({
           ))}
         </div>
       </div>
-      <div className='fixed bottom-10 right-4 h-32 w-[26em] bg-gray-300/40 rounded-2xl backdrop-blur-2xl'>
+
+      {showPopup && <div className='fixed bottom-10 right-4 h-32 w-[26em]  rounded-2xl '>
         <CartPopup bookName={popupBookDetails.bookName} image={popupBookDetails.image} />
-        </div>
+        </div>}
       
     </section>
   );
