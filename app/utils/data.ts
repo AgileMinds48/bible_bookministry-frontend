@@ -11,7 +11,8 @@ export interface Book{
   author: string,
   price:number,
   rating: number,
-  category?:string
+  category?: string
+  id:number
 }
 interface sortOptions{
   value: string,
@@ -41,6 +42,7 @@ export const quickPriceFilters =
 
 export const Books:Book[] = [
   {
+    id: 1,
     img: bk1,
     title: "Die with a smile or live",
     author: "Kyeiwaa",
@@ -48,6 +50,7 @@ export const Books:Book[] = [
     rating: 3.2,
     category:"Recommended"
 }, {
+  id: 2,
   img: bk2,
   title: "Walking in Faith",
   author: "Sarah Thompson",
@@ -56,6 +59,7 @@ export const Books:Book[] = [
   category:"Recommended"
 },
 {
+  id: 3,
   img: bk3,
   title: "Grace Unveiled",
   author: "Michael Johnson",
@@ -64,6 +68,7 @@ export const Books:Book[] = [
   category:"Recommended"
 },
 {
+  id: 4,
   img: bk4,
   title: "The Heart of Prayer",
   author: "Rebecca Miller",
@@ -72,6 +77,7 @@ export const Books:Book[] = [
   category:"Recommended"
 },
 {
+  id: 5,
   img: bk8,
   title: "Strength in Scripture",
   author: "David Williams",
@@ -80,6 +86,7 @@ export const Books:Book[] = [
   category:"Recommended"
 },
 {
+  id: 6,
   img: bk7,
   title: "Light in Darkness",
   author: "Emma Davis",
@@ -88,6 +95,7 @@ export const Books:Book[] = [
   category:"Recommended"
 },
 {
+  id: 7,
   img: bk6,
   title: "Foundations of Truth",
   author: "Joshua Brown",
@@ -96,6 +104,7 @@ export const Books:Book[] = [
   category:"Recommended"
 },
 {
+  id: 8,
   img: bk5,
   title: "Hope Renewed",
   author: "Rachel Green",
@@ -104,6 +113,7 @@ export const Books:Book[] = [
   category:"Recommended"
 },
 {
+  id: 9,
   img: bk7,
   title: "Light in Darkness",
   author: "Emma Davis",
@@ -112,6 +122,7 @@ export const Books:Book[] = [
   category:"Recommended"
 },
   {
+    id: 10,
     img: bk4,
     title: "The Heart of Prayer",
     author: "Rebecca Miller",
@@ -120,6 +131,7 @@ export const Books:Book[] = [
     category:"Recommended"
   },
   {
+    id: 11,
     img: bk2,
     title: "Walking in Faith",
     author: "Sarah Thompson",
@@ -128,6 +140,7 @@ export const Books:Book[] = [
     category:"Popular"
   },
   {
+    id: 12,
     img: bk7,
     title: "Light in Darkness",
     author: "Emma Davis",
@@ -136,6 +149,7 @@ export const Books:Book[] = [
     category:"Popular"
   },
   {
+    id: 13,
     img: bk6,
     title: "Foundations of Truth",
     author: "Joshua Brown",
@@ -144,6 +158,7 @@ export const Books:Book[] = [
     category:"Popular"
   },
   {
+    id: 14,
     img: bk5,
     title: "Hope Renewed",
     author: "Rachel Green",
@@ -152,6 +167,7 @@ export const Books:Book[] = [
     category:"Popular"
   },
   {
+    id: 15,
     img: bk3,
     title: "Grace Unveiled",
     author: "Michael Johnson",
@@ -160,6 +176,7 @@ export const Books:Book[] = [
 category:"Popular"
   },
   {
+    id: 16,
     img: bk2,
     title: "Walking in Faith",
     author: "Sarah Thompson",
@@ -168,6 +185,7 @@ category:"Popular"
     category:"Popular"
   },
   {
+    id: 17,
     img: bk7,
     title: "Light in Darkness",
     author: "Emma Davis",
@@ -176,6 +194,7 @@ category:"Popular"
     category:"Popular"
   },
   {
+    id: 18,
     img: bk6,
     title: "Foundations of Truth",
     author: "Joshua Brown",
@@ -184,6 +203,7 @@ category:"Popular"
     category:"Popular"
   },
   {
+    id: 19,
     img: bk5,
     title: "Hope Renewed",
     author: "Rachel Green",
@@ -192,6 +212,7 @@ category:"Popular"
     category:"Popular"
   },
   {
+    id: 20,
     img: bk1,
     title: "Grace Unveiled",
     author: "Michael Johnson",
