@@ -10,10 +10,10 @@ import { MdFavoriteBorder } from 'react-icons/md';
 
 const Header = () => {
   const pathName = usePathname();
-  const navItems = [
+ const navItems = [
     { label: 'Home', href: '/' },
     { label: 'Catalogue', href: '/catalogue' },
-    { label: 'E-books', href: '/cart' },
+    { label: 'E-books', href: '/e-books' },
     { label: 'About us', href: '/about' },
   ];
 
