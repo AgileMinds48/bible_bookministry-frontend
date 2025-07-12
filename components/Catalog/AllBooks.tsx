@@ -96,7 +96,7 @@ const [popupBookDetails, setPopupBookDetails] = useState<popupDetails>({
    
     setTimeout(() => {
       setShowPopup(false)
-    }, 2000);
+    }, 1000);
 
     console.log(isCurrentlyAdded);
   }
@@ -184,14 +184,21 @@ const [popupBookDetails, setPopupBookDetails] = useState<popupDetails>({
           ))}
         </div>
       </div>
+      <AnimatePresence>
       {showPopup &&
-        <AnimatePresence>
-        <div className='fixed bottom-10 right-4 h-32 w-[26em]  rounded-2xl '>
+      
+          <motion.div
+            key="cart-popup"
+          initial={{ x: 200, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{type:"spring",duration:0.4 }}
+          exit={{x:200,opacity:0}}
+            className='fixed bottom-10 right-4 h-32 w-[26em]  rounded-2xl p-2 bg-white/60 backdrop-blur-2xl border-2 border-gray-400'>
         <CartPopup bookName={popupBookDetails.bookName} image={popupBookDetails.image} isAdded={popupBookDetails.isAdded} />
-          </div>
-        </AnimatePresence>
+          </motion.div>
+     
         }
-   
+      </AnimatePresence>
     </section>
   );
 };
