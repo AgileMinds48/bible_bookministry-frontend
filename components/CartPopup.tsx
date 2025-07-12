@@ -6,7 +6,7 @@ import { FaCheckCircle } from 'react-icons/fa'
 interface CartPopupProps{
   bookName: string,
   image: StaticImageData | undefined
-  isAdded:boolean
+  isAdded:boolean 
 }
 const CartPopup = ({bookName,image,isAdded}:CartPopupProps) => {
   return (
@@ -15,7 +15,7 @@ const CartPopup = ({bookName,image,isAdded}:CartPopupProps) => {
       <div className='w-full h-full bg-black'></div>
       <div className='m-auto flex px-2 gap-2'>
      {image && <Image src={image} alt="book added to cart" className='max-h-20 max-w-20 object-cover object-center rounded-sm' />
-}        <p className='leading-snug font-semibold my-auto'>{bookName} <br /> <span className='font-light'>{isAdded?"removed from cart successfully": "added to cart successfully" }</span></p>
+}    <p className='leading-snug font-semibold my-auto'>{bookName} <br />{ <span className='font-light'>{isAdded ? "added to cart successfully" : "removed from cart successfully"} </span>}</p>
       </div>
       </div>
       

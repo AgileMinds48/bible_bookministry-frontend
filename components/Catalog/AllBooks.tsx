@@ -10,13 +10,15 @@ import Sidebar from './Sidebar';
 import { sortByAuthorAZ, sortByAuthorZA, sortByPriceHL, sortByPriceLH, sortByRatingH, sortByRatingL, sortByTitleAZ, sortByTitleZA } from './Filters';
 import CartPopup from '../CartPopup';
 import { AnimatePresence,motion } from 'framer-motion';
+import FavPopup from '../FavPopup';
 
 
 const AllBooks = () => {
 interface popupDetails {
   bookName: string
   image: StaticImageData | undefined
-  isAdded:boolean
+  isAdded: boolean
+  isFav:boolean
 }
 
 
@@ -60,45 +62,77 @@ interface popupDetails {
     Object.fromEntries(Books.map((book) => [book.id, false]))
   );
   //favorite funciton
-  const handleFav = (id: number) => {
+  const handleFav = (bookName: string, image: StaticImageData, id: number) => {
+       const isCurrentlyAdded = added[id];
+    const isFavorite = isFav[id];
+
+    // toggle just the favorite
+    setPopupBookDetails({
+      bookName: bookName,
+      image: image,
+      isAdded: isCurrentlyAdded,
+      isFav:!isFavorite
+    })
+    setShowPopup((prev) => ({
+      addedToCart:false,
+      addedToFavorites:true
+    }))
+    //toggle favorite for this id
     setisFav((prev) => ({
       ...prev,
       [id]: !prev[id],
     }));
+
+    setTimeout(() => {
+    setShowPopup({
+      addedToCart: false,
+      addedToFavorites: false
+    });
+  }, 1000);
 };
   
-type AddedState = { [key: string]: boolean };
+  type AddedState = { [key: string]: boolean };
+  type Popup ={[key:string]: boolean}
 //Popup
-const [showPopup,setShowPopup]= useState<boolean>(false)
+  const [showPopup, setShowPopup] = useState<Popup>({
+    addedToCart: false,
+    addedToFavorites:false
+})
 const [popupBookDetails, setPopupBookDetails] = useState<popupDetails>({
     bookName: "",
   image: undefined,
-    isAdded:false
+  isAdded: false,
+    isFav:false
 })
   //add to cart
  const [added, setAdded] = useState<AddedState>(
-  useMemo(()=>  Object.fromEntries(Books.map((book) => [book.id, false])),[sortedBooks]
+  useMemo(()=>  Object.fromEntries(Books.map((book) => [book.id, false])),[]
   ));
 
   const handleAddToCart = (bookName: string, img: StaticImageData, e: React.MouseEvent<HTMLButtonElement>, id: number) => {
     const isCurrentlyAdded = added[id];
-
+    const isFavorite = isFav[id];
     setPopupBookDetails({
       bookName: bookName,
       image: img,
-      isAdded: isCurrentlyAdded
+      isAdded: !isCurrentlyAdded,
+      isFav:isFavorite
     });
-    setShowPopup(true);
+    setShowPopup((prev) => ({
+      addedToFavorites:false,
+      addedToCart: true,
+    }));
     setAdded((prev) => ({
       ...prev,
       [id]: !prev[id]  // Toggle the added state for this specific book
     }));
    
     setTimeout(() => {
-      setShowPopup(false)
+      setShowPopup((prev) => ({
+        ...prev,
+        addedToCart:false
+      }))
     }, 1000);
-
-    console.log(isCurrentlyAdded);
   }
  
 
@@ -132,7 +166,7 @@ const [popupBookDetails, setPopupBookDetails] = useState<popupDetails>({
                   {
                     <div
                       className="absolute bottom-2 right-2"
-                      onClick={() => handleFav(id)}
+                      onClick={() => handleFav(title,img,id)}
                     >
                       <MdFavorite
                         className={`text-3xl  opacity-0 group-hover:opacity-100 transition duration-500 ${
@@ -185,19 +219,24 @@ const [popupBookDetails, setPopupBookDetails] = useState<popupDetails>({
         </div>
       </div>
       <AnimatePresence>
-      {showPopup &&
-      
-          <motion.div
+      {showPopup.addedToCart && (<motion.div
             key="cart-popup"
           initial={{ x: 200, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{type:"spring",duration:0.4 }}
           exit={{x:200,opacity:0}}
             className='fixed bottom-10 right-4 h-32 w-[26em]  rounded-2xl p-2 bg-white/60 backdrop-blur-2xl border-2 border-gray-400'>
-        <CartPopup bookName={popupBookDetails.bookName} image={popupBookDetails.image} isAdded={popupBookDetails.isAdded} />
-          </motion.div>
-     
-        }
+         <CartPopup bookName={popupBookDetails.bookName} image={popupBookDetails.image} isAdded={popupBookDetails.isAdded} />
+          </motion.div>)}
+
+          {showPopup.addedToFavorites && (<motion.div   key="fav-popup"
+          initial={{ x: 200, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{type:"spring",duration:0.4 }}
+          exit={{x:200,opacity:0}}
+            className='fixed bottom-40 right-4 h-32 w-[26em]  rounded-2xl p-2 bg-white/60 backdrop-blur-2xl border-2 border-gray-400'>
+            <FavPopup bookName={popupBookDetails.bookName} image={popupBookDetails.image} isFav={popupBookDetails.isFav}/>
+     </motion.div>)}
       </AnimatePresence>
     </section>
   );
