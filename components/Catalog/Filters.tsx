@@ -35,6 +35,10 @@ export const sortByRatingH = (books: Book[])=>{
   const copyOfBooks = [...books];
   return copyOfBooks.sort((a, b) => b.rating - a.rating);
 }
+
+export const filterByPricerange = (books:Book[], min:number, max:number) => {
+  return books.filter((book) => book.price >= min && book.price <= max);
+}
 const Filters = () => {
 
 

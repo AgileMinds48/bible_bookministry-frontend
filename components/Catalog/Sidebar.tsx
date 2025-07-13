@@ -6,9 +6,10 @@ import {Book, quickPriceFilters, sortOptions} from "@/app/utils/data"
 
 
 interface SidebarProps{
-  onSortChange:(sortValue:string)=>void
+  onSortChange: (sortValue: string) => void
+  onPriceRangeChange:(min:number,max:number)=>void
 }
-const Sidebar:React.FC<SidebarProps> = ({onSortChange}) => {
+const Sidebar:React.FC<SidebarProps> = ({onSortChange,onPriceRangeChange}) => {
   // State for collapsible sections
   const [expandedSections, setExpandedSections] = useState({
     sort: true,
@@ -16,6 +17,7 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange}) => {
     rating: false
   });
 
+  //function for sort change (local or ui) - logic is in AllBooks.tsx
   const handleSortChange = (sortValue:string) => {
     setSortBy(sortValue);
     onSortChange(sortValue);
@@ -44,12 +46,21 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange}) => {
     });
   };
 
+  //pricerange function (local or ui) - logic is in AllBooks.tsx
+  const handlePriceRange = (e:React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    const newRange = { ...priceRange, [name]: Number(value) };
+    setPriceRange(newRange)
+
+    onPriceRangeChange(newRange.min,newRange.max)
+}
   // Clear all filters
   const clearAllFilters = () => {
     setSortBy('');
     setPriceRange({ min: 0, max: 100 });
     setRatingFilter(0);
     onSortChange("");
+    onPriceRangeChange(0, 200);
   };
 
   // Sort options
@@ -122,8 +133,9 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange}) => {
                   type='number'
                   min='0'
                   max='200'
+                  name='min'
                   value={priceRange.min}
-                  onChange={(e) => setPriceRange(prev => ({ ...prev, min: Number(e.target.value) }))}
+                  onChange={handlePriceRange}
                   className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#5a88a7] focus:border-transparent text-sm'
                   placeholder='0'
                 />
@@ -136,7 +148,8 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange}) => {
                   min='0'
                   max='200'
                   value={priceRange.max}
-                  onChange={(e) => setPriceRange(prev => ({ ...prev, max: Number(e.target.value) }))}
+                  name="max"
+                  onChange={handlePriceRange}
                   className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#5a88a7] focus:border-transparent text-sm'
                   placeholder='100'
                 />
@@ -154,7 +167,11 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange}) => {
               {quickPriceFilters.map(({min,max,label}) => (
                 <button
                   key={label}
-                  onClick={() => setPriceRange({ min: min, max: max })}
+                  onClick={() => {
+                    const newRange = { min: min, max: max };
+                    setPriceRange(newRange);
+                    onPriceRangeChange(newRange.min, newRange.max);
+                  }}
                   className={`px-3 py-1 text-xs rounded-full border transition-colors duration-200 ${
                     priceRange.min === min && priceRange.max === max
                       ? 'bg-[#5a88a7] text-white border-[#5a88a7]'

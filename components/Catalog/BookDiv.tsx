@@ -55,9 +55,9 @@ const BookDiv:React.FC<BookDiv>= ({img, title, author, price, rating,id,handleFa
                       <span className="border-r border"></span>
                       <p
                         title="available copies"
-                        className="flex items-center gap-0.5 text-sm"
+                        className="flex items-baseline-last gap-0.5 text-sm"
                       >
-                        <ImBooks /> 15
+                        <ImBooks className='translate-y-0.5'/> 15
                       </p>
                     </div>
                    
