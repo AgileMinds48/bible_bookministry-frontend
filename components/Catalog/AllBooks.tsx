@@ -88,7 +88,7 @@ interface popupDetails {
       addedToCart: false,
       addedToFavorites: false
     });
-  }, 1000);
+  }, 1500);
 };
   
   type AddedState = { [key: string]: boolean };
@@ -132,7 +132,7 @@ const [popupBookDetails, setPopupBookDetails] = useState<popupDetails>({
         ...prev,
         addedToCart:false
       }))
-    }, 1000);
+    }, 1500);
   }
  
 
@@ -229,7 +229,8 @@ const [popupBookDetails, setPopupBookDetails] = useState<popupDetails>({
          <CartPopup bookName={popupBookDetails.bookName} image={popupBookDetails.image} isAdded={popupBookDetails.isAdded} />
           </motion.div>)}
 
-          {showPopup.addedToFavorites && (<motion.div   key="fav-popup"
+        {showPopup.addedToFavorites &&
+          (<motion.div key="fav-popup"
           initial={{ x: 200, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{type:"spring",duration:0.4 }}

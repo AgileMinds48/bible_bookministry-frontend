@@ -12,7 +12,7 @@ const FavPopup = ({ image, bookName, isFav }: FavPopupProps) => {
 
     <div
 
-      className='w-full h-full grid grid-cols-[1fr_1px_3fr] rounded-2xl p-2 bg-white/60 backdrop-blur-2xl'>
+      className='w-full h-full grid grid-cols-[1fr_1px_3fr] '>
       <div className='m-auto '><FaCheckCircle className='text-green-500 text-5xl ' /></div>
       <div className='w-full h-full bg-black'></div>
       <div className='m-auto flex px-2 gap-2'>
