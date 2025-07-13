@@ -93,7 +93,8 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange}) => {
                   className='w-4 h-4 text-[#5a88a7] border-gray-300 focus:ring-[#5a88a7] cursor-pointer'
                 />
                 <span className='text-sm text-gray-700 group-hover:text-[#5a88a7] transition-colors duration-200 flex gap-1 items-center'>
-                {icon && React.createElement(icon, { className: 'text-[#5a88a7] text-xl' })} {/* Only render if icon exists */}                  {label}
+                  {icon && React.createElement(icon, { className: 'text-[#5a88a7] text-xl' })} {/* Only render if icon exists */}
+                  {label}
                 </span>
               </label>)
             })}
@@ -145,26 +146,7 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange}) => {
             {/* Price Range Slider */}
             <div className='space-y-2'>
               <label className='block text-xs text-gray-600'>Price Range: ₵{priceRange.min} - ₵{priceRange.max}</label>
-              {/* <div className='relative '>
-                <input
-                  type='range'
-                  min='0'
-                  max='200'
-                  value={priceRange.min}
-                  onChange={(e) => setPriceRange(prev => ({ ...prev, min: Number(e.target.value) }))}
-                  className='absolute w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-thumb mt-4'
-                  style={{ zIndex: 1 }}
-                />
-                <input
-                  type='range'
-                  min='0'
-                  max='200'
-                  value={priceRange.max}
-                  onChange={(e) => setPriceRange(prev => ({ ...prev, max: Number(e.target.value) }))}
-                  className='absolute w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-thumb'
-                  style={{ zIndex: 2 }}
-                />
-              </div> */}
+            
             </div>
 
             {/* Quick Price Filters */}
