@@ -2,12 +2,8 @@
 import { Book, Books } from '@/app/utils/data';
 import Image, { StaticImageData } from 'next/image';
 import React, { useMemo, useRef, useState } from 'react';
-import { FaStar, FaCartPlus } from 'react-icons/fa';
-import { ImBooks } from 'react-icons/im';
-import { MdFavorite } from 'react-icons/md';
-import { RiMoneyDollarCircleLine } from 'react-icons/ri';
 import Sidebar from './Sidebar';
-import { filterByPriceRange, sortByAuthorAZ, sortByAuthorZA, sortByPriceHL, sortByPriceLH, sortByRatingH, sortByRatingL, sortByTitleAZ, sortByTitleZA } from './Filters';
+import { filterByPriceRange, filterByRating, sortByAuthorAZ, sortByAuthorZA, sortByPriceHL, sortByPriceLH, sortByRatingH, sortByRatingL, sortByTitleAZ, sortByTitleZA } from './Filters';
 import CartPopup from '../CartPopup';
 import { AnimatePresence,motion } from 'framer-motion';
 import FavPopup from '../FavPopup';
@@ -25,11 +21,16 @@ interface popupDetails {
   //price range state
   const [priceRange, setPriceRange] = useState({min:0,max:100})
 
+  //rating state
+  const [rating, setRating] = useState<number>(5);
+
   //current sorting method
   const [currentSort, setCurrentsort] = useState<string>("");
+
 //list of sorts pulling algorithms from Filter.tsx
   const sortedBooks = useMemo(() => {
     let filteredBooks = filterByPriceRange(Books, priceRange.min, priceRange.max);
+    filteredBooks=filterByRating(filteredBooks, rating)
     if (currentSort === "title-asc") {
       return sortByTitleAZ(filteredBooks);
     }
@@ -55,8 +56,8 @@ interface popupDetails {
       return sortByRatingL(filteredBooks);
     }
     return filteredBooks;
-  },[currentSort,priceRange])
-  const handleSortChange = (sortValue: string)=>{
+  },[currentSort,priceRange,rating])
+  const handleSortChange = (sortValue: string) => {
     setCurrentsort(sortValue);
   }
 
@@ -67,11 +68,15 @@ interface popupDetails {
       max:maxPrice
   })
 }
-
+  //rating handler
+  const handleRatingChange = (rating:number)=> {
+    setRating(rating);
+  }
   const carouselRef = useRef<HTMLDivElement>(null);
   const [isFav, setisFav] = useState(
     Object.fromEntries(Books.map((book) => [book.id, false]))
   );
+
   //favorite funciton
   const handleFav = (bookName: string, image: StaticImageData, id: number) => {
        const isCurrentlyAdded = added[id];
@@ -84,7 +89,7 @@ interface popupDetails {
       isAdded: isCurrentlyAdded,
       isFav:!isFavorite
     })
-    setShowPopup((prev) => ({
+    setShowPopup(() => ({
       addedToCart:false,
       addedToFavorites:true
     }))
@@ -129,7 +134,7 @@ const [popupBookDetails, setPopupBookDetails] = useState<popupDetails>({
       isAdded: !isCurrentlyAdded,
       isFav:isFavorite
     });
-    setShowPopup((prev) => ({
+    setShowPopup(() => ({
       addedToFavorites:false,
       addedToCart: true,
     }));
@@ -163,7 +168,7 @@ const [popupBookDetails, setPopupBookDetails] = useState<popupDetails>({
           className="flex flex-wrap relative   shrink-0  py-8 overflow-hidden  gap-8 gap-y-14  justify-start mx-auto pl-4"
         >
           <div className='fixed bottom-28 top-24 w-[20em] left-0'>
-            <Sidebar onSortChange={handleSortChange} onPriceRangeChange={handlePriceRangeChange}/>
+            <Sidebar onSortChange={handleSortChange} onPriceRangeChange={handlePriceRangeChange} onRatingChange={handleRatingChange}/>
           </div>
           {sortedBooks?.map(({ img, title, author, price, rating,id }, index) => (
             <div key={index} className="rounded-2xl">

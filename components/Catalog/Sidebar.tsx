@@ -7,9 +7,10 @@ import {Book, quickPriceFilters, sortOptions} from "@/app/utils/data"
 
 interface SidebarProps{
   onSortChange: (sortValue: string) => void
-  onPriceRangeChange:(min:number,max:number)=>void
+  onPriceRangeChange: (min: number, max: number) => void
+  onRatingChange:(rating:number)=>void
 }
-const Sidebar:React.FC<SidebarProps> = ({onSortChange,onPriceRangeChange}) => {
+const Sidebar:React.FC<SidebarProps> = ({onSortChange,onPriceRangeChange,onRatingChange}) => {
   // State for collapsible sections
   const [expandedSections, setExpandedSections] = useState({
     sort: true,
@@ -47,12 +48,20 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange,onPriceRangeChange}) => {
   };
 
   //pricerange function (local or ui) - logic is in AllBooks.tsx
-  const handlePriceRange = (e:React.ChangeEvent<HTMLInputElement>) => {
+  const handlePriceRange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
     const { name, value } = e.target;
     const newRange = { ...priceRange, [name]: Number(value) };
     setPriceRange(newRange)
-
     onPriceRangeChange(newRange.min,newRange.max)
+  }
+  
+  //rating function (local or ui) props passed to AllBooks for logic
+  const handleRatingChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const newRating = Number(e.target.value);
+    setRatingFilter(newRating);
+    onRatingChange(newRating);
 }
   // Clear all filters
   const clearAllFilters = () => {
@@ -61,6 +70,7 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange,onPriceRangeChange}) => {
     setRatingFilter(0);
     onSortChange("");
     onPriceRangeChange(0, 100);
+    onRatingChange(5);
   };
 
   // Sort options
@@ -218,9 +228,9 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange,onPriceRangeChange}) => {
                 type='range'
                 min='0'
                 max='5'
-                step='0.5'
+                step='0.1'
                 value={ratingFilter}
-                onChange={(e) => setRatingFilter(Number(e.target.value))}
+                onChange={(e) => handleRatingChange(e)}
                 className='w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-grab slider-thumb'
               />
             </div>
@@ -236,7 +246,10 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange,onPriceRangeChange}) => {
               ].map((rating) => (
                 <button
                   key={rating.value}
-                  onClick={() => setRatingFilter(rating.value)}
+                  onClick={() => {
+                    setRatingFilter(rating.value)
+                    onRatingChange(rating.value);
+                  }}
                   className={`w-full text-left px-3 py-2 rounded-md transition-colors duration-200 ${
                     ratingFilter === rating.value
                       ? 'bg-[#5a88a7] text-white'
@@ -260,11 +273,6 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange,onPriceRangeChange}) => {
           </div>
         )}
       </div>
-
-      {/* Apply Filters Button */}
-      {/* <button onClick={handleSortChange} className='w-full bg-gradient-to-r from-[#5a88a7] to-[#426074] text-white py-3 px-4 rounded-lg hover:shadow-lg transition-all duration-300 font-medium poppins'>
-        Apply Filters
-      </button> */}
     </aside>
   );
 };
