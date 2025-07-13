@@ -8,6 +8,9 @@ import Header from "@/components/Header"
 export const metadata: Metadata = {
   title: "Book and Bible Ministry",
   description: "A library of Christian books",
+  icons: {
+    icon:"/logo.png"
+  }
 };
 
 export default function RootLayout({
