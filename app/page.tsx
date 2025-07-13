@@ -1,4 +1,3 @@
-import Footer from "@/components/Home/Footer";
 import Landing from "@/components/Home/Landing";
 import Mission from "@/components/Home/Mission";
 import PopularBooks from "@/components/Home/PopularBooks";
@@ -9,7 +8,6 @@ export default function Home() {
       <Landing />
       <Recommended/>
       <PopularBooks/>
-      <Footer/>
       </div>
   );
 }
