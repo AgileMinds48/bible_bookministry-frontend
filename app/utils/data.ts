@@ -5,6 +5,47 @@ import { BsSortAlphaDown, BsSortAlphaUp, BsSortDown, BsSortUp } from "react-icon
 import { GiStarsStack } from "react-icons/gi";
 import { WiStars } from "react-icons/wi";
 
+export interface FormData{
+      firstname:string
+    lastname: string
+    email: string
+    password: string
+    repeatpassword: string
+}
+
+export interface signUpField{
+  input: string,
+  inputName: string
+  type: string
+  warning?:string
+}
+export const inputItemsSignUp:signUpField[] = [{
+  input: "First Name",
+  inputName: "firstname",
+  type:"text"
+},
+  {
+    input: "Last Name",
+    inputName: "lastname",
+    type:"text"
+  },
+  {
+  input: "Email",
+  inputName:"email",
+  type:"email"
+},
+  {
+  input: "Password",
+  inputName:"password",
+    type: "",
+  warning:"Password must be at least 8 characters"
+  },
+  {
+    input: "Repeat Password",
+    inputName: "repeatpassword",
+    type:""
+}]
+
 export interface Book{
   img:StaticImageData,
   title: string,

@@ -61,10 +61,13 @@ const Header = () => {
           </span>
           <MdFavoriteBorder />
         </button>
-        <button className="flex items-center gap-1  cursor-pointer text-sm bg-gradient-to-r from-[#5a88a7] to-[#426074] hover:shadow-lg text-white p-2 px-6 rounded-lg">
+        <Link href={"/auth"}>
+          <button className="flex h-full items-center gap-1  cursor-pointer text-sm bg-gradient-to-r from-[#5a88a7] to-[#426074] hover:shadow-lg text-white p-2 px-6 rounded-lg">
           <FaRegUser />
           Login
         </button>
+          </Link>
+
       </div>
     </nav>
   );
