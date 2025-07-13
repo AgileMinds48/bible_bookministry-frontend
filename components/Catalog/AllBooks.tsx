@@ -7,7 +7,7 @@ import { ImBooks } from 'react-icons/im';
 import { MdFavorite } from 'react-icons/md';
 import { RiMoneyDollarCircleLine } from 'react-icons/ri';
 import Sidebar from './Sidebar';
-import { sortByAuthorAZ, sortByAuthorZA, sortByPriceHL, sortByPriceLH, sortByRatingH, sortByRatingL, sortByTitleAZ, sortByTitleZA } from './Filters';
+import { filterByPriceRange, sortByAuthorAZ, sortByAuthorZA, sortByPriceHL, sortByPriceLH, sortByRatingH, sortByRatingL, sortByTitleAZ, sortByTitleZA } from './Filters';
 import CartPopup from '../CartPopup';
 import { AnimatePresence,motion } from 'framer-motion';
 import FavPopup from '../FavPopup';
@@ -22,43 +22,52 @@ interface popupDetails {
   isAdded: boolean
   isFav:boolean
 }
-
+  //price range state
+  const [priceRange, setPriceRange] = useState({min:0,max:100})
 
   //current sorting method
   const [currentSort, setCurrentsort] = useState<string>("");
 //list of sorts pulling algorithms from Filter.tsx
   const sortedBooks = useMemo(() => {
+    let filteredBooks = filterByPriceRange(Books, priceRange.min, priceRange.max);
     if (currentSort === "title-asc") {
-      return sortByTitleAZ(Books)
+      return sortByTitleAZ(filteredBooks);
     }
-
     if (currentSort === "title-desc") {
-      return sortByTitleZA(Books);
+      return sortByTitleZA(filteredBooks);
     }
-
     if (currentSort === "author-asc") {
-      return sortByAuthorAZ(Books);
+      return sortByAuthorAZ(filteredBooks);
     }
     if (currentSort === "author-desc") {
-      return sortByAuthorZA(Books);
+      return sortByAuthorZA(filteredBooks);
     }
     if (currentSort === "price-asc") {
-      return sortByPriceLH(Books);
+      return sortByPriceLH(filteredBooks);
     }
     if (currentSort === "price-desc") {
-      return sortByPriceHL(Books);
+      return sortByPriceHL(filteredBooks);
     }
     if (currentSort === "rating-desc") {
-      return sortByRatingH(Books);
+      return sortByRatingH(filteredBooks);
     }
     if (currentSort === "rating-asc") {
-      return sortByRatingL(Books);
+      return sortByRatingL(filteredBooks);
     }
-    return Books;
-  },[currentSort])
+    return filteredBooks;
+  },[currentSort,priceRange])
   const handleSortChange = (sortValue: string)=>{
     setCurrentsort(sortValue);
   }
+
+  //price range handler
+  const handlePriceRangeChange = (minPrice:number,maxPrice:number) => {
+    setPriceRange({
+      min: minPrice,
+      max:maxPrice
+  })
+}
+
   const carouselRef = useRef<HTMLDivElement>(null);
   const [isFav, setisFav] = useState(
     Object.fromEntries(Books.map((book) => [book.id, false]))
@@ -154,7 +163,7 @@ const [popupBookDetails, setPopupBookDetails] = useState<popupDetails>({
           className="flex flex-wrap relative   shrink-0  py-8 overflow-hidden  gap-8 gap-y-14  justify-start mx-auto pl-4"
         >
           <div className='fixed bottom-28 top-24 w-[20em] left-0'>
-            <Sidebar onSortChange={handleSortChange} />
+            <Sidebar onSortChange={handleSortChange} onPriceRangeChange={handlePriceRangeChange}/>
           </div>
           {sortedBooks?.map(({ img, title, author, price, rating,id }, index) => (
             <div key={index} className="rounded-2xl">

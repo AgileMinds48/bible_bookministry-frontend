@@ -60,7 +60,7 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange,onPriceRangeChange}) => {
     setPriceRange({ min: 0, max: 100 });
     setRatingFilter(0);
     onSortChange("");
-    onPriceRangeChange(0, 200);
+    onPriceRangeChange(0, 100);
   };
 
   // Sort options
