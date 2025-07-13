@@ -62,15 +62,15 @@ const Footer = () => {
             </div>
         </div>
         <div className='lg:pt-10'>
-          <h4 className='text-lg font-semibold mb-6 text-[#01325E]'>Working Hours</h4>
-          <div className='text-gray-700'>
+          <h4 className='text-xl font-semibold mb-6 text-[#01325E]'>Working Hours</h4>
+          <div className='text-gray-700 text-lg'>
           <p>Mondays - Fridays: 9:00am - 8:00pm GMT</p>
             <p>Saturdays - Sundays: 11:00am - 5:00pm GMT</p>
           </div>
-          <h4 className='text-lg font-semibold mb-6 mt-6 text-[#01325E]'>Contact Us</h4>
-          <div className='text-gray-700'>
+          <h4 className='text-xl font-semibold mb-6 mt-6 text-[#01325E]'>Contact Us</h4>
+          <div className='text-gray-700 text-lg'>
             <p className='flex items-center gap-2'><MdCall /> +233 558 317 782</p>
-            <p className='flex items-center gap-2'><IoMdMail /> bibleandbookministry07@gmail.com</p>
+            <p className='flex items-center gap-2 hover:underline'><IoMdMail /> bibleandbookministry07@gmail.com</p>
           </div>
           </div>
           </div>
