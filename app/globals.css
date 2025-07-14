@@ -119,3 +119,9 @@
   height: 8px;
   border-radius: 4px;
 }
+/* autofill fix */
+input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-text-fill-color: #000 !important;
+  border-radius: 100%;
+}

@@ -7,6 +7,8 @@ import React, { useEffect, useState } from 'react';
 import { CiSearch, CiShoppingCart } from 'react-icons/ci';
 import { FaRegUser, FaSearch } from 'react-icons/fa';
 import { MdFavoriteBorder } from 'react-icons/md';
+import Modal from './Modal';
+import SignUp from './Auth/SignUp';
 
 const Header = () => {
   const pathName = usePathname();
@@ -16,7 +18,8 @@ const Header = () => {
     { label: 'E-books', href: '/e-books' },
     { label: 'About us', href: '/about' },
   ];
-
+  //for modal
+  const [showSignUpModal, setShowSignUpModal] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +32,7 @@ const Header = () => {
     };
   }, [])
   return (
+    <>
     <nav className={`p-4 flex justify-between px-10 poppins antialiased transition-all duration-1000 ease-in-out z-50 fixed shrink-0 overflow-hidden ${scrolled ? " top-4 rounded-lg  left-10 right-10 shadow-sm backdrop-blur-xl bg-[#B0D4E3]/50 " : "relative top-0 w-full bg-[#B0D4E3]"}`}>
       <div className="flex w-[30%] items-center justify-between 0">
         <div className="h-8 w-12 object-cover rounded-full">
@@ -61,15 +65,22 @@ const Header = () => {
           </span>
           <MdFavoriteBorder />
         </button>
-        <Link href={"/auth"}>
-          <button className="flex h-full items-center gap-1  cursor-pointer text-sm bg-gradient-to-r from-[#5a88a7] to-[#426074] hover:shadow-lg text-white p-2 px-6 rounded-lg">
+          <button onClick={()=>setShowSignUpModal(true)}
+           className="flex h-full items-center gap-1  cursor-pointer text-sm bg-gradient-to-r from-[#5a88a7] to-[#426074] hover:shadow-lg text-white p-2 px-6 rounded-lg">
           <FaRegUser />
           Login
         </button>
-          </Link>
 
       </div>
-    </nav>
+      </nav>
+
+      <Modal
+      isOpen={showSignUpModal}
+      onClose={()=>setShowSignUpModal(false)}
+      >
+        <SignUp/>
+      </Modal>
+      </>
   );
 };
 

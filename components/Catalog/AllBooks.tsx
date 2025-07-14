@@ -8,6 +8,7 @@ import CartPopup from '../CartPopup';
 import { AnimatePresence,motion } from 'framer-motion';
 import FavPopup from '../FavPopup';
 import BookDiv from './BookDiv';
+import { useRouter } from 'next/router';
 
 
 
@@ -18,6 +19,7 @@ interface popupDetails {
   isAdded: boolean
   isFav:boolean
 }
+
   //price range state
   const [priceRange, setPriceRange] = useState({min:0,max:100})
 

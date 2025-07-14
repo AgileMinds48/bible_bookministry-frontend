@@ -7,11 +7,11 @@ import { AiOutlineLoading } from 'react-icons/ai';
 import { FormData, signUpField } from '@/app/utils/data';
 import Link from 'next/link';
 import Image from 'next/image';
-import { logo } from '@/public';
+import { logo, logo2 } from '@/public';
+import { MdEmail } from 'react-icons/md';
 
 const SignUp = () => {
-  const [welcomeMsg, setWelcomeMsg] = useState('');
-  const Msg = 'Welcome Aboard!';
+;
 
   const [shown, setShown] = useState<{[key:string]:boolean}>({
     password: false,
@@ -102,11 +102,15 @@ const SignUp = () => {
     setShown((prev) => ({ ...prev, [field]: !prev[field] }));
   };
   return (
-    <section className="poppins grid md:grid-cols-2 text-black min-h-[100dvh] font-barlow">
-      <div>
-        <Image src={logo} alt='Bible and book ministry logo' className='w-7xl object-cover'/>
+    <section className='bg-white/50 rounded-2'>
+      <div  className="bg-[#5a88a7] shadow-2xl poppins grid md:grid-cols-2 text-black min-h-[80dvh] ">
+        <div
+          // style={{ background: "url(/pattern-bg.png)" }}
+          className='content-center w-full h-full'
+        >
+        <Image priority={true} src={logo2} alt='Bible and book ministry logo' className='w-7xl object-cover'/>
 </div>
-      <div className="bg-white p-5 sm:p-10 md:p-10 lg:px-20">
+      <div className="bg-white p-5 sm:p-10 md:p-24 lg:px-8">
         <form onSubmit={handleSubmit}>
           <div className="mb-15">
             <h1 className="text-4xl md:text-6xl font-bold">Create Account</h1>
@@ -146,13 +150,12 @@ const SignUp = () => {
                 </span>
               )}
               <span className="absolute left-4 z-1 top-[50%] -translate-y-[50%] text-gray-800">
-                {inputName === 'lastname' ||
-                inputName === 'email' ||
-                inputName === 'firstname' ? (
-                  <FaUser />
-                ) : (
-                  <FaLock />
-                )}
+                {inputName === "firstName" || inputName === "lastName"
+                  ? <FaUser />
+                  : inputName === "email" ?
+                    <MdEmail />
+                    :<FaLock/>
+                }
               </span>
               <input
                 onFocus={
@@ -236,14 +239,14 @@ const SignUp = () => {
             <img className="h-11 cursor-pointer" src="/fb.svg" alt="facebook" />
           </div>
           <p className="text-gray-500 text-left mt-4 text-[1em]">
-            You a fam?{' '}
+            Already a user?{' '}
             <span className="underline text-black cursor-pointer">
               <Link href={"/auth"}>Login</Link>
             </span>
           </p>
         </form>
       </div>
-      {/* </div> */}
+      </div>
     </section>
   );
 };
