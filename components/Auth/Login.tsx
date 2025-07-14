@@ -210,21 +210,21 @@ const Login = () => {
           <div className='after:content-[""] after:block lg:w-[45%] w-[25%] h-0.5 right-0 bg-gray-500 top-[50%] absolute hidden sm:block'></div>
 
             </div>
-        <button className='w-full'>
-          <div className="flex justify-center  items-center">
-            <Image
-              className="h-10 cursor-pointer"
-              src={google}
-              alt="google"
-                />
-                <p></p>
-              </div>
-        </button>
+           <button className='   w-full'>
+                 <div className="flex justify-center pr-4  p-2  items-center w-[60%] rounded-full border-[#15278c] border-2 m-auto">
+                   <Image
+                     className="h-10 object-contain cursor-pointer"
+                     src={google}
+                     alt="google"
+                       />
+                       <p>Continue with Google</p>
+                     </div>
+               </button>
           <p className="text-gray-500 text-left mt-4 text-[1em]">
-            Already a user?{' '}
-            <span className="underline text-black cursor-pointer">
-              <Link href={"/auth"}>Login</Link>
-            </span>
+            Don't have an account?{' '}
+            <button className="underline text-black cursor-pointer">
+              Signup
+            </button>
           </p>
         </form>
       </div>
