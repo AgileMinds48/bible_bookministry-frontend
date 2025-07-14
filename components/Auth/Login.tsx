@@ -4,15 +4,19 @@ import { inputItemsLogin, loginField, LoginFormData } from '@/app/utils/data';
 import { FaEye, FaEyeSlash, FaLock } from 'react-icons/fa6';
 import { AiOutlineLoading } from 'react-icons/ai';
 import {  } from '@/app/utils/data';
-import Link from 'next/link';
 import Image from 'next/image';
 import { google, logo, logo2 } from '@/public';
 import { MdEmail } from 'react-icons/md';
 
+interface LoginProps{
+  onSignUpClick: (showLogin:boolean) => void;
+}
+const Login = ({onSignUpClick}:LoginProps) => {
+  //passing value to header to show signup screen
 
-const Login = () => {
-
-
+  const handleShowSignup = ()=>{
+    onSignUpClick(false);
+}
   const [shown, setShown] = useState<{[key:string]:boolean}>({
     password: false,
     repeatpassword: false,
@@ -28,7 +32,7 @@ const Login = () => {
   // const [passwordError, setPasswordError] = useState('');
   const [loading, setLoading] = useState(false);
    const [error, setError] = useState('')
-  const [passwordFocused, setPasswordFocused] = useState(false);
+  // const [passwordFocused, setPasswordFocused] = useState(false);
   //function to handle input change and set values
   const handleFormChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     //destructuring name and value
@@ -104,7 +108,6 @@ const Login = () => {
     <section className=''>
       <div  className="bg-[#5a88a7] shadow-2xl poppins grid md:grid-cols-2 text-black min-h-[80dvh] ">
         <div
-          // style={{ background: "url(/pattern-bg.png)" }}
           className='content-center w-full h-full'
         >
         <Image priority={true} src={logo2} alt='Bible and book ministry logo' className='w-7xl object-cover'/>
@@ -130,7 +133,7 @@ const Login = () => {
                   : 'w-full'
               } border-2  mb-6 rounded-lg`}
             >
-              {(inputName === 'password' || inputName === 'repeatpassword') && (
+              {inputName === 'password'&& (
                 <span
                   onClick={() => handleShow(inputName)}
                   className="absolute right-4 h-4 w-4 top-[50%] -translate-y-[50%] cursor-pointer text-gray-800"
@@ -149,16 +152,16 @@ const Login = () => {
                 }
               </span>
               <input
-                onFocus={
-                  inputName === 'password'
-                    ? () => setPasswordFocused(true)
-                    : undefined
-                }
-                onBlur={
-                  inputName === 'password'
-                    ? () => setPasswordFocused(false)
-                    : undefined
-                }
+                // onFocus={
+                //   inputName === 'password'
+                //     ? () => setPasswordFocused(true)
+                //     : undefined
+                // }
+                // onBlur={
+                //   inputName === 'password'
+                //     ? () => setPasswordFocused(false)
+                //     : undefined
+                // }
                 //if anything other than the password fields,use the `type` prop
                 //else toggle between password and text for each field
                 type={
@@ -222,7 +225,7 @@ const Login = () => {
                </button>
           <p className="text-gray-500 text-left mt-4 text-[1em]">
             Don't have an account?{' '}
-            <button className="underline text-black cursor-pointer">
+            <button onClick={handleShowSignup} className="underline text-black cursor-pointer">
               Signup
             </button>
           </p>

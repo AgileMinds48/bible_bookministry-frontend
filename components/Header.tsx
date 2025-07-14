@@ -26,6 +26,11 @@ const Header = () => {
   const handleShowLogin = (showLogin:boolean) => {
     setShowLoginModal(showLogin);
   }
+
+  const handleShowSignUp = (showSignup: boolean)=>{
+    setShowLoginModal(false);
+    
+  }
   const [scrolled, setScrolled] = useState<boolean>(false);
   useEffect(() => {
     const handleScroll = () => {
@@ -84,7 +89,7 @@ const Header = () => {
       isOpen={showSignUpModal}
       onClose={()=>setShowSignUpModal(false)}
       >
-       {showLoginModal?<Login/> :<SignUp onLoginClick={handleShowLogin}/>}
+       {showLoginModal?<Login onSignUpClick={handleShowSignUp}/> :<SignUp onLoginClick={handleShowLogin}/>}
       </Modal>
       </>
   );
