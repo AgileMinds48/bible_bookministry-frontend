@@ -9,6 +9,7 @@ import { FaRegUser, FaSearch } from 'react-icons/fa';
 import { MdFavoriteBorder } from 'react-icons/md';
 import Modal from './Modal';
 import SignUp from './Auth/SignUp';
+import Login from './Auth/Login';
 
 const Header = () => {
   const pathName = usePathname();
@@ -21,6 +22,10 @@ const Header = () => {
   //for modal
   const [showSignUpModal, setShowSignUpModal] = useState<boolean>(false);
   const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
+
+  const handleShowLogin = (showLogin:boolean) => {
+    setShowLoginModal(showLogin);
+  }
   const [scrolled, setScrolled] = useState<boolean>(false);
   useEffect(() => {
     const handleScroll = () => {
@@ -79,7 +84,7 @@ const Header = () => {
       isOpen={showSignUpModal}
       onClose={()=>setShowSignUpModal(false)}
       >
-        <SignUp/>
+       {showLoginModal?<Login/> :<SignUp onLoginClick={handleShowLogin}/>}
       </Modal>
       </>
   );

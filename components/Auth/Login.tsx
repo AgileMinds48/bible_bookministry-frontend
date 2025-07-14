@@ -1,34 +1,33 @@
 "use client"
-import { useEffect, useState } from 'react';
-import { inputItemsSignUp } from '@/app/utils/data';
-import { FaEye, FaEyeSlash, FaLock, FaUser } from 'react-icons/fa6';
-import { IoIosCheckmark } from 'react-icons/io';
+import {  useState } from 'react';
+import { inputItemsLogin, loginField, LoginFormData } from '@/app/utils/data';
+import { FaEye, FaEyeSlash, FaLock } from 'react-icons/fa6';
 import { AiOutlineLoading } from 'react-icons/ai';
-import { FormData, signUpField } from '@/app/utils/data';
+import {  } from '@/app/utils/data';
 import Link from 'next/link';
 import Image from 'next/image';
 import { google, logo, logo2 } from '@/public';
 import { MdEmail } from 'react-icons/md';
 
-const SignUp = () => {
-;
+
+const Login = () => {
+
 
   const [shown, setShown] = useState<{[key:string]:boolean}>({
     password: false,
     repeatpassword: false,
   });
 
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<LoginFormData>({
     firstname: '',
     lastname: '',
     email: '',
     password: '',
     repeatpassword: '',
   });
-  const [passwordError, setPasswordError] = useState('');
+  // const [passwordError, setPasswordError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const [minChar, setMinChar] = useState(false);
+   const [error, setError] = useState('')
   const [passwordFocused, setPasswordFocused] = useState(false);
   //function to handle input change and set values
   const handleFormChange = (e:React.ChangeEvent<HTMLInputElement>) => {
@@ -37,26 +36,26 @@ const SignUp = () => {
     const updatedForm = { ...formData, [name]: value };
     setFormData(updatedForm);
 
-    if (
-      name === 'password' &&
-      updatedForm.password &&
-      updatedForm.password.length >= 8
-    ) {
-      setMinChar(true);
-    } else {
-      setMinChar(false);
-    }
-    //live password mismatch check
-    if (
-      (name === 'password' || name === 'repeatpassword') &&
-      updatedForm.password &&
-      updatedForm.repeatpassword &&
-      updatedForm.password !== updatedForm.repeatpassword
-    ) {
-      setPasswordError('Passwords mismatch');
-    } else {
-      setPasswordError('');
-    }
+    // if (
+    //   name === 'password' &&
+    //   updatedForm.password &&
+    //   updatedForm.password.length >= 8
+    // ) {
+    //   setMinChar(true);
+    // } else {
+    //   setMinChar(false);
+    // }
+    // //live password mismatch check
+    // if (
+    //   (name === 'password' || name === 'repeatpassword') &&
+    //   updatedForm.password &&
+    //   updatedForm.repeatpassword &&
+    //   updatedForm.password !== updatedForm.repeatpassword
+    // ) {
+    //   setPasswordError('Passwords mismatch');
+    // } else {
+    //   setPasswordError('');
+    // }
   };
 
   //function to handle Form submission
@@ -71,7 +70,7 @@ const SignUp = () => {
     // setPasswordError('');
     setLoading(true);
     // try {
-    //   const res = await fetch(`${API_URL}/api/auth/signup/`, {
+    //   const res = await fetch(`${API_URL}/api/auth/login/`, {
     //     method: 'POST',
     //     headers: { 'Content-Type': 'application/json' },
     //     body: JSON.stringify({
@@ -113,14 +112,14 @@ const SignUp = () => {
       <div className="bg-white p-5 sm:p-10 md:p-24 lg:px-8">
         <form onSubmit={handleSubmit}>
           <div className="mb-15">
-            <h1 className="text-4xl md:text-6xl font-bold">Create Account</h1>
+            <h1 className="text-4xl md:text-6xl font-bold">Login</h1>
             <p className="text-gray-800 md:text-xl text-[1.1rem] mb-10">
-              Sign up to get started
+              Get back into your account
             </p>
           </div>
           {/* <div className=""> */}
 
-          {inputItemsSignUp.map(({ input, inputName, type, warning }:signUpField) => (
+          {inputItemsLogin.map(({ input, inputName, type }:loginField) => (
             <div
               key={inputName}
               className={`relative h-14 ${
@@ -129,12 +128,6 @@ const SignUp = () => {
                   : inputName === 'lastname'
                   ? 'w-[48%] inline-block'
                   : 'w-full'
-              } ${
-                inputName === 'password' || inputName === 'repeatpassword'
-                  ? passwordError
-                    ? 'border-red-600'
-                    : 'border-gray-500'
-                  : 'border-gray-500'
               } border-2  mb-6 rounded-lg`}
             >
               {(inputName === 'password' || inputName === 'repeatpassword') && (
@@ -150,11 +143,9 @@ const SignUp = () => {
                 </span>
               )}
               <span className="absolute left-4 z-1 top-[50%] -translate-y-[50%] text-gray-800">
-                {inputName === "firstname" || inputName === "lastname"
-                  ? <FaUser />
-                  : inputName === "email" ?
-                    <MdEmail />
-                    :<FaLock/>
+                {inputName === "firstname"
+                  ? <MdEmail/>
+                  :<FaLock/>
                 }
               </span>
               <input
@@ -191,17 +182,7 @@ const SignUp = () => {
               >
                 {input}
               </label>
-              <p
-                className={`${
-                  minChar ? 'text-green-600' : 'text-red-600'
-                } text-sm flex gap-2 items-center`}
-              >
-                {passwordFocused && warning && minChar && <IoIosCheckmark />}{' '}
-                {passwordFocused && warning}
-              </p>
-              <p className="text-red-600 text-center">
-                {inputName === 'repeatpassword' && passwordError}
-              </p>
+            
             </div>
           ))}
 
@@ -213,12 +194,11 @@ const SignUp = () => {
           >
             {loading ? (
               <span className="flex items-center gap-3 ">
-                {/* <div className="bg-transparent border-2 h-5 w-5 rounded-full absolute border-gray-600"></div>*/}
                 <AiOutlineLoading className="animate-[spin_0.8s_ease-out_infinite]" />
-                Signing Up
+                Logging in
               </span>
             ) : (
-              'Sign Up'
+              'Login'
             )}
           </button>
           <p className="text-center text-red-600">{error}</p>
@@ -253,4 +233,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Login;

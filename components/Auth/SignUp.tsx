@@ -1,24 +1,29 @@
 "use client"
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { inputItemsSignUp } from '@/app/utils/data';
 import { FaEye, FaEyeSlash, FaLock, FaUser } from 'react-icons/fa6';
 import { IoIosCheckmark } from 'react-icons/io';
 import { AiOutlineLoading } from 'react-icons/ai';
-import { FormData, signUpField } from '@/app/utils/data';
-import Link from 'next/link';
+import { SignUpFormData, signUpField } from '@/app/utils/data';
 import Image from 'next/image';
 import { google, logo, logo2 } from '@/public';
 import { MdEmail } from 'react-icons/md';
 
-const SignUp = () => {
-;
-
+interface SignUpProps{
+  onLoginClick:(showLogin:boolean)=>void
+}
+const SignUp = ({onLoginClick}:SignUpProps) => {
+  const [_, setShowLogin] = useState<boolean>(false);
+  const handleShowLogin = () => {
+    setShowLogin(true);
+    onLoginClick(true);
+}
   const [shown, setShown] = useState<{[key:string]:boolean}>({
     password: false,
     repeatpassword: false,
   });
 
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<SignUpFormData>({
     firstname: '',
     lastname: '',
     email: '',
@@ -242,9 +247,9 @@ const SignUp = () => {
         </button>
           <p className="text-gray-500 text-left mt-4 text-[1em]">
             Already a user?{' '}
-            <span className="underline text-black cursor-pointer">
-              <Link href={"/login"}>Login</Link>
-            </span>
+            <button onClick={handleShowLogin} className="underline text-black cursor-pointer">
+                Login
+            </button>
           </p>
         </form>
       </div>

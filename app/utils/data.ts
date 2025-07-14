@@ -5,18 +5,39 @@ import { BsSortAlphaDown, BsSortAlphaUp, BsSortDown, BsSortUp } from "react-icon
 import { GiStarsStack } from "react-icons/gi";
 import { WiStars } from "react-icons/wi";
 
-export interface FormData{
-      firstname:string
+//login type shi
+export interface LoginFormData{
+      email: string
+    password: string
+}
+
+export interface loginField{
+  input:string
+  inputName: string,
+  type:string
+}
+
+export const inputItemsLogin:loginField[] = [
+  {
+  input: "Email",
+  inputName:"email",
+  type:"email"
+},
+  {
+  input: "Password",
+  inputName:"password",
+    type: "",
+},
+]
+//signup type shi
+//signup state formdata 
+export interface SignUpFormData{
+    firstname:string
     lastname: string
     email: string
     password: string
     repeatpassword: string
 }
-export interface loginFormData{
-  email: string,
-  password:string
-}
-
 export interface signUpField{
   input: string,
   inputName: string
