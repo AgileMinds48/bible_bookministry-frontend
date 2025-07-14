@@ -12,6 +12,10 @@ export interface FormData{
     password: string
     repeatpassword: string
 }
+export interface loginFormData{
+  email: string,
+  password:string
+}
 
 export interface signUpField{
   input: string,

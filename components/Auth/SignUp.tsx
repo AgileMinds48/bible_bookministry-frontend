@@ -7,7 +7,7 @@ import { AiOutlineLoading } from 'react-icons/ai';
 import { FormData, signUpField } from '@/app/utils/data';
 import Link from 'next/link';
 import Image from 'next/image';
-import { logo, logo2 } from '@/public';
+import { google, logo, logo2 } from '@/public';
 import { MdEmail } from 'react-icons/md';
 
 const SignUp = () => {
@@ -102,7 +102,7 @@ const SignUp = () => {
     setShown((prev) => ({ ...prev, [field]: !prev[field] }));
   };
   return (
-    <section className='bg-white/50 rounded-2'>
+    <section className=''>
       <div  className="bg-[#5a88a7] shadow-2xl poppins grid md:grid-cols-2 text-black min-h-[80dvh] ">
         <div
           // style={{ background: "url(/pattern-bg.png)" }}
@@ -123,7 +123,7 @@ const SignUp = () => {
           {inputItemsSignUp.map(({ input, inputName, type, warning }:signUpField) => (
             <div
               key={inputName}
-              className={`relative h-12 ${
+              className={`relative h-14 ${
                 inputName === 'firstname'
                   ? 'w-[48%] inline-block mr-4'
                   : inputName === 'lastname'
@@ -135,7 +135,7 @@ const SignUp = () => {
                     ? 'border-red-600'
                     : 'border-gray-500'
                   : 'border-gray-500'
-              } border-2  mb-5 rounded-full`}
+              } border-2  mb-6 rounded-lg`}
             >
               {(inputName === 'password' || inputName === 'repeatpassword') && (
                 <span
@@ -150,7 +150,7 @@ const SignUp = () => {
                 </span>
               )}
               <span className="absolute left-4 z-1 top-[50%] -translate-y-[50%] text-gray-800">
-                {inputName === "firstName" || inputName === "lastName"
+                {inputName === "firstname" || inputName === "lastname"
                   ? <FaUser />
                   : inputName === "email" ?
                     <MdEmail />
@@ -187,7 +187,7 @@ const SignUp = () => {
               />
               <label
                 htmlFor={inputName}
-                className="cursor-text transition-all duration-300 peer-focus:text-[1.1em] peer-focus:px-1 peer-focus:-top-0.5 peer-not-placeholder-shown:text-blue-500 peer-not-placeholder-shown:-top-0.5 peer-not-placeholder-shown:text-[1.1em] peer-not-placeholder-shown:px-1  absolute left-12 top-[50%] -translate-y-[50%] text-[1.1em] bg-white text-gray-500"
+                className="cursor-text transition-all duration-300 peer-focus:text-[1.1em] peer-focus:px-1 peer-focus:-top-0.5 peer-not-placeholder-shown:text-[#15278c] peer-not-placeholder-shown:-top-0.5 peer-not-placeholder-shown:text-[1.1em] peer-not-placeholder-shown:px-1  absolute left-12 top-[50%] -translate-y-[50%] text-[1.1em] bg-white text-gray-500"
               >
                 {input}
               </label>
@@ -209,7 +209,7 @@ const SignUp = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full h-12 rounded-sm mt-8 text-white font-bold text-xl  bg-blue-500 tracking-widest cursor-pointer flex justify-center items-center"
+            className="w-full h-12 rounded-lg mt-8 text-white font-bold text-xl  bg-[#15278c] tracking-widest cursor-pointer flex justify-center items-center"
           >
             {loading ? (
               <span className="flex items-center gap-3 ">
@@ -222,26 +222,28 @@ const SignUp = () => {
             )}
           </button>
           <p className="text-center text-red-600">{error}</p>
-          <div className="relative mt-6 mb-4">
-            <div className='before:content-[""] before:block lg:w-[35%] w-[25%] h-0.5 bg-gray-500 top-[50%] absolute hidden sm:block'></div>
+            <div className="relative mt-6 mb-4">
+          <div className='before:content-[""] before:block lg:w-[45%] w-[25%] h-0.5 bg-gray-500 top-[50%] absolute hidden sm:block'></div>
             <p className="uppercase text-center mt-4 text-[1em] md:text-[1.1em] font-medium">
-              Or continue with
-            </p>
-            <div className='after:content-[""] after:block lg:w-[35%] w-[25%] h-0.5 right-0 bg-gray-500 top-[50%] absolute hidden sm:block'></div>
-          </div>
-          <div className="flex justify-center gap-10 md:gap-20 items-center">
-            <img
+              Or
+              </p>
+          <div className='after:content-[""] after:block lg:w-[45%] w-[25%] h-0.5 right-0 bg-gray-500 top-[50%] absolute hidden sm:block'></div>
+
+            </div>
+        <button className='w-full'>
+          <div className="flex justify-center  items-center">
+            <Image
               className="h-10 cursor-pointer"
-              src="/google.svg"
+              src={google}
               alt="google"
-            />
-            <img className="h-12 cursor-pointer" src="/apple.svg" alt="apple" />
-            <img className="h-11 cursor-pointer" src="/fb.svg" alt="facebook" />
-          </div>
+                />
+                <p></p>
+              </div>
+        </button>
           <p className="text-gray-500 text-left mt-4 text-[1em]">
             Already a user?{' '}
             <span className="underline text-black cursor-pointer">
-              <Link href={"/auth"}>Login</Link>
+              <Link href={"/login"}>Login</Link>
             </span>
           </p>
         </form>

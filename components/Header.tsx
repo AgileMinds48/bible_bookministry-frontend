@@ -20,6 +20,7 @@ const Header = () => {
   ];
   //for modal
   const [showSignUpModal, setShowSignUpModal] = useState<boolean>(false);
+  const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
   useEffect(() => {
     const handleScroll = () => {
