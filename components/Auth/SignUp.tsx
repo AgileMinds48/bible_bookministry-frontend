@@ -188,7 +188,7 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
                 onChange={handleFormChange}
                 required
                 placeholder=" "
-                className={`peer w-full h-full outline-none p-4 pr-9 lg:text-xl text-[1.1em] pl-12 autofill:bg-white $`}
+                className={`peer w-full h-full outline-none p-4 pr-9 lg:text-xl text-[1.1em] pl-12 `}
               />
               <label
                 htmlFor={inputName}

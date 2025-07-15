@@ -5,11 +5,12 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { CiSearch, CiShoppingCart } from 'react-icons/ci';
-import { FaRegUser, FaSearch } from 'react-icons/fa';
+import { FaRegUser } from 'react-icons/fa';
 import { MdFavoriteBorder } from 'react-icons/md';
 import Modal from './Modal';
 import SignUp from './Auth/SignUp';
 import Login from './Auth/Login';
+import { AnimatePresence,motion, spring } from 'framer-motion';
 
 const Header = () => {
   const pathName = usePathname();
@@ -59,7 +60,7 @@ const Header = () => {
       </div>
       <div className='w-[40%] relative'>
         <div className='absolute top-[50%] left-4 -translate-y-[55%] text-xl'>  <CiSearch /></div>
-        <input type="text" className='w-full h-full border border-black p-4 px-4 pl-10 outline-0 rounded-full shadow-lg focus:shadow-2xl duration-150 transition antialiased' placeholder='Search for books by title, author' />
+        <input type="text" name='search-bar' className='w-full h-full border border-black p-4 px-4 pl-10 outline-0 rounded-full shadow-lg focus:shadow-2xl duration-150 transition antialiased' placeholder='Search for books by title, author' />
       </div>
       <div className="w-[15%] flex justify-between">
         
@@ -89,7 +90,14 @@ const Header = () => {
       isOpen={showSignUpModal}
       onClose={()=>setShowSignUpModal(false)}
       >
-       {showLoginModal?<Login onSignUpClick={handleShowSignUp}/> :<SignUp onLoginClick={handleShowLogin}/>}
+        <AnimatePresence>
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1,y:0 }}
+          transition={{duration:0.3}}>
+          {showLoginModal ? <Login onSignUpClick={handleShowSignUp} /> : <SignUp onLoginClick={handleShowLogin} />}
+            </motion.div>
+        </AnimatePresence>
       </Modal>
       </>
   );
