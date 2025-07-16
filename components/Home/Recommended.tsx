@@ -15,7 +15,7 @@ const Recommended = () => {
 const recommendedBooks= Books.filter((book)=>book.category==="Recommended")
 
   const [isFav, setIsFav] = useState(
-    Object.fromEntries(Books.map((_, idx) => [idx, false]))
+    Object.fromEntries(Books.map((book) => [book.id, false]))
   );
   const scrollDivRef = useRef<HTMLDivElement>(null);
 
@@ -36,16 +36,16 @@ const recommendedBooks= Books.filter((book)=>book.category==="Recommended")
       })
     }
   }
-  const handleFav = (index: number) => {
+  const handleFav = (id: number) => {
     setIsFav((prev: { [key: number]: boolean }) => ({
       ...prev,
-      [index]: !prev[index]
+      [id]: !prev[id]
     }));
   }
 
   //handling add to cart
   //types and interfaces
-type AddedState = { [key: string]: boolean };
+type AddedState = { [key: number]: boolean };
 interface popupDetails {
   bookName: string
   image: StaticImageData | undefined
@@ -114,10 +114,10 @@ interface popupDetails {
           <div className={`flex shrink-0 gap-4 pl-8 `} >
             <button onClick={handlePrevious} className='absolute top-[50%] -translate-y-[50%] left-0 p-4 bg-black/15 rounded-full hover:bg-black/40 z-10 cursor-pointer text-2xl text-white'><GrPrevious /></button>
             {
-            recommendedBooks.map(({ img, title, author, price, rating,id }, idx) => (
-                <div key={idx} className='group  cursor-pointer min-w-[25em] max-w-[5%] gap-4 min-h-36 overflow-hidden grid grid-cols-2 p-4  hover:scale-97 transition duration-500'>
+            recommendedBooks.map(({ img, title, author, price, rating,id }) => (
+                <div key={id} className='group  cursor-pointer min-w-[25em] max-w-[5%] gap-4 min-h-36 overflow-hidden grid grid-cols-2 p-4  hover:scale-97 transition duration-500'>
                   <div className='relative border border-[#5D8AA8] h-full shrink-0 group-hover:shadow-lg transition duration-300'>
-                    <MdFavorite className={`absolute right-0 top-2 z-10 text-xl cursor-pointer   ${isFav[idx] ? "text-red-500 animate-bubble" : "text-[#FAF3E0]"}`} onClick={() => handleFav(idx)} />
+                    <MdFavorite className={`absolute right-0 top-2 z-10 text-xl cursor-pointer   ${isFav[id] ? "text-red-500 animate-bubble" : "text-[#FAF3E0]"}`} onClick={() => handleFav(id)} />
                     <Image src={img} alt="image of book" className='w-full h-full object-cover' placeholder='blur' />
                   </div>
                   <div className='relative min-h-full h-max min-w-full flex flex-col py-8'>
@@ -133,7 +133,7 @@ interface popupDetails {
                       <span className='flex gap-1 items-center text-sm'><FaStar className='text-[#eca624] -translate-y-0.5' /> {rating} </span>
 
                     </div>
-                  <button onClick={() => handleAddToCart(title, img, id)} className='mt-auto border w-full justify-center rounded-lg px-4 p-2  bottom-0 text-[#3D3D3D] border-[#3D3D3D] hover:bg-[#3D3D3D] hover:text-white transition duration-300 flex items-center text-sm gap-1 cursor-pointer'><FaCartPlus /> {added[id]?"Remove from cart":"Add to cart"}</button>
+                  <button onClick={() => handleAddToCart(title, img, id)} className={`mt-auto border w-full justify-center rounded-lg px-4 p-2  bottom-0  transition duration-300 flex items-center text-sm gap-1 cursor-pointer ${added[id] ?"bg-[#3D3D3D] text-white hover:bg-[#2e2e2e]":"text-[#3D3D3D] border-[#3D3D3D] hover:bg-[#3D3D3D] hover:text-white"}`}> {added[id]?"Remove from cart":<span className="flex gap-1 items-center"> <FaCartPlus />Add to cart</span>} </button>
                   </div>
 
                 </div>
@@ -151,7 +151,7 @@ interface popupDetails {
           animate={{ x: 0, opacity: 1 }}
           transition={{type:"spring",duration:0.4 }}
           exit={{x:200,opacity:0}}
-            className='fixed bottom-10 right-4 h-32 w-[26em]  rounded-2xl p-2 bg-white/60 backdrop-blur-2xl border-2 border-gray-400'>
+            className='fixed bottom-10 right-4 h-32 w-[26em]  rounded-2xl p-2 bg-white/60 backdrop-blur-2xl border-2 border-gray-400 z-100'>
          <CartPopup bookName={popupBookDetails.bookName} image={popupBookDetails.image} isAdded={popupBookDetails.isAdded} />
           </motion.div>)}
 
