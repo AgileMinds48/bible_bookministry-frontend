@@ -1,5 +1,5 @@
 "use client"
-import { Books} from '@/app/utils/data'
+import { Book, Books} from '@/app/utils/data'
 import { AnimatePresence,motion } from 'framer-motion'
 
 import Image, { StaticImageData } from 'next/image'
@@ -36,11 +36,32 @@ const recommendedBooks= Books.filter((book)=>book.category==="Recommended")
       })
     }
   }
-  const handleFav = (id: number) => {
+  const handleFav = (id: number, bookName: string,img:StaticImageData) => {
+    const isCurrentlyAdded = added[id];
+    const isFavorite = isFav[id];
     setIsFav((prev: { [key: number]: boolean }) => ({
       ...prev,
       [id]: !prev[id]
     }));
+
+    setPopupBookDetails({
+        bookName: bookName,
+        image: img,
+        isAdded: isCurrentlyAdded,
+        isFav:!isFavorite
+      });
+      
+      setShowPopup(() => ({
+        addedToFavorites:true,
+        addedToCart: false,
+      }));
+    
+     setTimeout(() => {
+        setShowPopup((prev) => ({
+          ...prev,
+          addedToFavorites:false
+        }))
+      }, 1500);
   }
 
   //handling add to cart
@@ -117,7 +138,7 @@ interface popupDetails {
             recommendedBooks.map(({ img, title, author, price, rating,id }) => (
                 <div key={id} className='group  cursor-pointer min-w-[25em] max-w-[5%] gap-4 min-h-36 overflow-hidden grid grid-cols-2 p-4  hover:scale-97 transition duration-500'>
                   <div className='relative border border-[#5D8AA8] h-full shrink-0 group-hover:shadow-lg transition duration-300'>
-                    <MdFavorite className={`absolute right-0 top-2 z-10 text-xl cursor-pointer   ${isFav[id] ? "text-red-500 animate-bubble" : "text-[#FAF3E0]"}`} onClick={() => handleFav(id)} />
+                    <MdFavorite className={`absolute right-0 top-2 z-10 text-xl cursor-pointer   ${isFav[id] ? "text-red-500 animate-bubble" : "text-[#FAF3E0]"}`} onClick={() => handleFav(id,title,img)} />
                     <Image src={img} alt="image of book" className='w-full h-full object-cover' placeholder='blur' />
                   </div>
                   <div className='relative min-h-full h-max min-w-full flex flex-col py-8'>
@@ -161,7 +182,7 @@ interface popupDetails {
           animate={{ x: 0, opacity: 1 }}
           transition={{type:"spring",duration:0.4 }}
           exit={{x:200,opacity:0}}
-            className='fixed bottom-40 right-4 h-32 w-[26em]  rounded-2xl p-2 bg-white/60 backdrop-blur-2xl border-2 border-gray-400'>
+            className='fixed bottom-40 right-4 h-32 w-[26em] z-100 rounded-2xl p-2 bg-white/60 backdrop-blur-2xl border-2 border-gray-400'>
             <FavPopup bookName={popupBookDetails.bookName} image={popupBookDetails.image} isFav={popupBookDetails.isFav}/>
      </motion.div>)}
       </AnimatePresence>
