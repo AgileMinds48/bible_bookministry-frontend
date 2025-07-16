@@ -36,7 +36,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, maxWidth = "ma
     >
         <div 
          
-        className={` ${maxWidth} w-full max-h-[90vh] overflow-y-auto rounded-2xl `}
+        className={` ${maxWidth} w-full max-h-[90vh] overflow-y-au rounded-2xl `}
         onClick={(e) => e.stopPropagation()}
       >
         {/* <button 

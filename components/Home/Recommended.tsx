@@ -1,12 +1,15 @@
 "use client"
 import { Books} from '@/app/utils/data'
+import { AnimatePresence,motion } from 'framer-motion'
 
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import Link from 'next/link'
-import React, { useRef, useState } from 'react'
+import React, { useMemo, useRef, useState } from 'react'
 import { FaCartPlus, FaStar } from 'react-icons/fa'
 import { GrNext, GrPrevious } from 'react-icons/gr'
 import { MdFavorite } from 'react-icons/md'
+import CartPopup from '../CartPopup'
+import FavPopup from '../FavPopup'
 
 const Recommended = () => {
 const recommendedBooks= Books.filter((book)=>book.category==="Recommended")
@@ -39,6 +42,64 @@ const recommendedBooks= Books.filter((book)=>book.category==="Recommended")
       [index]: !prev[index]
     }));
   }
+
+  //handling add to cart
+  //types and interfaces
+type AddedState = { [key: string]: boolean };
+interface popupDetails {
+  bookName: string
+  image: StaticImageData | undefined
+  isAdded: boolean
+  isFav:boolean
+  }
+    type Popup ={[key:string]: boolean}
+
+
+  //states
+ const [added, setAdded] = useState<AddedState>(
+  useMemo(()=>  Object.fromEntries(Books.map((book) => [book.id, false])),[]
+   ));
+  
+  const [popupBookDetails, setPopupBookDetails] = useState<popupDetails>({
+      bookName: "",
+    image: undefined,
+    isAdded: false,
+      isFav:false
+  })
+  
+    const [showPopup, setShowPopup] = useState<Popup>({
+      addedToCart: false,
+      addedToFavorites:false
+  })
+  //function
+    const handleAddToCart = (bookName: string, img: StaticImageData, id: number) => {
+      const isCurrentlyAdded = added[id];
+      const isFavorite = isFav[id];
+      setPopupBookDetails({
+        bookName: bookName,
+        image: img,
+        isAdded: !isCurrentlyAdded,
+        isFav:isFavorite
+      });
+      setShowPopup(() => ({
+        addedToFavorites:false,
+        addedToCart: true,
+      }));
+      setAdded((prev) => ({
+        ...prev,
+        [id]: !prev[id]  // Toggle the added state for this specific book
+      }));
+     
+      setTimeout(() => {
+        setShowPopup((prev) => ({
+          ...prev,
+          addedToCart:false
+        }))
+      }, 1500);
+  }
+  
+
+
   return (
     <section className='poppins px-10 py-10 bg-[#FAF3E0] h-max  antialiased'>
       <div className='relative'>
@@ -53,7 +114,7 @@ const recommendedBooks= Books.filter((book)=>book.category==="Recommended")
           <div className={`flex shrink-0 gap-4 pl-8 `} >
             <button onClick={handlePrevious} className='absolute top-[50%] -translate-y-[50%] left-0 p-4 bg-black/15 rounded-full hover:bg-black/40 z-10 cursor-pointer text-2xl text-white'><GrPrevious /></button>
             {
-            recommendedBooks.map(({ img, title, author, price, rating }, idx) => (
+            recommendedBooks.map(({ img, title, author, price, rating,id }, idx) => (
                 <div key={idx} className='group  cursor-pointer min-w-[25em] max-w-[5%] gap-4 min-h-36 overflow-hidden grid grid-cols-2 p-4  hover:scale-97 transition duration-500'>
                   <div className='relative border border-[#5D8AA8] h-full shrink-0 group-hover:shadow-lg transition duration-300'>
                     <MdFavorite className={`absolute right-0 top-2 z-10 text-xl cursor-pointer   ${isFav[idx] ? "text-red-500 animate-bubble" : "text-[#FAF3E0]"}`} onClick={() => handleFav(idx)} />
@@ -72,7 +133,7 @@ const recommendedBooks= Books.filter((book)=>book.category==="Recommended")
                       <span className='flex gap-1 items-center text-sm'><FaStar className='text-[#eca624] -translate-y-0.5' /> {rating} </span>
 
                     </div>
-                    <button className='mt-auto border w-full justify-center rounded-lg px-4 p-2  bottom-0 text-[#3D3D3D] border-[#3D3D3D] hover:bg-[#3D3D3D] hover:text-white transition duration-300 flex items-center text-sm gap-1 cursor-pointer'><FaCartPlus /> Add to cart</button>
+                  <button onClick={() => handleAddToCart(title, img, id)} className='mt-auto border w-full justify-center rounded-lg px-4 p-2  bottom-0 text-[#3D3D3D] border-[#3D3D3D] hover:bg-[#3D3D3D] hover:text-white transition duration-300 flex items-center text-sm gap-1 cursor-pointer'><FaCartPlus /> {added[id]?"Remove from cart":"Add to cart"}</button>
                   </div>
 
                 </div>
@@ -83,6 +144,27 @@ const recommendedBooks= Books.filter((book)=>book.category==="Recommended")
 
         </div>
       </div>
+            <AnimatePresence>
+      {showPopup.addedToCart && (<motion.div
+            key="cart-popup"
+          initial={{ x: 200, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{type:"spring",duration:0.4 }}
+          exit={{x:200,opacity:0}}
+            className='fixed bottom-10 right-4 h-32 w-[26em]  rounded-2xl p-2 bg-white/60 backdrop-blur-2xl border-2 border-gray-400'>
+         <CartPopup bookName={popupBookDetails.bookName} image={popupBookDetails.image} isAdded={popupBookDetails.isAdded} />
+          </motion.div>)}
+
+        {showPopup.addedToFavorites &&
+          (<motion.div key="fav-popup"
+          initial={{ x: 200, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{type:"spring",duration:0.4 }}
+          exit={{x:200,opacity:0}}
+            className='fixed bottom-40 right-4 h-32 w-[26em]  rounded-2xl p-2 bg-white/60 backdrop-blur-2xl border-2 border-gray-400'>
+            <FavPopup bookName={popupBookDetails.bookName} image={popupBookDetails.image} isFav={popupBookDetails.isFav}/>
+     </motion.div>)}
+      </AnimatePresence>
     </section>
   )
 }
