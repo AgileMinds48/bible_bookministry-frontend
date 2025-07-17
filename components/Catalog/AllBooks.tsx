@@ -7,8 +7,7 @@ import { filterByPriceRange, filterByRating, sortByAuthorAZ, sortByAuthorZA, sor
 import CartPopup from '../CartPopup';
 import { AnimatePresence,motion } from 'framer-motion';
 import FavPopup from '../FavPopup';
-import BookDiv from './BookDiv';
-import { useRouter } from 'next/router';
+import BookDiv from '../Book/BookDiv';
 
 
 

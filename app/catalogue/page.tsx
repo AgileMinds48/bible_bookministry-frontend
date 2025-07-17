@@ -9,6 +9,7 @@ const page = () => {
       <CatalogueHeader />
       <PopularBooks/>
       <AllBooks />
+      
     </div>
   )
 }
