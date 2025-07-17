@@ -20,7 +20,7 @@ const Footer = () => {
     <div className=" h-full w-full pt-8 lg:px-16 px-8 flex flex-col justify-between  md:flex-row">
         <div className="max-w-xl">
             <div className="flex items-center justify-center gap-4 mb-4">
-              <div className="w-30 h-24 ">
+              <div className="w-30 h-[5.76em] ">
                 <Image src={logo} alt="" className="w-full h-full mb-4" />
               </div>
               <p className="text-[#01325E] text-4xl font-medium text-left">
