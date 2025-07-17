@@ -62,8 +62,7 @@ const Header = () => {
         <div className='absolute top-[50%] left-4 -translate-y-[55%] text-xl'>  <CiSearch /></div>
         <input type="text" name='search-bar' className='w-full h-full border border-black p-4 px-4 pl-10 outline-0 rounded-full shadow-lg focus:shadow-2xl duration-150 transition antialiased' placeholder='Search for books by title, author' />
       </div>
-      <div className="w-[15%] flex justify-between">
-        
+      <div className="w-[20%] flex justify-between">
       
         <button className="relative cursor-pointer text-2xl">
           <span className="absolute top-1 text-[0.4em] -right-2 bg-[#5a88a7]/60 text-white  min-h-4 min-w-4 flex items-center justify-center rounded-full">
@@ -95,7 +94,7 @@ const Header = () => {
           <motion.div
             initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1,y:0 }}
-          transition={{duration:0.3}}>
+          transition={{duration:0.1, delay:0.1}}>
           {showLoginModal ? <Login onSignUpClick={handleShowSignUp} /> : <SignUp onLoginClick={handleShowLogin} />}
             </motion.div>
         </AnimatePresence>

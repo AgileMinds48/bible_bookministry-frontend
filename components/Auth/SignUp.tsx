@@ -247,7 +247,7 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
         </button>
           <p className="text-gray-500 text-left mt-4 text-[1em]">
             Already a user?{' '}
-            <button onClick={handleShowLogin} className="underline text-black cursor-pointer">
+            <button onClick={handleShowLogin} className="underline  cursor-pointer text-[#15278c]">
                 Login
             </button>
           </p>
