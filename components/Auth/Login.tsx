@@ -5,7 +5,7 @@ import { FaEye, FaEyeSlash, FaLock } from 'react-icons/fa6';
 import { AiOutlineLoading } from 'react-icons/ai';
 import {  } from '@/app/utils/data';
 import Image from 'next/image';
-import { google, logo, logo2 } from '@/public';
+import { google, logo2 } from '@/public';
 import { MdEmail } from 'react-icons/md';
 
 interface LoginProps{

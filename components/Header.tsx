@@ -28,9 +28,8 @@ const Header = () => {
     setShowLoginModal(showLogin);
   }
 
-  const handleShowSignUp = (showSignup: boolean)=>{
+  const handleShowSignUp = ()=>{
     setShowLoginModal(false);
-    
   }
   const [scrolled, setScrolled] = useState<boolean>(false);
   useEffect(() => {
@@ -45,7 +44,8 @@ const Header = () => {
   }, [])
   return (
     <>
-    <nav className={`p-4 flex justify-between px-10 poppins antialiased transition-all duration-1000 ease-in-out z-50 fixed shrink-0 overflow-hidden ${scrolled ? " top-4 rounded-lg  left-10 right-10 shadow-sm backdrop-blur-xl bg-[#B0D4E3]/50 " : "relative top-0 w-full bg-[#B0D4E3]"}`}>
+      <nav className={`p-4 px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-50 fixed shrink-0 overflow-hidden ${scrolled ? " top-4 rounded-lg  left-10 right-10 shadow-sm backdrop-blur-xl bg-[#B0D4E3]/50 " : "relative top-0 w-full bg-[#B0D4E3]"}`}>
+        <div className=' max-w-[100em] min-w-6xl flex justify-between'>
       <div className="flex w-[30%] items-center justify-between 0">
         <div className="h-[2.31em] w-12 object-cover rounded-full">
           <Image  src={logo} alt="Bible and Book ministries logo" className='h-full w-full'/>
@@ -83,6 +83,7 @@ const Header = () => {
           Login
         </button>
 
+      </div>
       </div>
       </nav>
 
