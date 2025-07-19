@@ -1,66 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
-// import Footer from "@/components/Footer"; // Removed duplicate footer
-
-// Mock data for cart items
-const cartItems = [
-  {
-    id: 1,
-    title: "Life Worth Living",
-    price: 30,
-    image: "/Home/bk1.jpg", // Use public path
-    quantity: 1,
-  },
-  {
-    id: 2,
-    title: "Life Worth Living",
-    price: 30,
-    image: "/Home/bk2.jpg",
-    quantity: 1,
-  },
-  {
-    id: 3,
-    title: "Life Worth Living",
-    price: 30,
-    image: "/Home/bk3.jpg",
-    quantity: 1,
-  },
-  {
-    id: 4,
-    title: "Life Worth Living",
-    price: 30,
-    image: "/Home/bk4.jpg",
-    quantity: 2,
-  },
-  {
-    id: 5,
-    title: "Life Worth Living",
-    price: 30,
-    image: "/Home/bk5.jpg",
-    quantity: 1,
-  },
-];
+// import Footer from "@/components/Footer";
+import { useCartStore } from "@/app/utils/cartStore";
 
 const DELIVERY_FEE = 200;
 
 const CartPage = () => {
-  const [items, setItems] = useState(cartItems);
-
-  const handleQuantityChange = (id: number, delta: number) => {
-    setItems((prev) =>
-      prev.map((item) =>
-        item.id === id
-          ? { ...item, quantity: Math.max(1, item.quantity + delta) }
-          : item
-      )
-    );
-  };
-
-  const handleRemove = (id: number) => {
-    setItems((prev) => prev.filter((item) => item.id !== id));
-  };
+  const { items, updateQuantity, removeFromCart } = useCartStore();
 
   const subtotal = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -86,50 +34,65 @@ const CartPage = () => {
                 </tr>
               </thead>
               <tbody>
-                {items.map((item) => (
-                  <tr key={item.id} className="border-b last:border-b-0">
-                    <td className="py-4 flex items-center gap-4">
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        width={60}
-                        height={80}
-                        className="rounded object-cover"
-                      />
-                      <span>{item.title}</span>
-                    </td>
-                    <td className="py-4">GHS {item.price.toFixed(2)}</td>
-                    <td className="py-4">
-                      <div className="flex items-center gap-2">
-                        <button
-                          className="border rounded w-8 h-8 flex items-center justify-center text-lg"
-                          onClick={() => handleQuantityChange(item.id, -1)}
-                        >
-                          -
-                        </button>
-                        <span className="w-8 text-center">{item.quantity}</span>
-                        <button
-                          className="border rounded w-8 h-8 flex items-center justify-center text-lg"
-                          onClick={() => handleQuantityChange(item.id, 1)}
-                        >
-                          +
-                        </button>
-                      </div>
-                    </td>
-                    <td className="py-4">
-                      GHS {(item.price * item.quantity).toFixed(2)}
-                    </td>
-                    <td className="py-4">
-                      <button
-                        className="text-gray-400 hover:text-red-500 text-xl"
-                        onClick={() => handleRemove(item.id)}
-                        aria-label="Remove item"
-                      >
-                        ×
-                      </button>
+                {items.length === 0 ? (
+                  <tr>
+                    <td colSpan={5} className="text-center py-8 text-gray-400">
+                      Your cart is empty.
                     </td>
                   </tr>
-                ))}
+                ) : (
+                  items.map((item) => (
+                    <tr key={item.id} className="border-b last:border-b-0">
+                      <td className="py-4 flex items-center gap-4">
+                        <Image
+                          src={item.image}
+                          alt={item.title}
+                          width={60}
+                          height={80}
+                          className="rounded object-cover"
+                        />
+                        <span>{item.title}</span>
+                      </td>
+                      <td className="py-4">GHS {item.price.toFixed(2)}</td>
+                      <td className="py-4">
+                        <div className="flex items-center gap-2">
+                          <button
+                            className="border rounded w-8 h-8 flex items-center justify-center text-lg"
+                            onClick={() =>
+                              updateQuantity(item.id, item.quantity - 1)
+                            }
+                            disabled={item.quantity <= 1}
+                          >
+                            -
+                          </button>
+                          <span className="w-8 text-center">
+                            {item.quantity}
+                          </span>
+                          <button
+                            className="border rounded w-8 h-8 flex items-center justify-center text-lg"
+                            onClick={() =>
+                              updateQuantity(item.id, item.quantity + 1)
+                            }
+                          >
+                            +
+                          </button>
+                        </div>
+                      </td>
+                      <td className="py-4">
+                        GHS {(item.price * item.quantity).toFixed(2)}
+                      </td>
+                      <td className="py-4">
+                        <button
+                          className="text-gray-400 hover:text-red-500 text-xl"
+                          onClick={() => removeFromCart(item.id)}
+                          aria-label="Remove item"
+                        >
+                          ×
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>
@@ -155,7 +118,10 @@ const CartPage = () => {
                 GHS {grandTotal.toFixed(2)}
               </span>
             </div>
-            <button className="w-full mt-6 bg-[#98b9c9] hover:bg-[#7fa3b6] text-white py-2 rounded transition">
+            <button
+              className="w-full mt-6 bg-[#98b9c9] hover:bg-[#7fa3b6] text-white py-2 rounded transition"
+              disabled={items.length === 0}
+            >
               CHECKOUT
             </button>
           </div>
