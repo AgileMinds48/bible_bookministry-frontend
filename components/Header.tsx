@@ -49,7 +49,7 @@ const Header = () => {
         <div className=' max-w-[100em] min-w-6xl flex justify-between'>
           <div className="flex w-[30%] items-center justify-between 0">
             <div className="h-[2.31em] w-12 object-cover rounded-full">
-              <Image src={logo} alt="Bible and Book ministries logo" className='h-full w-full' />
+              <Image priority={true} src={logo} alt="Bible and Book ministries logo" className='h-full w-full' />
             </div>
             <ul className="flex justify-between w-[80%] text-sm overflow-hidden">
               {navItems.map(({ label, href }, idx) => (

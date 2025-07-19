@@ -5,6 +5,30 @@ import { BsSortAlphaDown, BsSortAlphaUp, BsSortDown, BsSortUp } from "react-icon
 import { GiStarsStack } from "react-icons/gi";
 import { WiStars } from "react-icons/wi";
 
+//function to fetch added or fav'ed items
+export const setItemsToLocalStorage = (key:string,value:any) => {
+  //can only execute in browser (SSR- no!)
+  if (typeof window !== "undefined") {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+      console.error(`Error setting localStorage key ${key}`,error)
+    }
+  }
+}
+//function to set items to localStorage
+export const getItemsFromLocalStorage = (key:string,defaultValue:any) => {
+  //execute when in browser
+  if (typeof window !== "undefined") {
+    try {
+      const items = localStorage.getItem(key);
+      return items ? JSON.parse(items) : defaultValue;
+    } catch (error) {
+      console.error(`Error reading localStorage key ${key}`, error);
+    }
+  }
+}
+
 //login type shi
 export interface LoginFormData{
       email: string

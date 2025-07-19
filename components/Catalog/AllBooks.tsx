@@ -1,7 +1,7 @@
 'use client';
-import { Book, Books } from '@/app/utils/data';
-import Image, { StaticImageData } from 'next/image';
-import React, { useMemo, useRef, useState } from 'react';
+import { Book, Books, getItemsFromLocalStorage, setItemsToLocalStorage } from '@/app/utils/data';
+import{ StaticImageData } from 'next/image';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Sidebar from './Sidebar';
 import { filterByPriceRange, filterByRating, sortByAuthorAZ, sortByAuthorZA, sortByPriceHL, sortByPriceLH, sortByRatingH, sortByRatingL, sortByTitleAZ, sortByTitleZA } from './Filters';
 import CartPopup from '../CartPopup';
@@ -76,8 +76,8 @@ interface popupDetails {
   }
   const carouselRef = useRef<HTMLDivElement>(null);
   const [isFav, setisFav] = useState(
-    Object.fromEntries(Books.map((book) => [book.id, false]))
-  );
+    getItemsFromLocalStorage("favorites",Object.fromEntries(Books.map((book) => [book.id, false])))
+    );
 
   //favorite funciton
   const handleFav = (bookName: string, image: StaticImageData, id: number) => {
@@ -96,7 +96,7 @@ interface popupDetails {
       addedToFavorites:true
     }))
     //toggle favorite for this id
-    setisFav((prev) => ({
+    setisFav((prev: any[]) => ({
       ...prev,
       [id]: !prev[id],
     }));
@@ -123,9 +123,9 @@ const [popupBookDetails, setPopupBookDetails] = useState<popupDetails>({
     isFav:false
 })
   //add to cart
- const [added, setAdded] = useState<AddedState>(
-  useMemo(()=>  Object.fromEntries(Books.map((book) => [book.id, false])),[]
-  ));
+  const [added, setAdded] = useState<AddedState>(
+   getItemsFromLocalStorage("cart",Object.fromEntries(Books.map((book)=>[book,false])))
+   );
 
   const handleAddToCart = (bookName: string, img: StaticImageData, id: number) => {
     const isCurrentlyAdded = added[id];
@@ -153,6 +153,14 @@ const [popupBookDetails, setPopupBookDetails] = useState<popupDetails>({
     }, 1500);
   }
  
+  //read from local Storage
+  useEffect(() => {
+    setItemsToLocalStorage("favorites",isFav)
+  }, [isFav])
+  
+  useEffect(() => {
+    setItemsToLocalStorage("cart", added);
+  }, [added])
 
   return (
     <section className="px-8 pb-56 poppins ">
