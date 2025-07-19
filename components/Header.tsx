@@ -1,16 +1,17 @@
-"use client"
-import { logo } from '@/public';
-import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
-import { CiSearch, CiShoppingCart } from 'react-icons/ci';
-import { FaRegUser } from 'react-icons/fa';
-import { MdFavoriteBorder } from 'react-icons/md';
-import Modal from './Modal';
-import SignUp from './Auth/SignUp';
-import Login from './Auth/Login';
-import { AnimatePresence, motion, spring } from 'framer-motion';
+"use client";
+import { logo } from "@/public";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import { CiSearch, CiShoppingCart } from "react-icons/ci";
+import { FaRegUser } from "react-icons/fa";
+import { MdFavoriteBorder } from "react-icons/md";
+import Modal from "./Modal";
+import SignUp from "./Auth/SignUp";
+import Login from "./Auth/Login";
+import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
   const pathName = usePathname();
@@ -26,22 +27,23 @@ const Header = () => {
 
   const handleShowLogin = (showLogin: boolean) => {
     setShowLoginModal(showLogin);
-  }
+  };
 
   const handleShowSignUp = () => {
     setShowLoginModal(false);
-  }
+  };
   const [scrolled, setScrolled] = useState<boolean>(false);
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 100);
-    }
+    };
     window.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [])
+  }, []);
+  const router = useRouter();
   return (
     <>
       <nav className={`p-4 px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-50 fixed shrink-0 overflow-hidden ${scrolled ? " top-4 rounded-lg  left-10 right-10 shadow-sm backdrop-blur-xl bg-[#B0D4E3]/50 " : "relative top-0 w-full bg-[#B0D4E3]"}`}>
