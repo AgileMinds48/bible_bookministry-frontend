@@ -5,7 +5,7 @@ import { FaEye, FaEyeSlash, FaLock } from 'react-icons/fa6';
 import { AiOutlineLoading } from 'react-icons/ai';
 import {  } from '@/app/utils/data';
 import Image from 'next/image';
-import { google, logo, logo2 } from '@/public';
+import { google, logo2 } from '@/public';
 import { MdEmail } from 'react-icons/md';
 
 interface LoginProps{
@@ -40,26 +40,6 @@ const Login = ({onSignUpClick}:LoginProps) => {
     const updatedForm = { ...formData, [name]: value };
     setFormData(updatedForm);
 
-    // if (
-    //   name === 'password' &&
-    //   updatedForm.password &&
-    //   updatedForm.password.length >= 8
-    // ) {
-    //   setMinChar(true);
-    // } else {
-    //   setMinChar(false);
-    // }
-    // //live password mismatch check
-    // if (
-    //   (name === 'password' || name === 'repeatpassword') &&
-    //   updatedForm.password &&
-    //   updatedForm.repeatpassword &&
-    //   updatedForm.password !== updatedForm.repeatpassword
-    // ) {
-    //   setPasswordError('Passwords mismatch');
-    // } else {
-    //   setPasswordError('');
-    // }
   };
 
   //function to handle Form submission
@@ -67,11 +47,8 @@ const Login = ({onSignUpClick}:LoginProps) => {
     e.preventDefault();
 
     setError('');
-    // if (formData.password !== formData.repeatpassword) {
-    //   setPasswordError('Paswords mismatch');
-    //   return;
-    // }
-    // setPasswordError('');
+
+
     setLoading(true);
     // try {
     //   const res = await fetch(`${API_URL}/api/auth/login/`, {
@@ -188,7 +165,7 @@ const Login = ({onSignUpClick}:LoginProps) => {
             
             </div>
           ))}
-
+<p className='flex justify-end underline text-gray-700 hover:text-gray-800 -mt-4 cursor-pointer'>Forgot password?</p>
        
           <button
             type="submit"
@@ -225,7 +202,7 @@ const Login = ({onSignUpClick}:LoginProps) => {
                </button>
           <p className="text-gray-500 text-left mt-4 text-[1em]">
             Don't have an account?{' '}
-            <button onClick={handleShowSignup} className="underline text-black cursor-pointer">
+            <button onClick={handleShowSignup} className="underline  cursor-pointer text-[#15278c]">
               Signup
             </button>
           </p>

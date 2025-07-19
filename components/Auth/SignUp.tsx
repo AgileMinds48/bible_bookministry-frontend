@@ -69,12 +69,18 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
     e.preventDefault();
 
     setError('');
-    // if (formData.password !== formData.repeatpassword) {
-    //   setPasswordError('Paswords mismatch');
-    //   return;
-    // }
-    // setPasswordError('');
+
     setLoading(true);
+    // try {
+    //   const response = await.post(`${backendUrl}/auth/signup`,
+    //     {
+    //     headers: {
+    //       "Content-type":'application/json'
+    //     },
+        
+    //   })
+    // }
+
     // try {
     //   const res = await fetch(`${API_URL}/api/auth/signup/`, {
     //     method: 'POST',
@@ -106,6 +112,8 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
   const handleShow = (field:string) => {
     setShown((prev) => ({ ...prev, [field]: !prev[field] }));
   };
+
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
   return (
     <section className=''>
       <div  className="bg-[#5a88a7] shadow-2xl poppins grid md:grid-cols-2 text-black min-h-[80dvh] ">
@@ -247,7 +255,7 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
         </button>
           <p className="text-gray-500 text-left mt-4 text-[1em]">
             Already a user?{' '}
-            <button onClick={handleShowLogin} className="underline text-black cursor-pointer">
+            <button onClick={handleShowLogin} className="underline  cursor-pointer text-[#15278c]">
                 Login
             </button>
           </p>

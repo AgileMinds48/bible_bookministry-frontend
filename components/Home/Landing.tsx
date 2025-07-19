@@ -17,8 +17,8 @@ const Landing = () => {
       };
     }, [])
   return (
-    <main className={`h-[100dvh] pt-20 bg-gradient-to-r from-[#F5F5F5] to-[#b0d4e3b2] overflow-hidden transition duration-[4s] ${scrolled?" ":""}`} >
-      <div className='grid grid-cols-[2fr_1fr] h-[80%] w-full '>
+    <main className={`h-[90dvh] pt-20 bg-gradient-to-r from-[#F5F5F5] to-[#b0d4e3b2] overflow-hidden  flex justify-center`} >
+      <div className='grid grid-cols-[2fr_1fr] h-[80%] w-full max-w-[100em]'>
         <div className='b w-full p-10 content-center'>
           <h1 className='text-7xl  w-[90%] font-sans sans text-[#5D8AA8]'>Grow in Grace with  <span className='bg-gradient-to-tr from-[#E6C17C] to-[#d6a13e] text-transparent bg-clip-text'>Trusted</span><br /> Christian Literature</h1>
           <p className='w-[50%] mt-4 text-lg poppins font-medium'>Explore our collection of Bibles and non-charismatic books rooted in scripture and truth.</p>
