@@ -11,7 +11,6 @@ import Modal from "./Modal";
 import SignUp from "./Auth/SignUp";
 import Login from "./Auth/Login";
 import { AnimatePresence, motion } from "framer-motion";
-import { useRouter } from "next/navigation";
 
 const Header = () => {
   const pathName = usePathname();
@@ -43,7 +42,7 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  const router = useRouter();
+
   return (
     <>
       <nav className={`p-4 px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-50 fixed shrink-0 overflow-hidden ${scrolled ? " top-4 rounded-lg  left-10 right-10 shadow-sm backdrop-blur-xl bg-[#B0D4E3]/50 " : "relative top-0 w-full bg-[#B0D4E3]"}`}>
@@ -66,12 +65,15 @@ const Header = () => {
           </div>
           <div className="w-[20%] flex justify-between">
 
-            <button className="relative cursor-pointer text-2xl">
+           
+            <button className="relative cursor-pointer text-2xl"> <Link href={"/cart"}>
               <span className="absolute top-1 text-[0.4em] -right-2 bg-[#5a88a7]/60 text-white  min-h-4 min-w-4 flex items-center justify-center rounded-full">
                 3
               </span>
               <CiShoppingCart />
-            </button>
+            </Link>
+              </button>
+            
             <button className="relative cursor-pointer text-2xl">
               <span className="absolute top-1 text-[0.4em] flex items-center justify-center -right-1 bg-red-600/80 text-white min-h-4 min-w-4 rounded-full">
                 12

@@ -287,3 +287,42 @@ category:"Popular"
     category:"Popular"
   }
 ]
+
+//cart items
+export const cartItems = [
+  {
+    id: 1,
+    title: "Life Worth Living",
+    price: 30,
+    image: "/Home/bk1.jpg", // Use public path
+    quantity: 1,
+  },
+  {
+    id: 2,
+    title: "Life Worth Living",
+    price: 30,
+    image: "/Home/bk2.jpg",
+    quantity: 1,
+  },
+  {
+    id: 3,
+    title: "Life Worth Living",
+    price: 30,
+    image: "/Home/bk3.jpg",
+    quantity: 1,
+  },
+  {
+    id: 4,
+    title: "Life Worth Living",
+    price: 30,
+    image: "/Home/bk4.jpg",
+    quantity: 2,
+  },
+  {
+    id: 5,
+    title: "Life Worth Living",
+    price: 30,
+    image: "/Home/bk5.jpg",
+    quantity: 1,
+  },
+];
