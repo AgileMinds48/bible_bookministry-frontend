@@ -180,9 +180,9 @@ const [popupBookDetails, setPopupBookDetails] = useState<popupDetails>({
           <div className='fixed bottom-28 top-24 w-[20em] left-0'>
             <Sidebar onSortChange={handleSortChange} onPriceRangeChange={handlePriceRangeChange} onRatingChange={handleRatingChange}/>
           </div>
-          {sortedBooks?.map(({ img, title, author, price, rating, id }, index) => (
-            <Link href={"/book"}>
-            <div key={index} className="rounded-2xl">
+          {sortedBooks?.map(({ img, title, author, price, rating, id }) => (
+            <Link href={`/book/${id}`}>
+            <div key={id} className="rounded-2xl">
               <BookDiv title={title} img={img} author={author} price={price} rating={rating} id={id} handleFav={() => handleFav(title, img, id)} isFav={isFav} handleAddToCart={() => handleAddToCart(title, img, id)} added={added} /> 
             </div>
             </Link>
