@@ -2,7 +2,16 @@ import { bk1 } from '@/public';
 import Image from 'next/image';
 import React from 'react'
 
-const BookDetail = () => {
+type BookDetailProps = {
+  book: {
+    id: number
+    title: string
+    author: string
+    description?: string
+  }
+}
+
+const BookDetail = ({book}:BookDetailProps) => {
   return (
     <section className='min-h-screen pt-15 px-10 flex justify-center poppins'>
       <div className='max-w-[100em] min-w-[90em] min-h-[90em] grid grid-cols-2 gap-10'>

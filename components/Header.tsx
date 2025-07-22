@@ -31,21 +31,21 @@ const Header = () => {
   const handleShowSignUp = () => {
     setShowLoginModal(false);
   };
-  const [scrolled, setScrolled] = useState<boolean>(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 100);
-    };
-    window.addEventListener("scroll", handleScroll);
+  // const [scrolled, setScrolled] = useState<boolean>(false);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setScrolled(window.scrollY > 100);
+  //   };
+  //   window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   return (
     <>
-      <nav className={`p-4 px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-50 fixed shrink-0 overflow-hidden ${scrolled ? " top-4 rounded-lg  left-10 right-10 shadow-sm backdrop-blur-xl bg-[#B0D4E3]/50 " : "relative top-0 w-full bg-[#B0D4E3]"}`}>
+      <nav className={`p-4 px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-50 fixed shrink-0 overflow-hidden top-2 rounded-lg  left-10 right-10 shadow-sm backdrop-blur-xl bg-[#B0D4E3]/50 `}>
         <div className=' max-w-[100em] min-w-6xl flex justify-between'>
           <div className="flex w-[30%] items-center justify-between 0">
             <div className="h-[2.31em] w-12 object-cover rounded-full">
