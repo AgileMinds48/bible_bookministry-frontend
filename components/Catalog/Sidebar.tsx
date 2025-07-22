@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { FaStar, FaChevronDown, FaChevronUp } from 'react-icons/fa'
 import { MdClear } from 'react-icons/md'
 import {Book, quickPriceFilters, sortOptions} from "@/app/utils/data"
+import { AnimatePresence,easeOut,motion } from 'framer-motion'
 
 
 interface SidebarProps{
@@ -96,15 +97,24 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange,onPriceRangeChange,onRatin
           onClick={() => toggleSection('sort')}
           className='flex justify-between items-center w-full py-2 text-left border-b'
         >
-          <h3 className='text-lg font-medium text-[#3D3D3D] poppins'>Sort By</h3>
-          {expandedSections.sort ? <FaChevronUp className='text-gray-500' /> : <FaChevronDown className='text-gray-500' />}
+          <h3 className='text-lg font-medium text-[#3D3D3D] poppins '>Sort By</h3>
+       <div className='transition duration-[5s]'>{expandedSections.sort ? <FaChevronUp className='text-gray-500 ' /> : <FaChevronUp className='text-gray-500 rotate-x-180' />}</div>
         </button>
-        
+        <AnimatePresence>
         {expandedSections.sort && (
-          <div className='mt-3 space-y-2'>
+            <motion.div 
+              key="sort-section"
+           initial={{ height: 0,opacity:0 }}
+          animate={{ height: "auto",opacity:1 }}
+          transition={{ duration: 0.1,ease:easeOut }}
+          exit={{height:0,opacity:0}}
+              className='mt-3 space-y-2'>
             {sortOptions.map(({ value, label, icon }) => {
             
-              return (<label key={value} className='flex items-center space-x-2 cursor-pointer group'>
+              return (
+                <label
+                 
+                  key={value} className='flex items-center space-x-2 cursor-pointer group'>
                 <input
                   type='radio'
                   name='sort'
@@ -119,8 +129,9 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange,onPriceRangeChange,onRatin
                 </span>
               </label>)
             })}
-          </div>
-        )}
+          </motion.div>
+          )}
+          </AnimatePresence>
       </div>
 
       {/* Price Range Section */}
@@ -132,9 +143,15 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange,onPriceRangeChange,onRatin
           <h3 className='text-lg font-medium text-[#3D3D3D] poppins'>Price Range</h3>
           {expandedSections.price ? <FaChevronUp className='text-gray-500' /> : <FaChevronDown className='text-gray-500' />}
         </button>
-        
+        <AnimatePresence>
         {expandedSections.price && (
-          <div className='mt-3 space-y-4'>
+            <motion.div
+             key="price-section"
+           initial={{ height: 0,opacity:0 }}
+          animate={{ height: "auto",opacity:1 }}
+          transition={{ duration: 0.1,ease:easeOut }}
+          exit={{height:0,opacity:0}}
+              className='mt-3 space-y-4'>
             {/* Price Range Inputs */}
             <div className='flex items-center space-x-2'>
               <div className='flex-1'>
@@ -192,8 +209,9 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange,onPriceRangeChange,onRatin
                 </button>
               ))}
             </div>
-          </div>
-        )}
+          </motion.div>
+          )}
+          </AnimatePresence>
       </div>
 
       {/* Rating Section */}
@@ -205,9 +223,15 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange,onPriceRangeChange,onRatin
           <h3 className='text-lg font-medium text-[#3D3D3D] poppins'>Minimum Rating</h3>
           {expandedSections.rating ? <FaChevronUp className='text-gray-500' /> : <FaChevronDown className='text-gray-500' />}
         </button>
-        
+        <AnimatePresence>
         {expandedSections.rating && (
-          <div className='mt-3 space-y-4'>
+          <motion.div
+           key="rating-section"
+           initial={{ height: 0,opacity:0 }}
+          animate={{ height: "auto",opacity:1 }}
+          transition={{ duration: 0.1,ease:easeOut }}
+          exit={{height:0,opacity:0}}
+              className='mt-3 space-y-4'>
             {/* Rating Slider */}
             <div className='space-y-2'>
               <div className='flex items-center gap-2'>
@@ -270,9 +294,11 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange,onPriceRangeChange,onRatin
                 </button>
               ))}
             </div>
-          </div>
-        )}
+          </motion.div>
+          )}
+          </AnimatePresence>
       </div>
+
     </aside>
   );
 };

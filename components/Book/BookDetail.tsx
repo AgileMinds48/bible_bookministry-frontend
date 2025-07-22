@@ -13,7 +13,8 @@ type BookDetailProps = {
 }
 
 const BookDetail = ({ book }: BookDetailProps) => {
-  const date = Date.now();  
+  const date = new Date();
+  const today = `${date.getDate()}/ ${((date.getMonth())+1).toString().padStart(2,"0")} / ${date.getFullYear()}`;
   return (
     <section className='min-h-screen pt-36 py-12 px-10 flex justify-center poppins relative'>
       <div className='max-w-[100em] min-w-[90em] min-h-[90em] grid grid-cols-[1.5fr_1fr] gap-10 rounded-lg'>
@@ -38,7 +39,7 @@ const BookDetail = ({ book }: BookDetailProps) => {
               </div>
               <div className='flex items-center gap-2 font-semibold text-2xl text-[#15278c] mt-4'>
                 <div className='p-2 rounded-full bg-[#15278c28] w-fit'>  <MdOutlineDateRange className='text-xl text-[#15278c]' /></div>
-                Date listed: <span className='font-thin text-black'> {date }</span>
+                Date listed: <span className='font-thin text-black'> {today.toString() }</span>
               </div>
               </div>
           </div>

@@ -59,10 +59,10 @@ const Header = () => {
               ))}
             </ul>
           </div>
-          <div className='w-[40%] relative'>
+          {/* <div className='w-[40%] relative'>
             <div className='absolute top-[50%] left-4 -translate-y-[55%] text-xl'>  <CiSearch /></div>
             <input type="text" name='search-bar' className='w-full h-full border border-black p-4 px-4 pl-10 outline-0 rounded-full shadow-lg focus:shadow-2xl duration-150 transition antialiased' placeholder='Search for books by title, author' />
-          </div>
+          </div> */}
           <div className="w-[20%] flex justify-between">
 
            
