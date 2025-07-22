@@ -7,17 +7,18 @@ type BookPageProps = {
     id: string
   }
 }
-const page = ({ params }: BookPageProps) => {
-  const bookId = parseInt(params.id)
+const page = async ({ params }: BookPageProps) => {
+  const { id } = await params;
+  const bookId = parseInt(id)
 
-  const book = Books.find((book) => book.id === bookId);
+  const selectedBook = Books.find((book) => book.id === bookId);
 
-  if (!book) {
+  if (!selectedBook) {
     return <div>Book not found</div>
   }
   return (
     <div>
-      <BookDetail />
+      <BookDetail book={selectedBook}/>
     </div>
   )
 }

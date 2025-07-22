@@ -32,6 +32,17 @@
   font-style: normal;
   font-variation-settings: 'wdth' 100;
 }
+
+.backgroundStripes {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 2px,
+    #cacaca 2px,
+    #f3f4f6 4px
+  );
+}
+
 @theme {
   --animate-bubble: bubble 0.5s ease-in;
 
@@ -74,10 +85,6 @@
   }
 }
 
-.progress-bar {
-  animation: slideIn;
-  animation-timeline: view();
-}
 .hide-scrollbar {
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: none; /* Firefox */
