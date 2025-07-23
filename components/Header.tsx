@@ -65,15 +65,15 @@ const Header = () => {
           </div> */}
           <div className="w-[20%] flex justify-between">
 
-           
+
             <button className="relative cursor-pointer text-2xl"> <Link href={"/cart"}>
               <span className="absolute top-1 text-[0.4em] -right-2 bg-[#5a88a7]/60 text-white  min-h-4 min-w-4 flex items-center justify-center rounded-full">
                 3
               </span>
               <CiShoppingCart />
             </Link>
-              </button>
-            
+            </button>
+
             <button className="relative cursor-pointer text-2xl">
               <span className="absolute top-1 text-[0.4em] flex items-center justify-center -right-1 bg-red-600/80 text-white min-h-4 min-w-4 rounded-full">
                 12

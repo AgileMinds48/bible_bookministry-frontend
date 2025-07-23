@@ -43,7 +43,7 @@ const BookDetail = ({ book }: BookDetailProps) => {
               </div>
               </div>
           </div>
-         <Review/>
+          <Review book={book} />
         </div>
         <div className='p-8 shadow border border-gray-300 h-max rounded-lg sticky top-30 '>
           <p className='text-4xl text-[#5a88a7] font-semibold mb-2 line-clamp-2'>{book.title} </p>

@@ -1,5 +1,6 @@
 import { Book } from '@/app/utils/data'
 import Image, { StaticImageData } from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import { FaCartPlus, FaStar } from 'react-icons/fa'
 import { ImBooks } from 'react-icons/im'
@@ -14,12 +15,14 @@ interface BookDiv extends Book{
 const BookDiv:React.FC<BookDiv>= ({img, title, author, price, rating,id,handleFav,isFav,handleAddToCart,added }) => {
   return (
      <div className="grid grid-cols-1 grid-rows-[58%_42%] cursor-pointer hover:shadow-xl transition duration-100 h-[22em]  w-[12em] shadow-lg rounded-2xl overflow-hidden">
-                <div className="group h-full relative before:pointer-events-none before:absolute before:inset-0 before:bottom-0 before:bg-linear-to-t  before:from-black/30 before:from-0% before:via-black/10 before:via-60% before:to-black/0 before:to-100% before:opacity-0 hover:before:opacity-100 before:transition before:duration-500  rounded-2xl overflow-hidden">
+      <div className="group h-full relative before:pointer-events-none before:absolute before:inset-0 before:bottom-0 before:bg-linear-to-t  before:from-black/30 before:from-0% before:via-black/10 before:via-60% before:to-black/0 before:to-100% before:opacity-0 hover:before:opacity-100 before:transition before:duration-500  rounded-2xl overflow-hidden">
+        <Link key={id} href={`/book/${id}`}>
                   <Image
                     src={img}
                     alt=""
                     className="h-full w-full object-cover object-center"
-                  />
+          />
+          </Link>
                   {
                     <div
                       className="absolute bottom-2 right-2"
