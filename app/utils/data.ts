@@ -41,7 +41,7 @@ type Reviews = {
 export const reviews = [
   {
     reviewer: "Fenuku Reynolds",
-    rating: 3.5,
+    rating: 5,
     text: "I will read this book a thousand times whenever I get hold of it. It really changes my prayer life and my christain perspective",
     img:headshot
   }

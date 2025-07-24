@@ -50,7 +50,7 @@ const BookDetail = ({ book }: BookDetailProps) => {
           <p className='text-4xl text-[#5a88a7] font-semibold mb-2 line-clamp-2'>{book.title} </p>
           <p className='text-gray-500 text-xl mt-6'>Author: <span className='text-black'>{book.author}</span></p>
            <div className='flex items-baseline-center gap-2 mt-2'>
-                             <Rating book={book}/>
+                             <Rating rating={book.rating}/>
             <span className='text-xl'>{book.rating}+</span>
                             </div>
           <p className='text-3xl mt-4  text-[#15278c] flex gap-2 items-center'><IoIosPricetags />  GH₵ {book.price.toFixed(2)}</p>

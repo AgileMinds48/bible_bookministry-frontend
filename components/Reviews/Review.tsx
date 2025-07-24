@@ -21,11 +21,11 @@ const Review = ({ book }: ReviewProps) => {
       <div className='py-8 px-4 shadow bg-[#15278c28] rounded-2xl'>
         <h1 className='text-3xl flex center '>Leave an impact <FaPenAlt /></h1>
         <div className='bg-white rounded-2xl p-4 mt-6'>
-        <div className='flex items-baseline justify-between '>
+        <div className='flex items-center justify-between '>
           <p className='text-xl mt-4 text-[#15278c]'>Rate<span className='font-semibold'> "{book.title}" </span> <span className='text-gray-700'>by {book.author}</span></p>
           <div className='flex gap-1 '>
             {[1, 2, 3, 4, 5].map((star) => (
-              <FaStar key={star} className={`text-xl cursor-pointer ${rating<star?"text-gray-400":"text-[#eca624]"}`} onMouseEnter={()=>handleStar(star)} onClick={()=>handleStar(star)}/>
+              <FaStar key={star} className={`text-3xl cursor-pointer ${rating<star?"text-gray-300":"text-[#eca624]"}`} onMouseEnter={()=>handleStar(star)} onClick={()=>handleStar(star)}/>
             ))}
           </div>
           
@@ -34,7 +34,7 @@ const Review = ({ book }: ReviewProps) => {
           <div className='bg-gray-400  rounded-full h-16 w-16 border'>
             <Image src={headshot} alt="image of reviewer" className='object-cover object-center rounded-full h-full w-full'/>
             </div>
-            Akua Ataa Mansa
+            <em>You</em>
             <div className='w-1 h-1 bg-gray-400 rounded-full'></div>
             <p className='text-gray-400 font-thin'> August 11, 2025</p>
         </div>
