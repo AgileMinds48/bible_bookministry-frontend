@@ -12,3 +12,8 @@ export {default as bk8} from "./Home/bk8.jpg"
 export {default as header} from "./catalogue/header.jpg"
 export {default as google} from "./google.svg"
 export {default as headshot} from "./Bookdetails/headshot.jpg"
+export {default as headshot2} from "./Bookdetails/headshot2.jpg"
+export {default as headshot3} from "./Bookdetails/headshot3.jpg"
+export {default as headshot4} from "./Bookdetails/headshot4.jpg"
+export {default as headshot5} from "./Bookdetails/headshot5.jpg"
+2
