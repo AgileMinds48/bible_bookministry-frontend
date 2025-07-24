@@ -196,7 +196,7 @@ const [popupBookDetails, setPopupBookDetails] = useState<popupDetails>({
           animate={{ x: 0, opacity: 1 }}
           transition={{type:"spring",duration:0.4 }}
           exit={{x:200,opacity:0}}
-            className='fixed bottom-10 right-4 h-32 w-[26em]  rounded-2xl p-2 bg-white/60 backdrop-blur-2xl border-2 border-gray-400'>
+            className='fixed bottom-10 right-4 h-32 w-[26em]  rounded-2xl p-2 bg-white/90 backdrop-blur-xl border-2 border-gray-400'>
          <CartPopup bookName={popupBookDetails.bookName} image={popupBookDetails.image} isAdded={popupBookDetails.isAdded} />
           </motion.div>)}
 
@@ -206,7 +206,7 @@ const [popupBookDetails, setPopupBookDetails] = useState<popupDetails>({
           animate={{ x: 0, opacity: 1 }}
           transition={{type:"spring",duration:0.4 }}
           exit={{x:200,opacity:0}}
-            className='fixed bottom-40 right-4 h-32 w-[26em]  rounded-2xl p-2 bg-white/60 backdrop-blur-2xl border-2 border-gray-400'>
+            className='fixed bottom-40 right-4 h-32 w-[26em]  rounded-2xl p-2 bg-white/90 backdrop-blur-xl border-2 border-gray-400'>
             <FavPopup bookName={popupBookDetails.bookName} image={popupBookDetails.image} isFav={popupBookDetails.isFav}/>
      </motion.div>)}
       </AnimatePresence>

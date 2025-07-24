@@ -31,7 +31,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, maxWidth = "ma
   return (
     <>
     <div 
-      className="fixed inset-0 bg-black/50 z-[100] flex items-center justify-center p-4"
+      className="fixed inset-0 backdrop-blur-sm bg-black/50 transition duration-1000 z-[100] flex items-center justify-center p-4"
       onClick={onClose}
     >
         <div 

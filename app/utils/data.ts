@@ -1,4 +1,4 @@
-import { bk1, bk2, bk3, bk4, bk5, bk6, bk7, bk8, headshot } from "@/public"
+import { bk1, bk2, bk3, bk4, bk5, bk6, bk7, bk8, headshot, headshot2, headshot3, headshot4, headshot5 } from "@/public"
 import { StaticImageData } from "next/image"
 import { ComponentType } from "react";
 import { BsSortAlphaDown, BsSortAlphaUp, BsSortDown, BsSortUp } from "react-icons/bs";
@@ -44,6 +44,30 @@ export const reviews = [
     rating: 5,
     text: "I will read this book a thousand times whenever I get hold of it. It really changes my prayer life and my christain perspective",
     img:headshot
+  },
+   {
+    reviewer: "Sarah Martinez",
+    rating: 4,
+    text: "This book provided incredible insights into faith and spirituality. The author's writing style is engaging and easy to follow. Highly recommend for anyone seeking spiritual growth.",
+    img: headshot2
+  },
+  {
+    reviewer: "Michael Chen",
+    rating: 5,
+    text: "Absolutely transformative! This book helped me understand biblical principles in a whole new way. The practical applications are what make this stand out from other religious texts.",
+    img: headshot3
+  },
+  {
+    reviewer: "Emma Johnson",
+    rating: 3,
+    text: "Good content overall, though some chapters felt a bit repetitive. The core message is solid and the author clearly knows their subject matter well. Worth reading for the key insights.",
+    img: headshot4
+  },
+  {
+    reviewer: "David Thompson",
+    rating: 5,
+    text: "This book came at exactly the right time in my life. The wisdom shared here is profound and life-changing. I've already recommended it to my entire book club!",
+    img: headshot5
   }
 ]
 
