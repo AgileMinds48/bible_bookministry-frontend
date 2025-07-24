@@ -182,7 +182,7 @@ const [popupBookDetails, setPopupBookDetails] = useState<popupDetails>({
           </div>
           {sortedBooks?.map(({ img, title, author, price, rating, id }) => (
             
-            <div className="rounded-2xl">
+            <div key={id} className="rounded-2xl">
               <BookDiv title={title} img={img} author={author} price={price} rating={rating} id={id} handleFav={() => handleFav(title, img, id)} isFav={isFav} handleAddToCart={() => handleAddToCart(title, img, id)} added={added} /> 
             </div>
           

@@ -7,6 +7,7 @@ import { FaStar } from 'react-icons/fa';
 import { IoIosPricetags } from 'react-icons/io';
 import { MdFavorite, MdOutlineDateRange } from 'react-icons/md';
 import Review from '../Reviews/Review';
+import Rating from '../Rating';
 
 type BookDetailProps = {
   book: Book
@@ -19,14 +20,14 @@ const BookDetail = ({ book }: BookDetailProps) => {
     <section className='min-h-screen pt-36 py-12 px-10 flex justify-center poppins relative'>
       <div className='max-w-[100em] min-w-[90em] min-h-[90em] grid grid-cols-[1.5fr_1fr] gap-10 rounded-lg'>
         <div className='min-h-screen'>
-          <div className='w-full h-[60em] border-gray-400 relative p-12 pb-16 backgroundStripes'>
+          <div className='w-full h-[60em] border-gray-400 relative '>
             <Image src={book.img} alt={`image of the book `} className='rounded-lg max-w-full max-h-full min-h-full min-w-full object-cover object-center' />
             <div className='absolute top-4 right-8 z-10 '>
               <MdFavorite className='text-6xl text-gray-300 cursor-pointer' />
             </div>
             <div className='flex justify-between w-28 absolute bottom-2 right-[50%] translate-x-[50%]'>
              {[1, 2, 3].map((_,index) => (
-              <div key={index} className='bg-gray-300 rounded-full h-5 w-5 '></div>
+              <div key={index} className='bg-white rounded-full h-5 w-5 '></div>
              ))}
               </div>
           </div>
@@ -49,14 +50,7 @@ const BookDetail = ({ book }: BookDetailProps) => {
           <p className='text-4xl text-[#5a88a7] font-semibold mb-2 line-clamp-2'>{book.title} </p>
           <p className='text-gray-500 text-xl mt-6'>Author: <span className='text-black'>{book.author}</span></p>
            <div className='flex items-baseline-center gap-2 mt-2'>
-                              <div className='flex items-center gap-1'>
-                                { [1, 2, 3, 4, 5].map((star) => (
-                                  <FaStar
-                                    key={star}
-                                    className={`text-xl ${star <= book.rating ? 'text-[#eca624]' : 'text-gray-300'}`}
-                                  />
-                                ))}
-                              </div>
+                             <Rating book={book}/>
             <span className='text-xl'>{book.rating}+</span>
                             </div>
           <p className='text-3xl mt-4  text-[#15278c] flex gap-2 items-center'><IoIosPricetags />  GH₵ {book.price.toFixed(2)}</p>
