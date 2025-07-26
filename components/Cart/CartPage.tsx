@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { cartItems } from "@/app/utils/data";
 import Image from 'next/image';
+import { MdOutlineDeleteForever } from 'react-icons/md';
 const CartPage = () => {
   const [items, setItems] = useState(cartItems);
 
@@ -79,11 +80,11 @@ const CartPage = () => {
                     </td>
                     <td className="py-4">
                       <button
-                        className="text-gray-400 hover:text-red-500 text-xl"
+                        className=" text-red-500 text-xl"
                         onClick={() => handleRemove(item.id)}
                         aria-label="Remove item"
                       >
-                        ×
+                        <MdOutlineDeleteForever />
                       </button>
                     </td>
                   </tr>
