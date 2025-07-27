@@ -60,7 +60,9 @@ const Header = () => {
             <ul className="hidden md:flex justify-between md:w-[80%] text-sm overflow-hidden">
               {navItems.map(({ label, href }, idx) => (
                 <Link key={idx} href={href}>
-                  <li className={`cursor-pointer hover:scale-[1.1] font-medium text-[1.2em] transition duration-300 ${pathName === href ? "text-[#56c10b]" : "text-black"}`}>{label}</li>
+                  <li className={`peer cursor-pointer hover:scale-[1.1] font-medium text-[1.2em] transition duration-300 p-1  ${pathName === href ? "text-[#56c10b]" : "text-black"}`}>{label}</li>
+                  <div className={`hidden ${pathName==href?"" : "peer-hover:animate-underline peer-hover:block"} w-[110%] blue-gradient h-[0.2em] rounded-full animate-underline`}></div>
+                 {pathName==href && <div className="w-[110%] blue-gradient h-[0.2em] rounded-full animate-underline"></div>}
                 </Link>
               ))}
             </ul>

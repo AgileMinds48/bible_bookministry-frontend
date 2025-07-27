@@ -46,7 +46,7 @@ const PopularBooks = () => {
   return (
     <section id='popular-books' className='scroll-mt-16'>
       <div className=' py-10 poppins px-10 relative'>
-          <h1 className='text-4xl poppins font-semibold text-[#3D3D3D]'>Our most <span className='text-transparent bg-clip-text bg-gradient-to-r from-[#5a88a7] to-[#426074]'>popular</span>  books</h1>
+          <h1 className='text-4xl poppins font-semibold text-[#3D3D3D]'>Our most <span className='text-transparent bg-clip-text blue-gradient'>popular</span>  books</h1>
            
         <div ref={carouselRef} className='flex shrink-0  py-8 overflow-scroll hide-scrollbar gap-8 gap-y-14 '>
           <button onClick={handlePrev} className='absolute text-2xl left-2 top-[50%] -translate-y-[50%] z-10 bg-black/15 hover:bg-black/40 duration-100 p-4 rounded-full text-white'><GrPrevious/></button>

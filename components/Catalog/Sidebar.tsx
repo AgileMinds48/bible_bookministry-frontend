@@ -84,7 +84,7 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange,onPriceRangeChange,onRatin
         <h2 className='text-xl font-medium text-[#3D3D3D] poppins'>Filters</h2>
         <button
           onClick={clearAllFilters}
-          className='text-sm cursor-pointer text-[#5a88a7] hover:text-[#426074] transition-colors duration-200 flex items-center gap-1'
+          className='text-sm cursor-pointer text-[#15278c] hover:text-[#426074] transition-colors duration-200 flex items-center gap-1'
         >
           <MdClear className='text-base' />
           Clear All
@@ -124,7 +124,7 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange,onPriceRangeChange,onRatin
                   className='w-4 h-4 text-[#5a88a7] border-gray-300 focus:ring-[#5a88a7] cursor-pointer'
                 />
                 <span className='text-sm text-gray-700 group-hover:text-[#5a88a7] transition-colors duration-200 flex gap-1 items-center'>
-                  {icon && React.createElement(icon, { className: 'text-[#5a88a7] text-xl' })} {/* Only render if icon exists */}
+                  {icon && React.createElement(icon, { className: 'text-[#15278c] text-xl' })} {/* Only render if icon exists */}
                   {label}
                 </span>
               </label>)
@@ -184,10 +184,9 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange,onPriceRangeChange,onRatin
             </div>
 
             {/* Price Range Slider */}
-            <div className='space-y-2'>
+            {/* <div className='space-y-2'>
               <label className='block text-xs text-gray-600'>Price Range: ₵{priceRange.min} - ₵{priceRange.max}</label>
-            
-            </div>
+            </div> */}
 
             {/* Quick Price Filters */}
             <div className='flex flex-wrap gap-2'>
@@ -201,7 +200,7 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange,onPriceRangeChange,onRatin
                   }}
                   className={`px-3 py-1 text-xs rounded-full border transition-colors duration-200 ${
                     priceRange.min === min && priceRange.max === max
-                      ? 'bg-[#5a88a7] text-white border-[#5a88a7]'
+                      ? 'bg-[#15278c] text-white border-[#15278c]'
                       : 'bg-white text-gray-700 border-gray-300 hover:border-[#5a88a7]'
                   }`}
                 >
@@ -276,7 +275,7 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange,onPriceRangeChange,onRatin
                   }}
                   className={`w-full text-left px-3 py-2 rounded-md transition-colors duration-200 ${
                     ratingFilter === rating.value
-                      ? 'bg-[#5a88a7] text-white'
+                      ? 'bg-[#15278c] text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
