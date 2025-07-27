@@ -81,7 +81,7 @@ const Header = () => {
             </button>
 
             <button className="hidden md:block relative cursor-pointer text-2xl">
-              <span className="  absolute top-1 text-[0.4em] md:flex items-center justify-center -right-1 bg-red-600/80 text-white min-h-4 min-w-4 rounded-full">
+              <span className="  absolute -top-2 text-[0.4em] md:flex items-center justify-center -right-1 bg-red-600/80 text-white min-h-4 min-w-4 rounded-full">
                 12
               </span>
               <MdFavoriteBorder />
@@ -93,10 +93,10 @@ const Header = () => {
             </button>
 
             {/* hamburger menu */}
-            <button className="p-6 flex flex-col gap-1 " onClick={handleOpenMenu}>
-              <div className={`bg-black h-[2px] w-6 rounded-lg transition duration-500 ${isOpen && "rotate-45 translate-y-1"}`}></div>
-              <div className={`bg-black h-[2px] w-6 rounded-lg transition duration-500${isOpen && "opacity-0"}`}></div>
-              <div className={`bg-black h-[2px] w-6 rounded-lg transition duration-500${isOpen && "-rotate-45 -translate-y-1"}`}></div>
+            <button className=" md:hidden p-6 flex flex-col gap-1 " onClick={handleOpenMenu}>
+              <div className={`bg-[#15278c] h-[2px] w-6 rounded-lg transition duration-300 ${isOpen && "rotate-45 translate-y-1"}`}></div>
+              <div className={`bg-[#15278c] h-[2px] w-6 rounded-lg transition duration-300 ${isOpen && "opacity-0"}`}></div>
+              <div className={`bg-[#15278c] h-[2px] w-6 rounded-lg transition duration-300 ${isOpen && "-rotate-45 -translate-y-2"}`}></div>
             </button>
           </div>
         </div>

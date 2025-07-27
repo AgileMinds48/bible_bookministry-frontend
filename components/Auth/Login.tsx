@@ -23,11 +23,10 @@ const Login = ({onSignUpClick}:LoginProps) => {
   });
 
   const [formData, setFormData] = useState<LoginFormData>({
-    firstname: '',
-    lastname: '',
+
     email: '',
     password: '',
-    repeatpassword: '',
+
   });
   // const [passwordError, setPasswordError] = useState('');
   const [loading, setLoading] = useState(false);
