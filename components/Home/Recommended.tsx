@@ -125,7 +125,7 @@ interface popupDetails {
     <section className='poppins px-10 py-10 bg-[#FAF3E0] h-max  antialiased'>
       <div className='relative'>
         <div className='flex justify-between items-baseline'>
-          <h1 className='text-4xl font-semibold text-[#3D3D3D] mb-4'> <span className=' text-transparent bg-clip-text bg-gradient-to-r from-[#5a88a7] to-[#426074]'> Recommended</span> for  you </h1>
+          <h1 className='text-4xl font-semibold text-black mb-4'> <span className=' text-transparent bg-clip-text blue-gradient'> Recommended</span> for you </h1>
           <Link href={"catalogue"}>
             <p className='underline cursor-pointer flex center gap-2 group'>View all books <span className='-translate-0.5 group-hover:translate-x-2  delay-100 duration-100 transition '><GrNext /></span></p>
             </Link>
@@ -142,7 +142,7 @@ interface popupDetails {
                     <Image src={img} alt="image of book" className='w-full h-full object-cover' placeholder='blur' />
                   </div>
                   <div className='relative min-h-full h-max min-w-full flex flex-col py-8'>
-                    <div className=''>
+                    <div className='text-black'>
                       <h3 className='line-clamp-3 font-garamond font-semibold leading-8 text-2xl'>{title}</h3>
                       <div>
                         <p className='line-clamp-1 poppins font-medium text-xl text-gray-500'>{author}</p>
@@ -154,7 +154,12 @@ interface popupDetails {
                       <span className='flex gap-1 items-center text-sm'><FaStar className='text-[#eca624] -translate-y-0.5' /> {rating} </span>
 
                     </div>
-                  <button onClick={() => handleAddToCart(title, img, id)} className={`mt-auto border w-full justify-center rounded-lg px-4 p-2  bottom-0  transition duration-300 flex items-center text-sm gap-1 cursor-pointer ${added[id] ?"bg-[#3D3D3D] text-white hover:bg-[#2e2e2e]":"text-[#3D3D3D] border-[#3D3D3D] hover:bg-[#3D3D3D] hover:text-white"}`}> {added[id]?"Remove from cart":<span className="flex gap-1 items-center"> <FaCartPlus />Add to cart</span>} </button>
+                  <button onClick={() => handleAddToCart(title, img, id)}
+                    className={`mt-auto border w-full justify-center rounded-lg px-4 p-2  bottom-0  transition duration-300 flex items-center text-sm gap-1 cursor-pointer ${added[id] ? "bg-[#56c10b] text-white hover:bg-[#317402]" : "text-[black] border-[#15278c] hover:bg-[#15278c] hover:text-white"}`}>
+                    {added[id] ? "Remove from cart" :
+                      <span className="flex gap-1 items-center">
+                        <FaCartPlus />Add to cart</span>}
+                  </button>
                   </div>
 
                 </div>

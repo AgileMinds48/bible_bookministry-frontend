@@ -8,7 +8,6 @@ import { GrNext } from 'react-icons/gr'
 import { ImBooks } from 'react-icons/im'
 import { MdFavorite } from 'react-icons/md'
 import { RiMoneyDollarCircleLine } from 'react-icons/ri'
-import { SiBookstack } from 'react-icons/si'
 
 const PopularBooks = () => {
   const popularBooks = Books.filter((book) =>book.category==="Popular"
@@ -31,7 +30,7 @@ const PopularBooks = () => {
     <section>
       <div className=' py-10 poppins px-10'>
         <div className='flex items-baseline justify-between'>
-          <h1 className='text-4xl poppins font-semibold text-[#3D3D3D]'>Our most <span className='text-transparent bg-clip-text bg-gradient-to-r from-[#5a88a7] to-[#426074]'>popular</span>  books</h1>
+          <h1 className='text-4xl poppins font-semibold text-black'>Our most <span className='text-transparent bg-clip-text blue-gradient'>popular</span>  books</h1>
           <Link href={"catalogue#popular-books"}>
             <p className='underline cursor-pointer flex center gap-2 group'>See all <span className='-translate-0.5 group-hover:translate-x-2  delay-100 duration-100 transition '><GrNext /></span></p>
             </Link>

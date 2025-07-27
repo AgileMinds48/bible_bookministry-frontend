@@ -3,8 +3,8 @@ import { logo } from "@/public";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import { CiSearch, CiShoppingCart } from "react-icons/ci";
+import React, {  useState } from "react";
+import {  CiShoppingCart } from "react-icons/ci";
 import { FaRegUser } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
 import Modal from "./Modal";
@@ -60,7 +60,7 @@ const Header = () => {
             <ul className="hidden md:flex justify-between md:w-[80%] text-sm overflow-hidden">
               {navItems.map(({ label, href }, idx) => (
                 <Link key={idx} href={href}>
-                  <li className={`cursor-pointer hover:scale-[1.1] transition duration-300 ${pathName === href ? "text-blue-400" : "text-black"}`}>{label}</li>
+                  <li className={`cursor-pointer hover:scale-[1.1] font-medium text-[1.2em] transition duration-300 ${pathName === href ? "text-[#56c10b]" : "text-black"}`}>{label}</li>
                 </Link>
               ))}
             </ul>
@@ -69,9 +69,7 @@ const Header = () => {
             <div className='absolute top-[50%] left-4 -translate-y-[55%] text-xl'>  <CiSearch /></div>
             <input type="text" name='search-bar' className='w-full h-full border border-black p-4 px-4 pl-10 outline-0 rounded-full shadow-lg focus:shadow-2xl duration-150 transition antialiased' placeholder='Search for books by title, author' />
           </div> */}
-          <div className="w-[20%] flex justify-between items-center">
-
-
+          <div className="min-w-[20%] max-w-[50%] flex justify-between items-center">
             <button className="relative cursor-pointer text-2xl"> <Link href={"/cart"}>
               <span className="absolute -top-2 text-[0.4em] -right-2 bg-[#5a88a7]/60 text-white  min-h-4 min-w-4 flex items-center justify-center rounded-full">
                 3
@@ -87,7 +85,7 @@ const Header = () => {
               <MdFavoriteBorder />
             </button>
             <button onClick={() => setShowSignUpModal(true)}
-              className="hidden md:flex h-full items-center gap-1  cursor-pointer text-sm bg-gradient-to-r from-[#5a88a7] to-[#426074] hover:shadow-lg text-white p-2 px-6 rounded-lg">
+              className="hidden md:flex h-full items-center gap-1 p-3 cursor-pointer text-sm blue-gradient hover:shadow-2xl text-white transition duration-500 rounded-lg">
               <FaRegUser />
               Login
             </button>

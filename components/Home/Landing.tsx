@@ -1,32 +1,22 @@
-"use client"
+
 import { mainbook } from '@/public';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react'
+ import React from 'react'
 import { GrNext } from 'react-icons/gr';
 
 const Landing = () => {
-   const [scrolled, setScrolled] = useState<boolean>(false);
-    useEffect(() => {
-      const handleScroll = () => {
-        setScrolled(window.scrollY > 100);
-      }
-      window.addEventListener("scroll", handleScroll);
-  
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }, [])
+
   return (
     <main className={`h-[90dvh] pt-20 bg-gradient-to-r from-[#F5F5F5] to-[#b0d4e3b2] overflow-hidden  flex justify-center`} >
       <div className='grid grid-cols-[2fr_1fr] h-[80%] w-full max-w-[100em]'>
         <div className='b w-full p-10 content-center'>
-          <h1 className='text-7xl  w-[90%] font-sans sans text-[#5D8AA8]'>Grow in Grace with  <span className='bg-gradient-to-tr from-[#E6C17C] to-[#d6a13e] text-transparent bg-clip-text'>Trusted</span><br /> Christian Literature</h1>
+          <h1 className='text-7xl  w-[90%] font-sans sans text-[#15278c]'>Grow in Grace with  <span className='green-gradient text-transparent bg-clip-text'>Trusted</span><br /> Christian Literature</h1>
           <p className='w-[50%] mt-4 text-lg poppins font-medium'>Explore our collection of Bibles and non-charismatic books rooted in scripture and truth.</p>
           <div className='mt-10 flex gap-4'>
-            <button className='px-10 py-4 bg-gradient-to-r from-[#5a88a7] to-[#426074] text-white hover:shadow-lg rounded-lg cursor-pointer  transition duration-300 hover:bg-[#426074] hover: flex items-center gap-2 group poppins font-medium antialiased'>Explore Our Shelf
+            <button className='px-10 py-4 blue-gradient text-white hover:shadow-lg rounded-lg cursor-pointer  transition duration-300 hover:bg-[#426074] hover: flex items-center gap-2 group poppins font-medium antialiased'>Explore Our Shelf
               <div className='group-hover:translate-x-4 transition duration-300 delay-100'><GrNext /></div>
             </button>
-            <button className='poppins font-medium px-10 py-4 text-[#5D8AA8] border-2 border-[#5D8AA8] hover:shadow-lg rounded-lg cursor-pointer hover:border-[#5D8AA8] transition duration-200 hover:bg-gradient-to-r hover:from-[#5a88a7] hover:to-[#426074] hover:text-white'>Learn About Us</button>
+            <button className='poppins font-medium px-10 py-4 text-[#15278c] border-2 border-[#15278c] hover:shadow-lg rounded-lg cursor-pointer  transition duration-200  hover-blue-gradient hover:text-white'>Learn About Us</button>
           </div>
         </div>
         <div className=' w-full place-items-center relative'>
