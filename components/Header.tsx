@@ -20,6 +20,12 @@ const Header = () => {
     { label: 'E-books', href: '/e-books' },
     { label: 'About us', href: '/about' },
   ];
+  //hamburger menu
+  const [isOpen, setisOpen] = useState<boolean>(false);
+  const handleOpenMenu = () => {
+    setisOpen(!isOpen);
+}
+
   //for modal
   const [showSignUpModal, setShowSignUpModal] = useState<boolean>(false);
   const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
@@ -45,13 +51,13 @@ const Header = () => {
 
   return (
     <>
-      <nav className={`p-4 px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-50 fixed shrink-0 overflow-hidden top-2 rounded-lg  left-10 right-10 shadow-sm backdrop-blur-xl bg-[#B0D4E3]/50 `}>
-        <div className=' max-w-[100em] min-w-6xl flex justify-between'>
-          <div className="flex w-[30%] items-center justify-between 0">
+      <nav className={`p-4 md:p-4 md:px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-50 fixed shrink-0 overflow-hidden md:top-2 top-0 left-0 right-0 rounded-lg md:left-10 md:right-10 shadow-sm backdrop-blur-xl bg-[#B0D4E3]/50 `}>
+        <div className='w-full md:max-w-[100em] md:min-w-6xl min-w-full flex justify-between items-center'>
+          <div className="md:flex md:w-[30%] items-center justify-between ">
             <div className="h-[2.31em] w-12 object-cover rounded-full">
               <Image priority={true} src={logo} alt="Bible and Book ministries logo" className='h-full w-full' />
             </div>
-            <ul className="flex justify-between w-[80%] text-sm overflow-hidden">
+            <ul className="hidden md:flex justify-between md:w-[80%] text-sm overflow-hidden">
               {navItems.map(({ label, href }, idx) => (
                 <Link key={idx} href={href}>
                   <li className={`cursor-pointer hover:scale-[1.1] transition duration-300 ${pathName === href ? "text-blue-400" : "text-black"}`}>{label}</li>
@@ -63,29 +69,35 @@ const Header = () => {
             <div className='absolute top-[50%] left-4 -translate-y-[55%] text-xl'>  <CiSearch /></div>
             <input type="text" name='search-bar' className='w-full h-full border border-black p-4 px-4 pl-10 outline-0 rounded-full shadow-lg focus:shadow-2xl duration-150 transition antialiased' placeholder='Search for books by title, author' />
           </div> */}
-          <div className="w-[20%] flex justify-between">
+          <div className="w-[20%] flex justify-between items-center">
 
 
             <button className="relative cursor-pointer text-2xl"> <Link href={"/cart"}>
-              <span className="absolute top-1 text-[0.4em] -right-2 bg-[#5a88a7]/60 text-white  min-h-4 min-w-4 flex items-center justify-center rounded-full">
+              <span className="absolute -top-2 text-[0.4em] -right-2 bg-[#5a88a7]/60 text-white  min-h-4 min-w-4 flex items-center justify-center rounded-full">
                 3
               </span>
               <CiShoppingCart />
             </Link>
             </button>
 
-            <button className="relative cursor-pointer text-2xl">
-              <span className="absolute top-1 text-[0.4em] flex items-center justify-center -right-1 bg-red-600/80 text-white min-h-4 min-w-4 rounded-full">
+            <button className="hidden md:block relative cursor-pointer text-2xl">
+              <span className="  absolute top-1 text-[0.4em] md:flex items-center justify-center -right-1 bg-red-600/80 text-white min-h-4 min-w-4 rounded-full">
                 12
               </span>
               <MdFavoriteBorder />
             </button>
             <button onClick={() => setShowSignUpModal(true)}
-              className="flex h-full items-center gap-1  cursor-pointer text-sm bg-gradient-to-r from-[#5a88a7] to-[#426074] hover:shadow-lg text-white p-2 px-6 rounded-lg">
+              className="hidden md:flex h-full items-center gap-1  cursor-pointer text-sm bg-gradient-to-r from-[#5a88a7] to-[#426074] hover:shadow-lg text-white p-2 px-6 rounded-lg">
               <FaRegUser />
               Login
             </button>
 
+            {/* hamburger menu */}
+            <button className="p-6 flex flex-col gap-1 " onClick={handleOpenMenu}>
+              <div className={`bg-black h-[2px] w-6 rounded-lg transition duration-500 ${isOpen && "rotate-45 translate-y-1"}`}></div>
+              <div className={`bg-black h-[2px] w-6 rounded-lg transition duration-500${isOpen && "opacity-0"}`}></div>
+              <div className={`bg-black h-[2px] w-6 rounded-lg transition duration-500${isOpen && "-rotate-45 -translate-y-1"}`}></div>
+            </button>
           </div>
         </div>
       </nav>
