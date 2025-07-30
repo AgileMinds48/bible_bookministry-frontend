@@ -38,6 +38,12 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, maxWidth = "ma
 
           className={` ${maxWidth} w-full max-h-[90vh] overflow-y-auto rounded-2xl hide-scrollbar `}
           onClick={(e) => e.stopPropagation()}
+          style={{
+            position: 'relative',
+              transform: 'translateZ(0)', // Force GPU acceleration
+            backfaceVisibility: 'hidden',
+            contain: 'layout style paint'
+            }}
         >
           <button
             onClick={onClose}

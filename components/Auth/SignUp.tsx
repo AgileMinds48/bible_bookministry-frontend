@@ -8,6 +8,7 @@ import { SignUpFormData, signUpField } from '@/app/utils/data';
 import Image from 'next/image';
 import { google, logo, logo2 } from '@/public';
 import { MdEmail } from 'react-icons/md';
+import { relative } from 'path';
 
 interface SignUpProps{
   onLoginClick:(showLogin:boolean)=>void
@@ -126,7 +127,7 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
       <div className="bg-white p-5 sm:p-10 md:p-24 lg:px-8">
         <form onSubmit={handleSubmit}>
           <div className="mb-15">
-            <h1 className="text-4xl md:text-6xl font-bold">Create Account</h1>
+            <h1 className="text-4xl md:text-6xl font-bold text-[#15278c]">Create Account</h1>
             <p className="text-gray-800 md:text-xl text-[1.1rem] mb-10">
               Sign up to get started
             </p>
@@ -136,6 +137,7 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
           {inputItemsSignUp.map(({ input, inputName, type, warning }:signUpField) => (
             <div
               key={inputName}
+              style={{position:"relative"}}
               className={`relative h-14 ${
                 inputName === 'firstname'
                   ? 'w-[48%] inline-block mr-4'
@@ -200,7 +202,7 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
               />
               <label
                 htmlFor={inputName}
-                className="cursor-text transition-all duration-300 peer-focus:text-[1.1em] peer-focus:px-1 peer-focus:-top-0.5 peer-not-placeholder-shown:text-[#15278c] peer-not-placeholder-shown:-top-0.5 peer-not-placeholder-shown:text-[1.1em] peer-not-placeholder-shown:px-1  absolute left-12 top-[50%] -translate-y-[50%] text-[1.1em] bg-white text-gray-500"
+                className="cursor-text transition-all duration-300 peer-focus:text-[1.1em] peer-focus:px-1 peer-focus:-top-0.5 peer-not-placeholder-shown:text-[#15278c] peer-not-placeholder-shown:-top-0.5 peer-not-placeholder-shown:text-[1.1em] peer-not-placeholder-shown:px-1  absolute left-12 top-[50%] -translate-y-[50%] text-[1.1em] bg-white text-gray-500 pointer-events-none"
               >
                 {input}
               </label>
