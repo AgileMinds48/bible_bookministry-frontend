@@ -169,11 +169,11 @@ const AllBooks = () => {
       <div>
         <h1 className="text-5xl text-center font-bold bg-gradient-to-br rounded-2xl from-[#5a88a7]/40 to-[#5a88a7]/20  py-10">
           All
-          <span className=" text-transparent bg-clip-text bg-gradient-to-r from-[#5a88a7] to-[#426074]">
+          <span className=" text-transparent bg-clip-text blue-gradient">
             {' '}
-            available
+            available books
           </span>{' '}
-          books
+        
         </h1>
         <div
           ref={carouselRef}

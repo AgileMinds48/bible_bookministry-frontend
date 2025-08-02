@@ -191,7 +191,7 @@ const Login = ({onSignUpClick}:LoginProps) => {
            <button className='   w-full'>
                  <div className="flex justify-center pr-4  p-2  items-center w-[60%] rounded-full border-[#15278c] border-2 m-auto">
                    <Image
-                     className="h-10 object-contain cursor-pointer"
+                     className="h-10 w-10 object-contain cursor-pointer"
                      src={google}
                      alt="google"
                        />
