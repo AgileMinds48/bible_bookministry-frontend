@@ -98,7 +98,7 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange,onPriceRangeChange,onRatin
           className='flex justify-between items-center w-full py-2 text-left border-b'
         >
           <h3 className='text-lg font-medium text-[#3D3D3D] poppins '>Sort By</h3>
-       <div className='transition duration-[5s]'>{expandedSections.sort ? <FaChevronUp className='text-gray-500 ' /> : <FaChevronUp className='text-gray-500 rotate-x-180' />}</div>
+       <div className={`transition-transform ${expandedSections.sort && "rotate-180"}` } ><FaChevronDown className='text-gray-500 ' /></div>
         </button>
         <AnimatePresence>
         {expandedSections.sort && (
@@ -141,7 +141,7 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange,onPriceRangeChange,onRatin
           className='flex justify-between items-center w-full py-2 text-left border-b'
         >
           <h3 className='text-lg font-medium text-[#3D3D3D] poppins'>Price Range</h3>
-          {expandedSections.price ? <FaChevronUp className='text-gray-500' /> : <FaChevronDown className='text-gray-500' />}
+       <div className={`transition-transform ${expandedSections.price && "rotate-180"}` } ><FaChevronDown className='text-gray-500 ' /></div>
         </button>
         <AnimatePresence>
         {expandedSections.price && (
@@ -220,7 +220,7 @@ const Sidebar:React.FC<SidebarProps> = ({onSortChange,onPriceRangeChange,onRatin
           className='flex justify-between items-center w-full py-2 text-left border-b'
         >
           <h3 className='text-lg font-medium text-[#3D3D3D] poppins'>Minimum Rating</h3>
-          {expandedSections.rating ? <FaChevronUp className='text-gray-500' /> : <FaChevronDown className='text-gray-500' />}
+       <div className={`transition-transform ${expandedSections.rating && "rotate-180"}` } ><FaChevronDown className='text-gray-500 ' /></div>
         </button>
         <AnimatePresence>
         {expandedSections.rating && (

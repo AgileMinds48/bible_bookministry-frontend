@@ -22,9 +22,9 @@ const Header = () => {
     { label: 'About us', href: '/about' },
   ];
   //hamburger menu
-  const [isOpen, setisOpen] = useState<boolean>(false);
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const handleOpenMenu = () => {
-    setisOpen(!isOpen);
+    setIsExpanded(!isExpanded);
 }
 
   //for modal
@@ -51,9 +51,12 @@ const Header = () => {
             <ul className="hidden md:flex justify-between md:w-[100%] text-sm overflow-hidden">
               {navItems.map(({ label, href }, idx) => (
                 <Link key={idx} href={href}>
-                  <li className={`peer cursor-pointer hover:scale-[1.1] font-medium lg:text-[1.2em] transition duration-300 p-1  ${pathName === href ? "text-[#15278c]" : "text-black"}`}>{label}</li>
-                  <div className={`hidden ${pathName==href?"" : "peer-hover:animate-underline peer-hover:block"} w-[110%] blue-gradient h-[0.2em] rounded-full animate-underline`}></div>
-                 {pathName==href && <div className="w-[110%] blue-gradient h-[0.2em] rounded-full animate-underline"></div>}
+                  <li className={`group cursor-pointer font-medium lg:text-[1.2em] transition duration-300 p-1  ${pathName === href ? "text-[#15278c]" : "text-black"}`}>{label}
+                             <div className={`hidden absolute left-0 right-0 bottom-0 ${pathName==href?"" : "group-hover:animate-underline group-hover:block"} w-[110%] blue-gradient h-[0.1em] rounded-full animate-underline`}></div>
+                 
+         
+                    {pathName == href && <div className="absolute left-0 right-0 bottom-0 w-[110%] blue-gradient h-[0.1em] rounded-full animate-underline"></div>}
+                  </li>
                 </Link>
               ))}
             </ul>
@@ -83,21 +86,22 @@ const Header = () => {
               Login
             </button>
 
+            {/* <button onClick={() => setShowLoginModal(true)}>Login</button> */}
             {/* hamburger menu */}
             <button className=" md:hidden p-6 flex flex-col gap-1 " onClick={handleOpenMenu}>
-              <div className={`bg-[#15278c] h-[2px] w-6 rounded-lg transition duration-300 ${isOpen && "rotate-45 translate-y-1"}`}></div>
-              <div className={`bg-[#15278c] h-[2px] w-6 rounded-lg transition duration-300 ${isOpen && "opacity-0"}`}></div>
-              <div className={`bg-[#15278c] h-[2px] w-6 rounded-lg transition duration-300 ${isOpen && "-rotate-45 -translate-y-2"}`}></div>
+              <div className={`bg-[#15278c] h-[2px] w-6 rounded-lg transition duration-300 ${isExpanded && "rotate-45 translate-y-1"}`}></div>
+              <div className={`bg-[#15278c] h-[2px] w-6 rounded-lg transition duration-300 ${isExpanded && "opacity-0"}`}></div>
+              <div className={`bg-[#15278c] h-[2px] w-6 rounded-lg transition duration-300 ${isExpanded && "-rotate-45 -translate-y-2"}`}></div>
             </button>
           </div>
           <div className="absolute inset-0">
-            {isOpen && <Menu />} 
+            {isExpanded && <Menu />} 
             </div>
         </div>
       </nav>
 
       <Modal
-        isOpen={showSignUpModal}
+        isOpen={showSignUpModal || showLoginModal}
         onClose={() => setShowSignUpModal(false)}
       >
         <AnimatePresence>
