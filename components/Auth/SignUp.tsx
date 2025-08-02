@@ -202,7 +202,7 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
               />
               <label
                 htmlFor={inputName}
-                className="cursor-text transition-all duration-300 peer-focus:text-[1.1em] peer-focus:px-1 peer-focus:-top-0.5 peer-not-placeholder-shown:text-[#15278c] peer-not-placeholder-shown:-top-0.5 peer-not-placeholder-shown:text-[1.1em] peer-not-placeholder-shown:px-1  absolute left-12 top-[50%] -translate-y-[50%] text-[1.1em] bg-white text-gray-500 pointer-events-none"
+                className="cursor-text transition-all duration-300 peer-focus:text-[1.1em] peer-focus:px-1 peer-focus:-top-0.5 peer-not-placeholder-shown:text-[#15278c] peer-not-placeholder-shown:-top-0.5 peer-not-placeholder-shown:text-[1.1em] peer-not-placeholder-shown:px-1  absolute left-12 top-[50%] -translate-y-[50%] text-[1.1em] bg-white text-gray-500 "
               >
                 {input}
               </label>

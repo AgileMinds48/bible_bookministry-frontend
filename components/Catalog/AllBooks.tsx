@@ -75,6 +75,8 @@ const AllBooks = () => {
     setRating(rating);
   }
   const carouselRef = useRef<HTMLDivElement>(null);
+
+  //favorites object
   const [isFav, setisFav] = useState(
     getItemsFromLocalStorage("favorites", Object.fromEntries(Books.map((book) => [book.id, false])))
   );

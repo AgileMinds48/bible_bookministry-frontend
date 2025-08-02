@@ -155,7 +155,7 @@ interface popupDetails {
 
                     </div>
                   <button onClick={() => handleAddToCart(title, img, id)}
-                    className={`mt-auto border w-full justify-center rounded-lg px-4 p-2  bottom-0  transition duration-300 flex items-center text-sm gap-1 cursor-pointer ${added[id] ? "bg-[#56c10b] text-white hover:bg-[#317402]" : "text-[black] border-[#15278c] hover:bg-[#15278c] hover:text-white"}`}>
+                    className={`mt-auto border w-full justify-center rounded-lg px-4 p-2  bottom-0  transition duration-300 flex items-center text-sm gap-1 cursor-pointer ${added[id] ? "bg-[#15278c] text-white hover:bg-[#15278c]" : "text-[black] border-[#15278c] hover:bg-[#15278c] hover:text-white"}`}>
                     {added[id] ? "Remove from cart" :
                       <span className="flex gap-1 items-center">
                         <FaCartPlus />Add to cart</span>}
@@ -177,7 +177,7 @@ interface popupDetails {
           animate={{ x: 0, opacity: 1 }}
           transition={{type:"spring",duration:0.4 }}
           exit={{x:200,opacity:0}}
-            className='fixed bottom-10 right-4 h-32 w-[26em]  rounded-2xl p-2 bg-white/60 backdrop-blur-2xl border-2 border-gray-400 z-100'>
+            className='fixed bottom-10 right-4 h-32 w-[26em]  rounded-2xl p-2 bg-white/90 backdrop-blur-2xl border-2 border-gray-400 z-100'>
          <CartPopup bookName={popupBookDetails.bookName} image={popupBookDetails.image} isAdded={popupBookDetails.isAdded} />
           </motion.div>)}
 

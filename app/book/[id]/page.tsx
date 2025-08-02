@@ -1,6 +1,5 @@
 import { Books } from '@/app/utils/data'
 import BookDetail from '@/components/Book/BookDetail'
-import { div } from 'framer-motion/client'
 import React from 'react'
 
 type BookPageProps = {

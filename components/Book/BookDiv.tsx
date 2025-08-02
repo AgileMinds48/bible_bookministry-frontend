@@ -6,6 +6,7 @@ import { FaCartPlus, FaStar } from 'react-icons/fa'
 import { ImBooks } from 'react-icons/im'
 import { MdFavorite } from 'react-icons/md'
 import { RiMoneyDollarCircleLine } from 'react-icons/ri'
+
 interface BookDiv extends Book{
   handleFav: (title: string, img: StaticImageData, id: number) => void
   handleAddToCart:(title:string,img:StaticImageData,id:number)=>void
@@ -30,7 +31,7 @@ const BookDiv:React.FC<BookDiv>= ({img, title, author, price, rating,id,handleFa
                     >
                       <MdFavorite
                         className={`text-3xl  opacity-0 group-hover:opacity-100 transition duration-500 ${
-                          isFav[id]
+                          isFav?.[id]
                             ? 'text-red-500 opacity-100 animate-bubble'
                             : 'text-white'
                         }`}
@@ -65,9 +66,9 @@ const BookDiv:React.FC<BookDiv>= ({img, title, author, price, rating,id,handleFa
                     </div>
                    
                   </div>
-                    <button className={`mt-2 p-[0.4em] rounded-lg text-sm transition duration-150   cursor-pointer     border border-[#15278c] ${added[id] ? "text-white bg-[#15278c] hover:bg-[#040d42]" : "text-[#15278c] hover:bg-[#15278c] bg-white hover:text-white"} `}
+                    <button className={`mt-2 p-[0.4em] rounded-lg text-sm transition duration-150   cursor-pointer     border border-[#15278c] ${added?.[id] ? "text-white bg-[#15278c] hover:bg-[#040d42]" : "text-[#15278c] hover:bg-[#15278c] bg-white hover:text-white"} `}
                       onClick={(e) => handleAddToCart(title, img,id)}>
-                   {added[id] ? "Remove from cart" : <span className='flex items-center justify-center gap-2'><FaCartPlus /> Add to cart </span>}
+                   {added?.[id] ? "Remove from cart" : <span className='flex items-center justify-center gap-2'><FaCartPlus /> Add to cart </span>}
                   </button>
                   </div>
                 </div>

@@ -42,16 +42,16 @@ const Header = () => {
 
   return (
     <>
-      <nav className={`p-4 md:p-4 md:px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-50 fixed shrink-0 overflow-hidden md:top-2 top-0 left-0 right-0 rounded-lg md:left-10 md:right-10 shadow-sm backdrop-blur-xl bg-[#B0D4E3]/50 `}>
-        <div className='relative w-full md:max-w-[100em] md:min-w-6xl min-w-full flex justify-between items-center'>
-          <div className="md:flex md:w-[30%] items-center justify-between ">
+      <nav className={`p-4 md:p-4 md:px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-[9999] fixed shrink-0 overflow-hidden md:top-2 top-0 left-0 right-0 rounded-lg md:left-10 md:right-10 shadow-sm backdrop-blur-xl bg-[#B0D4E3]/50 `}>
+        <div className='relative w-full md:max-w-[80em] md:min-w-6xl min-w-full flex justify-between items-center'>
+          <div className="md:flex md:w-[30%] items-center justify-between space-x-4">
             <div className="h-[2.31em] w-12 object-cover rounded-full">
               <Image priority={true} src={logo} alt="Bible and Book ministries logo" className='h-full w-full' />
             </div>
-            <ul className="hidden md:flex justify-between md:w-[80%] text-sm overflow-hidden">
+            <ul className="hidden md:flex justify-between md:w-[100%] text-sm overflow-hidden">
               {navItems.map(({ label, href }, idx) => (
                 <Link key={idx} href={href}>
-                  <li className={`peer cursor-pointer hover:scale-[1.1] font-medium text-[1.2em] transition duration-300 p-1  ${pathName === href ? "text-[#56c10b]" : "text-black"}`}>{label}</li>
+                  <li className={`peer cursor-pointer hover:scale-[1.1] font-medium lg:text-[1.2em] transition duration-300 p-1  ${pathName === href ? "text-[#15278c]" : "text-black"}`}>{label}</li>
                   <div className={`hidden ${pathName==href?"" : "peer-hover:animate-underline peer-hover:block"} w-[110%] blue-gradient h-[0.2em] rounded-full animate-underline`}></div>
                  {pathName==href && <div className="w-[110%] blue-gradient h-[0.2em] rounded-full animate-underline"></div>}
                 </Link>
@@ -62,9 +62,9 @@ const Header = () => {
             <div className='absolute top-[50%] left-4 -translate-y-[55%] text-xl'>  <CiSearch /></div>
             <input type="text" name='search-bar' className='w-full h-full border border-black p-4 px-4 pl-10 outline-0 rounded-full shadow-lg focus:shadow-2xl duration-150 transition antialiased' placeholder='Search for books by title, author' />
           </div> */}
-          <div className="min-w-[20%] max-w-[50%] flex justify-between items-center">
+          <div className="min-w-[15%] flex justify-between items-center">
             <button className="relative cursor-pointer text-2xl"> <Link href={"/cart"}>
-              <span className="absolute -top-2 text-[0.4em] -right-2 bg-[#5a88a7]/60 text-white  min-h-4 min-w-4 flex items-center justify-center rounded-full">
+              <span className="absolute -top-2 text-[0.4em] -right-2 bg-[#15278c] text-white  min-h-4 min-w-4 flex items-center justify-center rounded-full">
                 3
               </span>
               <CiShoppingCart />
