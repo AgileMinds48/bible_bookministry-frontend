@@ -138,7 +138,7 @@ export const inputItemsSignUp:signUpField[] = [{
 }]
 
 export interface Book{
-  img:StaticImageData,
+  img:string | StaticImageData,
   title: string,
   author: string,
   price:number,

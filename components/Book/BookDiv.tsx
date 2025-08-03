@@ -8,8 +8,8 @@ import { MdFavorite } from 'react-icons/md'
 import { RiMoneyDollarCircleLine } from 'react-icons/ri'
 
 interface BookDiv extends Book{
-  handleFav: (title: string, img: StaticImageData, id: number) => void
-  handleAddToCart:(title:string,img:StaticImageData,id:number)=>void
+  handleFav: (title: string, img: string | StaticImageData, id: number) => void
+  handleAddToCart:(title:string,img:string | StaticImageData,id:number)=>void
   isFav: { [key: number]: boolean }
   added:{ [key: string]: boolean }
 }
@@ -19,7 +19,9 @@ const BookDiv:React.FC<BookDiv>= ({img, title, author, price, rating,id,handleFa
       <div className="group h-full relative before:pointer-events-none before:absolute before:inset-0 before:bottom-0 before:bg-linear-to-t  before:from-black/30 before:from-0% before:via-black/10 before:via-60% before:to-black/0 before:to-100% before:opacity-0 hover:before:opacity-100 before:transition before:duration-500  rounded-2xl overflow-hidden">
         <Link key={id} href={`/book/${id}`}>
                   <Image
-                    src={img}
+            src={img}
+            width={192}
+            height={280}
                     alt=""
                     className="h-full w-full object-cover object-center"
           />

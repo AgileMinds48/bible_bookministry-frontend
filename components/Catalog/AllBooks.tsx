@@ -1,5 +1,5 @@
 'use client';
-import { Book, Books, getItemsFromLocalStorage, setItemsToLocalStorage } from '@/app/utils/data';
+import { Book, getItemsFromLocalStorage, setItemsToLocalStorage } from '@/app/utils/data';
 import { StaticImageData } from 'next/image';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Sidebar from './Sidebar';
@@ -8,11 +8,42 @@ import CartPopup from '../CartPopup';
 import { AnimatePresence, motion } from 'framer-motion';
 import FavPopup from '../FavPopup';
 import BookDiv from '../Book/BookDiv';
-import Link from 'next/link';
+import axios from 'axios';
 
 
 
 const AllBooks = () => {
+  //data fetching
+  const [allBooks, setAllBooks] = useState<Book[]>([])
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+  useEffect(() => {
+    const fetchBooks = async () => {
+          try {
+            const response = await axios.get(`${backendUrl}/api/v1/books/all-books`)
+            console.log(response.data);
+
+            //mapping API response to Book interface
+        const mappedBooks: Book[] = response.data.content.map((book: any)=> ({
+          id: book.bookId,
+          title: book.bookTitle,
+          author: book.bookAuthor,
+          price: book.bookPrice,
+         rating: 0, // Default since API doesn't provide rating
+        category: book.bookCategory,
+        img: book.media[0] || ''
+        }))
+            setAllBooks(mappedBooks);     
+    } catch (err) {
+      console.error("Unable to fetch", err);
+    }
+    }
+    fetchBooks();
+
+},[backendUrl])
+
+
+
+
   interface popupDetails {
     bookName: string
     image: StaticImageData | undefined
@@ -31,7 +62,7 @@ const AllBooks = () => {
 
   //list of sorts pulling algorithms from Filter.tsx
   const sortedBooks = useMemo(() => {
-    let filteredBooks = filterByPriceRange(Books, priceRange.min, priceRange.max);
+    let filteredBooks = filterByPriceRange(allBooks, priceRange.min, priceRange.max);
     filteredBooks = filterByRating(filteredBooks, rating)
     if (currentSort === "title-asc") {
       return sortByTitleAZ(filteredBooks);
@@ -78,11 +109,11 @@ const AllBooks = () => {
 
   //favorites object
   const [isFav, setisFav] = useState(
-    getItemsFromLocalStorage("favorites", Object.fromEntries(Books.map((book) => [book.id, false])))
+    getItemsFromLocalStorage("favorites", Object.fromEntries(allBooks.map((book) => [book.id, false])))
   );
 
   //favorite funciton
-  const handleFav = (bookName: string, image: StaticImageData, id: number) => {
+  const handleFav = (bookName: string, image: string | StaticImageData, id: number) => {
     const isCurrentlyAdded = added[id];
     const isFavorite = isFav[id];
 
@@ -126,10 +157,10 @@ const AllBooks = () => {
   })
   //add to cart
   const [added, setAdded] = useState<AddedState>(
-    getItemsFromLocalStorage("cart", Object.fromEntries(Books.map((book) => [book, false])))
+    getItemsFromLocalStorage("cart", Object.fromEntries(allBooks.map((book) => [book, false])))
   );
 
-  const handleAddToCart = (bookName: string, img: StaticImageData, id: number) => {
+  const handleAddToCart = (bookName: string, img: string | StaticImageData, id: number) => {
     const isCurrentlyAdded = added[id];
     const isFavorite = isFav[id];
     setPopupBookDetails({
@@ -163,6 +194,8 @@ const AllBooks = () => {
   useEffect(() => {
     setItemsToLocalStorage("cart", added);
   }, [added])
+
+
 
   return (
     <section className="px-8 pb-56 poppins ">
