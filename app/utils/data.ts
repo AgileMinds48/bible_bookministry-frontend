@@ -144,7 +144,8 @@ export interface Book{
   price:number,
   rating: number,
   category?: string
-  id:number
+  id: number
+  amountInStock?:number
 }
 interface sortOptions{
   value: string,

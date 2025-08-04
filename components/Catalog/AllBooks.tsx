@@ -25,7 +25,7 @@ const AllBooks = () => {
     const fetchBooks = async () => {
       try {
             const response = await axios.get(`${backendUrl}/api/v1/books/all-books?page=${currentPage}`)
-            console.table(response.data);
+            console.log(response.data);
 
             //mapping API response to Book interface
         const mappedBooks: Book[] = response.data.content.map((book: any)=> ({
@@ -33,9 +33,10 @@ const AllBooks = () => {
           title: book.bookTitle,
           author: book.bookAuthor,
           price: book.bookPrice,
-         rating: 0, // Default since API doesn't provide rating
+         rating: 0, 
         category: book.bookCategory,
-        img: book.media[0] || ''
+        img: book.media[0] || '',
+        amountInStock: book.amountInStock
         }))
             setAllBooks(mappedBooks);     
     } catch (err) {
@@ -240,7 +241,7 @@ const AllBooks = () => {
             <div className='w-full h-36'>
               <Loading captioned={true} />
             </div>
-            : sortedBooks?.map(({ img, title, author, price, rating, id }) => (
+            : sortedBooks?.map(({ img, title, author, price, rating, id,amountInStock }) => (
               <AnimatePresence key={id}>
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -257,7 +258,10 @@ const AllBooks = () => {
                     handleFav={handleFav}
                     isFav={isFav}
                     handleAddToCart={handleAddToCart}
-                    added={added} />
+                    added={added}
+                  amountInStock={amountInStock}
+                  />
+                  
                 </motion.div>
                 </AnimatePresence>
             ))}

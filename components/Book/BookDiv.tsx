@@ -20,6 +20,7 @@ const BookDiv: React.FC<BookDiv> = ({
   price,         
   rating,        
   id, 
+  amountInStock,
   handleFav, 
   isFav, 
   handleAddToCart, 
@@ -71,10 +72,11 @@ const BookDiv: React.FC<BookDiv> = ({
                       </p>
                       <span className="border-r border"></span>
                       <p
-                        title="available copies"
+                        title={`${amountInStock} available copies`}
                         className="flex items-baseline-last gap-0.5 text-sm mb-0.5"
                       >
-                        <ImBooks className='translate-y-0.5 '/> 15
+                <ImBooks className='translate-y-0.5 ' />
+                {amountInStock}
                       </p>
                     </div>
                    
