@@ -14,7 +14,9 @@ const CartPopup = ({bookName,image,isAdded}:CartPopupProps) => {
       <div className='m-auto '><FaCheckCircle className='text-green-500 text-5xl ' /></div>
       <div className='w-full h-full bg-black'></div>
       <div className='m-auto flex px-2 gap-2'>
-     {image && <Image src={image} alt="book added to cart" className='max-h-20 max-w-20 object-cover object-center rounded-sm' />
+        {image && <Image src={image}
+     width={80} height={80}
+          alt="book added to cart" className='max-h-20 max-w-20 object-cover object-center rounded-sm' />
 }    <p className='leading-snug font-semibold my-auto'>{bookName} <br />{ <span className='font-light'>{isAdded ? "added to cart successfully" : "removed from cart successfully"} </span>}</p>
       </div>
       </div>

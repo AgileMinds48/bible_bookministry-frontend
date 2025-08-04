@@ -15,7 +15,7 @@ interface BookDiv extends Book{
 }
 const BookDiv:React.FC<BookDiv>= ({img, title, author, price, rating,id,handleFav,isFav,handleAddToCart,added }) => {
   return (
-     <div className="grid grid-cols-1 grid-rows-[58%_42%] cursor-pointer hover:shadow-xl transition duration-100 h-[22em]  w-[12em] shadow-lg rounded-2xl overflow-hidden">
+     <div className="grid grid-cols-1 grid-rows-[58%_42%] cursor-pointer hover:shadow-xl transition duration-100 h-[28em]  w-[14em] shadow-lg rounded-2xl overflow-hidden">
       <div className="group h-full relative before:pointer-events-none before:absolute before:inset-0 before:bottom-0 before:bg-linear-to-t  before:from-black/30 before:from-0% before:via-black/10 before:via-60% before:to-black/0 before:to-100% before:opacity-0 hover:before:opacity-100 before:transition before:duration-500  rounded-2xl overflow-hidden">
         <Link key={id} href={`/book/${id}`}>
                   <Image
@@ -42,28 +42,28 @@ const BookDiv:React.FC<BookDiv>= ({img, title, author, price, rating,id,handleFa
                   }
                 </div>
                 <div className="p-2 px-2 flex flex-col h-full">
-                  <p className="line-clamp-1 text-[1.1em] font-semibold text-[#426074] leading-[1.1em] mb-1">
+                  <p title={title} className="line-clamp-2 text-lg font-semibold text-[#051363] leading-[1.3em] mb-1">
                     {title}
                   </p>
                   <div className="w-full flex items-center gap-2 mt-2">
                     <p className="text-sm text-gray-500">{author}</p>
-                    <div className="bg-gray-600 w-1 h-1 rounded-full"></div>
+                    <div className="bg-gray-600 w-[3px] h-[3px] rounded-full"></div>
                     <span className="text-sm flex items-baseline translate-y-0.5">
                       <FaStar className="text-[#eca624]" /> {rating}{' '}
                     </span>
                   </div>
                   <div className='flex flex-col mt-auto'>
-                  <div className=" flex center  pr-2">
+                  <div className=" flex item-center  pr-2">
                     <div className="flex gap-2">
-                      <p className="flex gap-1 items-center">
-                        <RiMoneyDollarCircleLine /> ₵{price}.00
+                      <p className="flex gap-1 items-center font-semibold">
+                        <RiMoneyDollarCircleLine className='text-[#56c10b]'/> ₵{price}.00
                       </p>
                       <span className="border-r border"></span>
                       <p
                         title="available copies"
-                        className="flex items-baseline-last gap-0.5 text-sm"
+                        className="flex items-baseline-last gap-0.5 text-sm mb-0.5"
                       >
-                        <ImBooks className='translate-y-0.5'/> 15
+                        <ImBooks className='translate-y-0.5 '/> 15
                       </p>
                     </div>
                    

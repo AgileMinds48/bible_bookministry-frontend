@@ -10,6 +10,7 @@ import FavPopup from '../FavPopup';
 import BookDiv from '../Book/BookDiv';
 import axios from 'axios';
 import Loading from '../Loading/loading';
+import Page from '../Pages/Page';
 
 
 
@@ -204,7 +205,7 @@ const AllBooks = () => {
 
   return (
     <section className="px-8 pb-56 poppins ">
-      <div>
+      <div className='relative'>
         <h1 className="text-5xl text-center font-bold bg-gradient-to-br rounded-2xl from-[#5a88a7]/40 to-[#5a88a7]/20  py-10">
           All
           <span className=" text-transparent bg-clip-text blue-gradient">
@@ -213,6 +214,7 @@ const AllBooks = () => {
           </span>{' '}
         
         </h1>
+        
         <div
           ref={carouselRef}
           className="flex flex-wrap relative   shrink-0  py-8 overflow-hidden  gap-8 gap-y-14  justify-start mx-auto pl-4"
@@ -234,8 +236,10 @@ const AllBooks = () => {
               <BookDiv title={title} img={img} author={author} price={price} rating={rating} id={id} handleFav={() => handleFav(title, img, id)} isFav={isFav} handleAddToCart={() => handleAddToCart(title, img, id)} added={added} />
                 </motion.div>
                 </AnimatePresence>
-          ))}
+            ))}
+          
         </div>
+        <Page/>
       </div>
       <AnimatePresence>
         {showPopup.addedToCart && (<motion.div
