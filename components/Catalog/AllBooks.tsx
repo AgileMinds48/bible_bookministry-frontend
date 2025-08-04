@@ -19,6 +19,7 @@ const AllBooks = () => {
   const [allBooks, setAllBooks] = useState<Book[]>([])
   const [loading, setLoading] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [error,setError]= useState<string>()
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
   useEffect(() => {
     setLoading(true);

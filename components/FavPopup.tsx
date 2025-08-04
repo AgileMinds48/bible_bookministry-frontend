@@ -16,16 +16,20 @@ const FavPopup = ({ image, bookName, isFav }: FavPopupProps) => {
       <div className='m-auto '><FaCheckCircle className='text-green-500 text-5xl ' /></div>
       <div className='w-full h-full bg-black'></div>
       <div className='m-auto flex px-2 gap-2'>
+        <div className='h-20 w-20'>
         {image &&
           <Image
           src={image}
-          width={80}
           height={0}
+            width={80}
+            priority={true}
+            loading="eager"
           alt="book added to fav"
-          className='h-20 w-20 object-cover object-center rounded-sm'
-          style={{ height: "auto" }} />
-   
-}    <p className='leading-snug font-semibold my-auto'>{bookName} <br /> <span className='font-light'>{isFav?"added to favorites successfully": "removed from favorites successfully" }</span></p>
+          className='w-full h-full object-cover object-center rounded-sm'
+            />
+          }
+        </div>
+          <p className='leading-snug font-semibold my-auto'>{bookName} <br /> <span className='font-light'>{isFav ? "added to favorites successfully" : "removed from favorites successfully"}</span></p>
       </div>
     </div>
 

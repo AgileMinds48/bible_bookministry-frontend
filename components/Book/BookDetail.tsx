@@ -1,9 +1,7 @@
 import { Book } from '@/app/utils/data';
-import { bk1 } from '@/public';
 import Image, { StaticImageData } from 'next/image';
 import React from 'react'
 import { BiCategory } from 'react-icons/bi';
-import { FaStar } from 'react-icons/fa';
 import { IoIosPricetags } from 'react-icons/io';
 import { MdFavorite, MdOutlineDateRange } from 'react-icons/md';
 import Review from '../Reviews/Review';
