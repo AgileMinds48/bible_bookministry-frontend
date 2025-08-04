@@ -4,7 +4,7 @@ import { FaCheckCircle } from 'react-icons/fa'
 
 interface FavPopupProps {
   bookName: string,
-  image: StaticImageData | undefined,
+  image: string| StaticImageData | undefined,
   isFav: boolean
 }
 const FavPopup = ({ image, bookName, isFav }: FavPopupProps) => {

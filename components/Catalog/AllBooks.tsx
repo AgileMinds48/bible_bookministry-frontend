@@ -9,17 +9,20 @@ import { AnimatePresence, motion } from 'framer-motion';
 import FavPopup from '../FavPopup';
 import BookDiv from '../Book/BookDiv';
 import axios from 'axios';
+import Loading from '../Loading/loading';
 
 
 
 const AllBooks = () => {
   //data fetching
   const [allBooks, setAllBooks] = useState<Book[]>([])
+  const [loading, setLoading] = useState<boolean>(false);
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
   useEffect(() => {
     const fetchBooks = async () => {
-          try {
-            const response = await axios.get(`${backendUrl}/api/v1/books/all-books`)
+      try {
+        setLoading(true);
+            const response = await axios.get(`${backendUrl}/api/v1/books/all-books?page=${2}`)
             console.log(response.data);
 
             //mapping API response to Book interface
@@ -35,6 +38,8 @@ const AllBooks = () => {
             setAllBooks(mappedBooks);     
     } catch (err) {
       console.error("Unable to fetch", err);
+      } finally {
+        setLoading(false);
     }
     }
     fetchBooks();
@@ -46,7 +51,7 @@ const AllBooks = () => {
 
   interface popupDetails {
     bookName: string
-    image: StaticImageData | undefined
+    image: string|StaticImageData | undefined
     isAdded: boolean
     isFav: boolean
   }
@@ -89,7 +94,7 @@ const AllBooks = () => {
       return sortByRatingL(filteredBooks);
     }
     return filteredBooks;
-  }, [currentSort, priceRange, rating])
+  }, [currentSort, priceRange, rating,allBooks])
   const handleSortChange = (sortValue: string) => {
     setCurrentsort(sortValue);
   }
@@ -108,11 +113,11 @@ const AllBooks = () => {
   const carouselRef = useRef<HTMLDivElement>(null);
 
   //favorites object
-  const [isFav, setisFav] = useState(
+  const [isFav, setisFav] = useState<{[key:number]:boolean}>(
     getItemsFromLocalStorage("favorites", Object.fromEntries(allBooks.map((book) => [book.id, false])))
   );
 
-  //favorite funciton
+  //favorite function
   const handleFav = (bookName: string, image: string | StaticImageData, id: number) => {
     const isCurrentlyAdded = added[id];
     const isFavorite = isFav[id];
@@ -129,7 +134,7 @@ const AllBooks = () => {
       addedToFavorites: true
     }))
     //toggle favorite for this id
-    setisFav((prev: any[]) => ({
+    setisFav((prev) => ({
       ...prev,
       [id]: !prev[id],
     }));
@@ -156,8 +161,8 @@ const AllBooks = () => {
     isFav: false
   })
   //add to cart
-  const [added, setAdded] = useState<AddedState>(
-    getItemsFromLocalStorage("cart", Object.fromEntries(allBooks.map((book) => [book, false])))
+  const [added, setAdded] = useState<{[key:number]:boolean}>(
+    getItemsFromLocalStorage("cart", Object.fromEntries(allBooks.map((book) => [book.id, false])))
   );
 
   const handleAddToCart = (bookName: string, img: string | StaticImageData, id: number) => {
@@ -165,7 +170,7 @@ const AllBooks = () => {
     const isFavorite = isFav[id];
     setPopupBookDetails({
       bookName: bookName,
-      image: img,
+      image: img ,
       isAdded: !isCurrentlyAdded,
       isFav: isFavorite
     });
@@ -215,12 +220,20 @@ const AllBooks = () => {
           <div className='fixed bottom-28 top-24 w-[20em] left-0'>
             <Sidebar onSortChange={handleSortChange} onPriceRangeChange={handlePriceRangeChange} onRatingChange={handleRatingChange} />
           </div>
-          {sortedBooks?.map(({ img, title, author, price, rating, id }) => (
-
-            <div key={id} className="rounded-2xl">
-              <BookDiv title={title} img={img} author={author} price={price} rating={rating} id={id} handleFav={() => handleFav(title, img, id)} isFav={isFav} handleAddToCart={() => handleAddToCart(title, img, id)} added={added} />
+          {loading ?
+            <div className='w-full h-36'>
+              <Loading captioned={true} />
             </div>
-
+            : sortedBooks?.map(({ img, title, author, price, rating, id }) => (
+              <AnimatePresence key={id}>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.8 }}
+                  key={id} className="rounded-2xl">
+              <BookDiv title={title} img={img} author={author} price={price} rating={rating} id={id} handleFav={() => handleFav(title, img, id)} isFav={isFav} handleAddToCart={() => handleAddToCart(title, img, id)} added={added} />
+                </motion.div>
+                </AnimatePresence>
           ))}
         </div>
       </div>

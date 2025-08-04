@@ -5,7 +5,7 @@ import React from 'react'
 import { FaCheckCircle } from 'react-icons/fa'
 interface CartPopupProps{
   bookName: string,
-  image: StaticImageData | undefined
+  image: string|  StaticImageData | undefined
   isAdded:boolean 
 }
 const CartPopup = ({bookName,image,isAdded}:CartPopupProps) => {
