@@ -18,13 +18,14 @@ const AllBooks = () => {
   //data fetching
   const [allBooks, setAllBooks] = useState<Book[]>([])
   const [loading, setLoading] = useState<boolean>(false);
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
   useEffect(() => {
+    setLoading(true);
     const fetchBooks = async () => {
       try {
-        setLoading(true);
-            const response = await axios.get(`${backendUrl}/api/v1/books/all-books?page=${2}`)
-            console.log(response.data);
+            const response = await axios.get(`${backendUrl}/api/v1/books/all-books?page=${currentPage}`)
+            console.table(response.data);
 
             //mapping API response to Book interface
         const mappedBooks: Book[] = response.data.content.map((book: any)=> ({
@@ -101,6 +102,13 @@ const AllBooks = () => {
   }
 
   //price range handler
+  useEffect(() => {
+  if (allBooks.length > 0) {
+    const prices = allBooks.map(book => book.price);
+    const maxPrice = Math.max(...prices);
+    setPriceRange({ min: 0, max: maxPrice });
+  }
+}, [allBooks]);
   const handlePriceRangeChange = (minPrice: number, maxPrice: number) => {
     setPriceRange({
       min: minPrice,
@@ -119,14 +127,18 @@ const AllBooks = () => {
   );
 
   //favorite function
-  const handleFav = (bookName: string, image: string | StaticImageData, id: number) => {
+  const handleFav = (id: number) => {
+    //find the book with this id (i.e the book that is 'favorited')
+    const book = allBooks.find(book => book.id === id);
+    if (!book) return;
+
     const isCurrentlyAdded = added[id];
     const isFavorite = isFav[id];
 
     // toggle just the favorite
     setPopupBookDetails({
-      bookName: bookName,
-      image: image,
+      bookName: book.title,
+      image: book.img,
       isAdded: isCurrentlyAdded,
       isFav: !isFavorite
     })
@@ -148,7 +160,7 @@ const AllBooks = () => {
     }, 1500);
   };
 
-  type AddedState = { [key: string]: boolean };
+  type AddedState = { [key: number]: boolean };
   type Popup = { [key: string]: boolean }
   //Popup
   const [showPopup, setShowPopup] = useState<Popup>({
@@ -162,16 +174,18 @@ const AllBooks = () => {
     isFav: false
   })
   //add to cart
-  const [added, setAdded] = useState<{[key:number]:boolean}>(
+  const [added, setAdded] = useState<AddedState>(
     getItemsFromLocalStorage("cart", Object.fromEntries(allBooks.map((book) => [book.id, false])))
   );
 
-  const handleAddToCart = (bookName: string, img: string | StaticImageData, id: number) => {
+  const handleAddToCart = (id: number) => {
+    const book = allBooks.find(book => book.id === id);
+    if (!book) return;
     const isCurrentlyAdded = added[id];
     const isFavorite = isFav[id];
     setPopupBookDetails({
-      bookName: bookName,
-      image: img ,
+      bookName: book.title,
+      image: book.img ,
       isAdded: !isCurrentlyAdded,
       isFav: isFavorite
     });
@@ -233,7 +247,17 @@ const AllBooks = () => {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.8 }}
                   key={id} className="rounded-2xl">
-              <BookDiv title={title} img={img} author={author} price={price} rating={rating} id={id} handleFav={() => handleFav(title, img, id)} isFav={isFav} handleAddToCart={() => handleAddToCart(title, img, id)} added={added} />
+                  <BookDiv
+                    title={title}
+                    img={img}
+                    author={author}
+                    price={price}
+                    rating={rating}
+                    id={id}
+                    handleFav={handleFav}
+                    isFav={isFav}
+                    handleAddToCart={handleAddToCart}
+                    added={added} />
                 </motion.div>
                 </AnimatePresence>
             ))}
