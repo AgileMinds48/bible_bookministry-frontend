@@ -1,5 +1,5 @@
 import { Book } from '@/app/utils/data';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import React from 'react'
 import { BiCategory } from 'react-icons/bi';
 import { IoIosPricetags } from 'react-icons/io';
@@ -12,6 +12,7 @@ type BookDetailProps = {
 }
 
 const BookDetail = ({ book }: BookDetailProps) => {
+  
   // const date = new Date();
   // const today = `${date.getDate()}/ ${((date.getMonth())+1).toString().padStart(2,"0")} / ${date.getFullYear()}`;
   return (

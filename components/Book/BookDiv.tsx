@@ -27,7 +27,7 @@ const BookDiv: React.FC<BookDiv> = ({
   added }) => {
   
   return (
-     <div className="grid grid-cols-1 grid-rows-[60%_40%] cursor-pointer hover:shadow-xl transition duration-100 h-[28em]  w-[14em] shadow-lg rounded-2xl overflow-hidden">
+     <div className="grid grid-cols-1 grid-rows-[60%_40%] cursor-pointer hover:shadow-xl transition duration-100 h-[28em]  w-[12em] shadow-lg rounded-2xl overflow-hidden">
       <div className="group h-full relative before:pointer-events-none before:absolute before:inset-0 before:bottom-0 before:bg-linear-to-t  before:from-black/30 before:from-0% before:via-black/10 before:via-60% before:to-black/0 before:to-100% before:opacity-0 hover:before:opacity-100 before:transition before:duration-500  rounded-2xl overflow-hidden">
         <Link key={id} href={`/book/${id}`}>
                   <Image
@@ -57,7 +57,7 @@ const BookDiv: React.FC<BookDiv> = ({
                   <p title={title} className="line-clamp-2 text-lg font-semibold text-[#051363] leading-[1.3em] mb-1">
                     {title}
                   </p>
-                  <div className="w-full flex items-center gap-2 mt-2">
+                  <div className="w-full flex items-center gap-2 mt-">
                     <p className="text-sm text-gray-500">{author}</p>
                     <div className="bg-[#15278c] w-[5px] h-[5px] rounded-full shrink-0"></div>
                     <span className="text-sm flex items-baseline translate-y-0.5">
@@ -81,7 +81,7 @@ const BookDiv: React.FC<BookDiv> = ({
                     </div>
                    
                   </div>
-                    <button className={`mt-2 p-[0.4em] rounded-lg text-sm transition duration-150   cursor-pointer     border border-[#15278c] ${added?.[id] ? "text-white bg-[#15278c] hover:bg-[#040d42]" : "text-[#15278c] hover:bg-[#15278c] bg-white hover:text-white"} `}
+                    <button className={`mt-1 p-[0.4em] rounded-lg text-sm transition duration-150   cursor-pointer     border border-[#15278c] ${added?.[id] ? "text-white bg-[#15278c] hover:bg-[#040d42]" : "text-[#15278c] hover:bg-[#15278c] bg-white hover:text-white"} `}
                       onClick={(e) => handleAddToCart(id)}>
                    {added?.[id] ? "Remove from cart" : <span className='flex items-center justify-center gap-2'><FaCartPlus /> Add to cart </span>}
                   </button>
