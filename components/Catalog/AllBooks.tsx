@@ -11,6 +11,7 @@ import BookDiv from '../Book/BookDiv';
 import axios from 'axios';
 import Loading from '../Loading/loading';
 import Page from '../Pages/Page';
+import { div } from 'framer-motion/client';
 
 
 
@@ -19,6 +20,7 @@ const AllBooks = () => {
   const [allBooks, setAllBooks] = useState<Book[]>([])
   const [loading, setLoading] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(0);
+  const [totalPages, setTotalPages] = useState<number>();
   const [error, setError] = useState<string>();
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
   useEffect(() => {
@@ -28,6 +30,7 @@ const AllBooks = () => {
             const response = await axios.get(`${backendUrl}/api/v1/books/all-books?page=${currentPage}`)
             console.log(response.data);
 
+        setTotalPages(response.data.totalPages)
             //mapping API response to Book interface
         const mappedBooks: Book[] = response.data.content.map((book: any)=> ({
           id: book.bookId,
@@ -39,7 +42,8 @@ const AllBooks = () => {
         img: book.media[0] || '',
         amountInStock: book.amountInStock
         }))
-            setAllBooks(mappedBooks);     
+        setAllBooks(mappedBooks);     
+        
       } catch (err) {
         setError("There was a problem loading books. Our librarian would look into the issue for you soon.")
       console.error("Unable to fetch", err);
@@ -251,7 +255,11 @@ const AllBooks = () => {
             <div className='w-full h-36'>
               <Loading captioned={true} />
             </div>
-            : sortedBooks?.map(({ img, title, author, price, rating, id,amountInStock }) => (
+            : error ? 
+             <div>
+                <p className='text-red-500'>{ error}</p>
+             </div>
+            : sortedBooks?.map(({ img, title, author, price, rating, id, amountInStock }) => (
               <AnimatePresence key={id}>
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -277,7 +285,11 @@ const AllBooks = () => {
             ))}
           
         </div>
-        <Page onPageNext={handleNextpage} onPagePrev={handlePreviousPage} currentPage={currentPage}/>
+        {!loading && !error && allBooks.length > 0 &&
+          (
+          <Page onPageNext={handleNextpage} onPagePrev={handlePreviousPage} currentPage={currentPage} totalPages={totalPages} />
+        )
+        }
       </div>
       <AnimatePresence>
         {showPopup.addedToCart && (<motion.div
