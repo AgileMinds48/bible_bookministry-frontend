@@ -1,5 +1,5 @@
 
-import { mainbook } from '@/public';
+import { lcp, mainbook } from '@/public';
 import Image from 'next/image';
  import React from 'react'
 import { GrNext } from 'react-icons/gr';
@@ -20,9 +20,9 @@ const Landing = () => {
           </div>
         </div>
         <div className=' w-full place-items-center relative'>
-          <Image priority={true} src={mainbook} alt='book' className='h-[25em] object-contain absolute top-[40%] -left-0 -translate-y-[45%] -rotate-[40deg]' />
-          <Image priority={true} src={mainbook} alt='book' className='h-[25em] object-contain absolute top-[45%] -right-0 -translate-y-[45%] rotate-30' />
-          <Image priority={true} src={mainbook} alt='book' className='h-[25em] object-contain absolute top-[50%] -translate-y-[50%]' />
+          {/* <Image priority={true} src={mainbook} alt='book' className='h-[25em] object-contain absolute top-[40%] -left-0 -translate-y-[45%] -rotate-[40deg]' />
+          <Image priority={true} src={mainbook} alt='book' className='h-[25em] object-contain absolute top-[45%] -right-0 -translate-y-[45%] rotate-30' /> */}
+          <Image priority={true} src={lcp} alt='book' className='h-[40em] object-contain absolute top-[50%] -translate-y-[45%] -translate-x-30 drop-shadow-2xl' />
         </div>
       </div>
     </main>
