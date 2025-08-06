@@ -19,7 +19,7 @@ const AllBooks = () => {
   const [allBooks, setAllBooks] = useState<Book[]>([])
   const [loading, setLoading] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(0);
-  const [error,setError]= useState<string>()
+  const [error, setError] = useState<string>();
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
   useEffect(() => {
     setLoading(true);
@@ -40,7 +40,8 @@ const AllBooks = () => {
         amountInStock: book.amountInStock
         }))
             setAllBooks(mappedBooks);     
-    } catch (err) {
+      } catch (err) {
+        setError("There was a problem loading books. Our librarian would look into the issue for you soon.")
       console.error("Unable to fetch", err);
       } finally {
         setLoading(false);
@@ -48,10 +49,18 @@ const AllBooks = () => {
     }
     fetchBooks();
 
-},[backendUrl])
+},[currentPage])
 
+  //for pagination
+  const handleNextpage = () => {
+    setCurrentPage(currentPage + 1);
+  }
 
-
+  const handlePreviousPage = () => {
+    if (currentPage >= 1) {
+      setCurrentPage(currentPage - 1);
+  }
+}
 
   interface popupDetails {
     bookName: string
@@ -268,7 +277,7 @@ const AllBooks = () => {
             ))}
           
         </div>
-        <Page/>
+        <Page onPageNext={handleNextpage} onPagePrev={handlePreviousPage} currentPage={currentPage}/>
       </div>
       <AnimatePresence>
         {showPopup.addedToCart && (<motion.div
