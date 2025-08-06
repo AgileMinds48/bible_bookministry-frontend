@@ -1,5 +1,6 @@
 import React from 'react'
 import { GrNext, GrPrevious } from 'react-icons/gr'
+import { start } from 'repl'
 
 interface PageProps{
   onPageChange:(newPage:number)=>void
@@ -9,9 +10,11 @@ interface PageProps{
   totalPages:number | undefined
 }
 const Page = ({ onPageNext, onPagePrev, currentPage, totalPages,onPageChange }: PageProps) => {
-  const endOfPages = (currentPage + 1) === totalPages;
-  //api returns pages starting from index 0
   const pageNumber = currentPage + 1;
+  const endOfPages = (currentPage + 1) === totalPages;
+  const startOfPages=pageNumber===1
+  //api returns pages starting from index 0
+
   const generatePages = () => {
     if (!totalPages) return [pageNumber];
     const pages = [];
@@ -27,9 +30,10 @@ const Page = ({ onPageNext, onPagePrev, currentPage, totalPages,onPageChange }: 
   }
   const bookPages = generatePages();
   return (
-    
-    <div className='w-full text-center space-x-8 mt-10 flex justify-center items-center'>
-      <button
+    <>
+    <div className='w-full text-center space-x-8 mt-10 flex justify-center items-center poppins'>
+        <button
+          disabled={startOfPages}
         onClick={ onPagePrev}
         aria-label='previous-button'
         className='p-4 shadow-2xl rounded-full cursor-pointer hover:outline-offset-2 hover:outline-2 hover:outline-[#56c10b] '>
@@ -53,7 +57,11 @@ const Page = ({ onPageNext, onPagePrev, currentPage, totalPages,onPageChange }: 
         className={`p-4 shadow-2xl rounded-full  hover:outline-offset-2 hover:outline-2  ${endOfPages?"cursor-not-allowed hover:outline-gray-500" : "cursor-pointer hover:outline-[#56c10b]"}` }>
         <GrNext />
       </button>
-    </div>
+      </div>
+      <p className='text-center mt-4'>
+        <em className='text-gray-700 '>Showing  <span className='font-semibold'>page {pageNumber}</span> out of <span className='font-semibold'>{totalPages}</span> available pages</em>
+      </p>
+    </>
   )
 }
 
