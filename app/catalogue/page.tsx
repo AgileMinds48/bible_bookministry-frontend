@@ -7,7 +7,7 @@ const page = () => {
   return (
     <div className='pl-[20em]'>
       <CatalogueHeader />
-      <PopularBooks/>
+      {/* <PopularBooks/> */}
       <AllBooks />
       
     </div>

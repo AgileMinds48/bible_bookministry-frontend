@@ -19,8 +19,10 @@ const BookDetail = ({ book }: BookDetailProps) => {
     <section className='min-h-screen pt-36 py-12 px-10 flex justify-center poppins relative'>
       <div className='max-w-[100em] min-w-[90em] min-h-[90em] grid grid-cols-[1.5fr_1fr] gap-10 rounded-lg'>
         <div className='min-h-screen'>
-          <div className='w-full h-[60em] border-gray-400 relative '>
-            <Image src={book.img} alt={`image of the book `} className='rounded-lg max-w-full max-h-full min-h-full min-w-full object-cover object-center' />
+          <div className='w-[40em] h-[50em] border-gray-400 relative '>
+            <div className='w-full h-full'>
+              <Image src={book.img} alt={`image of the book `} fill={true} className='rounded-lg max-w-full max-h-full min-h-full min-w-full object-cover object-center' />
+              </div>
             <div className='absolute top-4 right-8 z-10 '>
               <MdFavorite className='text-6xl text-gray-300 cursor-pointer' />
             </div>

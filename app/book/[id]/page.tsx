@@ -10,11 +10,10 @@ type BookPageProps = {
 }
 const page = async ({ params }: BookPageProps) => {
   const { id } = await params;
-  const bookId = parseInt(id)
+  const bookId = id;
 
   try {
     const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
-    
     const response = await axios.get(`${backendUrl}/api/v1/books/get-book/${bookId}`);
       const BookData = response.data;
     const selectedBook: Book = {
@@ -35,7 +34,7 @@ const page = async ({ params }: BookPageProps) => {
   )
   } catch(error) {
     console.error("Error fetching book: ", error)
-    return <div>Book not found</div>
+    return <div className='pt-44'>Book not found</div>
   }
   // if (isNaN(bookId)) return (
   //   <div>Error accessing book</div>
