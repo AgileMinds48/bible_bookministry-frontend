@@ -42,7 +42,7 @@ const Header = () => {
 
   return (
     <>
-      <nav className={`p-4 md:p-4 md:px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-[9999] fixed shrink-0 overflow-hidden md:top-2 top-0 left-0 right-0 rounded-lg md:left-8 md:right-8 lg:left-20 lg:right-20 shadow-sm backdrop-blur-xl bg-[#B0D4E3]/50 `}>
+      <nav className={`p-4 md:p-4 md:px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-[9999] fixed shrink-0 overflow-hidden md:top-2 top-0 left-0 right-0 rounded-lg md:left-8 md:right-8 lg:left-20 lg:right-20 shadow-sm backdrop-blur-xl outline-2 outline-[#B0D4E3] bg-[#B0D4E3]/50 `}>
         <div className='relative w-full md:max-w-[80em] md:min-w-6xl min-w-full flex justify-between items-center'>
           <div className="md:flex md:w-[50%] items-center justify-between space-x-4">
             <div className="h-[2.31em] w-12 object-cover rounded-full">
