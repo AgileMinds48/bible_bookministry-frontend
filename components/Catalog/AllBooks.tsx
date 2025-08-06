@@ -11,7 +11,6 @@ import BookDiv from '../Book/BookDiv';
 import axios from 'axios';
 import Loading from '../Loading/loading';
 import Page from '../Pages/Page';
-import { div } from 'framer-motion/client';
 
 
 
@@ -56,6 +55,9 @@ const AllBooks = () => {
 },[currentPage])
 
   //for pagination
+  const handlePageChange = (newPage:number) => {
+    setCurrentPage(newPage)
+  }
   const handleNextpage = () => {
     setCurrentPage(currentPage + 1);
   }
@@ -256,9 +258,23 @@ const AllBooks = () => {
               <Loading captioned={true} />
             </div>
             : error ? 
-             <div>
-                <p className='text-red-500'>{ error}</p>
-             </div>
+             (
+            <div className='w-full h-36 flex items-center justify-center'>
+              <div className='text-center p-8 bg-red-50 border border-red-200 rounded-lg'>
+                <h3 className='text-lg font-semibold text-red-800 mb-2'>Oops! Something went wrong</h3>
+                <p className='text-red-600'>{error}</p>
+                <button 
+                  onClick={() => {
+                    setError(undefined);
+                    setCurrentPage(0); // This will trigger the useEffect to refetch
+                  }}
+                  className='mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors'
+                >
+                  Try Again
+                </button>
+              </div>
+            </div>
+          ) 
             : sortedBooks?.map(({ img, title, author, price, rating, id, amountInStock }) => (
               <AnimatePresence key={id}>
                 <motion.div
@@ -287,7 +303,13 @@ const AllBooks = () => {
         </div>
         {!loading && !error && allBooks.length > 0 &&
           (
-          <Page onPageNext={handleNextpage} onPagePrev={handlePreviousPage} currentPage={currentPage} totalPages={totalPages} />
+          <Page 
+            onPageNext={handleNextpage}
+            onPagePrev={handlePreviousPage}
+            onPageChange={handlePageChange}
+            currentPage={currentPage}
+            totalPages={totalPages}
+          />
         )
         }
       </div>
