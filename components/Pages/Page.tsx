@@ -5,7 +5,7 @@ interface PageProps{
   onPageNext:()=>void
   onPagePrev: () => void
   currentPage: number
-  totalPages:number
+  totalPages:number | undefined
 }
 const Page = ({ onPageNext, onPagePrev, currentPage, totalPages }: PageProps) => {
   const endOfPages = (currentPage + 1) === totalPages;

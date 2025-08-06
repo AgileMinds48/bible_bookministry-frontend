@@ -61,7 +61,7 @@ const BookDiv: React.FC<BookDiv> = ({
                     <p className="text-sm text-gray-500 line-clamp-2">{author}</p>
                     <div className="bg-[#15278c] w-[5px] h-[5px] rounded-full shrink-0"></div>
                     <span className="text-sm flex items-baseline translate-y-0.5">
-                      <FaStar className="text-[#eca624]" /> {rating}{' '}
+                      <FaStar className="text-[#eca624]" /> {rating}
                     </span>
                   </div>
                   <div className='flex flex-col mt-auto'>
