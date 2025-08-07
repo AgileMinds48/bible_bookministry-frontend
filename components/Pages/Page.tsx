@@ -42,6 +42,7 @@ const Page = ({ onPageNext, onPagePrev, currentPage, totalPages,onPageChange }: 
       <div className='flex gap-2'>
         {bookPages.map((pageNum) => (
           <button
+            key={pageNum}
             className={`px-5 p-3  border cursor-pointer rounded-lg antialiased transition duration-200 
               ${pageNum === pageNumber ? "bg-[#15278c] text-white" : "outline-gray-600 text-black hover:bg-gray-200/80 bg-gray-100/70"}`}
           onClick={()=>onPageChange(pageNum)}
