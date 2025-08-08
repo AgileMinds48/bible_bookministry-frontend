@@ -110,7 +110,7 @@ const Header = () => {
           exit={{  x: 500 }}
           transition={{duration:0.3 }}
           
-          className={`fixed inset-0 top-10 z-[100] `}>
+          className={`fixed inset-0 left-20 top-10 z-[100] `}>
             <Menu /> 
       </motion.div>)}
       </AnimatePresence>
