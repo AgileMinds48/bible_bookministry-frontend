@@ -10,8 +10,9 @@ interface SidebarProps {
   onSortChange: (sortValue: string) => void
   onPriceRangeChange: (min: number, max: number) => void
   onRatingChange: (rating: number) => void
+  onSearchChange:(e:React.ChangeEvent<HTMLInputElement>)=>void
 }
-const Sidebar: React.FC<SidebarProps> = ({ onSortChange, onPriceRangeChange, onRatingChange }) => {
+const Sidebar: React.FC<SidebarProps> = ({ onSortChange, onPriceRangeChange, onRatingChange,onSearchChange }) => {
   // State for collapsible sections
   const [expandedSections, setExpandedSections] = useState({
     sort: true,
@@ -79,6 +80,12 @@ const Sidebar: React.FC<SidebarProps> = ({ onSortChange, onPriceRangeChange, onR
 
   return (
     <aside className='bg-white shadow-2xl rounded-lg p-6 h-fit sticky top-24 poppins'>
+      <input
+        type="text"
+        name='search-input'
+        placeholder='Search for book by title or author'
+        onChange={onSearchChange}
+        className='h-10 p-2 w-full rounded-full outline-2 outline-[#15278c] mb-2 shadow-2xl' />
       {/* Header */}
       <div className='flex justify-between items-center mb-6'>
         <h2 className='text-xl font-medium text-[#3D3D3D] poppins'>Filters</h2>

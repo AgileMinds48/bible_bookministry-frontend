@@ -3,7 +3,7 @@ import { Book, getItemsFromLocalStorage, setItemsToLocalStorage } from '@/app/ut
 import { StaticImageData } from 'next/image';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Sidebar from './Sidebar';
-import { filterByPriceRange, filterByRating, sortByAuthorAZ, sortByAuthorZA, sortByPriceHL, sortByPriceLH, sortByRatingH, sortByRatingL, sortByTitleAZ, sortByTitleZA } from './Filters';
+import { filterByPriceRange, filterByRating, filterBySearch, sortByAuthorAZ, sortByAuthorZA, sortByPriceHL, sortByPriceLH, sortByRatingH, sortByRatingL, sortByTitleAZ, sortByTitleZA } from './Filters';
 import CartPopup from '../CartPopup';
 import { AnimatePresence, motion } from 'framer-motion';
 import FavPopup from '../FavPopup';
@@ -68,6 +68,13 @@ const AllBooks = () => {
   }
 }
 
+  //search
+  const [searchInput,setSearchInput]= useState<string>()
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setSearchInput(value);
+  }
+  
   interface popupDetails {
     bookName: string
     image: string|StaticImageData | undefined
@@ -88,6 +95,11 @@ const AllBooks = () => {
   const sortedBooks = useMemo(() => {
     let filteredBooks = filterByPriceRange(allBooks, priceRange.min, priceRange.max);
     filteredBooks = filterByRating(filteredBooks, rating)
+
+    //search filtering
+    filteredBooks=filterBySearch(filteredBooks,searchInput || "")
+
+
     if (currentSort === "title-asc") {
       return sortByTitleAZ(filteredBooks);
     }
@@ -113,7 +125,7 @@ const AllBooks = () => {
       return sortByRatingL(filteredBooks);
     }
     return filteredBooks;
-  }, [currentSort, priceRange, rating,allBooks])
+  }, [currentSort, priceRange, rating,allBooks,searchInput])
   const handleSortChange = (sortValue: string) => {
     setCurrentsort(sortValue);
   }
@@ -251,7 +263,12 @@ const AllBooks = () => {
           className="flex flex-wrap relative   shrink-0  py-8 overflow-hidden  gap-8 gap-y-14  justify-start mx-auto pl-4"
         >
           <div className='fixed bottom-28 top-24 w-[20em] left-0'>
-            <Sidebar onSortChange={handleSortChange} onPriceRangeChange={handlePriceRangeChange} onRatingChange={handleRatingChange} />
+            <Sidebar
+              onSortChange={handleSortChange}
+              onPriceRangeChange={handlePriceRangeChange}
+              onRatingChange={handleRatingChange}
+            onSearchChange={handleSearch}
+            />
           </div>
           {loading ?
             <div className='w-full h-36'>

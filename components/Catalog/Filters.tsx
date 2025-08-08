@@ -43,9 +43,18 @@ export const filterByPriceRange = (books:Book[], min:number, max:number) => {
 export const filterByRating = (books:Book[],rating:number) => {
   return books.filter((book) => book.rating <= rating);
 }
+
+export const filterBySearch = (books: Book[],searchTerm:string):Book[] => {
+  if (!searchTerm || searchTerm.trim() === "") {
+    return books;
+  }
+  const normalisedSearch = searchTerm.toLowerCase().trim();
+  return books.filter(book =>
+    book.title.toLowerCase().includes(normalisedSearch) ||
+    book.author.toLowerCase().includes(normalisedSearch)
+  )
+}
 const Filters = () => {
-
-
 
   
 }
