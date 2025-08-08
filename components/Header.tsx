@@ -10,7 +10,7 @@ import { MdFavoriteBorder } from "react-icons/md";
 import Modal from "./Modal";
 import SignUp from "./Auth/SignUp";
 import Login from "./Auth/Login";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, spring } from "framer-motion";
 import Menu from "./Menu";
 
 const Header = () => {
@@ -42,7 +42,7 @@ const Header = () => {
 
   return (
     <>
-      <nav className={`p-4 md:p-4 md:px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-[9999] fixed shrink-0 overflow-hidden md:top-2 top-0 left-0 right-0 rounded-lg md:left-8 md:right-8 lg:left-20 lg:right-20 shadow-sm backdrop-blur-xl outline-2 outline-[#B0D4E3] bg-[#B0D4E3]/50 `}>
+      <nav className={`p-4 md:p-4 md:px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-[9999] fixed shrink-0 overflow-hidden md:top-2 top-0 left-0 right-0 rounded-lg md:left-8 md:right-8 lg:left-20 lg:right-20 shadow-sm backdrop-blur-xl outline-2 outline-[#B0D4E3] bg-[#B0D4E3]/50 poppins`}>
         <div className='relative w-full md:max-w-[80em] md:min-w-6xl min-w-full flex justify-between items-center'>
           <div className="md:flex md:w-[50%] items-center justify-between space-x-4">
             <div className="h-[2.31em] w-12 object-cover rounded-full">
@@ -66,7 +66,7 @@ const Header = () => {
             <input type="text" name='search-bar' className='w-full h-full border border-black p-4 px-4 pl-10 outline-0 rounded-full shadow-lg focus:shadow-2xl duration-150 transition antialiased' placeholder='Search for books by title, author' />
           </div> */}
           <div className="min-w-[15%] flex justify-between items-center">
-            <button className="relative cursor-pointer text-2xl"> <Link href={"/cart"}>
+            <button className="relative cursor-pointer text-2xl p-2 rounded-full bg-[#B0D4E3]"> <Link href={"/cart"}>
               <span className="absolute -top-2 text-[0.4em] -right-2 bg-[#15278c] text-white  min-h-4 min-w-4 flex items-center justify-center rounded-full">
                 3
               </span>
@@ -74,7 +74,7 @@ const Header = () => {
             </Link>
             </button>
 
-            <button className="hidden md:block relative cursor-pointer text-2xl">
+            <button className="hidden md:block relative cursor-pointer text-2xl p-2 rounded-full bg-[#B0D4E3]">
               <span className="  absolute -top-2 text-[0.4em] md:flex items-center justify-center -right-1 bg-red-600/80 text-white min-h-4 min-w-4 rounded-full">
                 12
               </span>
@@ -86,20 +86,34 @@ const Header = () => {
               Login
             </button>
 
-            {/* <button onClick={() => setShowLoginModal(true)}>Login</button> */}
+            <div>
+
+              </div>
+
             {/* hamburger menu */}
-            <button className=" md:hidden p-6 flex flex-col gap-1 " onClick={handleOpenMenu}>
+            <button className=" md:hidden p-6 flex flex-col gap-1 "
+              onClick={handleOpenMenu}
+            >
               <div className={`bg-[#15278c] h-[2px] w-6 rounded-lg transition duration-300 ${isExpanded && "rotate-45 translate-y-1"}`}></div>
               <div className={`bg-[#15278c] h-[2px] w-6 rounded-lg transition duration-300 ${isExpanded && "opacity-0"}`}></div>
               <div className={`bg-[#15278c] h-[2px] w-6 rounded-lg transition duration-300 ${isExpanded && "-rotate-45 -translate-y-2"}`}></div>
             </button>
           </div>
-          <div className="absolute inset-0">
-            {isExpanded && <Menu />} 
-            </div>
         </div>
       </nav>
 
+      <AnimatePresence>
+        {isExpanded &&
+          (<motion.div
+          initial={{  x: 500 }}
+          animate={{  x: 0 }}
+          exit={{  x: 500 }}
+          transition={{duration:0.3 }}
+          
+          className={`fixed inset-0 top-10 z-[100] `}>
+            <Menu /> 
+      </motion.div>)}
+      </AnimatePresence>
       <Modal
         isOpen={showSignUpModal || showLoginModal}
         onClose={() => setShowSignUpModal(false)}
