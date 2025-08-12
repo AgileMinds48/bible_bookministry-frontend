@@ -122,28 +122,35 @@ interface popupDetails {
 
 
   return (
-    <section className='poppins px-10 py-10 bg-[#FAF3E0] h-max  antialiased'>
+    <section className='poppins md:p-10 p-4 bg-[#FAF3E0] h-max  antialiased'>
       <div className='relative'>
-        <div className='flex justify-between items-baseline'>
-          <h1 className='text-4xl font-semibold text-black mb-4'> <span className=' text-transparent bg-clip-text blue-gradient'> Recommended</span> for you </h1>
+        <div className='flex flex-col md:flex-row md:justify-between items-baseline'>
+          <h1 className='md:text-4xl text-2xl font-semibold text-black mb-4'>
+            <span className=' text-transparent bg-clip-text blue-gradient'>
+              Recommended
+            </span>{" "}
+            for you </h1>
           <Link href={"catalogue"}>
-            <p className='underline cursor-pointer flex center gap-2 group'>View all books <span className='-translate-0.5 group-hover:translate-x-2  delay-100 duration-100 transition '><GrNext /></span></p>
+            <p className='underline cursor-pointer flex center gap-2 group'>View all books
+              <button aria-label='proceed-button' className='-translate-0.5 inline-flex group-hover:translate-x-2  delay-100 duration-100 transition '>
+              <GrNext />
+            </button></p>
             </Link>
           </div>
-        <div className='min-h-max overflow-x-scroll hide-scrollbar ' ref={scrollDivRef}>
+        <div className='min-h-max overflow-x-scroll hide-scrollbar' ref={scrollDivRef}>
 
           <div className={`flex shrink-0 gap-4 pl-8 `} >
             <button onClick={handlePrevious} className='absolute top-[50%] -translate-y-[50%] left-0 p-4 bg-black/15 rounded-full hover:bg-black/40 z-10 cursor-pointer text-2xl text-white'><GrPrevious /></button>
             {
             recommendedBooks.map(({ img, title, author, price, rating,id }) => (
-                <div key={id} className='group  cursor-pointer min-w-[25em] max-w-[5%] gap-4 min-h-36 overflow-hidden grid grid-cols-2 p-4  hover:scale-97 transition duration-500'>
+                <div key={id} className='group cursor-pointer md:min-w-[25em] min-w-[15em]  md:min-h-36 max-h-20 gap-4  overflow-hidden grid grid-cols-2 p-4  hover:scale-97 transition duration-500'>
                   <div className='relative border border-[#5D8AA8] h-full shrink-0 group-hover:shadow-lg transition duration-300'>
                     <MdFavorite className={`absolute right-0 top-2 z-10 text-xl cursor-pointer   ${isFav[id] ? "text-red-500 animate-bubble" : "text-[#FAF3E0]"}`} onClick={() => handleFav(id,title,img)} />
                     <Image src={img} alt="image of book" className='w-full h-full object-cover' placeholder='blur' />
                   </div>
                   <div className='relative min-h-full h-max min-w-full flex flex-col py-8'>
                     <div className='text-black'>
-                      <h3 className='line-clamp-3 font-garamond font-semibold leading-8 text-2xl'>{title}</h3>
+                      <h3 className='line-clamp-3 font-garamond font-semibold leading-8 md:text-2xl text-lg '>{title}</h3>
                       <div>
                         <p className='line-clamp-1 poppins font-medium text-xl text-gray-500'>{author}</p>
 

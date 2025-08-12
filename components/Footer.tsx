@@ -3,6 +3,7 @@ import { li } from 'framer-motion/client'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { CiMail } from 'react-icons/ci'
 import { FaFacebookF, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa'
 import { IoMdMail } from 'react-icons/io'
 import { MdCall } from 'react-icons/md'
@@ -17,7 +18,7 @@ const Footer = () => {
   ];
   return (
     <footer className='border-t border-[#01325E] poppins bg-[#B0D4E3]'>
-    <div className=" h-full w-full pt-8 lg:px-16 px-8 flex flex-col justify-between  md:flex-row">
+    <div className=" h-full w-full pt-8 lg:px-16 px-8 flex gap-4 flex-col justify-between  md:flex-row">
         <div className="max-w-xl">
             <div className="flex items-center justify-center gap-4 mb-4">
               <div className="w-30 h-[5.76em] ">
@@ -39,20 +40,20 @@ const Footer = () => {
 
             </div>
         </div>
-        <div className='flex'>
-          <div className="lg:pt-10 grid grid-cols-3 gap-8">
+        
+          <div className="md:w-[50%] grid lg:grid-cols-[1fr_1fr_2fr] grid-cols-1 gap-16">
             <div className=" flex flex-col ">
-              <h4 className="text-[#01325E] font-semibold text-xl mb-6 ">Quick Links</h4>
-              <ul className="font-light text-gray-700  flex flex-col gap-3">
+              <h4 className="text-[#01325E] font-semibold text-xl mb-6 border-b border-dashed">Quick Links</h4>
+              <ul className="font-light text-gray-700  flex flex-col gap-3 text-xl">
                 {navItems.map(({label,href},index) => (
                   <Link key={index} href={href} >
-                    <li className='text-xl'>{label} </li>
+                    <li className='text-xl hover:text-[#01325E]'>{label} </li>
                     </Link>
              ))}
               </ul>
             </div>
             <div className="flex flex-col">
-              <h4 className="text-[#01325E] font-semibold mb-6 text-xl">My Account</h4>
+              <h4 className="text-[#01325E] font-semibold mb-6 text-xl border-b border-dashed">My Account</h4>
               <div className="flex-1 flex flex-col  gap-3 text-gray-700 font-light text-xl">
                 <span>Login</span>
                 <span>Create Account</span>
@@ -60,28 +61,31 @@ const Footer = () => {
                 <span>Order History</span>
               </div>
             </div>
-        </div>
-        <div className='lg:pt-10'>
-          <h4 className='text-xl font-semibold mb-6 text-[#01325E]'>Working Hours</h4>
+            <div className=''>
+          <h4 className='text-xl font-semibold mb-6 text-[#01325E] border-b border-dashed'>Working Hours</h4>
           <div className='text-gray-700 text-lg'>
           <p>Mondays - Fridays: 9:00am - 8:00pm GMT</p>
             <p>Saturdays - Sundays: 11:00am - 5:00pm GMT</p>
           </div>
-          <h4 className='text-xl font-semibold mb-6 mt-6 text-[#01325E]'>Contact Us</h4>
+          <h4 className='text-xl font-semibold mb-6 mt-6 text-[#01325E] border-b border-dashed'>Contact Us</h4>
           <div className='text-gray-700 text-lg'>
-            <p className='flex items-center gap-2'><MdCall /> +233 558 317 782</p>
-            <p className='flex items-center gap-2 hover:underline'><IoMdMail /> bibleandbookministry07@gmail.com</p>
+              <p className='flex items-center gap-2'><MdCall />
+                +233 558 317 782</p>
+              <p className='flex items-center gap-2'><IoMdMail />
+                bibleandbookministry07@gmail.com</p>
           </div>
           </div>
-          </div>
+        </div>
+       
+          
       </div>
-      <div className='px-16 py-2 text-gray-700'>
+      <div className='md:px-16 py-2 text-gray-700'>
         <hr className='w-full h-1  text-gray-700' />
-        <div className='w-full p-4 flex justify-between'>
-          <p>&copy; 2025 Agile Inc. All rights reserved</p>
+        <div className='w-full p-4 flex md:justify-between justify-center flex-wrap'>
+          <p className='whitespace-nowrap'>&copy; 2025 Agile Inc. All rights reserved</p>
           <p className='flex  gap-8'>
-            <span className='underline cursor-pointer'>Privacy Policy</span>
-            <span className='underline cursor-pointer'>Terms of service</span>
+            <span className='underline cursor-pointer whitespace-nowrap'>Privacy Policy</span>
+            <span className='underline cursor-pointer whitespace-nowrap'>Terms of service</span>
           </p>
         </div>
       </div>
