@@ -3,8 +3,8 @@ import { logo } from "@/public";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, {  useState } from "react";
-import {  CiShoppingCart } from "react-icons/ci";
+import React, { useState } from "react";
+import { CiShoppingCart } from "react-icons/ci";
 import { FaRegUser } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
 import Modal from "./Modal";
@@ -12,6 +12,7 @@ import SignUp from "./Auth/SignUp";
 import Login from "./Auth/Login";
 import { AnimatePresence, motion, spring } from "framer-motion";
 import Menu from "./Menu";
+import { useBodyScrollLock } from "@/hooks/useBodyScrollLock";
 
 const Header = () => {
   const pathName = usePathname();
@@ -23,9 +24,11 @@ const Header = () => {
   ];
   //hamburger menu
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
+
+  useBodyScrollLock(isExpanded);
   const handleOpenMenu = () => {
     setIsExpanded(!isExpanded);
-}
+  }
 
   //for modal
   const [showSignUpModal, setShowSignUpModal] = useState<boolean>(false);
@@ -52,9 +55,9 @@ const Header = () => {
               {navItems.map(({ label, href }, idx) => (
                 <Link key={idx} href={href}>
                   <li className={`group cursor-pointer font-medium lg:text-[1.2em] transition duration-300 p-1  ${pathName === href ? "text-[#15278c]" : "text-black"}`}>{label}
-                             <div className={`hidden absolute left-0 right-0 bottom-0 ${pathName==href?"" : "group-hover:animate-underline group-hover:block"} w-[110%] blue-gradient h-[0.1em] rounded-full animate-underline`}></div>
-                 
-         
+                    <div className={`hidden absolute left-0 right-0 bottom-0 ${pathName == href ? "" : "group-hover:animate-underline group-hover:block"} w-[110%] blue-gradient h-[0.1em] rounded-full animate-underline`}></div>
+
+
                     {pathName == href && <div className="absolute left-0 right-0 bottom-0 w-[110%] blue-gradient h-[0.1em] rounded-full animate-underline"></div>}
                   </li>
                 </Link>
@@ -88,10 +91,10 @@ const Header = () => {
 
             <div>
 
-              </div>
+            </div>
 
             {/* hamburger menu */}
-            <button className=" md:hidden p-6 flex flex-col gap-1 "
+            <button className=" md:hidden p-6 flex flex-col gap-1"
               onClick={handleOpenMenu}
             >
               <div className={`bg-[#15278c] h-[2px] w-6 rounded-lg transition duration-300 ${isExpanded && "rotate-45 translate-y-1"}`}></div>
@@ -105,14 +108,16 @@ const Header = () => {
       <AnimatePresence>
         {isExpanded &&
           (<motion.div
-          initial={{  x: 500 }}
-          animate={{  x: 0 }}
-          exit={{  x: 500 }}
-          transition={{duration:0.3 }}
-          
-          className={`fixed inset-0 left-20 top-10 z-[100] `}>
-            <Menu /> 
-      </motion.div>)}
+            initial={{ x: 500 }}
+            animate={{ x: 0 }}
+            exit={{ x: 500 }}
+            transition={{ duration: 0.3 }}
+
+            className={`fixed inset-0 left-20 z-[100000] `}>
+          <Menu
+          onClose={handleOpenMenu}
+          />
+          </motion.div>)}
       </AnimatePresence>
       <Modal
         isOpen={showSignUpModal || showLoginModal}
