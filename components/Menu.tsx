@@ -20,7 +20,7 @@ const Menu = ({onClose}:MenuProps) => {
     {icon: <FaShoppingCart />,label: 'My cart', href: '' },
   ];
   return (
-    <div className=" h-screen pt-10 bg-white p-4 poppins flex flex-col">
+    <div className="  pt-10 bg-white p-4 poppins flex flex-col">
       <div
         onClick={onClose}
         className='p-2 border-2 border-green-500 w-fit flex ml-auto'>
@@ -30,15 +30,15 @@ const Menu = ({onClose}:MenuProps) => {
         {navItems.map(({ label, href,icon }) => (
           <Link key={label} href={href} className='flex items-center space-x-2 px-8 border-b border-gray-300'>
             <div className='text-2xl text-[#15278c]'>{icon}</div>
-            <li className=' w-full  text-xl p-2 '>
+            <li className=' w-full  text-xl p-2 py-4'>
               {label}
             </li>
             </Link>
         ))}
       </ul>
 
-      <div className='mt-auto text-2xl flex gap-2 justify-center items-center text-white bg-[#15278c] rounded-lg py-2 '>
-        <FaRegCircleUser className='text-white'/>
+      <div className='mt-10 text-2xl flex gap-2 justify-center items-center text-white bg-[#15278c] rounded-lg py-2 '>
+        <FaRegCircleUser className='text-white '/>
         Login
       </div>
   </div>  )

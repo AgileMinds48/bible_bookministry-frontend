@@ -113,7 +113,7 @@ const Header = () => {
             exit={{ x: 500 }}
             transition={{ duration: 0.3 }}
 
-            className={`fixed inset-0  z-[100000] `}>
+            className={`fixed inset-0 h-screen z-[100000] `}>
           <Menu
           onClose={handleOpenMenu}
           />
