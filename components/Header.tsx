@@ -13,8 +13,10 @@ import Login from "./Auth/Login";
 import { AnimatePresence, motion, spring } from "framer-motion";
 import Menu from "./Menu";
 import { useBodyScrollLock } from "@/hooks/useBodyScrollLock";
+import { useCartStore } from "@/app/utils/cartStore";
 
 const Header = () => {
+  const count= useCartStore(s=>s.items.reduce((t,i)=>t+i.quantity,0))
   const pathName = usePathname();
   const navItems = [
     { label: 'Home', href: '/' },
@@ -70,8 +72,8 @@ const Header = () => {
           </div> */}
           <div className="min-w-[15%] flex justify-between items-center">
             <button className="relative cursor-pointer text-2xl p-2 rounded-full bg-[#B0D4E3]"> <Link href={"/cart"}>
-              <span className="absolute -top-2 text-[0.4em] -right-2 bg-[#15278c] text-white  min-h-4 min-w-4 flex items-center justify-center rounded-full">
-                3
+              <span className="absolute -top-4 text-[0.4em] -right-2 bg-[#15278c] text-white  min-h-4 min-w-4 flex items-center justify-center rounded-full">
+                {count}
               </span>
               <CiShoppingCart />
             </Link>

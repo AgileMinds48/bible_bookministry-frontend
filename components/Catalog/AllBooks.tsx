@@ -11,6 +11,7 @@ import BookDiv from '../Book/BookDiv';
 import axios from 'axios';
 import Loading from '../Loading/loading';
 import Page from '../Pages/Page';
+import { useCartStore } from '@/app/utils/cartStore';
 
 
 
@@ -202,47 +203,56 @@ const AllBooks = () => {
     isAdded: false,
     isFav: false
   })
-  //add to cart
-  const [added, setAdded] = useState<AddedState>(
-    getItemsFromLocalStorage("cart", Object.fromEntries(allBooks.map((book) => [book.id, false])))
-  );
+  // cart store integration
+  const cartItems = useCartStore((s) => s.items);
+  const addToCartStore = useCartStore((s) => s.addToCart);
+  const removeFromCartStore = useCartStore((s) => s.removeFromCart);
+
+  // derive a quick lookup of items in cart
+  const added: AddedState = useMemo(() => {
+    const idsInCart = new Set(cartItems.map((i) => i.id));
+    return Object.fromEntries(allBooks.map((b) => [b.id, idsInCart.has(b.id)]));
+  }, [cartItems, allBooks]);
 
   const handleAddToCart = (id: number) => {
-    const book = allBooks.find(book => book.id === id);
+    const book = allBooks.find((b) => b.id === id);
     if (!book) return;
+
     const isCurrentlyAdded = added[id];
     const isFavorite = isFav[id];
+
+    // update popup state first for snappy UI
     setPopupBookDetails({
       bookName: book.title,
-      image: book.img ,
+      image: book.img,
       isAdded: !isCurrentlyAdded,
-      isFav: isFavorite
+      isFav: isFavorite,
     });
-    setShowPopup(() => ({
-      addedToFavorites: false,
-      addedToCart: true,
-    }));
-    setAdded((prev) => ({
-      ...prev,
-      [id]: !prev[id]  // Toggle the added state for this specific book
-    }));
+    setShowPopup(() => ({ addedToFavorites: false, addedToCart: true }));
+
+    // push to/remove from global cart store
+    if (!isCurrentlyAdded) {
+      addToCartStore({
+        id: book.id,
+        title: book.title,
+        price: book.price,
+        image: typeof book.img === 'string' ? book.img : book.img.src,
+      });
+    } else {
+      removeFromCartStore(book.id);
+    }
 
     setTimeout(() => {
-      setShowPopup((prev) => ({
-        ...prev,
-        addedToCart: false
-      }))
+      setShowPopup((prev) => ({ ...prev, addedToCart: false }));
     }, 1500);
-  }
+  };
 
   //read from local Storage
   useEffect(() => {
     setItemsToLocalStorage("favorites", isFav)
   }, [isFav])
 
-  useEffect(() => {
-    setItemsToLocalStorage("cart", added);
-  }, [added])
+  // removed localStorage cart sync; Zustand persist handles it
 
 
 

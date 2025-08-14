@@ -20,7 +20,7 @@ const Footer = () => {
     <footer className='border-t border-[#01325E] poppins bg-[#B0D4E3]'>
     <div className=" h-full w-full pt-8 lg:px-16 px-8 flex gap-4 flex-col justify-between  md:flex-row">
         <div className="max-w-xl">
-            <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="flex items-center justify-center gap-4 mb-4 shrink-0">
               <div className="w-30 h-[5.76em] ">
                 <Image src={logo} alt="" className="w-full h-full mb-4" />
               </div>
