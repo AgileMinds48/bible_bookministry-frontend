@@ -28,16 +28,14 @@ export const getItemsFromLocalStorage = (key:string,defaultValue:any) => {
     }
   }
 }
-type reviewCard = {
-  reviewer:string,
-  rating: number
-  text: string
-  img:StaticImageData
-}
+// type reviewCard = {
+//   reviewer:string,
+//   rating: number
+//   text: string
+//   img:StaticImageData
+// }
 //placeholder text for reviews
-type Reviews = {
-  
-}
+
 export const reviews = [
   {
     reviewer: "Fenuku Reynolds",

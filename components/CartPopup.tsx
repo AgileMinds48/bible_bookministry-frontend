@@ -1,5 +1,3 @@
-import { bk1 } from '@/public'
-import { AnimatePresence,motion } from 'framer-motion'
 import Image, { StaticImageData } from 'next/image'
 import React from 'react'
 import { FaCheckCircle } from 'react-icons/fa'

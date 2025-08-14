@@ -6,17 +6,14 @@ import { IoIosCheckmark } from 'react-icons/io';
 import { AiOutlineLoading } from 'react-icons/ai';
 import { SignUpFormData, signUpField } from '@/app/utils/data';
 import Image from 'next/image';
-import { google, logo, logo2 } from '@/public';
+import { google,  logo2 } from '@/public';
 import { MdEmail } from 'react-icons/md';
-import { relative } from 'path';
 
 interface SignUpProps{
   onLoginClick:(showLogin:boolean)=>void
 }
 const SignUp = ({onLoginClick}:SignUpProps) => {
-  const [_, setShowLogin] = useState<boolean>(false);
   const handleShowLogin = () => {
-    setShowLogin(true);
     onLoginClick(true);
 }
   const [shown, setShown] = useState<{[key:string]:boolean}>({
@@ -114,7 +111,7 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
     setShown((prev) => ({ ...prev, [field]: !prev[field] }));
   };
 
-  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+  // const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
   return (
     <section className=''>
       <div  className="bg-[#5a88a7] shadow-2xl poppins grid md:grid-cols-2 text-black min-h-[80dvh] ">

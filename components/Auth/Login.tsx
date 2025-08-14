@@ -199,7 +199,7 @@ const Login = ({onSignUpClick}:LoginProps) => {
                      </div>
                </button>
           <p className="text-gray-500 text-left mt-4 text-[1em]">
-            Don't have an account?{' '}
+            Don&apos;t have an account?{' '}
             <button onClick={handleShowSignup} className="underline  cursor-pointer text-[#15278c]">
               Signup
             </button>

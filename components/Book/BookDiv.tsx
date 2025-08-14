@@ -82,7 +82,7 @@ const BookDiv: React.FC<BookDiv> = ({
                    
                   </div>
                     <button className={`mt-1 p-[0.4em] rounded-lg text-sm transition duration-150   cursor-pointer     border border-[#15278c] ${added?.[id] ? "text-white bg-[#15278c] hover:bg-[#040d42]" : "text-[#15278c] hover:bg-[#15278c] bg-white hover:text-white"} `}
-                      onClick={(e) => handleAddToCart(id)}>
+                      onClick={() => handleAddToCart(id)}>
                    {added?.[id] ? "Remove from cart" : <span className='flex items-center justify-center gap-2'><FaCartPlus /> Add to cart </span>}
                   </button>
                   </div>
