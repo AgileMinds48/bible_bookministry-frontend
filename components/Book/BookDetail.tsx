@@ -10,6 +10,7 @@ import Rating from '../Rating';
 import { useCartStore } from '@/app/utils/cartStore';
 import { FaCartPlus } from 'react-icons/fa';
 import { BsCartX } from 'react-icons/bs';
+import Link from 'next/link';
 
 type BookDetailProps = {
   book: Book
@@ -18,7 +19,6 @@ type BookDetailProps = {
 const BookDetail = ({ book }: BookDetailProps) => {
 
   const addToCart = useCartStore(s => s.addToCart)
-  const [added, setAdded] = useState<boolean>(false)
   const removeFromCart = useCartStore(s => s.removeFromCart)
   const items = useCartStore(s => s.items)
 
@@ -53,11 +53,12 @@ const BookDetail = ({ book }: BookDetailProps) => {
             </div>
           </div>
           <div className=' px-4 py-10'>
-            <p className='text-3xl font-semibold'>More Details</p>
+            <p className='mb-2'>{book.bookDescription}</p>
+            <p className='text-xl font-semibold'>More Details</p>
             <div className='mt-4'>
               <div className='flex items-center gap-2 font-semibold text-2xl text-[#15278c] '>
                 <div className='p-2 rounded-full bg-[#15278c28] w-fit'>  <BiCategory className='text-xl text-[#15278c]' /></div>
-                Category: <span className='font-thin text-black'> Children books</span>
+                Category: <span className='font-thin text-black'> {book.bookCategory}</span>
               </div>
               <div className='flex items-center gap-2 font-semibold text-2xl text-[#15278c] mt-4'>
                 <div className='p-2 rounded-full bg-[#15278c28] w-fit'>  <MdOutlineDateRange className='text-xl text-[#15278c]' /></div>
@@ -67,8 +68,8 @@ const BookDetail = ({ book }: BookDetailProps) => {
           </div>
         </div>
         <div className='p-8 shadow border border-gray-300 h-max rounded-lg sticky top-30 '>
-          <p className='text-3xl text-[#5a88a7] font-semibold mb-2 line-clamp-2'>{book.title} </p>
-          <p className='text-gray-500 text-xl mt-2'>Author: <span className='text-black'>{book.author}</span></p>
+          <p className='text-2xl text-[#5a88a7] font-semibold mb-2 line-clamp-2'>{book.title} </p>
+          <p className='text-gray-500  mt-2'>Author: <span className='text-black'>{book.author}</span></p>
           <div className='flex items-baseline-center gap-2 mt-2'>
             <Rating rating={book.rating} />
             <span className='text-xl'>{book.rating}+</span>
@@ -76,18 +77,23 @@ const BookDetail = ({ book }: BookDetailProps) => {
           <p className='text-3xl mt-4  text-[#15278c] flex gap-2 items-center'><IoIosPricetags />  GH₵ {book.price.toFixed(2)}</p>
           <button
             onClick={handleToggleCart}
-            className={`w-full  p-4 rounded-lg text-xl mt-10  transition-colors duration-200 cursor-pointer  
+            className={`w-full  py-3 rounded-lg text-xl mt-10  transition-colors duration-200 cursor-pointer  
              flex justify-center border-2 border-[#15278c] 
             ${isInCart?"text-white bg-[#15278c]":"bg-[#15278c]/5 text-[#15278c]"}
             `}>
             {isInCart ? 
-            <span className='flex gap-1 items-center '><BsCartX className='text-white'/> Remove from cart</span>
+            <span className='flex gap-1 items-center '><BsCartX className='text-white mb-1'/> Remove from cart</span>
             :
-              <span className='flex gap-1 items-center '><FaCartPlus /> Add to cart</span>}
+              <span className='flex gap-1 items-center '><FaCartPlus /> Add to cart</span>
+            }
           </button>
-          <button className={`w-full  p-4 rounded-lg text-xl mt-4 transition duration-150 cursor-pointer border-2 border-[#15278c] text-white bg-[#15278c]`}>
+          <Link href={"/checkout"}>
+          <button
+            onClick={handleToggleCart}
+            className={`w-full  p-3 rounded-lg text-xl mt-4 transition duration-150 cursor-pointer border-2 border-[#15278c] text-white bg-[#15278c]`}>
             Proceed to checkout
-          </button>
+            </button>
+            </Link>
         </div>
       </div>
     </section>

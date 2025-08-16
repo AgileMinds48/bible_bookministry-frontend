@@ -17,7 +17,7 @@ const Review = ({ book }: ReviewProps) => {
   }
   
   return (
-    <div className='px-4'>
+    <div className='px-4 max-w-7xl mx-auto mb-10'>
       <div className='py-8 px-4 shadow bg-[#15278c28] rounded-2xl'>
         <h1 className='text-3xl flex center '>Leave an impact <FaPenAlt /></h1>
         <div className='bg-white rounded-2xl p-4 mt-6'>

@@ -25,12 +25,14 @@ const page = async ({ params }: BookPageProps) => {
       rating: BookData.rating || 0,
       category: BookData.bookCategory,
       img: BookData.media[0] || '',
-      amountInStock: BookData.amountInStock
+      amountInStock: BookData.amountInStock,
+      bookDescription: BookData.bookDescription,
+      bookCategory: BookData.bookCategory
     }
      return (
     <div>
          <BookDetail book={selectedBook} />
-         <Review book={BookData}/>
+         <Review book={selectedBook}/>
     </div>
   )
   } catch(error) {
