@@ -57,7 +57,7 @@ const Footer = () => {
               <div className="flex-1 flex flex-col  gap-3 text-gray-700 font-light text-xl">
                 <span>Login</span>
                 <span>Create Account</span>
-                <span>View My Cart</span>
+             <Link href={"/cart"}>   <span className='cursor-pointer'>View My Cart</span></Link>
                 <span>Order History</span>
               </div>
             </div>

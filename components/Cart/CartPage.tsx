@@ -17,7 +17,7 @@ const CartPage = () => {
   const grandTotal = subtotal + DELIVERY_FEE;
 
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-white poppins mt-20">
+    <div className="min-h-screen flex flex-col justify-between bg-white poppins mt-20 mb-10">
       <div className="max-w-7xl mx-auto w-full flex flex-col">
         <h1 className="text-3xl font-semibold mt-12 mb-8 text-[#15278c]">Books Cart</h1>
         <div className="flex flex-col lg:flex-row gap-8">
