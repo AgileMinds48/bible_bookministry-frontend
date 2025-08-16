@@ -14,6 +14,7 @@ import { AnimatePresence, motion, spring } from "framer-motion";
 import Menu from "./Menu";
 import { useBodyScrollLock } from "@/hooks/useBodyScrollLock";
 import { useCartStore } from "@/app/utils/cartStore";
+import { LuUserRound } from "react-icons/lu";
 
 const Header = () => {
   const count= useCartStore(s=>s.items.reduce((t,i)=>t+i.quantity,0))
@@ -71,7 +72,8 @@ const Header = () => {
             <input type="text" name='search-bar' className='w-full h-full border border-black p-4 px-4 pl-10 outline-0 rounded-full shadow-lg focus:shadow-2xl duration-150 transition antialiased' placeholder='Search for books by title, author' />
           </div> */}
           <div className="min-w-[15%] flex justify-between items-center">
-            <button className="relative cursor-pointer text-2xl p-2 rounded-full bg-[#B0D4E3]"> <Link href={"/cart"}>
+            <button className="relative cursor-pointer text-2xl p-2 rounded-full bg-[#B0D4E3] text-[#15278c]">
+              <Link href={"/cart"}>
               <span className="absolute -top-4 text-[0.4em] -right-2 bg-[#15278c] text-white  min-h-4 min-w-4 flex items-center justify-center rounded-full">
                 {count}
               </span>
@@ -79,16 +81,15 @@ const Header = () => {
             </Link>
             </button>
 
-            <button className="hidden md:block relative cursor-pointer text-2xl p-2 rounded-full bg-[#B0D4E3]">
+            <button className="hidden md:block relative cursor-pointer text-2xl p-2 rounded-full bg-[#B0D4E3] text-[#15278c]">
               <span className="  absolute -top-2 text-[0.4em] md:flex items-center justify-center -right-1 bg-red-600/80 text-white min-h-4 min-w-4 rounded-full">
                 12
               </span>
               <MdFavoriteBorder />
             </button>
             <button onClick={() => setShowSignUpModal(true)}
-              className="hidden md:flex h-full items-center gap-1 p-3 cursor-pointer text-sm blue-gradient hover:shadow-2xl text-white transition duration-500 rounded-lg">
-              <FaRegUser />
-              Login
+              className="hidden md:flex h-full items-center gap-1 cursor-pointer hover:shadow-2xl text-[#15278c] transition duration-500 relative text-2xl p-2 rounded-full bg-[#B0D4E3]">
+              <LuUserRound />
             </button>
 
             <div>
