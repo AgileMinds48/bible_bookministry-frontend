@@ -54,7 +54,7 @@ const BookDiv: React.FC<BookDiv> = ({
                   }
                 </div>
                 <div className="p-2 px-2 flex flex-col h-full">
-                  <p title={title} className="line-clamp-2 text-lg font-semibold text-[#051363] leading-[1.3em] mb-1">
+                  <p title={title} className="line-clamp-2  font-semibold text-[#051363] leading-[1.3em] mb-1">
                     {title}
                   </p>
                   <div className="w-full flex items-center gap-2 mt-">

@@ -1,5 +1,6 @@
 import { Book } from '@/app/utils/data'
 import BookDetail from '@/components/Book/BookDetail'
+import Review from '@/components/Reviews/Review'
 import axios from 'axios'
 import React from 'react'
 
@@ -26,10 +27,10 @@ const page = async ({ params }: BookPageProps) => {
       img: BookData.media[0] || '',
       amountInStock: BookData.amountInStock
     }
-
      return (
     <div>
-      <BookDetail book={selectedBook}/>
+         <BookDetail book={selectedBook} />
+         <Review book={BookData}/>
     </div>
   )
   } catch(error) {

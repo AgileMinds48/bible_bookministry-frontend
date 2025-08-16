@@ -44,13 +44,15 @@ const CartPage = () => {
                   {items.map((item) => (
                     <tr key={item.id} className="border-b last:border-b-0">
                       <td className="py-4 flex items-center gap-2">
+                        <Link href={`/book/${item.id}`}>
                         <Image
                           src={item.image}
                           alt={item.title}
                           width={60}
                           height={80}
                           className="rounded object-cover"
-                        />
+                          />
+                          </Link>
                         <span>{item.title}</span>
                       </td>
                       <td className="py-4">GHS {item.price.toFixed(2)}</td>
