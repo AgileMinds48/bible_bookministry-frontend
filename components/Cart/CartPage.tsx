@@ -109,7 +109,7 @@ const CartPage = () => {
               <span className="text-[#15278c]">GHS {grandTotal.toFixed(2)}</span>
             </div>
             <div className="flex gap-2 mt-6">
-              <Link href={"checkout"}
+              <Link href={"/checkout"}
                 className='w-full'>
               <button
                 className="w-full bg-[#15278c] hover:bg-[#091974] cursor-pointer text-white py-2 rounded transition"
