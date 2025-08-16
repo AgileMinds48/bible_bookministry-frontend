@@ -3,7 +3,7 @@ import React from 'react'
 const Card = () => {
   return (
     <div>
-      <form action="">
+      <form className='w-full grid grid-cols-2 gap-4 mt-2'>
         <input
         type="text"
         placeholder='First name'
