@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { MdOutlineDeleteForever } from 'react-icons/md';
 import { useCartStore } from '@/app/utils/cartStore';
 import { empty_cart } from '@/public';
+import Link from 'next/link';
 
 const CartPage = () => {
   const items = useCartStore((s) => s.items);
@@ -108,12 +109,15 @@ const CartPage = () => {
               <span className="text-[#15278c]">GHS {grandTotal.toFixed(2)}</span>
             </div>
             <div className="flex gap-2 mt-6">
+              <Link href={"checkout"}
+                className='w-full'>
               <button
                 className="w-full bg-[#15278c] hover:bg-[#091974] cursor-pointer text-white py-2 rounded transition"
                 disabled={items.length === 0}
               >
-                CHECKOUT
-              </button>
+                  CHECKOUT
+                </button>
+                </Link>
               {items.length > 0 && (
                 <button
                   className="px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded"
