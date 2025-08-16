@@ -6,7 +6,7 @@ import { GiStarsStack } from "react-icons/gi";
 import { WiStars } from "react-icons/wi";
 
 //function to fetch added or fav'ed items
-export const setItemsToLocalStorage = (key:string,value:any) => {
+export const setItemsToLocalStorage = (key:string,value:unknown) => {
   //can only execute in browser (SSR- no!)
   if (typeof window !== "undefined") {
     try {
@@ -17,7 +17,7 @@ export const setItemsToLocalStorage = (key:string,value:any) => {
   }
 }
 //function to set items to localStorage
-export const getItemsFromLocalStorage = (key:string,defaultValue:any) => {
+export const getItemsFromLocalStorage = (key:string,defaultValue:unknown) => {
   //execute when in browser
   if (typeof window !== "undefined") {
     try {

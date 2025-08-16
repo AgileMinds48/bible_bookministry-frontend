@@ -27,36 +27,36 @@ const AllBooks = () => {
     setLoading(true);
     const fetchBooks = async () => {
       try {
-            const response = await axios.get(`${backendUrl}/api/v1/books/all-books?page=${currentPage}`)
-            console.log(response.data);
+        const response = await axios.get(`${backendUrl}/api/v1/books/all-books?page=${currentPage}`)
+        console.log(response.data);
 
         setTotalPages(response.data.totalPages)
-            //mapping API response to Book interface
-        const mappedBooks: Book[] = response.data.content.map((book: any)=> ({
+        //mapping API response to Book interface
+        const mappedBooks: Book[] = response.data.content.map((book: any) => ({
           id: book.bookId,
           title: book.bookTitle,
           author: book.bookAuthor,
           price: book.bookPrice,
-         rating: 0, 
-        category: book.bookCategory,
-        img: book.media[0] || '',
-        amountInStock: book.amountInStock
+          rating: 0,
+          category: book.bookCategory,
+          img: book.media[0] || '',
+          amountInStock: book.amountInStock
         }))
-        setAllBooks(mappedBooks);     
-        
+        setAllBooks(mappedBooks);
+
       } catch (err) {
         setError("There was a problem loading books. Our librarian would look into the issue for you soon.")
-      console.error("Unable to fetch", err);
+        console.error("Unable to fetch", err);
       } finally {
         setLoading(false);
-    }
+      }
     }
     fetchBooks();
 
-},[currentPage])
+  }, [currentPage])
 
   //for pagination
-  const handlePageChange = (newPage:number) => {
+  const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage)
   }
   const handleNextpage = () => {
@@ -66,19 +66,19 @@ const AllBooks = () => {
   const handlePreviousPage = () => {
     if (currentPage >= 1) {
       setCurrentPage(currentPage - 1);
+    }
   }
-}
 
   //search
-  const [searchInput,setSearchInput]= useState<string>()
+  const [searchInput, setSearchInput] = useState<string>()
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setSearchInput(value);
   }
-  
+
   interface popupDetails {
     bookName: string
-    image: string|StaticImageData | undefined
+    image: string | StaticImageData | undefined
     isAdded: boolean
     isFav: boolean
   }
@@ -98,7 +98,7 @@ const AllBooks = () => {
     filteredBooks = filterByRating(filteredBooks, rating)
 
     //search filtering
-    filteredBooks=filterBySearch(filteredBooks,searchInput || "")
+    filteredBooks = filterBySearch(filteredBooks, searchInput || "")
 
 
     if (currentSort === "title-asc") {
@@ -126,19 +126,19 @@ const AllBooks = () => {
       return sortByRatingL(filteredBooks);
     }
     return filteredBooks;
-  }, [currentSort, priceRange, rating,allBooks,searchInput])
+  }, [currentSort, priceRange, rating, allBooks, searchInput])
   const handleSortChange = (sortValue: string) => {
     setCurrentsort(sortValue);
   }
 
   //price range handler
   useEffect(() => {
-  if (allBooks.length > 0) {
-    const prices = allBooks.map(book => book.price);
-    const maxPrice = Math.max(...prices);
-    setPriceRange({ min: 0, max: maxPrice });
-  }
-}, [allBooks]);
+    if (allBooks.length > 0) {
+      const prices = allBooks.map(book => book.price);
+      const maxPrice = Math.max(...prices);
+      setPriceRange({ min: 0, max: maxPrice });
+    }
+  }, [allBooks]);
   const handlePriceRangeChange = (minPrice: number, maxPrice: number) => {
     setPriceRange({
       min: minPrice,
@@ -152,7 +152,7 @@ const AllBooks = () => {
   const carouselRef = useRef<HTMLDivElement>(null);
 
   //favorites object
-  const [isFav, setisFav] = useState<{[key:number]:boolean}>(
+  const [isFav, setisFav] = useState<{ [key: number]: boolean }>(
     getItemsFromLocalStorage("favorites", Object.fromEntries(allBooks.map((book) => [book.id, false])))
   );
 
@@ -265,9 +265,9 @@ const AllBooks = () => {
             {' '}
             available books
           </span>{' '}
-        
+
         </h1>
-        
+
         <div
           ref={carouselRef}
           className="flex flex-wrap relative   shrink-0  py-8 overflow-hidden  gap-8 gap-y-14  justify-start mx-auto pl-4"
@@ -277,67 +277,67 @@ const AllBooks = () => {
               onSortChange={handleSortChange}
               onPriceRangeChange={handlePriceRangeChange}
               onRatingChange={handleRatingChange}
-            onSearchChange={handleSearch}
+              onSearchChange={handleSearch}
             />
           </div>
           {loading ?
             <div className='w-full h-36'>
               <Loading captioned={true} />
             </div>
-            : error ? 
-             (
-            <div className='w-full h-36 flex items-center justify-center'>
-              <div className='text-center p-8 bg-red-50 border border-red-200 rounded-lg'>
-                <h3 className='text-lg font-semibold text-red-800 mb-2'>Oops! Something went wrong</h3>
-                <p className='text-red-600'>{error}</p>
-                <button 
-                  onClick={() => {
-                    setError(undefined);
-                    setCurrentPage(0); // This will trigger the useEffect to refetch
-                  }}
-                  className='mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors'
-                >
-                  Try Again
-                </button>
-              </div>
-            </div>
-          ) 
-            : sortedBooks?.map(({ img, title, author, price, rating, id, amountInStock }) => (
-              <AnimatePresence key={id}>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.8 }}
-                  key={id} className="rounded-2xl">
-                  <BookDiv
-                    title={title}
-                    img={img}
-                    author={author}
-                    price={price}
-                    rating={rating}
-                    id={id}
-                    handleFav={handleFav}
-                    isFav={isFav}
-                    handleAddToCart={handleAddToCart}
-                    added={added}
-                  amountInStock={amountInStock}
-                  />
-                  
-                </motion.div>
+            : error ?
+              (
+                <div className='w-full h-36 flex items-center justify-center'>
+                  <div className='text-center p-8 bg-red-50 border border-red-200 rounded-lg'>
+                    <h3 className='text-lg font-semibold text-red-800 mb-2'>Oops! Something went wrong</h3>
+                    <p className='text-red-600'>{error}</p>
+                    <button
+                      onClick={() => {
+                        setError(undefined);
+                        setCurrentPage(0); // This will trigger the useEffect to refetch
+                      }}
+                      className='mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors'
+                    >
+                      Try Again
+                    </button>
+                  </div>
+                </div>
+              )
+              : sortedBooks?.map(({ img, title, author, price, rating, id, amountInStock }) => (
+                <AnimatePresence key={id}>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8 }}
+                    key={id} className="rounded-2xl">
+                    <BookDiv
+                      title={title}
+                      img={img}
+                      author={author}
+                      price={price}
+                      rating={rating}
+                      id={id}
+                      handleFav={handleFav}
+                      isFav={isFav}
+                      handleAddToCart={handleAddToCart}
+                      added={added}
+                      amountInStock={amountInStock}
+                    />
+
+                  </motion.div>
                 </AnimatePresence>
-            ))}
-          
+              ))}
+
         </div>
         {!loading && !error && allBooks.length > 0 &&
           (
-          <Page 
-            onPageNext={handleNextpage}
-            onPagePrev={handlePreviousPage}
-            onPageChange={handlePageChange}
-            currentPage={currentPage}
-            totalPages={totalPages}
-          />
-        )
+            <Page
+              onPageNext={handleNextpage}
+              onPagePrev={handlePreviousPage}
+              onPageChange={handlePageChange}
+              currentPage={currentPage}
+              totalPages={totalPages}
+            />
+          )
         }
       </div>
       <AnimatePresence>

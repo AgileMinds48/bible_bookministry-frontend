@@ -122,7 +122,7 @@ const Recommended = () => {
 
 
   return (
-    <section className='poppins md:p-10 p-4 bg-[#FAF3E0] h-max  antialiased'>
+    <section className='poppins md:p-10 p-4 bg-[#FAF3E0]   antialiased'>
       <div className='relative'>
         <div className='flex flex-col md:flex-row md:justify-between items-baseline'>
           <h1 className='md:text-4xl text-2xl font-semibold text-black mb-4'>
@@ -143,7 +143,7 @@ const Recommended = () => {
             <button onClick={handlePrevious} className='absolute top-[50%] -translate-y-[50%] left-0 p-4 bg-black/15 rounded-full hover:bg-black/40 z-10 cursor-pointer text-2xl text-white'><GrPrevious /></button>
             {
               recommendedBooks.map(({ img, title, author, price, rating, id }) => (
-                <div key={id} className='group cursor-pointer md:min-w-[25em] min-w-[15em]  md:min-h-36 max-h-20 gap-4  overflow-hidden grid grid-cols-2 p-4  hover:scale-97 transition duration-500'>
+                <div key={id} className='group cursor-pointer md:min-w-[25em] min-w-[15em]  md:min-h-36  gap-4  overflow-hidden grid grid-cols-2 p-4  hover:scale-97 transition duration-500'>
                   <div className='relative border border-[#5D8AA8] h-full shrink-0 group-hover:shadow-lg transition duration-300'>
                     <MdFavorite className={`absolute right-0 top-2 z-10 text-xl cursor-pointer   ${isFav[id] ? "text-red-500 animate-bubble" : "text-[#FAF3E0]"}`} onClick={() => handleFav(id, title, img)} />
                     <Image src={img} alt="image of book" className='w-full h-full object-cover' placeholder='blur' />
