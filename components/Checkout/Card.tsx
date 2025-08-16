@@ -1,9 +1,10 @@
 import React from 'react'
 
-const AddressForm = () => {
+const Card = () => {
   return (
-    <form className='grid grid-cols-2 gap-4 '>
-      <input
+    <div>
+      <form action="">
+        <input
         type="text"
         placeholder='First name'
         className='col-span-1 p-2 py-4 h-10 outline-none border-b mt-2 ' />
@@ -14,9 +15,11 @@ const AddressForm = () => {
       <input
         type="text"
         placeholder='Address'
-        className='col-span-2 p-2 py-4 w-full h-10 outline-none border-b ' />
-    </form>
+        className='col-span-2 ' />
+        
+      </form>
+    </div>
   )
 }
 
-export default AddressForm
+export default Card
