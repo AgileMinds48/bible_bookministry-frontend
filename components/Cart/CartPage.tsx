@@ -60,14 +60,19 @@ const CartPage = () => {
                       <td className="py-4">
                         <div className="flex items-center gap-2">
                           <button
-                            className="border-2 border-[#15278c] rounded w-8 h-8 flex items-center justify-center text-lg cursor-pointer"
+                            aria-label='remove one quantity'
+                            disabled={item.quantity===1}
+                            className={`border-2 border-[#15278c] rounded w-8 h-8 flex items-center justify-center text-lg 
+                              ${item.quantity===1? "opacity-50 cursor-not-allowed":"cursor-pointer" }`}
                             onClick={() => updateQuantity(item.id, item.quantity - 1)}
                           >
                             -
                           </button> 
                           <span className="w-8 text-center">{item.quantity}</span>
                           <button
-                            className="border-2 border-[#15278c] rounded w-8 h-8 flex items-center justify-center text-lg cursor-pointer"
+                            aria-label='Add one quantity'
+                            className={`border-2 border-[#15278c] rounded w-8 h-8 flex items-center justify-center text-lg cursor-pointer
+                              `}
                             onClick={() => updateQuantity(item.id, item.quantity + 1)}
                           >
                             +
@@ -113,7 +118,8 @@ const CartPage = () => {
             <div className="flex gap-2 mt-6">
               <Link href={"/checkout"}
                 className='w-full'>
-              <button
+                <button
+                  aria-labelledby='Proceed to checkout'
                 className="w-full bg-[#15278c] hover:bg-[#091974] cursor-pointer text-white py-2 rounded transition"
                 disabled={items.length === 0}
               >
@@ -122,6 +128,7 @@ const CartPage = () => {
                 </Link>
               {items.length > 0 && (
                 <button
+                  aria-labelledby='Clear form cart'
                   className="px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded"
                   onClick={clearCart}
                 >
