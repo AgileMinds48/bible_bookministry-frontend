@@ -74,7 +74,8 @@ const Checkout = () => {
                 className="w-full bg-[#15278c] hover:bg-[#091974] cursor-pointer text-white py-2 rounded transition flex items-center justify-center gap-2"
                 disabled={items.length === 0}
               >
-                  Pay now <RiMoneyDollarCircleLine className='text-2xl'/>
+                <RiMoneyDollarCircleLine className='text-2xl'/>
+                Pay GHS { grandTotal.toFixed(2)}
                 </button>
                 </Link>
               {/* {items.length > 0 && (

@@ -91,10 +91,7 @@ const Header = () => {
               className="hidden md:flex h-full items-center gap-1 cursor-pointer hover:shadow-2xl text-[#15278c] transition duration-500 relative text-2xl p-2 rounded-full bg-[#B0D4E3]">
               <LuUserRound />
             </button>
-
-            <div>
-
-            </div>
+           
 
             {/* hamburger menu */}
             <button className=" md:hidden p-6 flex flex-col gap-1"
