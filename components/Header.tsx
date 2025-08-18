@@ -95,8 +95,7 @@ const Header = () => {
 
             {/* hamburger menu */}
             <button className=" md:hidden p-6 flex flex-col gap-1"
-              onClick={handleOpenMenu}
-            >
+              onClick={handleOpenMenu}>
               <div className={`bg-[#15278c] h-[2px] w-6 rounded-lg transition duration-300 ${isExpanded && "rotate-45 translate-y-1"}`}></div>
               <div className={`bg-[#15278c] h-[2px] w-6 rounded-lg transition duration-300 ${isExpanded && "opacity-0"}`}></div>
               <div className={`bg-[#15278c] h-[2px] w-6 rounded-lg transition duration-300 ${isExpanded && "-rotate-45 -translate-y-2"}`}></div>
