@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { CiShoppingCart } from "react-icons/ci";
-import { FaRegUser } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
 import Modal from "./Modal";
 import SignUp from "./Auth/SignUp";
@@ -24,6 +23,7 @@ const Header = () => {
     { label: 'Catalogue', href: '/catalogue' },
     { label: 'E-books', href: '/e-books' },
     { label: 'About us', href: '/about' },
+    { label: 'Dashboard', href: '/dashboard' },
   ];
   //hamburger menu
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
