@@ -2,6 +2,7 @@ import React from 'react'
 import { ImBooks } from 'react-icons/im'
 import Overview from './Overview'
 import SalesChart, { SalesData } from './Charts/SalesChart';
+import TopSellingBooksChart, { BookData } from './Charts/TopSelling';
 
 
 
@@ -54,20 +55,32 @@ const Dashboard = () => {
   }
 
   const mockSalesData: SalesData[] = [
-    { name: "Jan", sales: 3000, revenue: 26200 },
-    { name: "Feb", sales: 2800, revenue: 24000 },
-    { name: "Mar", sales: 3500, revenue: 27000 },
-    { name: "Apr", sales: 4000, revenue: 32000 },
-    { name: "May", sales: 4200, revenue: 24000 },
-    { name: "Jun", sales: 3900, revenue: 31000 },
-    { name: "Jul", sales: 4100, revenue: 33000 },
-    { name: "Aug", sales: 4300, revenue: 65000 },
-    { name: "Sep", sales: 3700, revenue: 30000 },
-    { name: "Oct", sales: 3600, revenue: 29500 },
-    { name: "Nov", sales: 3800, revenue: 31500 },
-    { name: "Dec", sales: 4500, revenue: 37000 }
+    { name: "Jan", sales: 20000, revenue: 26200 },
+    { name: "Feb", sales: 18300, revenue: 24000 },
+    { name: "Mar", sales: 15080, revenue: 27000 },
+    { name: "Apr", sales: 40100, revenue: 32000 },
+    { name: "May", sales: 42020, revenue: 24000 },
+    { name: "Jun", sales: 39100, revenue: 31000 },
+    { name: "Jul", sales: 41100, revenue: 33000 },
+    { name: "Aug", sales: 43100, revenue: 45000 },
+    { name: "Sep", sales: 37200, revenue: 30000 },
+    { name: "Oct", sales: 36004, revenue: 29500 },
+    { name: "Nov", sales: 23800, revenue: 31500 },
+    { name: "Dec", sales: 14500, revenue: 37000 }
   ];
 
+  const mockTopSelling: BookData[] = [
+    { title: "Raskuku and the Dragon Chicken", sales: 3640 },
+    { title: "The Lost Scrolls", sales: 3250 },
+    { title: "Journey to Bethlehem", sales: 4100 },
+    { title: "Wisdom of Solomon", sales: 2950 },
+    { title: "Prophet's Path", sales: 3800 },
+    { title: "Children of Jericho", sales: 2700 },
+    { title: "The Olive Tree", sales: 3300 },
+    { title: "Book of Miracles", sales: 3550 },
+    { title: "Desert Wanderers", sales: 3100 },
+    { title: "The Shepherd's Tale", sales: 2880 }
+  ]
 
    return(
     <section className='min-h-screen  pl-[20em] p-8 inter bg-gray-200/30 rounded-2xl '>
@@ -76,11 +89,12 @@ const Dashboard = () => {
          <p className='text-gray-700'>{monthInWords} {day}, {year} &nbsp;<span className='border-l-2 border-black'> </span> {time}</p>
 </div>
       
-      <div className='bg-white p-4 rounded-2xl w-fit'>
+     
       <Overview/>
-       </div>
-       <div className='mt-4'>
+       
+       <div className=' grid grid-cols-2 gap-4 grid-rows-auto items-end-safe'>
          <SalesChart data={mockSalesData} />
+         <TopSellingBooksChart data={mockTopSelling}/>
          </div>
     </section>
   )

@@ -10,7 +10,7 @@ const mockOverviewData = {
     icon: <ImBooks />,
     label: "Books available",
     value: 66,
-    theme: "green"
+    theme: "yellow"
   },
   totalOrders: {
     icon: <CiShoppingCart />,
@@ -22,13 +22,13 @@ const mockOverviewData = {
     icon: <RiMoneyDollarCircleLine />,
     label: "Total revenue",
     value: "GHS169,005",
-    theme: "red"
+    theme: "green"
   },
   totalUsers: {
     icon: <LuUserRound />,
     label: "Total users",
     value: "3348",
-    theme: "deepBlue"
+    theme: "red"
   }
 };
 
@@ -44,28 +44,33 @@ const themeMap = {
     iconBg: 'bg-blue-500/20',
     iconText: 'text-blue-500'
   },
-  'deepBlue': {
-    bg: "bg-[#15278c]/20",
-    iconBg: "bg-[#15278c]/30",
-    iconText:"text-[#15278c]"
+  'yellow': {
+    bg: "bg-yellow-300/20",
+    iconBg: "bg-yellow-500/30",
+    iconText:"text-yellow-500"
   }
   ,
   'red': {
-    bg: "bg-red-200/50",
+    bg: "bg-red-100",
     iconBg: "bg-red-500/20",
     iconText:"text-red-500"
   }
 };
 const Overview = () => {
   return (
-    <div className='flex gap-4'>
-      {Object.entries(mockOverviewData).map(([key, { label, value, theme, icon }]) => {
+    <div className=' grid grid-cols-4  rounded-3xl w-fit'>
+      {Object.entries(mockOverviewData).map(([key, { label, value, theme, icon }],id) => {
         const t = themeMap[theme as keyof typeof themeMap];
         return (
           <div
             key={key}
-            className={`h-32 min-w-[15em] ${t.bg} rounded-3xl overflow-hidden grid grid-cols-[4em_1fr] items-center p-4`}>
-            <div className={`${t.iconBg} w-12 h-12 flex justify-center items-center rounded-full`}>
+            className={`h-32 cursor-pointer ${t.bg} rounded-3xl overflow-hidden grid grid-cols-[4em_1fr] items-center p-4 pr-[40px] hover:shadow-2xl shadow-black/10 transition-shadow duration-500
+            
+            `}
+          style={{transform:`translateX(-${id*30}px)`, zIndex:`4-${id}`}}
+          >
+            
+            <div className={`${t.iconBg} w-12 h-12 flex justify-center items-center rounded-full overflow-hidden`}>
               <span className={`text-3xl ${t.iconText}`}>{icon}</span>
             </div>
             <p className='text-sm font-medium text-right'>{label}<br />

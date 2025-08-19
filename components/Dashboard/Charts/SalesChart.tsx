@@ -11,7 +11,7 @@ export type SalesData = {
 
 export default function SalesChart({ data }: { data: SalesData[] }) {
   return (
-    <div className="bg-white p-6 rounded-xl shadow-md w-[50%]">
+    <div className="bg-white p-6 rounded-2xl shadow-md ">
       <h2 className="text-xl font-semibold mb-4">Monthly Sales Overview</h2>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
@@ -20,13 +20,14 @@ export default function SalesChart({ data }: { data: SalesData[] }) {
           <YAxis />
           <Tooltip
             contentStyle={{ backgroundColor: '#fff', border: '1px solid #ccc', borderRadius: '8px' }}
-            formatter={(value: number) => [
-              typeof value === 'number' ? `$${value.toLocaleString()}` : value,
-              value === data[0]?.sales ? 'Sales Count' : 'Revenue',
-            ]}
+            formatter={(value: number, name: string) => {
+              if (name === "Units Sold") return [value.toLocaleString(), "Units Sold"];
+              if (name === "Revenue") return [`$${value.toLocaleString()}`, "Revenue"];
+              return [value,name];
+            }}
           />
           <Legend />
-          <Line type="monotone" dataKey="sales" stroke="#3b82f6" name="Units Sold" strokeWidth={2} dot={{ r: 4 }} />
+          <Line type="monotone" dataKey="sales" stroke="#3b82f6" name="Units Sold" strokeWidth={2} dot={{ r: 2 }} />
           <Line type="monotone" dataKey="revenue" stroke="#10b981" name="Revenue" strokeWidth={2} dot={false} />
         </LineChart>
       </ResponsiveContainer>
