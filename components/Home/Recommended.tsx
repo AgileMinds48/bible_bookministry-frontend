@@ -1,5 +1,5 @@
 "use client"
-import { Book, Books } from '@/app/utils/data'
+import { Books } from '@/app/utils/data'
 import { AnimatePresence, motion } from 'framer-motion'
 
 import Image, { StaticImageData } from 'next/image'

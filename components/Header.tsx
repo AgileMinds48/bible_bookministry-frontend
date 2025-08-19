@@ -23,7 +23,7 @@ const Header = () => {
     { label: 'Catalogue', href: '/catalogue' },
     { label: 'E-books', href: '/e-books' },
     { label: 'About us', href: '/about' },
-    { label: 'Dashboard', href: '/dashboard' },
+    { label: 'Dashboard', href: '/admin/dashboard' },
   ];
   //hamburger menu
   const [isExpanded, setIsExpanded] = useState<boolean>(false);

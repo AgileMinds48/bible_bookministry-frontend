@@ -1,5 +1,5 @@
 
-import { lcp, mainbook } from '@/public';
+import { lcp } from '@/public';
 import Image from 'next/image';
 import Link from 'next/link';
  import React from 'react'
@@ -37,8 +37,6 @@ const Landing = () => {
           </div>
         </div>
         <div className='h-[40em] w-full place-items-center relative hidden md:block -translate-y-[45%]'>
-          {/* <Image priority={true} src={mainbook} alt='book' className='h-[25em] object-contain absolute top-[40%] -left-0 -translate-y-[45%] -rotate-[40deg]' />
-          <Image priority={true} src={mainbook} alt='book' className='h-[25em] object-contain absolute top-[45%] -right-0 -translate-y-[45%] rotate-30' /> */}
           <Image priority={true} src={lcp} alt='book' className='h-full object-contain absolute top-[50%]   drop-shadow-2xl' />
         </div>
       </div>
