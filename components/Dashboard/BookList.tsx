@@ -5,6 +5,7 @@ interface BookList{
   title: string,
   author: string,
   price: number
+  
 }
 
 const BookList = () => {
