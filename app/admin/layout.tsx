@@ -1,4 +1,5 @@
 import AdminSidebar from '@/components/Dashboard/AdminSidebar'
+import Link from 'next/link'
 import React from 'react'
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -7,6 +8,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* Admin Header */}
       <header className=" border-white border-b bg-[#15278c] text-white px-8 py-4 flex items-center justify-between fixed left-0 right-0 z-[999]">
         <h1 className="text-2xl font-bold ">Admin Dashboard</h1>
+        <Link href={"/"} className='underline underline-blue-400'>Go to Home</Link>
         {/* Add navigation or user info here if needed */}
       </header>
       <div className='flex flex-1 min-h-0'>

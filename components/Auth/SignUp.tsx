@@ -22,11 +22,11 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
   });
 
   const [formData, setFormData] = useState<SignUpFormData>({
-    firstname: '',
-    lastname: '',
+    first_name: '',
+    last_name: '',
     email: '',
     password: '',
-    repeatpassword: '',
+    password2: '',
   });
   const [passwordError, setPasswordError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -53,8 +53,8 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
     if (
       (name === 'password' || name === 'repeatpassword') &&
       updatedForm.password &&
-      updatedForm.repeatpassword &&
-      updatedForm.password !== updatedForm.repeatpassword
+      updatedForm.password &&
+      updatedForm.password !== updatedForm.password2
     ) {
       setPasswordError('Passwords mismatch');
     } else {
@@ -84,11 +84,11 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
     //     method: 'POST',
     //     headers: { 'Content-Type': 'application/json' },
     //     body: JSON.stringify({
-    //       first_name: formData.firstname,
-    //       last_name: formData.lastname,
+    //       first_name: formData.first_name,
+    //       last_name: formData.last_name,
     //       email: formData.email,
     //       password: formData.password,
-    //       password2: formData.repeatpassword,
+    //       password2: formData.password2,
     //     }),
     //     credentials: 'include',
     //   });

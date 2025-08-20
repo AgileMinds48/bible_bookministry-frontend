@@ -96,11 +96,11 @@ export const inputItemsLogin:loginField[] = [
 //signup type shi
 //signup state formdata 
 export interface SignUpFormData{
-    firstname:string
-    lastname: string
-    email: string
-    password: string
-    repeatpassword: string
+  first_name: string,  
+  last_name: string,       // Backend expects 'last_name'
+  email: string,
+  password: string,
+  password2: string,
 }
 export interface signUpField{
   input: string,
