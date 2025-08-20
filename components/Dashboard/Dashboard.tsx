@@ -4,6 +4,8 @@ import Overview from './Overview'
 import SalesChart, { SalesData } from './Charts/SalesChart';
 import TopSellingBooksChart, { BookData } from './Charts/TopSelling';
 import AdminSidebar from './AdminSidebar';
+import BookList from './BookList';
+import OrderList from './OrderList';
 
 
 
@@ -99,6 +101,9 @@ const Dashboard = () => {
          <SalesChart data={mockSalesData} />
          <TopSellingBooksChart data={mockTopSelling}/>
          </div>
+        <div className='mt-8 grid grid-cols-[1.5fr_1fr]'>
+          <OrderList/>
+        </div>
       </section>
     </>
   )
