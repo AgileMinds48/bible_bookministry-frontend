@@ -58,14 +58,15 @@ const themeMap = {
 };
 const Overview = () => {
   return (
-    <div className=' grid grid-cols-4  rounded-3xl w-fit'>
+    <div className=' grid grid-cols-4 md:gap-4 rounded-3xl w-full'>
       {Object.entries(mockOverviewData).map(([key, { label, value, theme, icon }],id) => {
         const t = themeMap[theme as keyof typeof themeMap];
+        
         return (
           <div
             key={key}
-            className={`h-32 cursor-pointer ${t.bg} rounded-3xl overflow-hidden grid grid-cols-[4em_1fr] items-center p-4 pr-[40px] hover:shadow-2xl shadow-black/10 transition-shadow duration-500
-            
+            className={`h-32 cursor-pointer ${t.bg} rounded-3xl overflow-hidden grid grid-cols-[4em_1fr] items-center p-4 pr-[5em] hover:shadow-2xl shadow-black/10 transition-shadow duration-500
+            overlap-card
             `}
           style={{transform:`translateX(-${id*30}px)`, zIndex:`4-${id}`}}
           >

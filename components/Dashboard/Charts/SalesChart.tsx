@@ -12,7 +12,7 @@ export type SalesData = {
 export default function SalesChart({ data }: { data: SalesData[] }) {
   return (
     <div className="bg-white p-6 rounded-2xl shadow-md ">
-      <h2 className="text-xl font-semibold mb-4">Monthly Sales Overview</h2>
+      <h2 className="text-2xl font-semibold mb-4 text-[#15278c]">Monthly Sales Overview</h2>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />

@@ -10,7 +10,7 @@ export type BookData = {
 export default function TopSellingBooksChart({ data }: { data: BookData[] }) {
   return (
     <div className="bg-white p-6 rounded-2xl shadow-md mt-8 antialiased">
-      <h2 className="text-xl font-semibold mb-4">Top Selling Books</h2>
+      <h2 className="text-2xl font-semibold mb-4 text-[#15278c]">Top Selling Books</h2>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data} layout="vertical" margin={{ left: 100 }}>
           <CartesianGrid strokeDasharray="3 3" />

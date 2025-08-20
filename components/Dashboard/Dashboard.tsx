@@ -1,9 +1,7 @@
 import React from 'react'
-import { ImBooks } from 'react-icons/im'
 import Overview from './Overview'
 import SalesChart, { SalesData } from './Charts/SalesChart';
 import TopSellingBooksChart, { BookData } from './Charts/TopSelling';
-import AdminSidebar from './AdminSidebar';
 import BookList from './BookList';
 import OrderList from './OrderList';
 
@@ -87,8 +85,8 @@ const Dashboard = () => {
 
   return (
     <>
-      
-      <section className='relative min-h-screen   p-8 inter bg-gray-200/30 rounded-2xl '>
+      const 
+      <section className='relative min-h-screen ml-[18em] mt-8  p-8 inter bg-gray-200/30 rounded-2xl '>
         <div className='flex items-baseline justify-between mb-4'>
         <h1 className='text-5xl mb-1'>Hello, <span className='text-[#15278c]'>Fenuku</span></h1>
          <p className='text-gray-700'>{monthInWords} {day}, {year} &nbsp;<span className='border-l-2 border-black'> </span> {time}</p>
@@ -96,13 +94,14 @@ const Dashboard = () => {
       
      
       <Overview/>
-       
        <div className=' grid grid-cols-2 gap-8 grid-rows-auto items-end-safe'>
          <SalesChart data={mockSalesData} />
          <TopSellingBooksChart data={mockTopSelling}/>
          </div>
         <div className='mt-8 grid grid-cols-[1.5fr_1fr]'>
-          <OrderList/>
+          <div className='shadow-md p-6 rounded-2xl bg-white'>
+            <OrderList />
+            </div>
         </div>
       </section>
     </>

@@ -24,12 +24,12 @@ const AdminSidebar = () => {
     {
       label: "Books",
       icon: <ImBooks />,
-      href: "/admin/dashboard"
+      href: "/admin/books"
     },
     {
       label: "Manage orders",
       icon: <RiShoppingCart2Line />,
-      href: "/admin/dashboard"
+      href: "/admin/orders"
     },
     {
       label: "Manage users",
@@ -44,7 +44,7 @@ const AdminSidebar = () => {
   ]
 
   return (
-    <nav className=' top-0 bottom-0  left-0 w-[20em] border-r border-b-gray-700 bg-[#B0D4E3] text-black p-4 flex flex-col'>
+    <nav className='h-full pt-20 left-0 max-w-[20em] border-r border-b-gray-700 bg-[#B0D4E3] text-black p-4 flex flex-col'>
       <div className=''>
         <div className='flex gap-2 mb-2'>
           <Image src={logo} alt="Bible and books ministry logo" width={30} className='shrink-0' />
@@ -57,7 +57,11 @@ const AdminSidebar = () => {
               key={id}
               href={href}
               className=''>
-              <li className=' flex gap-2 items-center rounded-2xl hover:bg-white/20 p-4'><span className='text-xl'>{icon}</span> {label}</li>
+              <li className={` flex gap-2 items-center rounded-2xl p-4 mb-2
+                ${pathname===href?"bg-white/80 text-[#15278c] font-semibold":"hover:bg-white/20"}`}>
+                <span className='text-xl'>{icon}
+                </span>
+                {label}</li>
             </Link>
           ))}
         </ul>

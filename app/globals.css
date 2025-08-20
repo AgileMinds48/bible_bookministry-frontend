@@ -31,6 +31,14 @@
   font-optical-sizing: auto;
 }
 
+/* overview cards */
+@media (max-width: 900px), (min-resolution: 110dpi) {
+  .overlap-card {
+    position: static !important;
+    transform: none !important;
+    z-index: auto !important;
+  }
+}
 nav * {
   pointer-events: auto !important;
 }
