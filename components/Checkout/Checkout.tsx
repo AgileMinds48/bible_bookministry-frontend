@@ -1,8 +1,7 @@
 "use client"
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import AddressForm from './AddressForm'
 import { FaAddressCard } from 'react-icons/fa'
-import { GiMoneyStack } from 'react-icons/gi'
 import { RiMoneyDollarCircleLine } from 'react-icons/ri'
 import Payment from './Payment'
 import Link from 'next/link'
@@ -13,7 +12,6 @@ const Checkout = () => {
   const [paymentType, setPaymentType] = useState<paymentmethods>("momo")
   
     const items = useCartStore(s => s.items)
-  const clearCart = useCartStore(s => s.clearCart)
   const subtotal = useCartStore(s => s.getTotalPrice())
   const DELIVERY_FEE = 10
   const grandTotal = subtotal + DELIVERY_FEE
@@ -74,17 +72,11 @@ const Checkout = () => {
                 className="w-full bg-[#15278c] hover:bg-[#091974] cursor-pointer text-white py-2 rounded transition flex items-center justify-center gap-2"
                 disabled={items.length === 0}
               >
-                  Pay now <RiMoneyDollarCircleLine className='text-2xl'/>
+                <RiMoneyDollarCircleLine className='text-2xl'/>
+                Pay GHS { grandTotal.toFixed(2)}
                 </button>
                 </Link>
-              {/* {items.length > 0 && (
-                <button
-                  className="px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded"
-                  onClick={clearCart}
-                >
-                  Clear
-                </button>
-              )} */}
+            
             </div>
           </div>
         </div>

@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { CiShoppingCart } from "react-icons/ci";
-import { FaRegUser } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
 import Modal from "./Modal";
 import SignUp from "./Auth/SignUp";
@@ -24,6 +23,7 @@ const Header = () => {
     { label: 'Catalogue', href: '/catalogue' },
     { label: 'E-books', href: '/e-books' },
     { label: 'About us', href: '/about' },
+    { label: 'Dashboard', href: '/admin/dashboard' },
   ];
   //hamburger menu
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
@@ -72,7 +72,9 @@ const Header = () => {
             <input type="text" name='search-bar' className='w-full h-full border border-black p-4 px-4 pl-10 outline-0 rounded-full shadow-lg focus:shadow-2xl duration-150 transition antialiased' placeholder='Search for books by title, author' />
           </div> */}
           <div className="min-w-[15%] flex justify-between items-center">
-            <button className="relative cursor-pointer text-2xl p-2 rounded-full bg-[#B0D4E3] text-[#15278c]">
+            <button
+              aria-label="cart"
+              className="relative cursor-pointer text-2xl p-2 rounded-full bg-[#B0D4E3] text-[#15278c]">
               <Link href={"/cart"}>
               <span className="absolute -top-4 text-[0.4em] -right-2 bg-[#15278c] text-white  min-h-4 min-w-4 flex items-center justify-center rounded-full">
                 {count}
@@ -81,25 +83,25 @@ const Header = () => {
             </Link>
             </button>
 
-            <button className="hidden md:block relative cursor-pointer text-2xl p-2 rounded-full bg-[#B0D4E3] text-[#15278c]">
+            <button
+              aria-label="wishlist"
+              className="hidden md:block relative cursor-pointer text-2xl p-2 rounded-full bg-[#B0D4E3] text-[#15278c]">
               <span className="  absolute -top-2 text-[0.4em] md:flex items-center justify-center -right-1 bg-red-600/80 text-white min-h-4 min-w-4 rounded-full">
                 12
               </span>
               <MdFavoriteBorder />
             </button>
-            <button onClick={() => setShowSignUpModal(true)}
+            <button
+              aria-label="login or register"
+              onClick={() => setShowSignUpModal(true)}
               className="hidden md:flex h-full items-center gap-1 cursor-pointer hover:shadow-2xl text-[#15278c] transition duration-500 relative text-2xl p-2 rounded-full bg-[#B0D4E3]">
               <LuUserRound />
             </button>
-
-            <div>
-
-            </div>
+           
 
             {/* hamburger menu */}
             <button className=" md:hidden p-6 flex flex-col gap-1"
-              onClick={handleOpenMenu}
-            >
+              onClick={handleOpenMenu}>
               <div className={`bg-[#15278c] h-[2px] w-6 rounded-lg transition duration-300 ${isExpanded && "rotate-45 translate-y-1"}`}></div>
               <div className={`bg-[#15278c] h-[2px] w-6 rounded-lg transition duration-300 ${isExpanded && "opacity-0"}`}></div>
               <div className={`bg-[#15278c] h-[2px] w-6 rounded-lg transition duration-300 ${isExpanded && "-rotate-45 -translate-y-2"}`}></div>

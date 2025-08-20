@@ -1,6 +1,6 @@
 import { Book } from '@/app/utils/data';
 import React from 'react'
- //sorting function
+//sorting function
 export const sortByTitleAZ = (books: Book[]): Book[] => {
   const copyOfBooks = [...books]; //I don't wanna change the original array
   return copyOfBooks.sort((a, b) => a.title.localeCompare(b.title));
@@ -19,32 +19,32 @@ export const sortByAuthorZA = (books: Book[]) => {
   const copyOfBooks = [...books]
   return copyOfBooks.sort((a, b) => b.author.localeCompare(a.author));
 }
-export const sortByPriceLH = (books: Book[])=>{
+export const sortByPriceLH = (books: Book[]) => {
   const copyOfBooks = [...books];
   return copyOfBooks.sort((a, b) => a.price - b.price);
 }
-export const sortByPriceHL = (books: Book[])=>{
+export const sortByPriceHL = (books: Book[]) => {
   const copyOfBooks = [...books];
   return copyOfBooks.sort((a, b) => b.price - a.price);
 }
-export const sortByRatingL = (books: Book[])=>{
+export const sortByRatingL = (books: Book[]) => {
   const copyOfBooks = [...books];
   return copyOfBooks.sort((a, b) => a.rating - b.rating);
 }
-export const sortByRatingH = (books: Book[])=>{
+export const sortByRatingH = (books: Book[]) => {
   const copyOfBooks = [...books];
   return copyOfBooks.sort((a, b) => b.rating - a.rating);
 }
 
-export const filterByPriceRange = (books:Book[], min:number, max:number) => {
+export const filterByPriceRange = (books: Book[], min: number, max: number) => {
   return books.filter((book) => book.price >= min && book.price <= max);
 }
 
-export const filterByRating = (books:Book[],rating:number) => {
+export const filterByRating = (books: Book[], rating: number) => {
   return books.filter((book) => book.rating <= rating);
 }
 
-export const filterBySearch = (books: Book[],searchTerm:string):Book[] => {
+export const filterBySearch = (books: Book[], searchTerm: string): Book[] => {
   if (!searchTerm || searchTerm.trim() === "") {
     return books;
   }
@@ -56,7 +56,7 @@ export const filterBySearch = (books: Book[],searchTerm:string):Book[] => {
 }
 const Filters = () => {
 
-  
+
 }
 
 export default Filters
