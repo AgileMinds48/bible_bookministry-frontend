@@ -255,7 +255,6 @@ const AllBooks = () => {
   // removed localStorage cart sync; Zustand persist handles it
 
 
-
   return (
     <section className="px-8 pb-56 poppins ">
       <div className='relative'>

@@ -101,8 +101,11 @@ const Dashboard = () => {
         <div className='mt-8 grid grid-cols-[1.5fr_1fr]'>
           <div className='shadow-md p-6 rounded-2xl bg-white'>
             <OrderList />
-            </div>
-        </div>
+          </div>
+      <div className='shadow-md p-6 rounded-2xl bg-white'>
+            <BookList />
+          </div>
+          </div>
       </section>
     </>
   )

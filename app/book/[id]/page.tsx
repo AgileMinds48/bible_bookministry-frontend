@@ -1,5 +1,6 @@
 import { Book } from '@/app/utils/data'
 import BookDetail from '@/components/Book/BookDetail'
+import Error from '@/components/Fallback/Error'
 import Review from '@/components/Reviews/Review'
 import axios from 'axios'
 import React from 'react'
@@ -23,11 +24,10 @@ const page = async ({ params }: BookPageProps) => {
       author: BookData.bookAuthor,
       price: BookData.bookPrice,
       rating: BookData.rating || 0,
-      category: BookData.bookCategory,
+      bookCategory: BookData.bookCategory.categoryName,
       img: BookData.media[0] || '',
       amountInStock: BookData.amountInStock,
       bookDescription: BookData.bookDescription,
-      bookCategory: BookData.bookCategory
     }
      return (
     <div>
@@ -37,17 +37,9 @@ const page = async ({ params }: BookPageProps) => {
   )
   } catch(error) {
     console.error("Error fetching book: ", error)
-    return <div className='pt-44'>Book not found</div>
+    return <Error/>
   }
-  // if (isNaN(bookId)) return (
-  //   <div>Error accessing book</div>
-  // )
 
-  // const selectedBook = Books.find((book) => book.id === bookId);
-
-  // if (!selectedBook) {
-  //   return <div>Book not found</div>
-  // }
  
 }
 
