@@ -1,6 +1,4 @@
 import { reviews } from '@/app/utils/data'
-import { headshot } from '@/public'
-import { div } from 'framer-motion/client'
 import Image from 'next/image'
 import React from 'react'
 import Rating from '../Rating'

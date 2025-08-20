@@ -1,17 +1,21 @@
+import AdminSidebar from '@/components/Dashboard/AdminSidebar'
 import React from 'react'
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-gray-100 ">
+    <div className="min-h-screen bg-gray-100 flex flex-col">
       {/* Admin Header */}
       <header className=" border-white border-b bg-[#15278c] text-white px-8 py-4 flex items-center justify-between ">
         <h1 className="text-2xl font-bold ">Admin Dashboard</h1>
         {/* Add navigation or user info here if needed */}
       </header>
+      <div className='flex flex-1 min-h-0'>
+      <AdminSidebar/>
       {/* Main Content */}
-      <main className="">
+      <main className="flex-1 p-8 overflow-auto">
         {children}
-      </main>
+        </main>
+        </div>
     </div>
   )
 }

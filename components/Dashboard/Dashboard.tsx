@@ -83,21 +83,24 @@ const Dashboard = () => {
     { title: "The Shepherd's Tale", sales: 2880 }
   ]
 
-   return(
-    <section className='relative min-h-screen  pl-[21em] p-8 inter bg-gray-200/30 rounded-2xl '>
-<div className='flex items-baseline justify-between mb-4'>
+  return (
+    <>
+      
+      <section className='relative min-h-screen   p-8 inter bg-gray-200/30 rounded-2xl '>
+        <div className='flex items-baseline justify-between mb-4'>
         <h1 className='text-5xl mb-1'>Hello, <span className='text-[#15278c]'>Fenuku</span></h1>
          <p className='text-gray-700'>{monthInWords} {day}, {year} &nbsp;<span className='border-l-2 border-black'> </span> {time}</p>
 </div>
       
-     <AdminSidebar/>
+     
       <Overview/>
        
        <div className=' grid grid-cols-2 gap-8 grid-rows-auto items-end-safe'>
          <SalesChart data={mockSalesData} />
          <TopSellingBooksChart data={mockTopSelling}/>
          </div>
-    </section>
+      </section>
+    </>
   )
 }
 

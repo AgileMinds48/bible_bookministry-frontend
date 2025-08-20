@@ -1,6 +1,6 @@
 "use client"
 import { Book } from '@/app/utils/data';
-import { headshot, logo } from '@/public';
+import { headshot } from '@/public';
 import Image from 'next/image';
 import React, { useState } from 'react'
 import { FaPenAlt, FaStar } from 'react-icons/fa';

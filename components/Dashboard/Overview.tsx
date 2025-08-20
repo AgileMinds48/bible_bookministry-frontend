@@ -74,7 +74,7 @@ const Overview = () => {
               <span className={`text-3xl ${t.iconText}`}>{icon}</span>
             </div>
             <p className='text-sm font-medium text-right'>{label}<br />
-              <span className='text-4xl font-medium text-black'>{value}</span>
+              <span className='text-3xl font-medium text-black'>{value}</span>
             </p>
           </div>
         );

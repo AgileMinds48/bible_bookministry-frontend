@@ -1,13 +1,12 @@
 "use client"
 import { Books } from '@/app/utils/data'
 import Image from 'next/image'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { FaCartPlus, FaStar } from 'react-icons/fa'
 import { GrNext, GrPrevious } from 'react-icons/gr'
 import { ImBooks } from 'react-icons/im'
 import { MdFavorite } from 'react-icons/md'
 import { RiMoneyDollarCircleLine } from 'react-icons/ri'
-import { SiBookstack } from 'react-icons/si'
 
 const PopularBooks = () => {
   const popularBooks = Books.filter((book) =>book.category==="Popular"

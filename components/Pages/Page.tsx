@@ -1,6 +1,5 @@
 import React from 'react'
 import { GrNext, GrPrevious } from 'react-icons/gr'
-import { start } from 'repl'
 
 interface PageProps{
   onPageChange:(newPage:number)=>void
