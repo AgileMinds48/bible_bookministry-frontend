@@ -222,7 +222,7 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
        
           <button
             type="submit"
-            disabled={loading || successMsg!==""}
+            disabled={loading || successMsg!=="" || passwordError!==""}
             className="w-full h-12 rounded-lg mt-8 text-white font-bold text-xl  bg-[#15278c] tracking-widest cursor-pointer flex justify-center items-center"
           >
             {loading ? (

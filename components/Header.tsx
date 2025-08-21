@@ -14,17 +14,22 @@ import Menu from "./Menu";
 import { useBodyScrollLock } from "@/hooks/useBodyScrollLock";
 import { useCartStore } from "@/app/utils/cartStore";
 import { LuUserRound } from "react-icons/lu";
+import { getUserRole, isLoggedIn} from "@/hooks/auth";
+import { FaUserCircle } from "react-icons/fa";
 
 const Header = () => {
-  const count= useCartStore(s=>s.items.reduce((t,i)=>t+i.quantity,0))
+  const count = useCartStore(s => s.items.reduce((t, i) => t + i.quantity, 0))
+  const userRole = getUserRole();
+  const LoggedIn: boolean = isLoggedIn();
   const pathName = usePathname();
   const navItems = [
     { label: 'Home', href: '/' },
     { label: 'Catalogue', href: '/catalogue' },
     { label: 'E-books', href: '/e-books' },
     { label: 'About us', href: '/about' },
-    { label: 'Dashboard', href: '/admin/dashboard' },
-  ];
+  ...(userRole !== "CUSTOMER" && LoggedIn
+    ? [{ label: 'Dashboard', href: '/admin/dashboard' }]
+    : []),];
   //hamburger menu
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
@@ -87,8 +92,12 @@ const handleCloseModal = () => setModalType(null);
             <button
               aria-label="login or register"
               onClick={handleShowSignUp}
-              className="hidden md:flex h-full items-center gap-1 cursor-pointer hover:shadow-2xl text-[#15278c] transition duration-500 relative text-2xl p-2 rounded-full bg-[#B0D4E3]">
-              <LuUserRound />
+              className="hidden md:flex h-full items-center gap-1 cursor-pointer hover:shadow-2xl text-[#15278c] transition duration-500 relative text-2xl p-2 rounded-full bg-[#B0D4E3]"
+            
+            >
+              {LoggedIn ?
+             <FaUserCircle className="text-4xl"/>
+             : <LuUserRound />}
             </button>
            
 

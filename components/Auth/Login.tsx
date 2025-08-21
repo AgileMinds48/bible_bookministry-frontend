@@ -7,6 +7,7 @@ import { } from '@/app/utils/data';
 import Image from 'next/image';
 import { google, logo2 } from '@/public';
 import { MdEmail } from 'react-icons/md';
+import { handleLoggedIn } from '@/hooks/auth';
 
 interface LoginProps {
   handleCloseModal: () => void
@@ -57,11 +58,13 @@ const Login = ({handleCloseModal,onSignUpClick}: LoginProps) => {
       if (!res.ok) {
         throw new Error(data.detail || JSON.stringify(data));
       }
+      handleLoggedIn({userRole:data.userRole,userEmail:formData.usernameOrEmail});
       setSuccessMsg("Login was successful")
       setFormData({
         password: "",
         usernameOrEmail:""
       })
+
       // navigate to previous page;
       handleCloseModal();
     } catch (err: unknown) {
