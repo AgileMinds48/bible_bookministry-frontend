@@ -98,11 +98,11 @@ const Dashboard = () => {
          <SalesChart data={mockSalesData} />
          <TopSellingBooksChart data={mockTopSelling}/>
          </div>
-        <div className='mt-8 grid grid-cols-[1.5fr_1fr]'>
-          <div className='shadow-md p-6 rounded-2xl bg-white'>
+        <div className='mt-8 grid grid-cols-[1.5fr_1fr] grid-rows-2 gap-8'>
+          <div className='shadow-md p-6 rounded-2xl bg-white row-span-2 h-auto'>
             <OrderList />
           </div>
-      <div className='shadow-md p-6 rounded-2xl bg-white'>
+      <div className='shadow-md p-6 rounded-2xl bg-white h-auto'>
             <BookList />
           </div>
           </div>

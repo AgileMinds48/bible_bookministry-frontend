@@ -1,5 +1,5 @@
 "use client"
-import { useState } from 'react';
+import { Dispatch, SetStateAction, use, useState } from 'react';
 import { inputItemsLogin, loginField, LoginFormData } from '@/app/utils/data';
 import { FaEye, FaEyeSlash, FaLock } from 'react-icons/fa6';
 import { AiOutlineLoading } from 'react-icons/ai';
@@ -9,22 +9,18 @@ import { google, logo2 } from '@/public';
 import { MdEmail } from 'react-icons/md';
 
 interface LoginProps {
-  onSignUpClick: (showLogin: boolean) => void;
+  handleCloseModal: () => void
+  onSignUpClick:()=>void
 }
-const Login = ({ onSignUpClick }: LoginProps) => {
-  //passing value to header to show signup screen
+const Login = ({handleCloseModal,onSignUpClick}: LoginProps) => {
+  const [successMsg,setSuccessMsg]= useState<string>("")
 
-  const handleShowSignup = () => {
-    onSignUpClick(false);
-  }
   const [shown, setShown] = useState<{ [key: string]: boolean }>({
     password: false,
-    repeatpassword: false,
   });
 
   const [formData, setFormData] = useState<LoginFormData>({
-
-    email: '',
+    usernameOrEmail: '',
     password: '',
 
   });
@@ -49,32 +45,34 @@ const Login = ({ onSignUpClick }: LoginProps) => {
 
 
     setLoading(true);
-    // try {
-    //   const res = await fetch(`${API_URL}/api/auth/login/`, {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({
-    //       first_name: formData.firstname,
-    //       last_name: formData.lastname,
-    //       email: formData.email,
-    //       password: formData.password,
-    //       password2: formData.repeatpassword,
-    //     }),
-    //     credentials: 'include',
-    //   });
-    //   const data = await res.json();
-    //   if (!res.ok) {
-    //     throw new Error(data.detail || JSON.stringify(data));
-    //   }
-    //   alert('Account created successfully');
-    //   // navigate('/login');
-    // } catch (err: unknown) {
-    //   if (err instanceof Error) {
-    //           setError(err.message || 'Oops... Login failed');
-    //   }
-    // } finally {
-    //   setLoading(false);
-    // }
+        const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+    try {
+      const res = await fetch(`${backendUrl}/api/v1/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.detail || JSON.stringify(data));
+      }
+      setSuccessMsg("Login was successful")
+      setFormData({
+        password: "",
+        usernameOrEmail:""
+      })
+      // navigate to previous page;
+      handleCloseModal();
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError('Oops... Login failed. Please try again');
+        console.log("Login fail error: ",err.message);
+      }
+    } finally {
+      setLoading(false);
+      
+    }
   };
 
   const handleShow = (field: string) => {
@@ -121,26 +119,14 @@ const Login = ({ onSignUpClick }: LoginProps) => {
                   </span>
                 )}
                 <span className="absolute left-4 z-1 top-[50%] -translate-y-[50%] text-gray-800">
-                  {inputName === "firstname"
+                  {inputName === "userNameorEmail"
                     ? <MdEmail />
                     : <FaLock />
                   }
                 </span>
                 <input
-                  // onFocus={
-                  //   inputName === 'password'
-                  //     ? () => setPasswordFocused(true)
-                  //     : undefined
-                  // }
-                  // onBlur={
-                  //   inputName === 'password'
-                  //     ? () => setPasswordFocused(false)
-                  //     : undefined
-                  // }
-                  //if anything other than the password fields,use the `type` prop
-                  //else toggle between password and text for each field
                   type={
-                    inputName === 'password' || inputName === 'repeatpassword' //this line makes sure it applies to just the password and repeat password fields
+                    inputName === 'password'  //this line makes sure it applies to just the password 
                       ? shown[inputName]
                         ? 'text'
                         : 'password'
@@ -166,7 +152,7 @@ const Login = ({ onSignUpClick }: LoginProps) => {
 
             <button
               type="submit"
-              disabled={loading}
+              disabled={loading || successMsg!==""}
               className="w-full h-12 rounded-lg mt-8 text-white font-bold text-xl  bg-[#15278c] tracking-widest cursor-pointer flex justify-center items-center"
             >
               {loading ? (
@@ -178,7 +164,13 @@ const Login = ({ onSignUpClick }: LoginProps) => {
                 'Login'
               )}
             </button>
-            <p className="text-center text-red-600">{error}</p>
+            {error && <p className="text-center text-red-600">{error}</p>}
+             {successMsg &&
+              <div>
+              <p className="text-center text-green-600">{successMsg}</p>
+                <p className='text-center flex justify-center items-center gap-2'>Redirecting to Home <AiOutlineLoading className='animate-spin'/></p>
+              </div>
+            }
             <div className="relative mt-6 mb-4">
               <div className='before:content-[""] before:block lg:w-[45%] w-[25%] h-0.5 bg-gray-500 top-[50%] absolute hidden sm:block'></div>
               <p className="uppercase text-center mt-4 text-[1em] md:text-[1.1em] font-medium">
@@ -199,7 +191,7 @@ const Login = ({ onSignUpClick }: LoginProps) => {
             </button>
             <p className="text-gray-500 text-left mt-4 text-[1em]">
               Don&apos;t have an account?{' '}
-              <button onClick={handleShowSignup} className="underline  cursor-pointer text-[#15278c]">
+              <button onClick={onSignUpClick} className="underline  cursor-pointer text-[#15278c]">
                 Signup
               </button>
             </p>

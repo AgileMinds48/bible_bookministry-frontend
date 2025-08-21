@@ -7,7 +7,7 @@ import { AiOutlineLoading } from 'react-icons/ai';
 import { SignUpFormData, signUpField } from '@/app/utils/data';
 import Image from 'next/image';
 import { google,  logo2 } from '@/public';
-import { MdEmail } from 'react-icons/md';
+import { MdEmail, MdOutlinePhoneEnabled } from 'react-icons/md';
 
 interface SignUpProps{
   onLoginClick:(showLogin:boolean)=>void
@@ -18,19 +18,22 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
 }
   const [shown, setShown] = useState<{[key:string]:boolean}>({
     password: false,
-    repeatpassword: false,
+    password2: false,
   });
 
   const [formData, setFormData] = useState<SignUpFormData>({
-    first_name: '',
-    last_name: '',
+    firstName: '',
+    lastName: '',
+    userName:"",
     email: '',
     password: '',
     password2: '',
+    phoneNumber:""
   });
   const [passwordError, setPasswordError] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [successMsg, setSuccessMsg] = useState<string>("");
   const [minChar, setMinChar] = useState(false);
   const [passwordFocused, setPasswordFocused] = useState(false);
   //function to handle input change and set values
@@ -51,7 +54,7 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
     }
     //live password mismatch check
     if (
-      (name === 'password' || name === 'repeatpassword') &&
+      (name === 'password' || name === 'password2') &&
       updatedForm.password &&
       updatedForm.password &&
       updatedForm.password !== updatedForm.password2
@@ -69,42 +72,38 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
     setError('');
 
     setLoading(true);
-    // try {
-    //   const response = await.post(`${backendUrl}/auth/signup`,
-    //     {
-    //     headers: {
-    //       "Content-type":'application/json'
-    //     },
-        
-    //   })
-    // }
-
-    // try {
-    //   const res = await fetch(`${API_URL}/api/auth/signup/`, {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({
-    //       first_name: formData.first_name,
-    //       last_name: formData.last_name,
-    //       email: formData.email,
-    //       password: formData.password,
-    //       password2: formData.password2,
-    //     }),
-    //     credentials: 'include',
-    //   });
-    //   const data = await res.json();
-    //   if (!res.ok) {
-    //     throw new Error(data.detail || JSON.stringify(data));
-    //   }
-    //   alert('Account created successfully');
-    //   // navigate('/login');
-    // } catch (err: unknown) {
-    //   if (err instanceof Error) {
-    //           setError(err.message || 'Oops... Login failed');
-    //   }
-    // } finally {
-    //   setLoading(false);
-    // }
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+    try {
+      const res = await fetch(`${backendUrl}/api/v1/auth/signup`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(
+          formData
+        ),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error((data as any).detail || data.error ||JSON.stringify(data));
+      }
+      setSuccessMsg(data.successMessage || "Signup successful!");
+      setTimeout(()=>handleShowLogin(),500)
+      setFormData({
+           firstName: '',
+    lastName: '',
+    userName:"",
+    email: '',
+    password: '',
+    password2: '',
+    phoneNumber:""
+     })
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError('Oops... Signup failed. Try again');
+        console.log("Sign Up failed Error: ", err.message);
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleShow = (field:string) => {
@@ -136,20 +135,20 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
               key={inputName}
               style={{position:"relative"}}
               className={`relative h-14 ${
-                inputName === 'firstname'
+                inputName === 'firstName'
                   ? 'w-[48%] inline-block mr-4'
-                  : inputName === 'lastname'
+                  : inputName === 'lastName'
                   ? 'w-[48%] inline-block'
                   : 'w-full'
               } ${
-                inputName === 'password' || inputName === 'repeatpassword'
+                inputName === 'password' || inputName === 'password2'
                   ? passwordError
                     ? 'border-red-600'
                     : 'border-gray-500'
                   : 'border-gray-500'
               } border-2  mb-6 rounded-lg`}
             >
-              {(inputName === 'password' || inputName === 'repeatpassword') && (
+              {(inputName === 'password' || inputName === 'password2') && (
                 <span
                   onClick={() => handleShow(inputName)}
                   className="absolute right-4 h-4 w-4 top-[50%] -translate-y-[50%] cursor-pointer text-gray-800"
@@ -162,13 +161,16 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
                 </span>
               )}
               <span className="absolute left-4 z-1 top-[50%] -translate-y-[50%] text-gray-800">
-                {inputName === "firstname" || inputName === "lastname"
-                  ? <FaUser />
-                  : inputName === "email" ?
-                    <MdEmail />
-                    :<FaLock/>
-                }
-              </span>
+  {inputName === "firstName" || inputName === "lastName" || inputName==="userName"? (
+    <FaUser />
+  ) : inputName === "email" ? (
+    <MdEmail />
+  ) : inputName === "phoneNumber" ? (
+    <MdOutlinePhoneEnabled />
+  ) : (
+    <FaLock />
+  )}
+</span>
               <input
                 onFocus={
                   inputName === 'password'
@@ -183,7 +185,7 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
                 //if anything other than the password fields,use the `type` prop
                 //else toggle between password and text for each field
                 type={
-                  inputName === 'password' || inputName === 'repeatpassword' //this line makes sure it applies to just the password and repeat password fields
+                  inputName === 'password' || inputName === 'password2' //this line makes sure it applies to just the password and repeat password fields
                     ? shown[inputName]
                       ? 'text'
                       : 'password'
@@ -212,7 +214,7 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
                 {passwordFocused && warning}
               </p>
               <p className="text-red-600 text-center">
-                {inputName === 'repeatpassword' && passwordError}
+                {inputName === 'password2' && passwordError}
               </p>
             </div>
           ))}
@@ -220,7 +222,7 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
        
           <button
             type="submit"
-            disabled={loading}
+            disabled={loading || successMsg!==""}
             className="w-full h-12 rounded-lg mt-8 text-white font-bold text-xl  bg-[#15278c] tracking-widest cursor-pointer flex justify-center items-center"
           >
             {loading ? (
@@ -233,7 +235,14 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
               'Sign Up'
             )}
           </button>
-          <p className="text-center text-red-600">{error}</p>
+           {error && <p className="text-center text-red-600">{error}</p>}
+            {successMsg &&
+              <div>
+              <p className="text-center text-green-600">{successMsg}</p>
+                <p className='text-center flex justify-center items-center gap-2'>Redirecting to Login <AiOutlineLoading className='animate-spin'/></p>
+              </div>
+            }
+            
             <div className="relative mt-6 mb-4">
           <div className='before:content-[""] before:block lg:w-[45%] w-[25%] h-0.5 bg-gray-500 top-[50%] absolute hidden sm:block'></div>
             <p className="uppercase text-center mt-4 text-[1em] md:text-[1.1em] font-medium">

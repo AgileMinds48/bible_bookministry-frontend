@@ -34,18 +34,11 @@ const Header = () => {
   }
 
   //for modal
-  const [showSignUpModal, setShowSignUpModal] = useState<boolean>(false);
-  const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
+const [modalType, setModalType] = useState<null | "login" | "signup">(null);
 
-  const handleShowLogin = (showLogin: boolean) => {
-    setShowLoginModal(showLogin);
-  };
-
-  const handleShowSignUp = () => {
-    setShowLoginModal(false);
-  };
-
-
+  const handleShowLogin = () => setModalType("login");
+const handleShowSignUp = () => setModalType("signup");
+const handleCloseModal = () => setModalType(null);
   return (
     <>
       <nav className={`p-4 md:p-4 md:px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-[9999] fixed shrink-0 overflow-hidden md:top-2 top-0 left-0 right-0 rounded-lg md:left-8 md:right-8 lg:left-20 lg:right-20 shadow-sm backdrop-blur-xl outline-2 outline-[#B0D4E3] bg-[#B0D4E3]/50 poppins`}>
@@ -93,7 +86,7 @@ const Header = () => {
             </button>
             <button
               aria-label="login or register"
-              onClick={() => setShowSignUpModal(true)}
+              onClick={handleShowSignUp}
               className="hidden md:flex h-full items-center gap-1 cursor-pointer hover:shadow-2xl text-[#15278c] transition duration-500 relative text-2xl p-2 rounded-full bg-[#B0D4E3]">
               <LuUserRound />
             </button>
@@ -125,15 +118,20 @@ const Header = () => {
           </motion.div>)}
       </AnimatePresence>
       <Modal
-        isOpen={showSignUpModal || showLoginModal}
-        onClose={() => setShowSignUpModal(false)}
+        isOpen={!!modalType}
+        onClose={handleCloseModal}
       >
         <AnimatePresence>
           <motion.div
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.1, delay: 0.1 }}>
-            {showLoginModal ? <Login onSignUpClick={handleShowSignUp} /> : <SignUp onLoginClick={handleShowLogin} />}
+            {modalType === "login" ?
+              (<Login handleCloseModal={handleCloseModal} onSignUpClick={handleShowSignUp} />)
+              : modalType === "signup" ?
+              (<SignUp onLoginClick={handleShowLogin} />)
+              : null
+              }
           </motion.div>
         </AnimatePresence>
       </Modal>

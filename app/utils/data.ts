@@ -71,7 +71,7 @@ export const reviews = [
 
 //login type shi
 export interface LoginFormData{
-      email: string
+      usernameOrEmail: string
     password: string
 }
 
@@ -83,9 +83,9 @@ export interface loginField{
 
 export const inputItemsLogin:loginField[] = [
   {
-  input: "Email",
-  inputName:"email",
-  type:"email"
+  input: "Username or Email",
+  inputName:"usernameOrEmail",
+  type:"text || email"
 },
   {
   input: "Password",
@@ -96,11 +96,13 @@ export const inputItemsLogin:loginField[] = [
 //signup type shi
 //signup state formdata 
 export interface SignUpFormData{
-  first_name: string,  
-  last_name: string,       // Backend expects 'last_name'
+  firstName: string,  
+  lastName: string,       // Backend expects 'last_name'
+  userName:string,
   email: string,
   password: string,
   password2: string,
+  phoneNumber:string
 }
 export interface signUpField{
   input: string,
@@ -110,18 +112,28 @@ export interface signUpField{
 }
 export const inputItemsSignUp:signUpField[] = [{
   input: "First Name",
-  inputName: "firstname",
+  inputName: "firstName",
   type:"text"
 },
   {
     input: "Last Name",
-    inputName: "lastname",
+    inputName: "lastName",
     type:"text"
   },
   {
   input: "Email",
   inputName:"email",
   type:"email"
+},
+  {
+  input: "Username",
+  inputName:"userName",
+  type:"text"
+},
+  {
+  input: "Phone Number",
+  inputName:"phoneNumber",
+  type:"text"
 },
   {
   input: "Password",
@@ -131,7 +143,7 @@ export const inputItemsSignUp:signUpField[] = [{
   },
   {
     input: "Repeat Password",
-    inputName: "repeatpassword",
+    inputName: "password2",
     type:""
 }]
 
