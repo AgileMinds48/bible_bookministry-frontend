@@ -3,6 +3,12 @@ export const handleLoggedIn = (data:{userRole:string,userEmail:string}) => {
   localStorage.setItem("userEmail", data?.userEmail)
   localStorage.setItem("isLoggedIn", "true");
 }
+export const handleLogout = () => {
+  localStorage.removeItem("userRole");
+  localStorage.removeItem("isLoggedIn");
+  // Optionally clear other user info
+  window.location.reload(); // Or update state/UI
+};
 
 export const getUserRole=() => {
   if (typeof window !== "undefined") {

@@ -14,12 +14,15 @@ import Menu from "./Menu";
 import { useBodyScrollLock } from "@/hooks/useBodyScrollLock";
 import { useCartStore } from "@/app/utils/cartStore";
 import { LuUserRound } from "react-icons/lu";
-import { getUserRole, isLoggedIn} from "@/hooks/auth";
+import { getUserEmail, getUserRole, handleLogout, isLoggedIn} from "@/hooks/auth";
 import { FaUserCircle } from "react-icons/fa";
+import { TbLogout2 } from "react-icons/tb";
+import { div } from "framer-motion/client";
 
 const Header = () => {
   const count = useCartStore(s => s.items.reduce((t, i) => t + i.quantity, 0))
   const userRole = getUserRole();
+  const userEmail = getUserEmail();
   const LoggedIn: boolean = isLoggedIn();
   const pathName = usePathname();
   const navItems = [
@@ -65,10 +68,7 @@ const handleCloseModal = () => setModalType(null);
               ))}
             </ul>
           </div>
-          {/* <div className='w-[40%] relative'>
-            <div className='absolute top-[50%] left-4 -translate-y-[55%] text-xl'>  <CiSearch /></div>
-            <input type="text" name='search-bar' className='w-full h-full border border-black p-4 px-4 pl-10 outline-0 rounded-full shadow-lg focus:shadow-2xl duration-150 transition antialiased' placeholder='Search for books by title, author' />
-          </div> */}
+       
           <div className="min-w-[15%] flex justify-between items-center">
             <button
               aria-label="cart"
@@ -91,15 +91,22 @@ const handleCloseModal = () => setModalType(null);
             </button>
             <button
               aria-label="login or register"
-              onClick={handleShowSignUp}
+              onClick={() => {
+                if (!LoggedIn) handleShowSignUp();
+              }}
               className="hidden md:flex h-full items-center gap-1 cursor-pointer hover:shadow-2xl text-[#15278c] transition duration-500 relative text-2xl p-2 rounded-full bg-[#B0D4E3]"
-            
-            >
+              title={LoggedIn ? userEmail || "User" : "Login or Register"}>
               {LoggedIn ?
              <FaUserCircle className="text-4xl"/>
              : <LuUserRound />}
             </button>
-           
+            {LoggedIn &&
+              <div>
+              <TbLogout2
+              onClick={handleLogout}
+                  className="text-2xl text-red-600" />
+           </div>
+           }
 
             {/* hamburger menu */}
             <button className=" md:hidden p-6 flex flex-col gap-1"
