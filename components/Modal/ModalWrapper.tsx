@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import Modal from './Modal';
 import { AnimatePresence,motion } from 'framer-motion';
 import Login from '../Auth/Login';
@@ -17,7 +17,7 @@ const ModalWrapper = ({pageType}:ModalProps) => {
       if (pageType === "login") showLogin();
       if (pageType === "signup") showSignUp();
     }
-  }, [pageType, showLogin, showSignUp]);
+  }, [pageType, showLogin, showSignUp,modalType]);
 
   return (
       <Modal

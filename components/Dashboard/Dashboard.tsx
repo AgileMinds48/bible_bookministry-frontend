@@ -4,7 +4,7 @@ import SalesChart, { SalesData } from './Charts/SalesChart';
 import TopSellingBooksChart, { BookData } from './Charts/TopSelling';
 import BookList from './BookList';
 import OrderList from './OrderList';
-import { capitalise, getUserEmail } from '@/hooks/auth';
+import { capitalise } from '@/hooks/auth';
 import {  username } from '@/app/utils/logininfo';
 
 

@@ -14,7 +14,15 @@ import Page from '../Pages/Page';
 import { useCartStore } from '@/app/utils/cartStore';
 import Error from '../Fallback/Error';
 
-
+interface ApiBook {
+  bookId: number;
+  bookTitle: string;
+  bookAuthor: string;
+  bookPrice: number;
+  bookCategory: string;
+  media: string[];
+  amountInStock: number;
+}
 
 const AllBooks = () => {
   //data fetching
@@ -34,7 +42,7 @@ const AllBooks = () => {
 
         setTotalPages(response.data.totalPages)
         //mapping API response to Book interface
-        const mappedBooks: Book[] = response.data.content.map((book: any) => ({
+        const mappedBooks: Book[] = response.data.content.map((book: ApiBook) => ({
           id: book.bookId,
           title: book.bookTitle,
           author: book.bookAuthor,
@@ -55,7 +63,7 @@ const AllBooks = () => {
     }
     fetchBooks();
 
-  }, [currentPage])
+  }, [currentPage,backendUrl])
 
   //for pagination
   const handlePageChange = (newPage: number) => {

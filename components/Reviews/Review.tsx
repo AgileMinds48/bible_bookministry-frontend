@@ -22,7 +22,7 @@ const Review = ({ book }: ReviewProps) => {
         <h1 className='text-3xl flex center '>Leave an impact <FaPenAlt /></h1>
         <div className='bg-white rounded-2xl p-4 mt-6'>
         <div className='flex items-center justify-between '>
-          <p className='text-xl mt-4 text-[#15278c]'>Rate<span className='font-semibold'> "{book.title}" </span> <span className='text-gray-700'>by {book.author}</span></p>
+          <p className='text-xl mt-4 text-[#15278c]'>Rate<span className='font-semibold'> &quot;{book.title}&quot;</span> <span className='text-gray-700'>by {book.author}</span></p>
           <div className='flex gap-1 '>
             {[1, 2, 3, 4, 5].map((star) => (
               <FaStar key={star} className={`text-3xl cursor-pointer ${rating<star?"text-gray-300":"text-[#eca624]"}`} onMouseEnter={()=>handleStar(star)} onClick={()=>handleStar(star)}/>

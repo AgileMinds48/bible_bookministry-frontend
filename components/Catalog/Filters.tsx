@@ -1,5 +1,4 @@
 import { Book } from '@/app/utils/data';
-import React from 'react'
 //sorting function
 export const sortByTitleAZ = (books: Book[]): Book[] => {
   const copyOfBooks = [...books]; //I don't wanna change the original array

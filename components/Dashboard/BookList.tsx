@@ -68,7 +68,7 @@ const BookList = () => {
         </tr>
       </thead>
       <tbody className='text-sm font-medium'>
-          {mockBookList.map(({author,bookId,price,stock,title }, idx) => (
+          {mockBookList.map(({bookId,price,stock,title }) => (
             <tr
               key={bookId}
               className=' border-b last:border-none border-b-gray-700/30'>

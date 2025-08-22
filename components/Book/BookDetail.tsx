@@ -1,7 +1,7 @@
 "use client"
 import { Book } from '@/app/utils/data';
 import Image, { StaticImageData } from 'next/image';
-import React, { useMemo, useState } from 'react'
+import React, { useMemo } from 'react'
 import { BiCategory } from 'react-icons/bi';
 import { IoIosPricetags } from 'react-icons/io';
 import { MdFavorite, MdOutlineDateRange } from 'react-icons/md';
@@ -9,8 +9,7 @@ import Rating from '../Rating';
 import { useCartStore } from '@/app/utils/cartStore';
 import { FaCartPlus } from 'react-icons/fa';
 import Link from 'next/link';
-import { GrPrevious } from 'react-icons/gr';
-import { CiShoppingCart } from 'react-icons/ci';
+
 import BDHeader from './BDHeader';
 
 type BookDetailProps = {

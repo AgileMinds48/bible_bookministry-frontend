@@ -12,7 +12,7 @@ import Menu from "./Menu";
 import { useBodyScrollLock } from "@/hooks/useBodyScrollLock";
 import { useCartStore } from "@/app/utils/cartStore";
 import { LuUserRound } from "react-icons/lu";
-import { getUserEmail, getUserRole, handleLogout, isLoggedIn} from "@/hooks/auth";
+import { getUserRole, handleLogout, isLoggedIn} from "@/hooks/auth";
 // import { FaUserCircle } from "react-icons/fa";
 import { TbLogout2 } from "react-icons/tb";
 import ModalWrapper from "./Modal/ModalWrapper";
@@ -42,7 +42,7 @@ const Header = () => {
   }
 
   //for modal
- const { showLogin, showSignUp, closeModal } = useModal();
+ const {showSignUp } = useModal();
   return (
     <>
       <nav className={`p-4 md:p-4 md:px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-[9999] fixed shrink-0 overflow-hidden md:top-2 top-0 left-0 right-0 rounded-lg md:left-4 md:right-4 lg:left-20 lg:right-20 shadow-sm backdrop-blur-xl outline-2 outline-[#B0D4E3] bg-[#B0D4E3]/50 poppins`}>

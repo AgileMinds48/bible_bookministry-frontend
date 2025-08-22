@@ -33,8 +33,8 @@ const themeMap = {
 };
 const Overview = () => {
   // const [availableBooks,setAvailableBooks]= useState<any>()
-  const [availableBooks,setAvailableBooks]=useState<any>()
-  const [totalUsers,setTotalUsers]=useState<any>()
+  const [availableBooks,setAvailableBooks]=useState<number | null>()
+  const [totalUsers,setTotalUsers]=useState<number | null>()
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   useEffect(() => {

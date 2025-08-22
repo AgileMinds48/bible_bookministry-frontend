@@ -12,9 +12,15 @@ import { MdEmail, MdOutlinePhoneEnabled } from 'react-icons/md';
 interface SignUpProps{
   onLoginClick?:(showLogin:boolean)=>void
 }
+type SignupResponse = {
+  detail?: string;
+  error?: string;
+  successMessage?: string;
+  [key: string]: unknown;
+};
 const SignUp = ({onLoginClick}:SignUpProps) => {
   const handleShowLogin = () => {
-   {onLoginClick && onLoginClick(true)};
+   {if(onLoginClick) onLoginClick(true)};
 }
   const [shown, setShown] = useState<{[key:string]:boolean}>({
     password: false,
@@ -81,10 +87,10 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
           formData
         ),
       });
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error((data as any).detail || data.error ||JSON.stringify(data));
-      }
+      const data: SignupResponse = await res.json();
+if (!res.ok) {
+  throw new Error(data.detail || data.error || JSON.stringify(data));
+}
       setSuccessMsg(data.successMessage || "Signup successful!");
       setTimeout(()=>handleShowLogin(),500)
       setFormData({

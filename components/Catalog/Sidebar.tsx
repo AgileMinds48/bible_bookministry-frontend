@@ -1,8 +1,8 @@
 "use client"
 import React, { useState } from 'react'
-import { FaStar, FaChevronDown, FaChevronUp } from 'react-icons/fa'
+import { FaStar, FaChevronDown } from 'react-icons/fa'
 import { MdClear } from 'react-icons/md'
-import { Book, quickPriceFilters, sortOptions } from "@/app/utils/data"
+import {  quickPriceFilters, sortOptions } from "@/app/utils/data"
 import { AnimatePresence, easeOut, motion } from 'framer-motion'
 
 

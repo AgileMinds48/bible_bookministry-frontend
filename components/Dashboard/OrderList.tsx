@@ -1,13 +1,7 @@
-import { number } from 'framer-motion';
-import { td } from 'framer-motion/client';
-import React from 'react'
 
 type status = "Paid" | "Pending" | "Completed"|"In-cart";
 
-interface statusThemes{
-  "Paid": "bg-green-300",
-  "Completed":"bg"
-}
+
 interface orderList{
   orderId: string,
   customerName: string,

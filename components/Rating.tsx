@@ -1,4 +1,3 @@
-import { Book } from '@/app/utils/data'
 import React from 'react'
 import { FaStar } from 'react-icons/fa'
 interface RatingProps{
