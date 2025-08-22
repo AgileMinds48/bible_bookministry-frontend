@@ -85,7 +85,7 @@ const Dashboard = () => {
 
   return (
     <>
-      const 
+      
       <section className='relative min-h-screen ml-[18em] mt-8  p-8 inter bg-gray-200/30 rounded-2xl '>
         <div className='flex items-baseline justify-between mb-4'>
         <h1 className='text-5xl mb-1'>Hello, <span className='text-[#15278c]'>Fenuku</span></h1>

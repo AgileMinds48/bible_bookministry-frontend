@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { CiShoppingCart } from "react-icons/ci";
 import { MdFavoriteBorder } from "react-icons/md";
-import Modal from "./Modal";
+import Modal from "./Modal/Modal";
 import SignUp from "./Auth/SignUp";
 import Login from "./Auth/Login";
 import { AnimatePresence, motion, spring } from "framer-motion";
@@ -17,7 +17,8 @@ import { LuUserRound } from "react-icons/lu";
 import { getUserEmail, getUserRole, handleLogout, isLoggedIn} from "@/hooks/auth";
 import { FaUserCircle } from "react-icons/fa";
 import { TbLogout2 } from "react-icons/tb";
-import { div } from "framer-motion/client";
+import ModalWrapper from "./Modal/ModalWrapper";
+import { useModal } from "./Modal/ModalContext";
 
 const Header = () => {
   const count = useCartStore(s => s.items.reduce((t, i) => t + i.quantity, 0))
@@ -42,11 +43,7 @@ const Header = () => {
   }
 
   //for modal
-const [modalType, setModalType] = useState<null | "login" | "signup">(null);
-
-  const handleShowLogin = () => setModalType("login");
-const handleShowSignUp = () => setModalType("signup");
-const handleCloseModal = () => setModalType(null);
+ const { showLogin, showSignUp, closeModal } = useModal();
   return (
     <>
       <nav className={`p-4 md:p-4 md:px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-[9999] fixed shrink-0 overflow-hidden md:top-2 top-0 left-0 right-0 rounded-lg md:left-8 md:right-8 lg:left-20 lg:right-20 shadow-sm backdrop-blur-xl outline-2 outline-[#B0D4E3] bg-[#B0D4E3]/50 poppins`}>
@@ -92,7 +89,7 @@ const handleCloseModal = () => setModalType(null);
             <button
               aria-label="login or register"
               onClick={() => {
-                if (!LoggedIn) handleShowSignUp();
+                if (!LoggedIn) showSignUp();
               }}
               className="hidden md:flex h-full items-center gap-1 cursor-pointer hover:shadow-2xl text-[#15278c] transition duration-500 relative text-2xl p-2 rounded-full bg-[#B0D4E3]"
               title={LoggedIn ? userEmail || "User" : "Login or Register"}>
@@ -133,7 +130,8 @@ const handleCloseModal = () => setModalType(null);
           />
           </motion.div>)}
       </AnimatePresence>
-      <Modal
+      <ModalWrapper/>
+      {/* <Modal
         isOpen={!!modalType}
         onClose={handleCloseModal}
       >
@@ -150,7 +148,7 @@ const handleCloseModal = () => setModalType(null);
               }
           </motion.div>
         </AnimatePresence>
-      </Modal>
+      </Modal> */}
     </>
   );
 };

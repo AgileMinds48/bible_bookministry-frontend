@@ -10,11 +10,11 @@ import { google,  logo2 } from '@/public';
 import { MdEmail, MdOutlinePhoneEnabled } from 'react-icons/md';
 
 interface SignUpProps{
-  onLoginClick:(showLogin:boolean)=>void
+  onLoginClick?:(showLogin:boolean)=>void
 }
 const SignUp = ({onLoginClick}:SignUpProps) => {
   const handleShowLogin = () => {
-    onLoginClick(true);
+   {onLoginClick && onLoginClick(true)};
 }
   const [shown, setShown] = useState<{[key:string]:boolean}>({
     password: false,

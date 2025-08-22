@@ -1,5 +1,5 @@
 "use client"
-import { Dispatch, SetStateAction, use, useState } from 'react';
+import { useState } from 'react';
 import { inputItemsLogin, loginField, LoginFormData } from '@/app/utils/data';
 import { FaEye, FaEyeSlash, FaLock } from 'react-icons/fa6';
 import { AiOutlineLoading } from 'react-icons/ai';
@@ -102,12 +102,7 @@ const Login = ({handleCloseModal,onSignUpClick}: LoginProps) => {
             {inputItemsLogin.map(({ input, inputName, type }: loginField) => (
               <div
                 key={inputName}
-                className={`relative h-14 ${inputName === 'firstname'
-                    ? 'w-[48%] inline-block mr-4'
-                    : inputName === 'lastname'
-                      ? 'w-[48%] inline-block'
-                      : 'w-full'
-                  } border-2  mb-6 rounded-lg`}
+                className={`relative h-14 w-full'border-2  mb-6 rounded-lg`}
               >
                 {inputName === 'password' && (
                   <span
@@ -122,7 +117,7 @@ const Login = ({handleCloseModal,onSignUpClick}: LoginProps) => {
                   </span>
                 )}
                 <span className="absolute left-4 z-1 top-[50%] -translate-y-[50%] text-gray-800">
-                  {inputName === "userNameorEmail"
+                  {inputName === "usernameorEmail"
                     ? <MdEmail />
                     : <FaLock />
                   }
@@ -141,7 +136,7 @@ const Login = ({handleCloseModal,onSignUpClick}: LoginProps) => {
                   onChange={handleFormChange}
                   required
                   placeholder=" "
-                  className={`peer w-full h-full outline-none p-4 pr-9 lg:text-xl text-[1.1em] pl-12 autofill:bg-white $`}
+                  className={`peer w-full h-full outline-none p-4 pr-9 lg:text-xl text-[1.1em] pl-12 autofill:bg-white `}
                 />
                 <label
                   htmlFor={inputName}

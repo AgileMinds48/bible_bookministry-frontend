@@ -1,36 +1,12 @@
-import React from 'react'
+"use client"
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { CiShoppingCart } from 'react-icons/ci'
 import { ImBooks } from 'react-icons/im'
 import { LuUserRound } from 'react-icons/lu';
 import { RiMoneyDollarCircleLine } from 'react-icons/ri'
 
 
-const mockOverviewData = {
-  totalBooks: {
-    icon: <ImBooks />,
-    label: "Books available",
-    value: 66,
-    theme: "yellow"
-  },
-  totalOrders: {
-    icon: <CiShoppingCart />,
-    label: "Total orders",
-    value: 169,
-    theme: "blue"
-  },
-  totalRevenue: {
-    icon: <RiMoneyDollarCircleLine />,
-    label: "Total revenue",
-    value: "GHS169,005",
-    theme: "green"
-  },
-  totalUsers: {
-    icon: <LuUserRound />,
-    label: "Total users",
-    value: "3348",
-    theme: "red"
-  }
-};
 
 const themeMap = {
   'green': {
@@ -57,6 +33,60 @@ const themeMap = {
   }
 };
 const Overview = () => {
+  // const [availableBooks,setAvailableBooks]= useState<any>()
+  const [availableBooks,setAvailableBooks]=useState<any>()
+  const [totalOrders,setTotalOrders]=useState<any>()
+  const [totalUsers,setTotalUsers]=useState<any>()
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+  useEffect(() => {
+    const fetchAvailableBooks = async () => {
+      try {
+        const books = await fetch(`${backendUrl}/api/v1/admin/books/get-available`);
+        const orders = await fetch(`${backendUrl}/api/v1/admin/orders/total-sales`);
+        const users = await fetch(`${backendUrl}/api/v1/admin/get-users`);
+        const BooksData = await books.json();
+        const UsersData = await users.json();
+        // const OrderData = await orders.json();
+        // Adjust this line based on your actual response structure
+        setAvailableBooks(BooksData);
+        setTotalUsers(UsersData.length());
+        // setTotalOrders(orders);
+      } catch (err: unknown) {
+        console.log("ERROR FETCHING AVAILABLE BOOKS: ", err);
+      }
+    };
+    fetchAvailableBooks();
+  }, [backendUrl]);
+
+
+  const mockOverviewData = {
+  totalBooks: {
+    icon: <ImBooks />,
+    label: "Books available",
+    value: availableBooks!==null?availableBooks:66,
+    theme: "yellow"
+  },
+  totalOrders: {
+    icon: <CiShoppingCart />,
+    label: "Total orders",
+    value: 162,
+    theme: "blue"
+  },
+  totalRevenue: {
+    icon: <RiMoneyDollarCircleLine />,
+    label: "Total revenue",
+    value: "GHS169,005",
+    theme: "green"
+  },
+  totalUsers: {
+    icon: <LuUserRound />,
+    label: "Total users",
+    value: totalUsers!==null?totalUsers:"3348",
+    theme: "red"
+  }
+};
+
   return (
     <div className=' grid grid-cols-4 md:gap-4 rounded-3xl w-full'>
       {Object.entries(mockOverviewData).map(([key, { label, value, theme, icon }],id) => {

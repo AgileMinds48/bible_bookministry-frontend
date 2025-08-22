@@ -132,7 +132,9 @@ const OrderList = () => {
       </thead>
       <tbody className='text-sm font-medium'>
           {mockOrderlIst.map(({ customerName, Status, orderId, totalAmount,Date,numberOfBooks }, id) => (
-            <tr className=' border-b last:border-none border-b-gray-700/30'>
+            <tr 
+            key={orderId}
+              className=' border-b last:border-none border-b-gray-700/30'>
               <td className='py-8'>#{id+1 }</td>
               <td>{orderId}</td>
               <td>{customerName}</td>

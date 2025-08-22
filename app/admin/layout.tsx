@@ -1,9 +1,16 @@
+import SignUp from '@/components/Auth/SignUp';
 import AdminSidebar from '@/components/Dashboard/AdminSidebar'
+import { getUserRole, isLoggedIn } from '@/hooks/auth'
 import Link from 'next/link'
 import React from 'react'
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  return (
+  const LoggedIn = isLoggedIn();
+  const userRole = getUserRole();
+  if (!LoggedIn
+    // && userRole === "ADMIN"
+  ) {
+      return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
       {/* Admin Header */}
       <header className=" border-white border-b bg-[#15278c] text-white px-8 py-4 flex items-center justify-between fixed left-0 right-0 z-[999]">
@@ -21,5 +28,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </main>
         </div>
     </div>
-  )
+    )
+  }else {
+      return <SignUp/>
+  }
+
 }
