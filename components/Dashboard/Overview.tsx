@@ -35,7 +35,6 @@ const themeMap = {
 const Overview = () => {
   // const [availableBooks,setAvailableBooks]= useState<any>()
   const [availableBooks,setAvailableBooks]=useState<any>()
-  const [totalOrders,setTotalOrders]=useState<any>()
   const [totalUsers,setTotalUsers]=useState<any>()
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
@@ -47,6 +46,7 @@ const Overview = () => {
         const users = await fetch(`${backendUrl}/api/v1/admin/get-users`);
         const BooksData = await books.json();
         const UsersData = await users.json();
+        console.log(UsersData)
         // const OrderData = await orders.json();
         // Adjust this line based on your actual response structure
         setAvailableBooks(BooksData);

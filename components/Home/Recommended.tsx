@@ -140,7 +140,9 @@ const Recommended = () => {
         <div className='min-h-max overflow-x-scroll hide-scrollbar' ref={scrollDivRef}>
 
           <div className={`flex shrink-0 gap-4 pl-8 `} >
-            <button onClick={handlePrevious} className='absolute top-[50%] -translate-y-[50%] left-0 p-4 bg-black/15 rounded-full hover:bg-black/40 z-10 cursor-pointer text-2xl text-white'><GrPrevious /></button>
+            <button
+            aria-label='scroll left'
+              onClick={handlePrevious} className='absolute top-[50%] -translate-y-[50%] left-0 p-4 bg-black/15 rounded-full hover:bg-black/40 z-10 cursor-pointer text-2xl text-white'><GrPrevious /></button>
             {
               recommendedBooks.map(({ img, title, author, price, rating, id }) => (
                 <div key={id} className='group cursor-pointer min-w-[25em]   md:min-h-36  gap-4  overflow-hidden grid grid-cols-2 p-4  hover:scale-97 transition duration-500'>
@@ -172,7 +174,9 @@ const Recommended = () => {
                 </div>
               ))
             }
-            <button onClick={handleNext} className='absolute top-[50%] -translate-y-[50%] -right-8 p-4 bg-black/15 rounded-full hover:bg-black/40 z-10 cursor-pointer text-xl text-white'><GrNext /></button>
+            <button 
+            aria-label='scroll-right'
+              onClick={handleNext} className='absolute top-[50%] -translate-y-[50%] md:-right-8 right-0 p-4 bg-black/15 rounded-full hover:bg-black/40 z-10 cursor-pointer text-xl text-white'><GrNext /></button>
           </div>
 
         </div>

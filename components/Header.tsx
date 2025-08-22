@@ -99,9 +99,10 @@ const Header = () => {
             </button>
             {LoggedIn &&
               <button className="p-4 hidden md:block">
-              <TbLogout2
+                <TbLogout2
+                  title="logout"
               onClick={handleLogout}
-                  className="text-2xl text-red-900/80" />
+                  className="text-2xl text-red-900/80 cursor-pointer" />
            </button>
            }
 

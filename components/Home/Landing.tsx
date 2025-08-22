@@ -9,9 +9,9 @@ const Landing = () => {
 
   return (
     <main className={`h-[80dvh] pt-20 bg-gradient-to-r from-[#F5F5F5] to-[#b0d4e3b2] overflow-hidden  flex justify-center `} >
-      <div className='grid md:grid-cols-[2fr_1fr] grid-cols-1 h-[80%] w-full max-w-[100em]'>
+      <div className='grid grid-cols-1 h-[80%] w-full max-w-[100em]'>
         <div className='b w-full p-4 md:p-10 flex flex-col items-center md:items-start justify-center'>
-          <h1 className='md:text-6xl text-3xl md:w-[90%]  font-bold text-[#15278c] text-center md:text-left '>
+          <h1 className='md:text-5xl lg:text-6xl text-3xl md:w-[90%]  font-bold text-[#15278c] text-center md:text-left '>
             Grow in Grace with
             {" "}
             <span className='green-gradient text-transparent bg-clip-text'>
@@ -36,9 +36,9 @@ const Landing = () => {
             <button className=' font-medium md:px-10 md:py-4 p-2 px-4 text-[#15278c] border-2 border-[#15278c] hover:shadow-lg rounded-lg cursor-pointer  transition duration-200  hover-blue-gradient hover:text-white whitespace-nowrap'>Learn About Us</button>
           </div>
         </div>
-        <div className='h-[40em] w-full place-items-center relative hidden md:block -translate-y-[45%]'>
+        {/* <div className='h-[40em] w-full place-items-center relative hidden md:block -translate-y-[45%]'>
           <Image priority={true} src={lcp} alt='book' className='h-full object-contain absolute top-[50%]   drop-shadow-2xl' />
-        </div>
+        </div> */}
       </div>
     </main>
   )

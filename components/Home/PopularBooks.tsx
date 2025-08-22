@@ -35,19 +35,19 @@ const PopularBooks = () => {
             <p className='underline cursor-pointer flex center gap-2 group'>See all <span className='-translate-0.5 group-hover:translate-x-2  delay-100 duration-100 transition '><GrNext /></span></p>
             </Link>
           </div>
-        <div className='flex shrink-0 px-16 p-8 overflow-hidden gap-8 gap-y-14 flex-wrap'>
+        <div className='flex shrink-0 lg:px-16 lg:p-8 p-4 overflow-hidden lg:gap-8 lg:gap-y-14 justify-start gap-y-8 md:gap-x-18 gap-4 flex-wrap'>
           {popularBooks.map(({img,title,author,price,rating},index) => (
              <div key={index} className='rounded-2xl'>
-          <div className='grid grid-cols-1 grid-rows-[60%_40%] cursor-pointer hover:shadow-xl transition duration-100 h-[22em]  w-[14em] shadow-lg rounded-2xl overflow-hidden'>
+          <div className='grid grid-cols-1 grid-rows-[60%_40%] cursor-pointer hover:shadow-xl transition duration-100 lg:h-[22em] h-[18em]  lg:w-[14em] w-[10em] shadow-lg rounded-2xl overflow-hidden'>
             <div className='group h-full relative before:absolute before:inset-0 before:bottom-0 before:bg-linear-to-t  before:from-black/30 before:from-0% before:via-black/10 before:via-60% before:to-black/0 before:to-100% before:opacity-0 hover:before:opacity-100 before:transition before:duration-500  rounded-2xl overflow-hidden'>
-                  <Image src={img} alt='' className='h-full w-full object-cover ' />
+                  <Image src={img} alt=''  className='h-full w-full object-cover ' />
                   {
                     <div className='absolute bottom-2 right-2' onClick={() => handleFav(index)}><MdFavorite className={`text-3xl  opacity-0 group-hover:opacity-100 transition duration-500 ${isFav[index]?"text-red-500 opacity-100 animate-bubble":"text-white"}`} /></div>}
             </div>
               <div className='p-4 px-2 flex flex-col h-full'>
-                  <p className='line-clamp-2 text-lg font-semibold text-[#426074] leading-[1.1em] mb-1'>{title}</p>
+                  <p className='line-clamp-2 text-lg font-semibold text-[#426074] lg:leading-[1.1em] mb-1'>{title}</p>
                 <div className='w-full flex items-center gap-2 mt-2'>
-                    <p className='text-sm text-gray-500'>{ author}</p>
+                    <p className='lg:text-sm text-[0.6em] text-gray-500'>{ author}</p>
                   <div className='bg-gray-600 w-1 h-1 rounded-full'></div>
                   <span className='text-sm flex items-baseline translate-y-0.5'><FaStar className='text-[#eca624]'/> {rating} </span>
                 </div>
@@ -57,7 +57,7 @@ const PopularBooks = () => {
                       <span className='border-r border'></span>
                       <p title='available copies' className='flex items-center gap-1'><ImBooks /> 15</p>
                     </div>
-                  <button className='text-3xl text-[#5a88a7] cursor-pointer'><FaCartPlus/></button>
+                  <button className='text-3xl text-[#5a88a7] cursor-pointer hidden lg:block'><FaCartPlus/></button>
                 </div>
               </div>
             </div>
