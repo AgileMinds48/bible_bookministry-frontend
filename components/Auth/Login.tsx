@@ -68,6 +68,7 @@ const Login = ({handleCloseModal,onSignUpClick}: LoginProps) => {
 
       // navigate to previous page;
       handleCloseModal();
+      window.location.reload();
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError('Oops... Login failed. Please try again');

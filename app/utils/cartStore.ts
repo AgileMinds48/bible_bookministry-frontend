@@ -1,3 +1,4 @@
+import { getUserEmail } from "@/hooks/auth";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
@@ -20,6 +21,11 @@ interface CartState {
   getTotalItems: () => number;
   getTotalPrice: () => number;
 }
+
+const getCartKey = () => {
+  const email = getUserEmail();
+  return email ? `cart-storage-${email}` : "cart-storage-guest"
+};
 
 // Create Zustand store with persistence middleware
 export const useCartStore = create<CartState>()(
@@ -79,7 +85,7 @@ export const useCartStore = create<CartState>()(
       },
     }),
     {
-      name: "cart-storage", // Unique name for localStorage key
+      name: getCartKey(), // Unique name for localStorage key
     }
   )
 );

@@ -1,4 +1,5 @@
 "use client"
+import { handleLogout } from '@/hooks/auth'
 import { logo } from '@/public'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -68,8 +69,11 @@ const AdminSidebar = () => {
 
         
       </div>
-      <button className='mt-auto w-full p-2 flex items-center justify-center gap-2 bg-red-500/20 border
-       border-red-500 rounded-xl'>
+      <button
+        aria-label='Logout'
+        onClick={handleLogout}
+        className='mt-auto w-full p-2 flex items-center justify-center gap-2 bg-red-500/20 border
+       border-red-500 rounded-xl cursor-pointer'>
         <TbLogout2 /> Logout
       </button>
     </nav>
