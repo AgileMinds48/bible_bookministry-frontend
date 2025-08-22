@@ -102,7 +102,7 @@ const Login = ({handleCloseModal,onSignUpClick}: LoginProps) => {
             {inputItemsLogin.map(({ input, inputName, type }: loginField) => (
               <div
                 key={inputName}
-                className={`relative h-14 w-full'border-2  mb-6 rounded-lg`}
+                className={`relative h-14 'w-full border-2  mb-6 rounded-lg`}
               >
                 {inputName === 'password' && (
                   <span
