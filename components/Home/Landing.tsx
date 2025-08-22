@@ -26,7 +26,7 @@ const Landing = () => {
           </p>
           <div className='md:mt-10 mt-10 flex flex-col md:flex-row gap-4 justify-center '>
             <Link href={`/catalogue`}> 
-              <button className='md:px-10 md:py-4 p-2 px-4 border-2 border-[#15278c] whitespace-nowrap blue-gradient text-white hover:shadow-lg rounded-lg cursor-pointer  transition duration-300 hover:bg-[#426074] hover: flex items-center gap-2 group font-medium antialiased'>
+              <button className='md:px-10 md:py-4 w-full p-2 px-4 border-2 border-[#15278c] whitespace-nowrap blue-gradient text-white hover:shadow-lg rounded-lg cursor-pointer  transition duration-300 hover:bg-[#426074] hover: flex items-center gap-2 group font-medium antialiased'>
                 Explore Our Shelf
                 <div aria-label='next-button' className='group-hover:translate-x-4 transition duration-300 delay-100'>
                   <GrNext />

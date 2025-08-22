@@ -44,8 +44,8 @@ const Header = () => {
  const { showLogin, showSignUp, closeModal } = useModal();
   return (
     <>
-      <nav className={`p-4 md:p-4 md:px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-[9999] fixed shrink-0 overflow-hidden md:top-2 top-0 left-0 right-0 rounded-lg md:left-8 md:right-8 lg:left-20 lg:right-20 shadow-sm backdrop-blur-xl outline-2 outline-[#B0D4E3] bg-[#B0D4E3]/50 poppins`}>
-        <div className='relative w-full md:max-w-[80em] md:min-w-6xl min-w-full flex justify-between items-center'>
+      <nav className={`p-4 md:p-4 md:px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-[9999] fixed shrink-0 overflow-hidden md:top-2 top-0 left-0 right-0 rounded-lg md:left-4 md:right-4 lg:left-20 lg:right-20 shadow-sm backdrop-blur-xl outline-2 outline-[#B0D4E3] bg-[#B0D4E3]/50 poppins`}>
+        <div className='relative w-full lg:max-w-[80em] md:min-w-6xl min-w-full flex lg:justify-between md:justify-center justify-between gap-4 items-center'>
           <div className="md:flex md:w-[50%] items-center justify-between space-x-4">
             <div className="h-[2.31em] w-12 object-cover rounded-full">
               <Image priority={true} src={logo} alt="Bible and Book ministries logo" className='h-full w-full' />
@@ -98,7 +98,7 @@ const Header = () => {
              : <LuUserRound />}
             </button>
             {LoggedIn &&
-              <button className="p-4">
+              <button className="p-4 hidden md:block">
               <TbLogout2
               onClick={handleLogout}
                   className="text-2xl text-red-900/80" />
