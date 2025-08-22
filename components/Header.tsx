@@ -75,7 +75,7 @@ const Header = () => {
               <CiShoppingCart />
             </Link>
             </button>
-
+{/* 
             <button
               aria-label="wishlist"
               className="hidden md:block relative cursor-pointer text-2xl p-2 rounded-full bg-[#B0D4E3] text-[#15278c]">
@@ -83,24 +83,26 @@ const Header = () => {
                 12
               </span>
               <MdFavoriteBorder />
-            </button>
+            </button> */}
             <button
               aria-label="login or register"
               onClick={() => {
                 if (!LoggedIn) showSignUp();
               }}
-              className="hidden md:flex h-full items-center gap-1 cursor-pointer hover:shadow-2xl text-[#15278c] transition duration-500 relative text-2xl p-2 rounded-full bg-[#B0D4E3]"
-              title={LoggedIn ? userEmail || "User" : "Login or Register"}>
+              className={`hidden md:flex justify-center items-center gap-1 cursor-pointer hover:shadow-2xl  transition duration-500 relative text-2xl shrink-0 rounded-full 
+                ${LoggedIn?"h-[40px] w-[40px]  bg-red-900/80 text-white":"h-full bg-[#B0D4E3] text-[#15278c] p-2 "}
+                `}
+              title={LoggedIn ? `Signed in as ${userEmail}` || "User" : "Login or Register"}>
               {LoggedIn ?
-             <FaUserCircle className="text-4xl"/>
+             userEmail?.slice(0,1).toUpperCase()
              : <LuUserRound />}
             </button>
             {LoggedIn &&
-              <div>
+              <button className="p-4">
               <TbLogout2
               onClick={handleLogout}
-                  className="text-2xl text-red-600" />
-           </div>
+                  className="text-2xl text-red-900/80" />
+           </button>
            }
 
             {/* hamburger menu */}

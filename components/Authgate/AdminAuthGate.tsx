@@ -5,6 +5,7 @@ import { ModalProvider } from "@/components/Modal/ModalContext";
 import ModalWrapper from "@/components/Modal/ModalWrapper";
 import AdminSidebar from "@/components/Dashboard/AdminSidebar";
 import Link from "next/link";
+import Loader from "../Loader/Loader";
 
 export default function AdminAuthGate({ children }: { children: React.ReactNode }) {
   const [authChecked, setAuthChecked] = useState(false);
@@ -19,6 +20,7 @@ export default function AdminAuthGate({ children }: { children: React.ReactNode 
 
   if (!authChecked) {
     // Optionally show a loading spinner
+    <Loader/>
     return null;
   }
 
