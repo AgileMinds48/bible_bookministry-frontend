@@ -1,5 +1,4 @@
 "use client"
-import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { CiShoppingCart } from 'react-icons/ci'
 import { ImBooks } from 'react-icons/im'
@@ -50,7 +49,7 @@ const Overview = () => {
         // const OrderData = await orders.json();
         // Adjust this line based on your actual response structure
         setAvailableBooks(BooksData);
-        setTotalUsers(UsersData.length());
+        setTotalUsers(UsersData.length);
         // setTotalOrders(orders);
       } catch (err: unknown) {
         console.log("ERROR FETCHING AVAILABLE BOOKS: ", err);

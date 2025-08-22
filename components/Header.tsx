@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { CiShoppingCart } from "react-icons/ci";
-import { MdFavoriteBorder } from "react-icons/md";
+// import { MdFavoriteBorder } from "react-icons/md";
 
 import { AnimatePresence, motion} from "framer-motion";
 import Menu from "./Menu";
@@ -13,7 +13,7 @@ import { useBodyScrollLock } from "@/hooks/useBodyScrollLock";
 import { useCartStore } from "@/app/utils/cartStore";
 import { LuUserRound } from "react-icons/lu";
 import { getUserEmail, getUserRole, handleLogout, isLoggedIn} from "@/hooks/auth";
-import { FaUserCircle } from "react-icons/fa";
+// import { FaUserCircle } from "react-icons/fa";
 import { TbLogout2 } from "react-icons/tb";
 import ModalWrapper from "./Modal/ModalWrapper";
 import { useModal } from "./Modal/ModalContext";
@@ -27,7 +27,7 @@ const Header = () => {
   const navItems = [
     { label: 'Home', href: '/' },
     { label: 'Catalogue', href: '/catalogue' },
-    { label: 'E-books', href: '/e-books' },
+    // { label: 'E-books', href: '/e-books' },
     { label: 'About us', href: '/about' },
   ...(userRole !== "CUSTOMER" && LoggedIn
     ? [{ label: 'Dashboard', href: '/admin/dashboard' }]
@@ -52,19 +52,20 @@ const Header = () => {
             </div>
             <ul className="hidden md:flex justify-between md:w-[100%] text-sm overflow-hidden">
               {navItems.map(({ label, href }, idx) => (
-                <Link key={idx} href={href}>
-                  <li className={`group cursor-pointer font-medium lg:text-[1.2em] transition duration-300 p-1  ${pathName === href ? "text-[#15278c]" : "text-black"}`}>{label}
+
+                <li key={idx+href} className={`group cursor-pointer font-medium lg:text-[1.2em] transition duration-300 p-1  ${pathName === href ? "text-[#15278c]" : "text-black"}`}>
+                  <Link  href={href}>
+                    {label}
                     <div className={`hidden absolute left-0 right-0 bottom-0 ${pathName == href ? "" : "group-hover:animate-underline group-hover:block"} w-[110%] blue-gradient h-[0.1em] rounded-full animate-underline`}></div>
-
-
                     {pathName == href && <div className="absolute left-0 right-0 bottom-0 w-[110%] blue-gradient h-[0.1em] rounded-full animate-underline"></div>}
+                     </Link>
                   </li>
-                </Link>
+               
               ))}
             </ul>
           </div>
        
-          <div className="min-w-[15%] flex justify-between items-center">
+          <div className="min-w-[10%] gap-4 flex justify-between items-center">
             <button
               aria-label="cart"
               className="relative cursor-pointer text-2xl p-2 rounded-full bg-[#B0D4E3] text-[#15278c]">

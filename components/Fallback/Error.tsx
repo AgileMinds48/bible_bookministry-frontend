@@ -4,8 +4,7 @@ import { IoMdRefresh } from 'react-icons/io'
 import Loader from '../Loader/Loader'
 import Image from 'next/image'
 import { error } from '@/public'
-import { div } from 'framer-motion/client'
-import BDHeader from '../Book/BDHeader'
+// import BDHeader from '../Book/BDHeader'
 
 const Error = () => {
   const [isLoading,setIsLoading]= useState<boolean>(false)
@@ -19,8 +18,8 @@ const Error = () => {
 
   return (
     <>
-      <BDHeader/>
-    <div className='h-screen w-full flex flex-col justify-center items-center'>
+      {/* <BDHeader/> */}
+    <div className='h-full w-full flex flex-col justify-center items-center'>
       
       <Image src={error} alt='no connection' height={80} />
       <div className='bg-red-500/30 border-red-500 border rounded-2xl p-6 flex flex-col items-center'>

@@ -18,12 +18,12 @@ const Page = ({ onPageNext, onPagePrev, currentPage, totalPages,onPageChange }: 
     if (!totalPages) return [pageNumber];
     const pages = [];
     pages.push(pageNumber);
-    if (pageNumber +1 < totalPages) {
-      pages.push(pageNumber + 1)
-    }
-    if (pageNumber + 2 < totalPages) {
-      pages.push(pageNumber+2)
-    }
+    // if (pageNumber +1 < totalPages) {
+    //   pages.push(pageNumber + 1)
+    // }
+    // if (pageNumber + 2 < totalPages) {
+    //   pages.push(pageNumber+2)
+    // }
 
     return pages;
   }

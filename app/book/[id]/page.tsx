@@ -16,7 +16,9 @@ const page = async ({ params }: BookPageProps) => {
 
   try {
     const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
-    const response = await axios.get(`${backendUrl}/api/v1/books/get-book/${bookId}`);
+    const response = await axios.get(`${backendUrl}/api/v1/books/get-book/${bookId}`, {
+      withCredentials:true
+    });
       const BookData = response.data;
     const selectedBook: Book = {
        id: BookData.bookId,

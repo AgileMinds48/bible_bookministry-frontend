@@ -86,7 +86,6 @@ const Sidebar: React.FC<SidebarProps> = ({ onSortChange, onPriceRangeChange, onR
         placeholder='Search for book by title or author'
         onChange={onSearchChange}
         className='h-10 p-2 w-full rounded-full outline-2 outline-[#15278c] mb-2 shadow-2xl' />
-      {/* Header */}
       <div className='flex justify-between items-center mb-6'>
         <h2 className='text-xl font-medium text-[#3D3D3D] poppins'>Filters</h2>
         <button

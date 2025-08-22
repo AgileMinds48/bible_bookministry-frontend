@@ -12,6 +12,7 @@ import axios from 'axios';
 import Loading from '../Loading/loading';
 import Page from '../Pages/Page';
 import { useCartStore } from '@/app/utils/cartStore';
+import Error from '../Fallback/Error';
 
 
 
@@ -27,7 +28,8 @@ const AllBooks = () => {
     setLoading(true);
     const fetchBooks = async () => {
       try {
-        const response = await axios.get(`${backendUrl}/api/v1/books/all-books?page=${currentPage}`)
+        const response = await axios.get(`${backendUrl}/api/v1/books/all-books?page=${currentPage},`
+        )
         console.log(response.data);
 
         setTotalPages(response.data.totalPages)
@@ -285,21 +287,22 @@ const AllBooks = () => {
             </div>
             : error ?
               (
-                <div className='w-full h-36 flex items-center justify-center'>
-                  <div className='text-center p-8 bg-red-50 border border-red-200 rounded-lg'>
-                    <h3 className='text-lg font-semibold text-red-800 mb-2'>Oops! Something went wrong</h3>
-                    <p className='text-red-600'>{error}</p>
-                    <button
-                      onClick={() => {
-                        setError(undefined);
-                        setCurrentPage(0); // This will trigger the useEffect to refetch
-                      }}
-                      className='mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors'
-                    >
-                      Try Again
-                    </button>
-                  </div>
-                </div>
+                // <div className='w-full h-36 flex items-center justify-center'>
+                //   <div className='text-center p-8 bg-red-50 border border-red-200 rounded-lg'>
+                //     <h3 className='text-lg font-semibold text-red-800 mb-2'>Oops! Something went wrong</h3>
+                //     <p className='text-red-600'>{error}</p>
+                //     <button
+                //       onClick={() => {
+                //         setError(undefined);
+                //         setCurrentPage(0); // This will trigger the useEffect to refetch
+                //       }}
+                //       className='mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors'
+                //     >
+                //       Try Again
+                //     </button>
+                //   </div>
+                // </div>
+              <Error/>
               )
               : sortedBooks?.map(({ img, title, author, price, rating, id, amountInStock }) => (
                 <AnimatePresence key={id}>
