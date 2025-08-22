@@ -4,6 +4,8 @@ import SalesChart, { SalesData } from './Charts/SalesChart';
 import TopSellingBooksChart, { BookData } from './Charts/TopSelling';
 import BookList from './BookList';
 import OrderList from './OrderList';
+import { capitalise, getUserEmail } from '@/hooks/auth';
+import {  username } from '@/app/utils/logininfo';
 
 
 
@@ -83,12 +85,13 @@ const Dashboard = () => {
     { title: "The Shepherd's Tale", sales: 2880 }
   ]
 
+
   return (
     <>
       
       <section className='relative min-h-screen ml-[18em] mt-8  p-8 inter bg-gray-200/30 rounded-2xl '>
         <div className='flex items-baseline justify-between mb-4'>
-        <h1 className='text-5xl mb-1'>Hello, <span className='text-[#15278c]'>Fenuku</span></h1>
+          <h1 className='text-5xl mb-1'>Hello, <span className='text-[#15278c]'>{capitalise(username)}</span></h1>
          <p className='text-gray-700'>{monthInWords} {day}, {year} &nbsp;<span className='border-l-2 border-black'> </span> {time}</p>
 </div>
       
