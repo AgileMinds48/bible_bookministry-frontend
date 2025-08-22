@@ -9,7 +9,7 @@ const page = () => {
     <ModalProvider>  
       <Header/>
       <section className=' h-screen pt-40 flex flex-col items-center' >
-      <p className='text-center'>We're cooking</p>
+      <p className='text-center'>We&apos;re cooking</p>
       <About/>
         </section>
         </ModalProvider>
