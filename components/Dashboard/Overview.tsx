@@ -40,9 +40,17 @@ const Overview = () => {
   useEffect(() => {
     const fetchAvailableBooks = async () => {
       try {
-        const books = await fetch(`${backendUrl}/api/v1/admin/books/get-available`);
-        const orders = await fetch(`${backendUrl}/api/v1/admin/orders/total-sales`);
-        const users = await fetch(`${backendUrl}/api/v1/admin/get-users`);
+        const books = await fetch(`${backendUrl}/api/v1/admin/books/get-available`, {
+          method: "GET",
+          credentials:"include"
+        });
+        // const orders = await fetch(`${backendUrl}/api/v1/admin/orders/total-sales`,
+          
+        // );
+        const users = await fetch(`${backendUrl}/api/v1/admin/get-users`, {
+          method: "GET",
+          credentials:"include"
+        });
         const BooksData = await books.json();
         const UsersData = await users.json();
         console.log(UsersData)

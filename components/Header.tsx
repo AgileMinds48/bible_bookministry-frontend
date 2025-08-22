@@ -17,11 +17,12 @@ import { getUserEmail, getUserRole, handleLogout, isLoggedIn} from "@/hooks/auth
 import { TbLogout2 } from "react-icons/tb";
 import ModalWrapper from "./Modal/ModalWrapper";
 import { useModal } from "./Modal/ModalContext";
+import { userEmail } from "@/app/utils/logininfo";
 
 const Header = () => {
   const count = useCartStore(s => s.items.reduce((t, i) => t + i.quantity, 0))
   const userRole = getUserRole();
-  const userEmail = getUserEmail();
+  // const userEmail = getUserEmail();
   const LoggedIn: boolean = isLoggedIn();
   const pathName = usePathname();
   const navItems = [
