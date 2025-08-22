@@ -1,13 +1,23 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Modal from './Modal';
 import { AnimatePresence,motion } from 'framer-motion';
 import Login from '../Auth/Login';
 import SignUp from '../Auth/SignUp';
 import { useModal } from './ModalContext';
 
-const ModalWrapper = () => {
-   const { modalType, closeModal, showLogin, showSignUp } = useModal();
+interface ModalProps{
+  pageType?:"login"|"signup"
+}
+const ModalWrapper = ({pageType}:ModalProps) => {
+  const { modalType, closeModal, showLogin, showSignUp } = useModal();
+
+  useEffect(() => {
+    if(!modalType){
+      if (pageType === "login") showLogin();
+      if (pageType === "signup") showSignUp();
+    }
+  }, [pageType, showLogin, showSignUp]);
 
   return (
       <Modal
@@ -19,7 +29,7 @@ const ModalWrapper = () => {
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.1, delay: 0.1 }}>
-            {modalType === "login" ?
+            {modalType === "login"?
               (<Login handleCloseModal={closeModal} onSignUpClick={showSignUp} />)
               : modalType === "signup" ?
               (<SignUp onLoginClick={showLogin} />)

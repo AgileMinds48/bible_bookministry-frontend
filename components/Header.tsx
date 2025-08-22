@@ -6,10 +6,8 @@ import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { CiShoppingCart } from "react-icons/ci";
 import { MdFavoriteBorder } from "react-icons/md";
-import Modal from "./Modal/Modal";
-import SignUp from "./Auth/SignUp";
-import Login from "./Auth/Login";
-import { AnimatePresence, motion, spring } from "framer-motion";
+
+import { AnimatePresence, motion} from "framer-motion";
 import Menu from "./Menu";
 import { useBodyScrollLock } from "@/hooks/useBodyScrollLock";
 import { useCartStore } from "@/app/utils/cartStore";

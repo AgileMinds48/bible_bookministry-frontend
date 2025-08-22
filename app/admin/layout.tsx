@@ -1,5 +1,6 @@
-import SignUp from '@/components/Auth/SignUp';
 import AdminSidebar from '@/components/Dashboard/AdminSidebar'
+import { ModalProvider } from '@/components/Modal/ModalContext';
+import ModalWrapper from '@/components/Modal/ModalWrapper';
 import { getUserRole, isLoggedIn } from '@/hooks/auth'
 import Link from 'next/link'
 import React from 'react'
@@ -7,10 +8,13 @@ import React from 'react'
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const LoggedIn = isLoggedIn();
   const userRole = getUserRole();
-  if (!LoggedIn
-    // && userRole === "ADMIN"
-  ) {
-      return (
+  if (LoggedIn
+    && userRole === "ADMIN"
+
+   
+  ) { console.log("USER ROLE: ", userRole)
+    return (
+        
     <div className="min-h-screen bg-gray-100 flex flex-col">
       {/* Admin Header */}
       <header className=" border-white border-b bg-[#15278c] text-white px-8 py-4 flex items-center justify-between fixed left-0 right-0 z-[999]">
@@ -30,7 +34,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     </div>
     )
   }else {
-      return <SignUp/>
+    return (<ModalProvider>
+      <ModalWrapper pageType='login'/>
+      </ModalProvider>)
   }
 
 }

@@ -2,7 +2,11 @@ export const handleLoggedIn = (data:{userRole:string,userEmail:string}) => {
   localStorage.setItem("userRole", data?.userRole)
   localStorage.setItem("userEmail", data?.userEmail)
   localStorage.setItem("isLoggedIn", "true");
+  if (typeof window !== "undefined") {
+    
+  }
 }
+
 export const handleLogout = () => {
   localStorage.removeItem("userRole");
   localStorage.removeItem("isLoggedIn");
