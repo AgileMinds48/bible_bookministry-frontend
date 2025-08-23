@@ -24,7 +24,7 @@ const Landing = () => {
               </span>
 
           </h1>
-          <p className=' w-[90%]  mt-4 text-sm md:text-lg font-medium text-center text-white'>
+          <p className='   mt-4 text-sm md:text-lg font-medium text-center text-white'>
             Browse our handpicked selection of Bibles and books rooted in sound doctrine and spiritual growth.
           </p>
           <div className='md:mt-10 mt-10 flex flex-col md:flex-row gap-4 justify-center  mx-auto'>
