@@ -45,7 +45,9 @@ const Footer = () => {
               <ul className="font-light text-gray-700  flex flex-col gap-3 text-xl">
                 {navItems.map(({label,href},index) => (
                   
-                    <li className='text-xl hover:text-[#01325E]'>
+                  <li
+                    key={index+href}
+                    className='text-xl hover:text-[#01325E]'>
                       <Link key={index} href={href} >
                       {label} 
                        </Link>

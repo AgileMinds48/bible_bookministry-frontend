@@ -1,5 +1,5 @@
 import { userEmail, username } from '@/app/utils/logininfo';
-import { capitalise, getUserEmail, handleLogout, isLoggedIn } from '@/hooks/auth';
+import { capitalise, handleLogout, isLoggedIn } from '@/hooks/auth';
 import Link from 'next/link';
 import React from 'react'
 import { FaShoppingCart } from 'react-icons/fa';
