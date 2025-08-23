@@ -44,9 +44,13 @@ const Footer = () => {
               <h4 className="text-[#01325E] font-semibold text-xl mb-6 border-b border-dashed">Quick Links</h4>
               <ul className="font-light text-gray-700  flex flex-col gap-3 text-xl">
                 {navItems.map(({label,href},index) => (
-                  <Link key={index} href={href} >
-                    <li className='text-xl hover:text-[#01325E]'>{label} </li>
-                    </Link>
+                  
+                    <li className='text-xl hover:text-[#01325E]'>
+                      <Link key={index} href={href} >
+                      {label} 
+                       </Link>
+                    </li>
+                   
              ))}
               </ul>
             </div>

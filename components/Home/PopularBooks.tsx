@@ -30,9 +30,11 @@ const PopularBooks = () => {
       <div className=' md:py-10 poppins md:px-10 p-4'>
         <div className='md:flex-row flex flex-col items-baseline gap-4 md:gap-0 md:justify-between'>
           <h1 className='md:text-4xl text-2xl poppins font-semibold text-black'>Our most <span className='text-transparent bg-clip-text blue-gradient'>popular</span>  books</h1>
-          <Link href={"catalogue#popular-books"}>
-            <p className='underline cursor-pointer flex center gap-2 group'>See all <span className='-translate-0.5 group-hover:translate-x-2  delay-100 duration-100 transition '><GrNext /></span></p>
+            <button className='underline cursor-pointer flex center gap-2 group'>
+            <Link href={"catalogue#popular-books"}>
+              See all <span className='-translate-0.5 group-hover:translate-x-2  delay-100 duration-100 transition '><GrNext /></span>
             </Link>
+            </button>
           </div>
         <div className='flex shrink-0 lg:px-16 lg:p-8 p-4 overflow-hidden lg:gap-8 lg:gap-y-14 justify-start gap-y-8 md:gap-x-18 gap-4 flex-wrap'>
           {popularBooks.map(({img,title,author,price,rating},index) => (
@@ -56,7 +58,9 @@ const PopularBooks = () => {
                       <span className='border-r border'></span>
                       <p title='available copies' className='flex items-center gap-1'><ImBooks /> 15</p>
                     </div>
-                  <button className='text-3xl text-[#5a88a7] cursor-pointer hidden lg:block'><FaCartPlus/></button>
+                    <button
+                      aria-label='add to cart'
+                      className='text-3xl text-[#5a88a7] cursor-pointer hidden lg:block'><FaCartPlus /></button>
                 </div>
               </div>
             </div>

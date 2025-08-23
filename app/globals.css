@@ -22,6 +22,10 @@
   align-items: center;
   justify-content: space-between;
 }
+.hero-background {
+  background: url('/Home/bg.png');
+}
+
 .poppins {
   font-family: 'Poppins', Arial, Helvetica, sans-serif;
   font-style: normal;

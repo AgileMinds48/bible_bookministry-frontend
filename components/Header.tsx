@@ -45,8 +45,8 @@ const Header = () => {
  const {showSignUp } = useModal();
   return (
     <>
-      <nav className={`p-4 md:p-4 md:px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-[9999] fixed shrink-0 overflow-hidden md:top-2 top-0 left-0 right-0 rounded-lg md:left-4 md:right-4 lg:left-20 lg:right-20 shadow-sm backdrop-blur-xl outline-2 outline-[#B0D4E3] bg-[#B0D4E3]/50 poppins`}>
-        <div className='relative w-full lg:max-w-[80em] md:min-w-6xl min-w-full flex lg:justify-between md:justify-center justify-between gap-4 items-center'>
+      <nav className={`p-4 md:p-4 md:px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-[9999] fixed shrink-0 overflow-hidden lg:top-2 top-0 left-0 right-0 rounded-lg lg:left-10 lg:right-10 shadow-sm backdrop-blur-xl outline-2 outline-[#B0D4E3] bg-[#B0D4E3]/50 poppins`}>
+        <div className='relative w-full lg:max-w-[80em] md:min-w-6xl min-w-full flex lg:justify-center lg:gap-[20em] md:justify-center justify-between gap-4 items-center'>
           <div className="md:flex md:w-[50%] items-center justify-between space-x-4">
             <div className="h-[2.31em] w-12 object-cover rounded-full">
               <Image priority={true} src={logo} alt="Bible and Book ministries logo" className='h-full w-full' />
@@ -92,7 +92,7 @@ const Header = () => {
                 if (!LoggedIn) showSignUp();
               }}
               className={` flex order-3 justify-center items-center gap-1 cursor-pointer hover:shadow-2xl  transition duration-500 relative text-2xl shrink-0 rounded-full 
-                ${LoggedIn?"h-[40px] w-[40px]  bg-red-900/80 text-white":"h-full bg-[#B0D4E3] text-[#15278c] p-2 "}
+                ${LoggedIn?"h-[40px] w-[40px]  blue-gradient text-white":"h-full bg-[#B0D4E3] text-[#15278c] p-2 "}
                 `}
               title={LoggedIn ? `Signed in as ${userEmail}` || "User" : "Login or Register"}>
               {LoggedIn ?
@@ -100,11 +100,11 @@ const Header = () => {
              : <LuUserRound />}
             </button>
             {LoggedIn &&
-              <button className="p-4 hidden md:block">
+              <button className=" hidden md:block md:order-3">
                 <TbLogout2
                   title="logout"
               onClick={handleLogout}
-                  className="text-2xl text-red-900/80 cursor-pointer" />
+                  className="text-2xl text-red-600 cursor-pointer" />
            </button>
            }
 
@@ -124,7 +124,7 @@ const Header = () => {
           (<motion.div
             initial={{ x: 500 }}
             animate={{ x: 0 }}
-            exit={{ x: 500 }}
+            exit={{ x: 1000 }}
             transition={{ duration: 0.3 }}
 
             className={`fixed inset-0 h-screen z-[100000] `}>

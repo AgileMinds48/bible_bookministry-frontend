@@ -122,7 +122,7 @@ const Recommended = () => {
 
 
   return (
-    <section className='poppins md:p-10 p-4 bg-[#FAF3E0]   antialiased'>
+    <section className='poppins md:p-10 p-4 bg-white shadow-2xs inset-shadow-xs  antialiased'>
       <div className='relative'>
         <div className='flex flex-col md:flex-row md:justify-between items-baseline'>
           <h1 className='md:text-4xl text-2xl font-semibold text-black mb-4'>
@@ -130,12 +130,16 @@ const Recommended = () => {
               Recommended
             </span>{" "}
             for you </h1>
+            <button className='underline cursor-pointer flex center gap-2 group'>
           <Link href={"catalogue"}>
-            <p className='underline cursor-pointer flex center gap-2 group'>View all books
-              <button aria-label='proceed-button' className='-translate-0.5 inline-flex group-hover:translate-x-2  delay-100 duration-100 transition '>
+
+              View all books
+              <span aria-label='proceed-button' className='-translate-0.5 inline-flex group-hover:translate-x-2  delay-100 duration-100 transition '>
                 <GrNext />
-              </button></p>
+              </span>
           </Link>
+          
+          </button>
         </div>
         <div className='min-h-max overflow-x-scroll hide-scrollbar' ref={scrollDivRef}>
 
@@ -152,9 +156,9 @@ const Recommended = () => {
                   </div>
                   <div className='relative min-h-full h-max min-w-full flex flex-col py-8'>
                     <div className='text-black'>
-                      <h3 className='line-clamp-3 font-garamond font-semibold leading-8 md:text-2xl text-lg '>{title}</h3>
+                      <h2 className='line-clamp-3  font-semibold leading-8 md:text-2xl text-lg '>{title}</h2>
                       <div>
-                        <p className='line-clamp-1 poppins font-medium text-xl text-gray-500'>{author}</p>
+                        <h3 className='line-clamp-1 poppins font-medium text-xl text-[#15278c]'>{author}</h3>
 
                       </div>
                     </div>
