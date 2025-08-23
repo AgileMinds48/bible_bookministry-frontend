@@ -1,4 +1,5 @@
-import { getUserEmail, handleLogout, isLoggedIn } from '@/hooks/auth';
+import { userEmail, username } from '@/app/utils/logininfo';
+import { capitalise, getUserEmail, handleLogout, isLoggedIn } from '@/hooks/auth';
 import Link from 'next/link';
 import React from 'react'
 import { FaShoppingCart } from 'react-icons/fa';
@@ -13,7 +14,7 @@ interface MenuProps{
 }
 const Menu = ({ onClose }: MenuProps) => {
   const loggedIn = isLoggedIn();
-  const username = getUserEmail();
+  // const username = getUserEmail();
   const navItems = [
     { icon:<IoMdHome />, label: 'Home', href: '/' },
     { icon:<GrCatalog /> ,label: 'Catalogue', href: '/catalogue' },
@@ -23,16 +24,19 @@ const Menu = ({ onClose }: MenuProps) => {
     {icon: <FaShoppingCart />,label: 'My cart', href: '/cart' },
   ];
   return (
-    <div className="  pt-10 bg-white p-4 poppins flex flex-col">
+    <div className="  pt-10 bg-white p-4 poppins flex flex-col overflow-hidden">
       <div
         onClick={onClose}
         className='p-2 border-2 border-green-500 w-fit flex ml-auto'>
         <IoMdClose />
       </div>
      {loggedIn && <div className='border-b border-gray-500 py-8 text-3xl p-4 flex items-center'>
-        <div className='bg-red-900/80 mr-4 text-white flex justify-center items-center rounded-full h-[40px] w-[40px] p-10'> {username?.slice(0, 1).toUpperCase()}</div>
-        <p className='text-2xl text-gray-600'>Signed in as&nbsp;</p>
-       <span className='text-2xl'> {username} </span>
+        <div className='bg-red-900/80 mr-4 text-white flex justify-center items-center rounded-full h-[40px] w-[40px] p-10'>
+          {username?.slice(0, 1).toUpperCase()}</div>
+        <div>
+       <p className='text-2xl '> {capitalise(username)} </p>
+          <p className='text-2xl text-gray-600 whitespace-nowrap'>{userEmail}</p>
+          </div>
       </div>}
       <ul className=''>
         {navItems.map(({ label, href,icon }) => (

@@ -1,14 +1,15 @@
 import Link from 'next/link';
  import React from 'react'
 import { GrNext } from 'react-icons/gr';
+import Stats from './Stats';
 
 const Landing = () => {
 
   return (
-    <main className={`h-[80dvh] pt-20 bg-gradient-to-r from-[#F5F5F5] to-[#b0d4e3b2] overflow-hidden  flex justify-center `} >
-      <div className='grid grid-cols-1 h-[80%] w-full max-w-[100em]'>
+    <main className={`h-[80dvh] pt-20 bg-gradient-to-r from-[#F5F5F5] to-[#b0d4e3b2] overflow-hidden  flex flex-col justify-center max-w-7xl`} >
+      <div className='grid grid-cols-1 h-[80%] w-full '>
         <div className='b w-full p-4 md:p-10 flex flex-col items-center md:items-start justify-center'>
-          <h1 className='md:text-5xl lg:text-6xl text-3xl md:w-[90%]  font-semibold text-[#15278c] text-center md:text-left '>
+          <h1 className='md:text-5xl lg:text-6xl text-3xl md:w-[90%]  font-medium text-[#15278c] text-center '>
             Grow in Grace with
             {" "}
             <span className='green-gradient text-transparent bg-clip-text'>
@@ -37,6 +38,7 @@ const Landing = () => {
           <Image priority={true} src={lcp} alt='book' className='h-full object-contain absolute top-[50%]   drop-shadow-2xl' />
         </div> */}
       </div>
+      <Stats/>
     </main>
   )
 }

@@ -12,7 +12,6 @@ import { RiMoneyDollarCircleLine } from 'react-icons/ri'
 const PopularBooks = () => {
   const popularBooks = Books.filter((book) =>book.category==="Popular"
 )
-
   const [isFav, setisFav] = useState(
     Object.fromEntries(Books.map((_,idx)=>[idx,false]))
   )
@@ -28,9 +27,9 @@ const PopularBooks = () => {
   
   return (
     <section>
-      <div className=' py-10 poppins px-10'>
-        <div className='flex items-baseline justify-between'>
-          <h1 className='text-4xl poppins font-semibold text-black'>Our most <span className='text-transparent bg-clip-text blue-gradient'>popular</span>  books</h1>
+      <div className=' md:py-10 poppins md:px-10 p-4'>
+        <div className='md:flex-row flex flex-col items-baseline gap-4 md:gap-0 md:justify-between'>
+          <h1 className='md:text-4xl text-2xl poppins font-semibold text-black'>Our most <span className='text-transparent bg-clip-text blue-gradient'>popular</span>  books</h1>
           <Link href={"catalogue#popular-books"}>
             <p className='underline cursor-pointer flex center gap-2 group'>See all <span className='-translate-0.5 group-hover:translate-x-2  delay-100 duration-100 transition '><GrNext /></span></p>
             </Link>
@@ -38,7 +37,7 @@ const PopularBooks = () => {
         <div className='flex shrink-0 lg:px-16 lg:p-8 p-4 overflow-hidden lg:gap-8 lg:gap-y-14 justify-start gap-y-8 md:gap-x-18 gap-4 flex-wrap'>
           {popularBooks.map(({img,title,author,price,rating},index) => (
              <div key={index} className='rounded-2xl'>
-          <div className='grid grid-cols-1 grid-rows-[60%_40%] cursor-pointer hover:shadow-xl transition duration-100 lg:h-[22em] h-[18em]  lg:w-[14em] w-[10em] shadow-lg rounded-2xl overflow-hidden'>
+          <div className='grid grid-cols-1 grid-rows-[60%_40%] cursor-pointer hover:shadow-xl transition duration-100 lg:h-[22em] h-[18em] lg:w-[14em] w-[10em] shadow-lg rounded-2xl overflow-hidden'>
             <div className='group h-full relative before:absolute before:inset-0 before:bottom-0 before:bg-linear-to-t  before:from-black/30 before:from-0% before:via-black/10 before:via-60% before:to-black/0 before:to-100% before:opacity-0 hover:before:opacity-100 before:transition before:duration-500  rounded-2xl overflow-hidden'>
                   <Image src={img} alt=''  className='h-full w-full object-cover ' />
                   {

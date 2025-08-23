@@ -17,7 +17,7 @@ import { getUserRole, handleLogout, isLoggedIn} from "@/hooks/auth";
 import { TbLogout2 } from "react-icons/tb";
 import ModalWrapper from "./Modal/ModalWrapper";
 import { useModal } from "./Modal/ModalContext";
-import { userEmail } from "@/app/utils/logininfo";
+import { userEmail, username } from "@/app/utils/logininfo";
 
 const Header = () => {
   const count = useCartStore(s => s.items.reduce((t, i) => t + i.quantity, 0))
@@ -66,10 +66,10 @@ const Header = () => {
             </ul>
           </div>
        
-          <div className="min-w-[10%] gap-4 flex justify-between items-center">
+          <div className="md:min-w-[10%] max-w-[9em]  md:gap-4  flex justify-between items-center">
             <button
               aria-label="cart"
-              className="relative cursor-pointer text-2xl p-2 rounded-full bg-[#B0D4E3] text-[#15278c]">
+              className="hidden md:block relative cursor-pointer text-2xl p-2 rounded-full bg-[#B0D4E3] text-[#15278c]">
               <Link href={"/cart"}>
               <span className="absolute -top-4 text-[0.4em] -right-2 bg-[#15278c] text-white  min-h-4 min-w-4 flex items-center justify-center rounded-full">
                 {count}
@@ -91,12 +91,12 @@ const Header = () => {
               onClick={() => {
                 if (!LoggedIn) showSignUp();
               }}
-              className={`hidden md:flex justify-center items-center gap-1 cursor-pointer hover:shadow-2xl  transition duration-500 relative text-2xl shrink-0 rounded-full 
+              className={` flex order-3 justify-center items-center gap-1 cursor-pointer hover:shadow-2xl  transition duration-500 relative text-2xl shrink-0 rounded-full 
                 ${LoggedIn?"h-[40px] w-[40px]  bg-red-900/80 text-white":"h-full bg-[#B0D4E3] text-[#15278c] p-2 "}
                 `}
               title={LoggedIn ? `Signed in as ${userEmail}` || "User" : "Login or Register"}>
               {LoggedIn ?
-             userEmail?.slice(0,1).toUpperCase()
+             username?.slice(0,1).toUpperCase()
              : <LuUserRound />}
             </button>
             {LoggedIn &&
@@ -109,7 +109,7 @@ const Header = () => {
            }
 
             {/* hamburger menu */}
-            <button className=" md:hidden p-6 flex flex-col gap-1"
+            <button className=" md:hidden p-2 flex flex-col gap-1"
               onClick={handleOpenMenu}>
               <div className={`bg-[#15278c] h-[2px] w-6 rounded-lg transition duration-300 ${isExpanded && "rotate-45 translate-y-1"}`}></div>
               <div className={`bg-[#15278c] h-[2px] w-6 rounded-lg transition duration-300 ${isExpanded && "opacity-0"}`}></div>
