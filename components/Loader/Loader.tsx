@@ -1,9 +1,10 @@
 
 const Loader = () => {
   return (
-    <section className='h-full w-full min-h-40 flex justify-center items-center '>
-      <div className='w-16 h-16 border-b-2 animate-spin border-green-500 rounded-full'></div>
-      </section>
+    <div className='h-full w-full min-h-40 flex justify-center gap-2 items-center '>
+      <div className='w-8 h-8 border-b-2 animate-spin border-green-500 rounded-full'></div>
+      <p>Loading...</p>
+      </div>
   )
 }
 
