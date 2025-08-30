@@ -45,7 +45,7 @@ const Header = () => {
  const {showSignUp } = useModal();
   return (
     <>
-      <nav className={`p-4 md:p-4 md:px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-[9999] fixed shrink-0 overflow-hidden lg:top-2 top-0 left-0 right-0 rounded-lg lg:left-10 lg:right-10 shadow-sm backdrop-blur-xl outline-2 outline-[#B0D4E3] bg-[#B0D4E3]/50 poppins`}>
+      <nav className={`p-4 md:p-4 md:px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-[9999] fixed shrink-0 overflow-hidden lg:top-2 top-0 left-0 right-0 md:rounded-lg lg:left-10 lg:right-10 shadow-sm backdrop-blur-xl outline-2 outline-[#B0D4E3] bg-[#B0D4E3]/50 poppins`}>
         <div className='relative w-full lg:max-w-[80em] md:min-w-6xl min-w-full flex lg:justify-center lg:gap-[20em] md:justify-center justify-between gap-4 items-center'>
           <div className="md:flex md:w-[50%] items-center justify-between space-x-4">
             <div className="h-[2.31em] w-12 object-cover rounded-full">
@@ -69,7 +69,7 @@ const Header = () => {
           <div className="md:min-w-[10%] max-w-[9em]  md:gap-4  flex justify-between items-center">
             <button
               aria-label="cart"
-              className="hidden md:block relative cursor-pointer text-2xl p-2 rounded-full bg-[#B0D4E3] text-[#15278c]">
+              className="block mr-4 relative cursor-pointer text-2xl p-2 rounded-full bg-[#B0D4E3] text-[#15278c]">
               <Link href={"/cart"}>
               <span className="absolute -top-4 text-[0.4em] -right-2 bg-[#15278c] text-white  min-h-4 min-w-4 flex items-center justify-center rounded-full">
                 {count}
@@ -91,8 +91,8 @@ const Header = () => {
               onClick={() => {
                 if (!LoggedIn) showSignUp();
               }}
-              className={` flex order-3 justify-center items-center gap-1 cursor-pointer hover:shadow-2xl  transition duration-500 relative text-2xl shrink-0 rounded-full 
-                ${LoggedIn?"h-[40px] w-[40px]  blue-gradient text-white":"h-full bg-[#B0D4E3] text-[#15278c] p-2 "}
+              className={`hidden md:flex order-3 justify-center items-center gap-1 cursor-pointer hover:shadow-2xl  transition duration-500 relative md:text-2xl text-xl shrink-0 rounded-full 
+                ${LoggedIn?"md:h-[40px] md:w-[40px] h-[30px] w-[30px] blue-gradient text-white":"h-full bg-[#B0D4E3] text-[#15278c] p-2 "}
                 `}
               title={LoggedIn ? `Signed in as ${userEmail}` || "User" : "Login or Register"}>
               {LoggedIn ?

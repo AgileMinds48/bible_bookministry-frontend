@@ -17,19 +17,19 @@ const Footer = () => {
     <footer className='border-t border-[#01325E] poppins bg-[#B0D4E3]'>
     <div className=" h-full w-full pt-8 lg:px-16 px-8 flex gap-4 flex-col justify-between  lg:flex-row">
         <div className="max-w-xl">
-            <div className="flex items-center justify-center gap-4 mb-4 shrink-0">
-              <div className="w-30 h-[5.76em] shrink-0">
+            <div className="flex flex-col lg:items-center justify-center lg:gap-4 mb-4 shrink-0">
+              <div className="lg:w-30 lg:h-[5.76em] w-20 h-auto shrink-0">
                 <Image src="/logo.png" width={80} height={80} alt="" className="w-full h-full mb-4" />
               </div>
-              <p className="text-[#01325E] text-4xl font-medium text-left">
+              <p className="text-[#01325E] lg:text-4xl text-xl font-medium text-left">
                 Bible and Book Ministry
               </p>
             </div>
-            <p className="font-light  text-gray-700 text-center  lg:pl-16 w-full">
+            <p className="font-light  text-gray-700 lg:text-center text-left  lg:pl-16 w-full">
             A Non-Governmental Organization (NGO) concerned with the selling and buying of Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Repellat distinctio officia et adipisci deserunt atque consectetur illum excepturi autem animi ex, explicabo quibusdam debitis mollitia fugit non quasi? Amet, delectus
             </p>
-            <div className="flex  justify-center gap-4 mt-8 ">
+            <div className="flex  lg:justify-center justify-start gap-4 mt-8 ">
               <div className="h-12 w-12 border flex items-center justify-center border-[#01325E] rounded-full cursor-pointer text-[#01325E] hover:text-white hover:bg-[#01325E] duration-200"><FaFacebookF className='text-xl' /></div>
               <div className="h-12 w-12 border flex items-center justify-center border-[#01325E] rounded-full cursor-pointer text-[#01325E] hover:text-white hover:bg-[#01325E] duration-200"><FaLinkedinIn className='text-xl' /></div>
               <div className="h-12 w-12 border flex items-center justify-center border-[#01325E] rounded-full cursor-pointer text-[#01325E] hover:text-white hover:bg-[#01325E] duration-200"><FaWhatsapp className='text-xl'/></div>
@@ -38,7 +38,7 @@ const Footer = () => {
             </div>
         </div>
         
-          <div className="md:w-[50%] grid lg:grid-cols-[1fr_1fr_2fr] grid-cols-1 gap-16">
+          <div className="md:w-[50%] grid lg:grid-cols-[1fr_1fr_2fr] lg:content-end grid-cols-1 gap-16">
             <div className=" flex flex-col ">
               <h4 className="text-[#01325E] font-semibold text-xl mb-6 border-b border-dashed">Quick Links</h4>
               <ul className="font-light text-gray-700  flex flex-col gap-3 text-xl">

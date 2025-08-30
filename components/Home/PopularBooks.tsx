@@ -29,7 +29,7 @@ const PopularBooks = () => {
     <section>
       <div className=' md:py-10 poppins md:px-10 p-4'>
         <div className='md:flex-row flex flex-col items-baseline gap-4 md:gap-0 md:justify-between'>
-          <h1 className='md:text-4xl text-2xl poppins font-semibold text-black'>Our most <span className='text-transparent bg-clip-text blue-gradient'>popular</span>  books</h1>
+          <h1 className='md:text-4xl text-2xl poppins font-semibold text-black'>Our <span className='text-transparent bg-clip-text blue-gradient'>best-selling</span>  books</h1>
             <button className='underline cursor-pointer group'>
             <Link
               className='flex center gap-2 '
@@ -38,7 +38,7 @@ const PopularBooks = () => {
             </Link>
             </button>
           </div>
-        <div className='flex shrink-0 lg:px-16 lg:p-8 p-4 overflow-hidden lg:gap-8 lg:gap-y-14 justify-start gap-y-8 md:gap-x-18 gap-4 flex-wrap'>
+        <div className='flex shrink-0 lg:px-16 lg:p-8 overflow-hidden lg:gap-8 lg:gap-y-14 md:justify-start justify-around gap-y-8 md:gap-x-18 gap-4 flex-wrap'>
           {popularBooks.map(({img,title,author,price,rating},index) => (
              <div key={index} className='rounded-2xl'>
           <div className='grid grid-cols-1 grid-rows-[60%_40%] cursor-pointer hover:shadow-xl transition duration-100 lg:h-[22em] h-[18em] lg:w-[14em] w-[10em] shadow-lg rounded-2xl overflow-hidden'>
