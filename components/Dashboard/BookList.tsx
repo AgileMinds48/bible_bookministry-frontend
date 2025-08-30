@@ -72,8 +72,8 @@ const BookList = () => {
             <tr
               key={bookId}
               className=' border-b last:border-none border-b-gray-700/30'>
-              <td className='py-8'>{bookId}</td>
-              <td className='py-8'>{title}</td>
+              <td className='py-8 line-clamp-1'>{bookId}</td>
+              <td title={title} className='py-8 truncate'>{title}</td>
               <td className='text-center '>{stock}</td>
               <td className="text-center ">GHS{price}</td>
               <td className='py-8  flex justify-end gap-1'><AiFillEdit className='text-green-500'/><MdDelete className='text-red-500'/></td>

@@ -89,6 +89,13 @@ nav a {
   }
 }
 
+.truncate {
+  max-width: 100px; /* Set a maximum width */
+  white-space: nowrap; /* Prevent wrapping */
+  overflow: hidden; /* Hide overflowing content */
+  text-overflow: ellipsis; /* Show ellipsis */
+}
+
 .hide-scrollbar {
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: none; /* Firefox */

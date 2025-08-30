@@ -129,7 +129,7 @@ const OrderList = () => {
             <tr 
             key={orderId}
               className=' border-b last:border-none border-b-gray-700/30'>
-              <td className='py-8'>#{id+1 }</td>
+              <td className='py-8 truncate'>#{id+1 }</td>
               <td>{orderId}</td>
               <td>{customerName}</td>
               <td className='text-right px-4'>{totalAmount}</td>
