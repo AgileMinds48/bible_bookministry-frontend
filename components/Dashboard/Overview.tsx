@@ -34,8 +34,9 @@ const themeMap = {
 };
 const Overview = () => {
   // const [availableBooks,setAvailableBooks]= useState<any>()
-  const [availableBooks,setAvailableBooks]=useState<number | null>()
-  const [totalUsers,setTotalUsers]=useState<number | null>()
+  const [availableBooks, setAvailableBooks] = useState<number | null>(null);
+  const [totalUsers, setTotalUsers] = useState<number | null>(null);
+  const [loading, setLoading] = useState(true);
   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   useEffect(() => {
@@ -46,25 +47,23 @@ const Overview = () => {
           headers: {
             "Authorization": `Bearer ${getToken()}`
           },
-          credentials:"include"
+          credentials: "include"
         });
-        // const orders = await fetch(`${backendUrl}/api/v1/admin/orders/total-sales`,
-          
-        // );
         const users = await fetch(`${backendUrl}/api/v1/admin/get-users`, {
           method: "GET",
-          credentials:"include"
+          headers: {
+            "Authorization": `Bearer ${getToken()}`
+          },
+          credentials: "include"
         });
         const BooksData = await books.json();
         const UsersData = await users.json();
-        console.log(UsersData)
-        // const OrderData = await orders.json();
-        // Adjust this line based on your actual response structure
         setAvailableBooks(BooksData);
         setTotalUsers(UsersData.length);
-        // setTotalOrders(orders);
       } catch (err: unknown) {
         console.log("ERROR FETCHING AVAILABLE BOOKS: ", err);
+      } finally {
+        setLoading(false);
       }
     };
     fetchAvailableBooks();
@@ -75,7 +74,7 @@ const Overview = () => {
   totalBooks: {
     icon: <ImBooks />,
     label: "Books available",
-    value: availableBooks!==null?availableBooks:66,
+    value: loading ? '--' : availableBooks !== null ? availableBooks : 66,
     theme: "yellow"
   },
   totalOrders: {
@@ -93,7 +92,7 @@ const Overview = () => {
   totalUsers: {
     icon: <LuUserRound />,
     label: "Total users",
-    value: totalUsers!==null?totalUsers:"3348",
+    value: loading ? '--' : totalUsers !== null ? totalUsers : "0",
     theme: "red"
   }
 };
