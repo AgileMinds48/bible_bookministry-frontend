@@ -1,7 +1,6 @@
 "use client"
 import React, { useState } from 'react'
 import { IoMdRefresh } from 'react-icons/io'
-import Loader from '../Loader/Loader'
 import Image from 'next/image'
 import { error } from '@/public'
 // import BDHeader from '../Book/BDHeader'
