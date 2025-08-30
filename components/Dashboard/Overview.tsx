@@ -1,4 +1,5 @@
 "use client"
+import { getToken } from '@/hooks/auth';
 import React, { useEffect, useState } from 'react'
 import { CiShoppingCart } from 'react-icons/ci'
 import { ImBooks } from 'react-icons/im'
@@ -42,6 +43,9 @@ const Overview = () => {
       try {
         const books = await fetch(`${backendUrl}/api/v1/admin/books/get-available`, {
           method: "GET",
+          headers: {
+            "Authorization": `Bearer ${getToken()}`
+          },
           credentials:"include"
         });
         // const orders = await fetch(`${backendUrl}/api/v1/admin/orders/total-sales`,

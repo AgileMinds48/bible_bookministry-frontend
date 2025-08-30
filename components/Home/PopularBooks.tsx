@@ -30,8 +30,10 @@ const PopularBooks = () => {
       <div className=' md:py-10 poppins md:px-10 p-4'>
         <div className='md:flex-row flex flex-col items-baseline gap-4 md:gap-0 md:justify-between'>
           <h1 className='md:text-4xl text-2xl poppins font-semibold text-black'>Our most <span className='text-transparent bg-clip-text blue-gradient'>popular</span>  books</h1>
-            <button className='underline cursor-pointer flex center gap-2 group'>
-            <Link href={"catalogue#popular-books"}>
+            <button className='underline cursor-pointer group'>
+            <Link
+              className='flex center gap-2 '
+              href={"catalogue#popular-books"}>
               See all <span className='-translate-0.5 group-hover:translate-x-2  delay-100 duration-100 transition '><GrNext /></span>
             </Link>
             </button>

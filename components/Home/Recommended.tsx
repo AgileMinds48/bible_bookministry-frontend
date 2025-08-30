@@ -130,8 +130,10 @@ const Recommended = () => {
               Recommended
             </span>{" "}
             for you </h1>
-            <button className='underline cursor-pointer flex center gap-2 group'>
-          <Link href={"catalogue"}>
+            <button className='underline cursor-pointer group'>
+            <Link
+              className='flex center gap-2 '
+              href={"catalogue"}>
 
               View all books
               <span aria-label='proceed-button' className='-translate-0.5 inline-flex group-hover:translate-x-2  delay-100 duration-100 transition '>

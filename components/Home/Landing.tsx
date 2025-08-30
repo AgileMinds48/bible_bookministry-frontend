@@ -7,7 +7,7 @@ import { FaArrowDownLong } from 'react-icons/fa6';
 const Landing = () => {
 
   return (
-    <main className={`h-screen pt-20 hero-background overflow-hidden  flex flex-col justify-center items-center`} >
+    <main className={`h-[80dvh] pt-20 hero-background overflow-hidden  flex flex-col justify-center items-center`} >
       <div className='max-w-7xl flex flex-col items-center'>
         <div className='b w-full p-4 md:p-10 flex flex-col items-center md:items-start justify-center'>
           <h1 className='md:text-5xl lg:text-6xl text-3xl max-w-4xl inter font-medium text-white text-center drop-shadow-xl'>

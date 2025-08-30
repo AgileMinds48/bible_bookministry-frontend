@@ -19,14 +19,14 @@ const Footer = () => {
     <div className=" h-full w-full pt-8 lg:px-16 px-8 flex gap-4 flex-col justify-between  lg:flex-row">
         <div className="max-w-xl">
             <div className="flex items-center justify-center gap-4 mb-4 shrink-0">
-              <div className="w-30 h-[5.76em] ">
-                <Image src={logo} alt="" className="w-full h-full mb-4" />
+              <div className="w-30 h-[5.76em] shrink-0">
+                <Image src="/logo.png" width={80} height={80} alt="" className="w-full h-full mb-4" />
               </div>
               <p className="text-[#01325E] text-4xl font-medium text-left">
                 Bible and Book Ministry
               </p>
             </div>
-            <p className="font-light  text-gray-700 text-center  pl-16 w-full">
+            <p className="font-light  text-gray-700 text-center  lg:pl-16 w-full">
             A Non-Governmental Organization (NGO) concerned with the selling and buying of Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Repellat distinctio officia et adipisci deserunt atque consectetur illum excepturi autem animi ex, explicabo quibusdam debitis mollitia fugit non quasi? Amet, delectus
             </p>

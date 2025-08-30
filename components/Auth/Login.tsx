@@ -59,7 +59,7 @@ const Login = ({handleCloseModal,onSignUpClick}: LoginProps) => {
       if (!res.ok) {
         throw new Error(data.detail || JSON.stringify(data));
       }
-      handleLoggedIn({userRole:data.userRole,userEmail:data.email,userName:data.userName});
+      handleLoggedIn({userRole:data.userRole,userEmail:data.email,userName:data.userName,token:data.token});
       setSuccessMsg("Login was successful")
       setFormData({
         password: "",

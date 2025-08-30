@@ -1,8 +1,9 @@
-export const handleLoggedIn = (data:{userRole:string,userEmail:string,userName:string}) => {
+export const handleLoggedIn = (data:{userRole:string,userEmail:string,userName:string,token:string}) => {
   localStorage.setItem("userRole", data?.userRole)
   localStorage.setItem("userEmail", data?.userEmail)
   localStorage.setItem("userName", data?.userName)
   localStorage.setItem("isLoggedIn", "true");
+  localStorage.setItem("authToken", data?.token);
   if (typeof window !== "undefined") {
     
   }
@@ -34,6 +35,11 @@ export const getUserName = () => {
     return localStorage.getItem("userName");
   }
   return null;
+}
+export const getToken = () => {
+  if (typeof window !== "undefined") {
+      return localStorage.getItem("authToken")
+  }
 }
 
 export const isLoggedIn=() =>{
