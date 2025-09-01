@@ -36,7 +36,7 @@ const AllBooks = () => {
     setLoading(true);
     const fetchBooks = async () => {
       try {
-        const response = await axios.get(`${backendUrl}/api/v1/books/all-books?page=${currentPage},`
+        const response = await axios.get(`${backendUrl}/api/v1/books/all-books?page=${currentPage}`
         )
         console.log(response.data);
 
