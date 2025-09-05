@@ -1,6 +1,6 @@
 import AllBooks from '@/components/Catalog/AllBooks'
 import CatalogueHeader from '@/components/Catalog/CatalogueHeader'
-import Header from '@/components/Header'
+import Header from '@/components/Header/Header'
 import { ModalProvider } from '@/components/Modal/ModalContext'
 import React from 'react'
 

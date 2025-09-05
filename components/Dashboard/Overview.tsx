@@ -1,5 +1,5 @@
 "use client"
-import { getToken } from '@/hooks/auth';
+import { getToken } from '@/app/utils/auth';
 import React, { useEffect, useState } from 'react'
 import { CiShoppingCart } from 'react-icons/ci'
 import { ImBooks } from 'react-icons/im'

@@ -1,5 +1,5 @@
 "use client"
-import { handleLogout } from '@/hooks/auth'
+import { handleLogout } from '@/app/utils/auth'
 import { logo } from '@/public'
 import Image from 'next/image'
 import Link from 'next/link'

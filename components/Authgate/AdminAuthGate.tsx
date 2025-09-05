@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { isLoggedIn, getUserRole } from "@/hooks/auth";
+import { isLoggedIn, getUserRole } from "@/app/utils/auth";
 import { ModalProvider } from "@/components/Modal/ModalContext";
 import ModalWrapper from "@/components/Modal/ModalWrapper";
 import AdminSidebar from "@/components/Dashboard/AdminSidebar";

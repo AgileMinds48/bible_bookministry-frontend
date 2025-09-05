@@ -4,12 +4,12 @@ import { StaticImageData } from 'next/image';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Sidebar from './Sidebar';
 import { filterByPriceRange, filterByRating, filterBySearch, sortByAuthorAZ, sortByAuthorZA, sortByPriceHL, sortByPriceLH, sortByRatingH, sortByRatingL, sortByTitleAZ, sortByTitleZA } from './Filters';
-import CartPopup from '../CartPopup';
+import CartPopup from '../Popups/CartPopup';
 import { AnimatePresence, motion } from 'framer-motion';
-import FavPopup from '../FavPopup';
+import FavPopup from '../Popups/FavPopup';
 import BookDiv from '../Book/BookDiv';
 import axios from 'axios';
-import Loading from '../Loading/loading';
+import Loading from './loading';
 import Page from '../Pages/Page';
 import { useCartStore } from '@/app/utils/cartStore';
 import Error from '../Fallback/Error';
@@ -63,7 +63,7 @@ const AllBooks = () => {
     }
     fetchBooks();
 
-  }, [currentPage,backendUrl])
+  }, [currentPage, backendUrl])
 
   //for pagination
   const handlePageChange = (newPage: number) => {
@@ -310,7 +310,7 @@ const AllBooks = () => {
                 //     </button>
                 //   </div>
                 // </div>
-              <Error/>
+                <Error />
               )
               : sortedBooks?.map(({ img, title, author, price, rating, id, amountInStock }) => (
                 <AnimatePresence key={id}>

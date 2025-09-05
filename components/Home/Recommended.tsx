@@ -8,8 +8,8 @@ import React, { useMemo, useRef, useState } from 'react'
 import { FaCartPlus, FaStar } from 'react-icons/fa'
 import { GrNext, GrPrevious } from 'react-icons/gr'
 import { MdFavorite } from 'react-icons/md'
-import CartPopup from '../CartPopup'
-import FavPopup from '../FavPopup'
+import CartPopup from '../Popups/CartPopup'
+import FavPopup from '../Popups/FavPopup'
 
 const Recommended = () => {
   const recommendedBooks = Books.filter((book) => book.category === "Recommended")

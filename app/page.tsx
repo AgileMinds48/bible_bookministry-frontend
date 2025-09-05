@@ -1,4 +1,4 @@
-import Header from "@/components/Header";
+import Header from "@/components/Header/Header";
 import Landing from "@/components/Home/Landing";
 import PopularBooks from "@/components/Home/PopularBooks";
 import Recommended from "@/components/Home/Recommended";

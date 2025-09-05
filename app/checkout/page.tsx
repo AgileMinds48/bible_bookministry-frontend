@@ -1,5 +1,5 @@
 import Checkout from '@/components/Checkout/Checkout'
-import Header from '@/components/Header'
+import Header from '@/components/Header/Header'
 import { ModalProvider } from '@/components/Modal/ModalContext'
 import React from 'react'
 

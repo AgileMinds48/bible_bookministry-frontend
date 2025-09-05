@@ -1,4 +1,4 @@
-import { getUserEmail } from "@/hooks/auth";
+import { getUserEmail } from "@/app/utils/auth";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

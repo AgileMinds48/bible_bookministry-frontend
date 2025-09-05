@@ -7,7 +7,7 @@ import { } from '@/app/utils/data';
 import Image from 'next/image';
 import { google, logo2 } from '@/public';
 import { MdEmail } from 'react-icons/md';
-import { handleLoggedIn } from '@/hooks/auth';
+import { handleLoggedIn } from '@/app/utils/auth';
 
 interface LoginProps {
   handleCloseModal: () => void

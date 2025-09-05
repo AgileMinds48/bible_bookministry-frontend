@@ -29,7 +29,8 @@ const Error = () => {
         onClick={handleRefresh}
       >
       
-           {!isLoading&& `Refresh`}
+            {!isLoading
+              && `Refresh`}
             <IoMdRefresh className={`text-sm ${isLoading?"animate-spin":""}`} />
         </button>
         </div>

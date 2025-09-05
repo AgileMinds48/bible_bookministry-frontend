@@ -1,7 +1,7 @@
 import { reviews } from '@/app/utils/data'
 import Image from 'next/image'
 import React from 'react'
-import Rating from '../Rating'
+import Rating from './Rating'
 
 const ReviewCards = () => {
   return (

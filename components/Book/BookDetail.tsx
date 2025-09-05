@@ -5,7 +5,7 @@ import React, { useMemo } from 'react'
 import { BiCategory } from 'react-icons/bi';
 import { IoIosPricetags } from 'react-icons/io';
 import { MdFavorite, MdOutlineDateRange } from 'react-icons/md';
-import Rating from '../Rating';
+import Rating from '../Reviews/Rating';
 import { useCartStore } from '@/app/utils/cartStore';
 import { FaCartPlus } from 'react-icons/fa';
 import Link from 'next/link';
