@@ -1,0 +1,39 @@
+import Image, { StaticImageData } from 'next/image'
+import React from 'react'
+import { FaCheckCircle } from 'react-icons/fa'
+
+interface FavPopupProps {
+  bookName: string,
+  image: string| StaticImageData | undefined,
+  isFav: boolean
+}
+const FavPopup = ({ image, bookName, isFav }: FavPopupProps) => {
+  return (
+
+    <div
+
+      className='w-full h-full grid grid-cols-[1fr_1px_3fr] '>
+      <div className='m-auto '><FaCheckCircle className='text-green-500 text-5xl ' /></div>
+      <div className='w-full h-full bg-black'></div>
+      <div className='m-auto flex px-2 gap-2'>
+        <div className='h-20 w-20'>
+        {image &&
+          <Image
+          src={image}
+          height={0}
+            width={80}
+            priority={true}
+            loading="eager"
+          alt="book added to fav"
+          className='w-full h-full object-cover object-center rounded-sm'
+            />
+          }
+        </div>
+          <p className='leading-snug font-semibold my-auto'>{bookName} <br /> <span className='font-light'>{isFav ? "added to favorites successfully" : "removed from favorites successfully"}</span></p>
+      </div>
+    </div>
+
+  )
+}
+
+export default FavPopup
