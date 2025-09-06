@@ -1,5 +1,4 @@
 import { Book } from '@/app/utils/data';
-import { category } from "@/components/Catalog/AllBooks";
 
 //sorting function
 export const sortByTitleAZ = (books: Book[]): Book[] => {

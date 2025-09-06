@@ -1,6 +1,6 @@
 import { capitalise } from '@/app/utils/auth'
 import { categories } from '@/app/utils/catalog'
-import React, { MouseEventHandler } from 'react'
+import React from 'react'
 const categoryList: categories[] | string[] = [
   "all",'theological',"bibles","children","commentaries","religious",
 ]
