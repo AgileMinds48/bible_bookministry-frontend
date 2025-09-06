@@ -18,7 +18,7 @@ const Landing = () => {
             {/* </span> */}
             <br className='lg:block hidden' />
             {" "}
-            <span className='bg-red-900 text-transparent bg-clip-text  font-semibold'>
+            <span className='blue-gradient text-transparent bg-clip-text  font-semibold'>
 
               Christian Literature
               </span>

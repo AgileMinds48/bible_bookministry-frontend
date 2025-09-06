@@ -12,12 +12,12 @@ import Menu from "../Menu/Menu";
 import { useBodyScrollLock } from "@/hooks/useBodyScrollLock";
 import { useCartStore } from "@/app/utils/cartStore";
 import { LuUserRound } from "react-icons/lu";
-import { getUserRole, handleLogout, isLoggedIn} from "@/app/utils/auth";
+import { capitalise, getUserRole, isLoggedIn} from "@/app/utils/auth";
 // import { FaUserCircle } from "react-icons/fa";
-import { TbLogout2 } from "react-icons/tb";
 import ModalWrapper from "../Modal/ModalWrapper";
 import { useModal } from "../Modal/ModalContext";
-import { userEmail, username } from "@/app/utils/logininfo";
+import {username } from "@/app/utils/logininfo";
+import ProfileMenu from "../Menu/ProfileMenu";
 
 const Header = () => {
   const count = useCartStore(s => s.items.reduce((t, i) => t + i.quantity, 0))
@@ -35,38 +35,39 @@ const Header = () => {
     : []),];
   //hamburger menu
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-
+  const [profileOpened,setProfileOpened]= useState(false)
   useBodyScrollLock(isExpanded);
   const handleOpenMenu = () => {
     setIsExpanded(!isExpanded);
   }
 
+
   //for modal
- const {showSignUp } = useModal();
+  const { showSignUp } = useModal();
   return (
     <>
-      <nav className={`p-4 md:p-4 md:px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-[9999] fixed shrink-0 overflow-hidden lg:top-2 top-0 left-0 right-0 md:rounded-lg lg:left-10 lg:right-10 shadow-sm backdrop-blur-xl outline-2 outline-[#B0D4E3] bg-[#B0D4E3]/50 poppins`}>
-        <div className='relative w-full lg:max-w-[80em] md:min-w-6xl min-w-full flex lg:justify-center lg:gap-[20em] md:justify-center justify-between gap-4 items-center'>
-          <div className="md:flex md:w-[50%] items-center justify-between space-x-4">
-            <div className="h-[2.31em] w-12 object-cover rounded-full">
+      <nav className={`p-4 md:max-w-[90em] md:min-w-3xl mx-auto md:p-4 md:px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-[9999] fixed shrink-0  lg:top-2 top-0 left-0 right-0 md:rounded-lg lg:left-10 lg:right-10 shadow-sm backdrop-blur-2xl outline-2 outline-[#B0D4E3] bg-[#B0D4E3]/60 poppins`}>
+        <div className='relative w-full  flex justify-between gap-4 items-center'>
+          {/* <div className="md:flex md:w-[50%] items-center justify-between space-x-4"> */}
+            <div className="h-[2.31em] object-cover rounded-full">
               <Image priority={true} src={logo} alt="Bible and Book ministries logo" className='h-full w-full' />
             </div>
-            <ul className="hidden md:flex justify-between md:w-[100%] text-sm overflow-hidden">
+            <ul className="hidden md:flex justify-between min-w-[20%] gap-16 text-sm overflow-hidden">
               {navItems.map(({ label, href }, idx) => (
 
-                <li key={idx+href} className={`group cursor-pointer font-medium lg:text-[1.2em] transition duration-300 p-1  ${pathName === href ? "text-[#15278c]" : "text-black"}`}>
+                <li key={idx+href} className={`group cursor-pointer font-medium lg:text-xl  transition duration-300 p-1  ${pathName === href ? "text-red-800" : "text-black"}`}>
                   <Link  href={href}>
                     {label}
-                    <div className={`hidden absolute left-0 right-0 bottom-0 ${pathName == href ? "" : "group-hover:animate-underline group-hover:block"} w-[110%] blue-gradient h-[0.1em] rounded-full animate-underline`}></div>
-                    {pathName == href && <div className="absolute left-0 right-0 bottom-0 w-[110%] blue-gradient h-[0.1em] rounded-full animate-underline"></div>}
+                    <div className={`hidden absolute left-0 right-0 -bottom-1 ${pathName == href ? "" : " group-hover:block"} w-[110%] blue-gradient h-[2px] rounded-full animate-underline`}></div>
+                    {pathName == href && <div className="absolute left-0 right-0 -bottom-1 w-[110%] bg-red-900 h-[2px] rounded-full animate-underline"></div>}
                      </Link>
                   </li>
                
               ))}
             </ul>
-          </div>
+          {/* </div> */}
        
-          <div className="md:min-w-[10%] max-w-[9em]  md:gap-4  flex justify-between items-center">
+          <div className="  md:gap-  flex justify-between items-center">
             <button
               aria-label="cart"
               className="block mr-4 relative cursor-pointer text-2xl p-2 rounded-full bg-[#B0D4E3] text-[#15278c]">
@@ -86,25 +87,34 @@ const Header = () => {
               </span>
               <MdFavoriteBorder />
             </button> */}
-            <button
+            
+              <motion.div
+                onMouseEnter={()=>setProfileOpened(true)}
+                onMouseLeave={()=>setProfileOpened(false)}
               aria-label="login or register"
               onClick={() => {
                 if (!LoggedIn) showSignUp();
               }}
-              className={`hidden md:flex order-3 justify-center items-center gap-1 cursor-pointer hover:shadow-2xl  transition duration-500 relative md:text-2xl text-xl shrink-0 rounded-full 
+              className={`hidden group md:flex order-3 justify-center items-center lg:text-[1.2em] gap-1 cursor-pointer hover:shadow-2xl  transition duration-500 relative md:text-2xl shrink-0 rounded-full 
                 ${LoggedIn?"md:h-[40px] md:w-[40px] h-[30px] w-[30px] blue-gradient text-white":"h-full bg-[#B0D4E3] text-[#15278c] p-2 "}
                 `}
-              title={LoggedIn ? `Signed in as ${userEmail}` || "User" : "Login or Register"}>
+              // title={LoggedIn ? `Signed in as ${capitalise(username)}` || "User" : "Login or Register"}
+            >
               {LoggedIn ?
              username?.slice(0,1).toUpperCase()
-             : <LuUserRound />}
-            </button>
+                : <span className="flex items-center gap-2 px-2"> <LuUserRound /> Sign Up</span>}
+              <AnimatePresence>
+                {isLoggedIn()
+                  &&
+                  <ProfileMenu openMenu={profileOpened} />
+                }
+                </AnimatePresence>
+              </motion.div>
+              
             {LoggedIn &&
               <button className=" hidden md:block md:order-3">
-                <TbLogout2
-                  title="logout"
-              onClick={handleLogout}
-                  className="text-2xl text-red-600 cursor-pointer" />
+
+                
            </button>
            }
 
