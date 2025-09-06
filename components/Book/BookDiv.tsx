@@ -29,15 +29,16 @@ const BookDiv: React.FC<BookDiv> = ({
   handleAddToCart, 
   added }) => {
   
-    if (typeof category !== "undefined" && typeof category!=="string") {
-      console.log("Category from BooDiv:", category["categoryName"] )
-  }
+  //   if (typeof category !== "undefined" && typeof category!=="string") {
+  //     console.log("Category from BooDiv:", category["categoryName"] )
+  // }
   
-   let catName: categories = "default";
+  let catName: categories = "all"
+    catName.toLowerCase().trim();
     if (typeof category === "object" && category !== null && "categoryName" in category) {
-      catName = (category.categoryName?.toLowerCase() as categories) || "Default";
+      catName = (category.categoryName?.toLowerCase().trim() as categories) || "Default";
     } else if (typeof category === "string" && category !== "") {
-      catName = category.toLowerCase() as categories;
+      catName = category.toLowerCase().trim() as categories;
     }
   return (
      <div className="grid grid-cols-1 grid-rows-[60%_40%] cursor-auto hover:shadow-xl transition duration-100 h-[28em]  w-[12em] shadow-lg rounded-2xl overflow-hidden">

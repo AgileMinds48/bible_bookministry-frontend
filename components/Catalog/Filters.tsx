@@ -1,4 +1,6 @@
 import { Book } from '@/app/utils/data';
+import { category } from "@/components/Catalog/AllBooks";
+
 //sorting function
 export const sortByTitleAZ = (books: Book[]): Book[] => {
   const copyOfBooks = [...books]; //I don't wanna change the original array
@@ -53,9 +55,20 @@ export const filterBySearch = (books: Book[], searchTerm: string): Book[] => {
     book.author.toLowerCase().includes(normalisedSearch)
   )
 }
+export const filterByCategory = (books: Book[], categoryName: string) => {
+  if (categoryName.toLowerCase() === "all") return books;
+  return books.filter(book => {
+    if (typeof book.category === "object" && book.category !== null) {
+      return book.category?.categoryName?.toLowerCase().trim() === categoryName.toLowerCase().trim();
+    }
+    if (typeof book.category === "string") {
+      return book.category?.toLowerCase().trim() === categoryName.toLowerCase().trim();
+    }
+    return false;
+  })
+}
 const Filters = () => {
-
-
+  
 }
 
 export default Filters

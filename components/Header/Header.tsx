@@ -95,7 +95,7 @@ const Header = () => {
               onClick={() => {
                 if (!LoggedIn) showSignUp();
               }}
-              className={`hidden group md:flex order-3 justify-center items-center lg:text-[1.2em] gap-1 cursor-pointer hover:shadow-2xl  transition duration-500 relative md:text-2xl shrink-0 rounded-full 
+              className={`hidden group md:flex order-3 justify-center items-center cursor-pointer hover:shadow-2xl transition duration-500 relative md:text-2xl shrink-0 rounded-full 
                 ${LoggedIn?"md:h-[40px] md:w-[40px] h-[30px] w-[30px] blue-gradient text-white":"h-full bg-[#B0D4E3] text-[#15278c] p-2 "}
                 `}
               // title={LoggedIn ? `Signed in as ${capitalise(username)}` || "User" : "Login or Register"}

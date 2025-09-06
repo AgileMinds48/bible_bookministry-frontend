@@ -38,7 +38,7 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
   });
   const [passwordError, setPasswordError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState<Error | string>();
   const [successMsg, setSuccessMsg] = useState<string>("");
   const [minChar, setMinChar] = useState(false);
   const [passwordFocused, setPasswordFocused] = useState(false);
@@ -88,8 +88,15 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
         ),
       });
       const data: SignupResponse = await res.json();
+      if (res.status === 409) {
+        throw new Error("User already exists. Please choose a different username or login instead")
+      }
 if (!res.ok) {
-  throw new Error(data.detail || data.error || JSON.stringify(data));
+  throw new Error(typeof data.detail === "string"
+    ? data.detail
+    : typeof data.error === "string"
+    ? data.error
+    : JSON.stringify(data.detail || data.error || data));
 }
       setSuccessMsg(data.successMessage || "Signup successful!");
       setTimeout(()=>handleShowLogin(),500)
@@ -104,8 +111,8 @@ if (!res.ok) {
      })
     } catch (err: unknown) {
       if (err instanceof Error) {
-        setError('Oops... Signup failed. Try again');
-        console.log("Sign Up failed Error: ", err.message);
+        setError(err||'Oops... Signup failed. Try again');
+        console.log("Sign Up failed Error: ", err);
       }
     } finally {
       setLoading(false);
@@ -241,7 +248,19 @@ if (!res.ok) {
               'Sign Up'
             )}
           </button>
-           {error && <p className="text-center text-red-600">{error}</p>}
+            {error &&
+              <p className="text-center text-red-600">
+            {error instanceof Error
+              ? (() => {
+              try {
+                const parsed = JSON.parse(error.message);
+                return parsed.error?.details || error.message;
+              } catch {
+                return error.message;
+              }
+        })()
+      : error}
+            </p>}
             {successMsg &&
               <div>
               <p className="text-center text-green-600">{successMsg}</p>
