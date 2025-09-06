@@ -33,7 +33,7 @@ const BookDiv: React.FC<BookDiv> = ({
   //     console.log("Category from BooDiv:", category["categoryName"] )
   // }
   
-  let catName: categories = "default"
+  let catName: categories = "all"
     catName.toLowerCase().trim();
     if (typeof category === "object" && category !== null && "categoryName" in category) {
       catName = (category.categoryName?.toLowerCase().trim() as categories) || "Default";
