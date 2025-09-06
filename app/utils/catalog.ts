@@ -1,4 +1,4 @@
-export type categories = "theological" | "children" | "commentaries" | "religious" | "bibles" | "default";
+export type categories = "theological" | "children" | "commentaries" | "religious" | "bibles" | "all";
 
 export const categoryColorMap: { [key in categories]: string } = {
   "theological": "bg-blue-300",
@@ -7,10 +7,10 @@ export const categoryColorMap: { [key in categories]: string } = {
   "religious": "bg-pink-300",
   "bibles": "bg-black",
   // Add more categories and colors as needed
-  "default": "bg-teal-400"
+  "all": "bg-teal-400"
 };
 
 export const getCategoryBg = (cat: categories)=>{
-  const name =cat ?? "default"
+  const name =cat ?? "all"
   return categoryColorMap[name];
 }

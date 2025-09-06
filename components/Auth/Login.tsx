@@ -27,7 +27,7 @@ const Login = ({handleCloseModal,onSignUpClick}: LoginProps) => {
   });
   // const [passwordError, setPasswordError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('')
+  const [error, setError] = useState<Error | string>('')
   // const [passwordFocused, setPasswordFocused] = useState(false);
   //function to handle input change and set values
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,6 +56,9 @@ const Login = ({handleCloseModal,onSignUpClick}: LoginProps) => {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
+      // if (!data.token) {
+      //   throw new Error("Invalid credentials")
+      // }
       if (!res.ok) {
         throw new Error(data.detail || JSON.stringify(data));
       }
@@ -71,7 +74,7 @@ const Login = ({handleCloseModal,onSignUpClick}: LoginProps) => {
       window.location.reload();
     } catch (err: unknown) {
       if (err instanceof Error) {
-        setError('Oops... Login failed. Please try again');
+        setError(err);
         console.log("Login fail error: ",err.message);
       }
     } finally {
@@ -163,7 +166,20 @@ const Login = ({handleCloseModal,onSignUpClick}: LoginProps) => {
                 'Login'
               )}
             </button>
-            {error && <p className="text-center text-red-600">{error}</p>}
+            {error &&
+              (<p className="text-center text-red-600">
+              {error instanceof Error
+              ? (() => {
+            try {
+            const parsed = JSON.parse(error.message);
+            return parsed.error?.details || error.message;
+          } catch {
+            return error.message;
+          }
+        })()
+                : error}
+            </p>)
+            }
              {successMsg &&
               <div>
               <p className="text-center text-green-600">{successMsg}</p>

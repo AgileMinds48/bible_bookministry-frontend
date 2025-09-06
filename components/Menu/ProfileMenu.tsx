@@ -38,14 +38,15 @@ const ProfileMenu = ({openMenu}:ProfileMenuProps) => {
                 <p className='text-lg text-gray-700 whitespace-nowrap'> {userEmail}</p>
             </div>
         </div>}
-      <button className='bg-red-100 border border-red-500 rounded-lg mt-2 py-1 text-black  w-full flex items-center justify-center gap-2 cursor-pointer '>
-        <TbLogout2
-       
-      onClick={logout}
-          className="text-2xl text-red-600 " />
+            <button onClick={logout}
+              className='bg-red-100 border border-red-500 rounded-lg mt-2 py-1 text-black  w-full flex items-center justify-center gap-2 cursor-pointer '>
+
         {isLoading ?
         <Loader/>
-        : "Logout"}
+                : <span>
+                  <TbLogout2
+                  className="text-2xl text-red-600 " />Logout</span>
+              }
       </button>
       </motion.div>}
       </AnimatePresence>

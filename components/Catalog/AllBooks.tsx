@@ -3,7 +3,7 @@ import { Book, getItemsFromLocalStorage, setItemsToLocalStorage } from '@/app/ut
 import { StaticImageData } from 'next/image';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Sidebar from './Sidebar';
-import { filterByPriceRange, filterByRating, filterBySearch, sortByAuthorAZ, sortByAuthorZA, sortByPriceHL, sortByPriceLH, sortByRatingH, sortByRatingL, sortByTitleAZ, sortByTitleZA } from './Filters';
+import { filterByCategory, filterByPriceRange, filterByRating, filterBySearch, sortByAuthorAZ, sortByAuthorZA, sortByPriceHL, sortByPriceLH, sortByRatingH, sortByRatingL, sortByTitleAZ, sortByTitleZA } from './Filters';
 import CartPopup from '../Popups/CartPopup';
 import { AnimatePresence, motion } from 'framer-motion';
 import FavPopup from '../Popups/FavPopup';
@@ -14,6 +14,7 @@ import Page from '../Pages/Page';
 import { useCartStore } from '@/app/utils/cartStore';
 import Error from '../Fallback/Error';
 import Categories from './Categories';
+import { categories } from '@/app/utils/catalog';
 export interface category{
   categoryName: string,
   categoryId: string,
@@ -92,6 +93,11 @@ const AllBooks = () => {
     setSearchInput(value);
   }
 
+  //category
+  const [selectedCategory, setSelectedCategory] = useState<categories | string>("all");
+  const handleCategorySelect=(categoryname:string) => {
+    setSelectedCategory(categoryname);
+  }
   interface popupDetails {
     bookName: string
     image: string | StaticImageData | undefined
@@ -110,12 +116,12 @@ const AllBooks = () => {
 
   //list of sorts pulling algorithms from Filter.tsx
   const sortedBooks = useMemo(() => {
-    let filteredBooks = filterByPriceRange(allBooks, priceRange.min, priceRange.max);
+    // filteredBooks = filterByCategory(allBooks, selectedCategory);
+   let   filteredBooks = filterByPriceRange(allBooks, priceRange.min, priceRange.max);
     filteredBooks = filterByRating(filteredBooks, rating)
 
     //search filtering
     filteredBooks = filterBySearch(filteredBooks, searchInput || "")
-
 
     if (currentSort === "title-asc") {
       return sortByTitleAZ(filteredBooks);
@@ -141,12 +147,14 @@ const AllBooks = () => {
     if (currentSort === "rating-asc") {
       return sortByRatingL(filteredBooks);
     }
-    return filteredBooks;
-  }, [currentSort, priceRange, rating, allBooks, searchInput])
+    return filterByCategory(filteredBooks,selectedCategory);
+  }, [currentSort, priceRange, rating, allBooks, searchInput,selectedCategory])
   const handleSortChange = (sortValue: string) => {
     setCurrentsort(sortValue);
   }
-
+useEffect(() => {
+  console.log("Selected category updated:", selectedCategory);
+}, [selectedCategory]);
   //price range handler
   useEffect(() => {
     if (allBooks.length > 0) {
@@ -281,10 +289,10 @@ const AllBooks = () => {
             available books
           </span>{' '}
         </h1>
-        <Categories/>
+        <Categories onSelect={handleCategorySelect} selectedCat={selectedCategory} />
         <div
           ref={carouselRef}
-          className="flex flex-wrap relative   shrink-0  py-8 overflow-hidden  gap-8 gap-y-14  justify-start mx-auto pl-4"
+          className="flex flex-wrap relative shrink-0  py-8 overflow-hidden  gap-8   justify-evenly pl-4"
         >
           <div className='fixed bottom-28 top-24 w-[20em] left-0'>
             <Sidebar
