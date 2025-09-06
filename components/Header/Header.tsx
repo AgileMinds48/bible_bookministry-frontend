@@ -12,7 +12,7 @@ import Menu from "../Menu/Menu";
 import { useBodyScrollLock } from "@/hooks/useBodyScrollLock";
 import { useCartStore } from "@/app/utils/cartStore";
 import { LuUserRound } from "react-icons/lu";
-import { capitalise, getUserRole, isLoggedIn} from "@/app/utils/auth";
+import { getUserRole, isLoggedIn} from "@/app/utils/auth";
 // import { FaUserCircle } from "react-icons/fa";
 import ModalWrapper from "../Modal/ModalWrapper";
 import { useModal } from "../Modal/ModalContext";

@@ -63,7 +63,6 @@ const BookDiv: React.FC<BookDiv> = ({
             }`}
                   />
         </div>        
-       // ...existing code...
 
           <div className={`absolute top-2  right-2 rounded-xl bg-teal-400 h-7 p-1 text-sm w-fit
           ${getCategoryBg(catName)}
@@ -72,7 +71,6 @@ const BookDiv: React.FC<BookDiv> = ({
     ? capitalise(category.categoryName)
     : capitalise(typeof category === "string" ? category : "")}
 </div>
-// ...existing code...
           </div>
                 <div className="p-2 px-2 flex flex-col h-full">
                   <p title={title} className="line-clamp-2  font-semibold text-[#051363] leading-[1.3em] mb-1 cursor-default">
