@@ -1,3 +1,5 @@
+import { capitalise } from '@/app/utils/auth'
+import { categories, getCategoryBg } from '@/app/utils/catalog'
 import { Book } from '@/app/utils/data'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -18,7 +20,8 @@ const BookDiv: React.FC<BookDiv> = ({
   title,           
   author,        
   price,         
-  rating,        
+  rating,    
+  category,
   id, 
   amountInStock,
   handleFav, 
@@ -26,33 +29,51 @@ const BookDiv: React.FC<BookDiv> = ({
   handleAddToCart, 
   added }) => {
   
+    if (typeof category !== "undefined" && typeof category!=="string") {
+      console.log("Category from BooDiv:", category["categoryName"] )
+  }
+  
+   let catName: categories = "default";
+    if (typeof category === "object" && category !== null && "categoryName" in category) {
+      catName = (category.categoryName?.toLowerCase() as categories) || "Default";
+    } else if (typeof category === "string" && category !== "") {
+      catName = category.toLowerCase() as categories;
+    }
   return (
      <div className="grid grid-cols-1 grid-rows-[60%_40%] cursor-auto hover:shadow-xl transition duration-100 h-[28em]  w-[12em] shadow-lg rounded-2xl overflow-hidden">
       <div className="group h-full relative before:pointer-events-none before:absolute before:inset-0 before:bottom-0 before:bg-linear-to-t  before:from-black/30 before:from-0% before:via-black/10 before:via-60% before:to-black/0 before:to-100% before:opacity-0 hover:before:opacity-100 before:transition before:duration-500  rounded-2xl overflow-hidden cursor-pointer">
         <Link key={id} href={`/book/${id}`}>
-                  <Image
+        <Image
             src={img}
             width={192}
             height={280}
-                    alt={title}
-                    className="h-full w-full object-cover object-center"
+            alt={title}
+            className="h-full w-full object-cover object-center"
           />
           </Link>
-                  {
-                    <div 
-                      className="absolute bottom-2 right-2"
-                      onClick={() => handleFav(id)}
-                    >
-                      <MdFavorite
-                        className={`text-3xl  opacity-0 group-hover:opacity-100 transition duration-500 ${
-                          isFav?.[id]
-                            ? 'text-red-500 opacity-100 animate-bubble'
-                            : 'text-white'
-                        }`}
-                      />
-                    </div>
-                  }
-                </div>
+            <div 
+              className="absolute bottom-2 right-2"
+              onClick={() => handleFav(id)}
+              >
+            <MdFavorite
+            className={`text-3xl  opacity-0 group-hover:opacity-100 transition duration-500 ${
+            isFav?.[id]
+            ? 'text-red-500 opacity-100 animate-bubble'
+            : 'text-white'
+            }`}
+                  />
+        </div>        
+       // ...existing code...
+
+          <div className={`absolute top-2  right-2 rounded-xl bg-teal-400 h-7 p-1 text-sm w-fit
+          ${getCategoryBg(catName)}
+          `}>
+  {typeof category === "object" && category !== null && "categoryName" in category
+    ? capitalise(category.categoryName)
+    : capitalise(typeof category === "string" ? category : "")}
+</div>
+// ...existing code...
+          </div>
                 <div className="p-2 px-2 flex flex-col h-full">
                   <p title={title} className="line-clamp-2  font-semibold text-[#051363] leading-[1.3em] mb-1 cursor-default">
                     {title}

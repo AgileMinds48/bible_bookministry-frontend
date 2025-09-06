@@ -1,3 +1,4 @@
+import { category } from "@/components/Catalog/AllBooks";
 import { bk1, bk2, bk3, bk4, bk5, bk6, bk7, bk8, headshot, headshot2, headshot3, headshot4, headshot5 } from "@/public"
 import { StaticImageData } from "next/image"
 import { ComponentType } from "react";
@@ -153,7 +154,7 @@ export interface Book{
   author: string,
   price:number,
   rating: number,
-  category?: string
+  category?: category | string
   id: number
   amountInStock?: number
   bookDescription?: string

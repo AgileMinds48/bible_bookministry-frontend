@@ -13,15 +13,20 @@ import Loading from './loading';
 import Page from '../Pages/Page';
 import { useCartStore } from '@/app/utils/cartStore';
 import Error from '../Fallback/Error';
+export interface category{
+  categoryName: string,
+  categoryId: string,
+  categoryDescription: string,
+}
 
 interface ApiBook {
   bookId: number;
   bookTitle: string;
   bookAuthor: string;
   bookPrice: number;
-  bookCategory: string;
+  bookCategory: category;
   media: string[];
-  amountInStock: number;
+  quantity: number;
 }
 
 const AllBooks = () => {
@@ -50,7 +55,7 @@ const AllBooks = () => {
           rating: 0,
           category: book.bookCategory,
           img: book.media[0] || '',
-          amountInStock: book.amountInStock
+          amountInStock: book.quantity
         }))
         setAllBooks(mappedBooks);
 
@@ -312,7 +317,7 @@ const AllBooks = () => {
                 // </div>
                 <Error />
               )
-              : sortedBooks?.map(({ img, title, author, price, rating, id, amountInStock }) => (
+              : sortedBooks?.map(({ img, title, author, price, rating, id, amountInStock,category }) => (
                 <AnimatePresence key={id}>
                   <motion.div
                     initial={{ opacity: 0 }}
@@ -330,6 +335,7 @@ const AllBooks = () => {
                       isFav={isFav}
                       handleAddToCart={handleAddToCart}
                       added={added}
+                      category={category}
                       amountInStock={amountInStock}
                     />
 
