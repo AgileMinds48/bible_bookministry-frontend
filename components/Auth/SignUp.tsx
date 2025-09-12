@@ -129,11 +129,11 @@ if (!res.ok) {
       <div  className="bg-[#5a88a7] shadow-2xl poppins grid md:grid-cols-2 text-black min-h-[80dvh] ">
         <div
           // style={{ background: "url(/pattern-bg.png)" }}
-          className='content-center w-full h-full'
+          className='hidden md:block content-center w-full h-full'
         >
         <Image priority={true} src={logo2} alt='Bible and book ministry logo' className='w-7xl object-cover'/>
 </div>
-      <div className="bg-white p-5 sm:p-10 md:p-24 lg:px-8">
+      <div className="bg-white pt-10 p-5 md:p-24 lg:px-8">
         <form onSubmit={handleSubmit}>
           <div className="mb-15">
             <h1 className="text-4xl md:text-6xl font-bold text-[#15278c]">Create Account</h1>
@@ -149,9 +149,9 @@ if (!res.ok) {
               style={{position:"relative"}}
               className={`relative h-14 ${
                 inputName === 'firstName'
-                  ? 'w-[48%] inline-block mr-4'
+                  ? 'md:w-[48%] w-full inline-block md:mr-4'
                   : inputName === 'lastName'
-                  ? 'w-[48%] inline-block'
+                  ? 'md:w-[48%] w-full inline-block'
                   : 'w-full'
               } ${
                 inputName === 'password' || inputName === 'password2'
@@ -276,7 +276,7 @@ if (!res.ok) {
           <div className='after:content-[""] after:block lg:w-[45%] w-[25%] h-0.5 right-0 bg-gray-500 top-[50%] absolute hidden sm:block'></div>
 
             </div>
-        <button className='   w-full'>
+        <button className='whitespace-nowrap w-full'>
           <div className="flex justify-center pr-4  p-2  items-center w-[60%] rounded-full border-[#15278c] border-2 m-auto">
             <Image
               className="h-10 object-contain cursor-pointer"
