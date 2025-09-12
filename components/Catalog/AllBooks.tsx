@@ -293,7 +293,7 @@ useEffect(() => {
           ref={carouselRef}
           className="flex flex-wrap relative shrink-0  py-8 overflow-hidden  gap-8   justify-evenly pl-4"
         >
-          <div className='fixed bottom-28 top-24 w-[20em] left-0'>
+          <div className='fixed bottom-40 top-24 w-[20em] left-0'>
             <Sidebar
               onSortChange={handleSortChange}
               onPriceRangeChange={handlePriceRangeChange}

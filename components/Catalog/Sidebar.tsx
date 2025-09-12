@@ -75,11 +75,10 @@ const Sidebar: React.FC<SidebarProps> = ({ onSortChange, onPriceRangeChange, onR
     onRatingChange(5);
   };
 
-  // Sort options
 
 
   return (
-    <aside className='bg-white shadow-2xl rounded-lg p-6 h-fit sticky top-24 poppins'>
+    <aside className='bg-white shadow-2xl rounded-lg p-6 h-fit top-24 poppins'>
       <input
         type="text"
         name='search-input'
