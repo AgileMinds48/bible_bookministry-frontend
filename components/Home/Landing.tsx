@@ -10,7 +10,7 @@ const Landing = () => {
     <main className={`h-[80dvh] pt-20 hero-background overflow-hidden  flex flex-col justify-center items-center`} >
       <div className='max-w-7xl flex flex-col items-center'>
         <div className='b w-full p-4 md:p-10 flex flex-col items-center md:items-start justify-center'>
-          <h1 className='md:text-5xl lg:text-6xl text-3xl max-w-4xl inter font-medium text-white text-center drop-shadow-xl'>
+          <h1 className='md:text-5xl lg:text-6xl text-3xl max-w-4xl poppins font-bold text-white text-center drop-shadow-xl'>
             Grow in Grace with
             {" "}
             {/* <span className='bg-red-900 text-transparent bg-clip-text font-medium'> */}
@@ -18,18 +18,17 @@ const Landing = () => {
             {/* </span> */}
             <br className='lg:block hidden' />
             {" "}
-            <span className='blue-gradient text-transparent bg-clip-text  font-semibold'>
-
+            <span className='blue-gradient text-transparent bg-clip-text font-bold'>
               Christian Literature
               </span>
 
           </h1>
-          <p className='   mt-4 text-sm md:text-lg font-medium text-center text-white'>
+          <p className=' mx-auto   mt-4 text-md md:text-lg font-medium text-center text-white'>
             Browse our handpicked selection of Bibles and books rooted in sound doctrine and spiritual growth.
           </p>
           <div className='md:mt-10 mt-10 flex flex-col md:flex-row gap-4 justify-center  mx-auto'>
             <Link href={`/catalogue`}> 
-              <button className='md:px-10 md:py-4 w-full p-2 px-4  blue-gradient whitespace-nowrap  text-white hover:shadow-lg rounded-lg cursor-pointer  transition duration-300 hover: flex items-center gap-2 group font-semibold antialiased'>
+              <button className='md:px-20 md:py-4 w-full p-10 py-4  blue-gradient whitespace-nowrap  text-white hover:shadow-lg rounded-lg cursor-pointer  transition duration-300 hover: flex items-center gap-2 group font-semibold antialiased'>
                 Explore Our Shelf
                 <div aria-label='next-button' className='group-hover:translate-x-4 transition duration-300 delay-100'>
                   <GrNext />

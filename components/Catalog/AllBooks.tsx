@@ -153,7 +153,6 @@ const AllBooks = () => {
     setCurrentsort(sortValue);
   }
 useEffect(() => {
-  console.log("Selected category updated:", selectedCategory);
 }, [selectedCategory]);
   //price range handler
   useEffect(() => {

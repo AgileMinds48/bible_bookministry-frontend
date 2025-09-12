@@ -28,10 +28,7 @@ const BookDiv: React.FC<BookDiv> = ({
   isFav, 
   handleAddToCart, 
   added }) => {
-  
-  //   if (typeof category !== "undefined" && typeof category!=="string") {
-  //     console.log("Category from BooDiv:", category["categoryName"] )
-  // }
+
   
   let catName: categories = "all"
     catName.toLowerCase().trim();
