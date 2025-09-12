@@ -46,9 +46,8 @@ const SignUp = ({onLoginClick}:SignUpProps) => {
   const handleFormChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     //destructuring name and value
     const { name, value } = e.target;
-    const updatedForm = { ...formData, [name]: value };
+    const updatedForm = { ...formData, [name]: value.trim() };
     setFormData(updatedForm);
-
     if (
       name === 'password' &&
       updatedForm.password &&
