@@ -14,6 +14,7 @@ const ModalContext = createContext<ModalContextProps | undefined>(undefined);
 
 export const useModal = () => {
   const ctx = useContext(ModalContext);
+  console.log("Modal context:", ctx);
   if (!ctx) throw new Error("useModal must be used within ModalProvider");
   return ctx;
 };

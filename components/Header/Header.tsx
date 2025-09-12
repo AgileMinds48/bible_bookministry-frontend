@@ -102,7 +102,9 @@ const Header = () => {
             >
               {LoggedIn ?
              username?.slice(0,1).toUpperCase()
-                : <span className="flex items-center gap-2 px-2"> <LuUserRound /> Sign Up</span>}
+                :
+                <button className="flex items-center gap-2 px-2"> <LuUserRound /> Sign Up</button>
+              }
               <AnimatePresence>
                 {isLoggedIn()
                   &&
@@ -139,29 +141,13 @@ const Header = () => {
 
             className={`fixed inset-0 h-screen z-[100000] `}>
           <Menu
+            
           onClose={handleOpenMenu}
           />
           </motion.div>)}
       </AnimatePresence>
       <ModalWrapper/>
-      {/* <Modal
-        isOpen={!!modalType}
-        onClose={handleCloseModal}
-      >
-        <AnimatePresence>
-          <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.1, delay: 0.1 }}>
-            {modalType === "login" ?
-              (<Login handleCloseModal={handleCloseModal} onSignUpClick={handleShowSignUp} />)
-              : modalType === "signup" ?
-              (<SignUp onLoginClick={handleShowLogin} />)
-              : null
-              }
-          </motion.div>
-        </AnimatePresence>
-      </Modal> */}
+
     </>
   );
 };

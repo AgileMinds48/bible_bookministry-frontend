@@ -1,19 +1,24 @@
+"use client"
 import { userEmail, username } from '@/app/utils/logininfo';
 import { capitalise, handleLogout, isLoggedIn } from '@/app/utils/auth';
 import { AnimatePresence,motion } from 'framer-motion';
 import Link from 'next/link';
-import React from 'react'
+import React, { useState } from 'react'
 import { FaShoppingCart } from 'react-icons/fa';
 import { FaPeopleRoof, FaRegCircleUser } from 'react-icons/fa6';
 import { GrCatalog } from 'react-icons/gr';
 import { IoMdClose, IoMdHome } from 'react-icons/io';
 import { MdBookOnline } from 'react-icons/md';
 import { TbLogout2 } from 'react-icons/tb';
+import ModalWrapper from '../Modal/ModalWrapper';
+import { ModalProvider, useModal } from '../Modal/ModalContext';
 
 interface MenuProps{
-  onClose:()=>void
+  onClose: () => void
 }
-const Menu = ({ onClose }: MenuProps) => {
+const Menu = ({ onClose, }: MenuProps) => {
+  const { showSignUp } = useModal();
+// const [showLogin,setShowLogin]=useState<boolean>(false)
   const loggedIn = isLoggedIn();
   // const username = getUserEmail();
   const navItems = [
@@ -42,9 +47,9 @@ const Menu = ({ onClose }: MenuProps) => {
       </div>
         </div>}
       <AnimatePresence>
-      <ul className=''>
+      <ul className='mt-10'>
         {navItems.map(({ label, href,icon },id) => (
-          <Link key={label} href={href} className='flex items-center space-x-2 px-8 border-b border-gray-300'>
+          <Link key={label} href={href} className='flex items-center space-x-2  border-b border-gray-300'>
             <motion.div
                 initial={{opacity:0 ,x: 100 }}
               animate={{ opacity: 1, x: 0 }}
@@ -77,11 +82,19 @@ const Menu = ({ onClose }: MenuProps) => {
   )
         :
         
-        (<div className='mt-10 text-2xl flex gap-2 justify-center items-center text-white bg-[#15278c] rounded-lg py-2 '>
-        <FaRegCircleUser className='text-white '/>
+        (<button
+         onClick={()=>showSignUp()} 
+          className='mt-auto text-2xl flex gap-2 justify-center items-center text-white bg-[#15278c] rounded-lg py-2 '>
+          <FaRegCircleUser
+            
+            className='text-white ' />
         Login
-      </div>)}
-  </div>  )
+        </button>)}
+      {
+        <ModalWrapper />
+      }
+      </div>
+  )
 }
 
 export default Menu;

@@ -87,16 +87,16 @@ const Login = ({handleCloseModal,onSignUpClick}: LoginProps) => {
   };
   return (
     <section className=''>
-      <div className="bg-[#5a88a7] shadow-2xl poppins grid md:grid-cols-2 text-black min-h-[80dvh] ">
+      <div className="bg-[#5a88a7] shadow-2xl poppins grid  md:grid-cols-2 text-black min-h-[80dvh] ">
         <div
-          className='content-center w-full h-full'
+          className='hidden md:block content-center w-full h-full'
         >
           <Image priority={true} src={logo2} alt='Bible and book ministry logo' className='w-7xl object-cover' />
         </div>
-        <div className="bg-white p-5 sm:p-10 md:p-24 lg:px-8">
+        <div className="bg-white p-5 pt-10 md:p-24 lg:px-8">
           <form onSubmit={handleSubmit}>
             <div className="mb-15">
-              <h1 className="text-4xl md:text-6xl font-bold text-[#15278c]">Login</h1>
+              <h1 className="text-4xl md:text-6xl font-bold text-[#15278c] ">Login</h1>
               <p className="text-gray-800 md:text-xl text-[1.1rem] mb-10">
                 Get back into your account
               </p>
@@ -195,7 +195,7 @@ const Login = ({handleCloseModal,onSignUpClick}: LoginProps) => {
 
             </div>
             <button className='   w-full'>
-              <div className="flex justify-center pr-4  p-2  items-center w-[60%] rounded-full border-[#15278c] border-2 m-auto">
+              <div className="flex whitespace-nowrap justify-center pr-4  p-2  items-center w-[60%] rounded-full border-[#15278c] border-2 m-auto">
                 <Image
                   className="h-10 w-10 object-contain cursor-pointer"
                   src={google}
