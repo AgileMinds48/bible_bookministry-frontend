@@ -275,13 +275,12 @@ useEffect(() => {
     setItemsToLocalStorage("favorites", isFav)
   }, [isFav])
 
-  // removed localStorage cart sync; Zustand persist handles it
-
+  const [showSidebar, setShowSidebar] = useState<boolean>(false);
 
   return (
-    <section className="px-8 pb-56 poppins ">
+    <section className={`px-8 pb-56 poppins ${showSidebar?"pl-[20em]":""}`}>
       <div className='relative'>
-        <h1 className="text-5xl text-center font-bold bg-gradient-to-br rounded-2xl from-[#5a88a7]/40 to-[#5a88a7]/20  py-10">
+        <h1 className="lg:text-5xl text-3xl whitespace-nowrap text-center font-bold bg-gradient-to-br rounded-2xl from-[#5a88a7]/40 to-[#5a88a7]/20  py-10">
           All
           <span className=" text-transparent bg-clip-text blue-gradient">
             {' '}
@@ -293,14 +292,15 @@ useEffect(() => {
           ref={carouselRef}
           className="flex flex-wrap relative shrink-0  py-8 overflow-hidden  gap-8   justify-evenly pl-4"
         >
-          <div className='fixed bottom-40 top-24 w-[20em] left-0'>
+          {showSidebar &&
+            <div className='fixed bottom-40 top-24 w-[20em] left-0'>
             <Sidebar
               onSortChange={handleSortChange}
               onPriceRangeChange={handlePriceRangeChange}
               onRatingChange={handleRatingChange}
               onSearchChange={handleSearch}
             />
-          </div>
+          </div>}
           {loading ?
             <div className='w-full h-36'>
               <Loading captioned={true} />

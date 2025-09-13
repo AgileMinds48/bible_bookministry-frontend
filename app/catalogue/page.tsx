@@ -6,7 +6,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div className='pl-[20em]'>
+    <div className=''>
       <ModalProvider>
       <Header/>
       <CatalogueHeader />
