@@ -39,13 +39,14 @@ const ProfileMenu = ({openMenu}:ProfileMenuProps) => {
             </div>
         </div>}
             <button onClick={logout}
-              className='bg-red-100 border border-red-500 rounded-lg mt-2 py-1 text-black  w-full flex items-center justify-center gap-2 cursor-pointer '>
+              className='bg-red-100 border border-red-500 rounded-lg mt-2 py-1 text-[#15278c]  w-full flex items-center justify-center gap-2 cursor-pointer '>
 
         {isLoading ?
         <Loader/>
-                : <span>
+                : <span className='flex items-center gap-2 '>
                   <TbLogout2
-                  className="text-2xl text-red-600 " />Logout</span>
+                    className="text-2xl text- " />
+                  Logout</span>
               }
       </button>
       </motion.div>}

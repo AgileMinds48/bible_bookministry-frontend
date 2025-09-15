@@ -5,15 +5,15 @@ import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import {Poppins} from "next/font/google"
 export const metadata: Metadata = {
-  title: "Book and Bible Ministry",
-  description: "Bible and Book ministry is an online book store that deal with selling the best Christian Literature or Christian Books",
+  title: "Book and Bible Ministry, Ghana",
+  description: "Shop Christian books, Bibles, devotionals, and literature online in Ghana. Discover top Christian authors, faith resources, and Bible study materials at Book and Bible Ministry.",
   icons: {
-    icon:"/logo.png"
+    icon: "/logo.png"
   }
 };
 const poppins = Poppins({
   subsets: ["latin"],
-  weight:["400"]
+  weight:["400","600","700"]
 })
 
 export default function RootLayout({  

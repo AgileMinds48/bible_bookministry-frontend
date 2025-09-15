@@ -278,7 +278,7 @@ useEffect(() => {
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
 
   return (
-    <section className={`px-8 pb-56 poppins ${showSidebar?"pl-[20em]":""}`}>
+    <section className={`px-8 pb-10 poppins ${showSidebar?"pl-[20em]":""}`}>
       <div className='relative'>
         <h1 className="lg:text-5xl text-3xl whitespace-nowrap text-center font-bold bg-gradient-to-br rounded-2xl from-[#5a88a7]/40 to-[#5a88a7]/20  py-10">
           All
@@ -287,13 +287,12 @@ useEffect(() => {
             available books
           </span>{' '}
         </h1>
-        <Categories onSelect={handleCategorySelect} selectedCat={selectedCategory} />
-        <div
-          ref={carouselRef}
-          className="flex flex-wrap relative shrink-0  py-8 overflow-hidden  gap-8   justify-evenly pl-4"
-        >
-          {showSidebar &&
-            <div className='fixed bottom-40 top-24 w-[20em] left-0'>
+     
+        <div className={`w-full gap-x-30 grid ${allBooks.length>0?"grid-cols-[20em_1fr]":""} h-full`}>
+          {
+            // showSidebar &&
+            allBooks.length>0 &&
+            <div className='sticky bottom-0 top-24 w-[25em] left-0'>
             <Sidebar
               onSortChange={handleSortChange}
               onPriceRangeChange={handlePriceRangeChange}
@@ -301,6 +300,13 @@ useEffect(() => {
               onSearchChange={handleSearch}
             />
           </div>}
+        <div
+          ref={carouselRef}
+          className="flex flex-wrap relative shrink-0  py-8 overflow-hidden  gap-8 justify-start pl-4"
+        >
+          {allBooks.length>0 &&   <Categories
+          onSelect={handleCategorySelect}
+          selectedCat={selectedCategory} />}
           {loading ?
             <div className='w-full h-36'>
               <Loading captioned={true} />
@@ -335,6 +341,7 @@ useEffect(() => {
                 </AnimatePresence>
               ))}
 
+          </div>
         </div>
         {!loading && !error && allBooks.length > 0 &&
           (
