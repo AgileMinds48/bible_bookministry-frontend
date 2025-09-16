@@ -292,7 +292,7 @@ useEffect(() => {
           {
             // showSidebar &&
             allBooks.length>0 &&
-            <div className='sticky bottom-0 top-24 w-[25em] left-0'>
+            <div className='sticky bottom-0 top-24 h-fit w-[25em] left-0'>
             <Sidebar
               onSortChange={handleSortChange}
               onPriceRangeChange={handlePriceRangeChange}
