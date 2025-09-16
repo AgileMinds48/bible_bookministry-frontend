@@ -29,7 +29,7 @@ const Header = () => {
     { label: 'Home', href: '/' },
     { label: 'Catalogue', href: '/catalogue' },
     // { label: 'E-books', href: '/e-books' },
-    { label: 'About us', href: '/about' },
+    { label: 'About us', href: '/about-us' },
   ...(userRole !== "CUSTOMER" && LoggedIn
     ? [{ label: 'Dashboard', href: '/admin/dashboard' }]
     : []),];

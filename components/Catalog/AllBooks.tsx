@@ -15,6 +15,8 @@ import { useCartStore } from '@/app/utils/cartStore';
 import Error from '../Fallback/Error';
 import Categories from './Categories';
 import { categories } from '@/app/utils/catalog';
+import { div } from 'framer-motion/client';
+import { CiFilter } from 'react-icons/ci';
 export interface category{
   categoryName: string,
   categoryId: string,
@@ -276,9 +278,11 @@ useEffect(() => {
   }, [isFav])
 
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
-
+  const handleShowSidebar = () => {
+    setShowSidebar(!showSidebar)
+  }
   return (
-    <section className={`px-8 pb-10 poppins ${showSidebar?"pl-[20em]":""}`}>
+    <section className={`px-8 pb-10 poppins ${showSidebar?"":""}`}>
       <div className='relative'>
         <h1 className="lg:text-5xl text-3xl whitespace-nowrap text-center font-bold bg-gradient-to-br rounded-2xl from-[#5a88a7]/40 to-[#5a88a7]/20  py-10">
           All
@@ -288,25 +292,48 @@ useEffect(() => {
           </span>{' '}
         </h1>
      
-        <div className={`w-full gap-x-30 grid ${allBooks.length>0?"grid-cols-[20em_1fr]":""} h-full`}>
+        <div className={`w-full gap-x-30 grid ${allBooks.length>0&&showSidebar?"grid-cols-[20em_1fr]":""} h-full`}>
           {
-            // showSidebar &&
+             showSidebar &&
             allBooks.length>0 &&
-            <div className='sticky bottom-0 top-24 h-fit w-[25em] left-0'>
+            <motion.div
+                initial={{ x: -10,opacity:0 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ x: -10, opacity: 0 }}
+                transition={{duration:0.2}}
+                className='sticky bottom-0 top-24 h-fit w-[25em] left-0'>
             <Sidebar
               onSortChange={handleSortChange}
               onPriceRangeChange={handlePriceRangeChange}
               onRatingChange={handleRatingChange}
-              onSearchChange={handleSearch}
+                  onSearchChange={handleSearch}
+                  hide={handleShowSidebar}
             />
-          </div>}
+            </motion.div>}
+          
+          {
+            allBooks.length > 0 &&
+            <div className='flex items-baseline'>
+                {
+                  !showSidebar &&
+                  <div>
+                <button
+                className=' flex gap-1 items-center bg-gray-300 hover:bg-gray-400 transition duration-150 rounded-full p-2 px-4 text-black text-sm font-bold cursor-pointer'
+                  onClick={handleShowSidebar}
+                >
+                  <CiFilter />
+                  Filters</button>
+              </div>}
+            <Categories
+          onSelect={handleCategorySelect}
+                selectedCat={selectedCategory} />
+          </div>
+          }
         <div
           ref={carouselRef}
-          className="flex flex-wrap relative shrink-0  py-8 overflow-hidden  gap-8 justify-start pl-4"
+          className="flex flex-wrap relative shrink-0  py-8 overflow-hidden gap-8 justify-start pl-4"
         >
-          {allBooks.length>0 &&   <Categories
-          onSelect={handleCategorySelect}
-          selectedCat={selectedCategory} />}
+          
           {loading ?
             <div className='w-full h-36'>
               <Loading captioned={true} />

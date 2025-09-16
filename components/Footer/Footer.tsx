@@ -11,7 +11,7 @@ const Footer = () => {
     { label: 'Home', href: '/' },
     { label: 'Catalogue', href: '/catalogue' },
     { label: 'E-books', href: '/e-books' },
-    { label: 'About us', href: '/about' },
+    { label: 'About us', href: '/about-us' },
   ];
   return (
     <footer className='border-t border-[#01325E] poppins bg-[#B0D4E3]'>

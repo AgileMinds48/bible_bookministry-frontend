@@ -25,7 +25,7 @@ const Menu = ({ onClose, }: MenuProps) => {
     { icon:<IoMdHome />, label: 'Home', href: '/' },
     { icon:<GrCatalog /> ,label: 'Catalogue', href: '/catalogue' },
     { icon:<MdBookOnline />,label: 'E-books', href: '/e-books' },
-    {icon: <FaPeopleRoof />,label: 'About us', href: '/about' },
+    {icon: <FaPeopleRoof />,label: 'About us', href: '/about-us' },
     // {icon: <MdFavorite/>,label: 'My wishlist', href: '' },
     {icon: <FaShoppingCart />,label: 'My cart', href: '/cart' },
   ];

@@ -4,15 +4,17 @@ import { FaStar, FaChevronDown } from 'react-icons/fa'
 import { MdClear } from 'react-icons/md'
 import {  quickPriceFilters, sortOptions } from "@/app/utils/data"
 import { AnimatePresence, easeOut, motion } from 'framer-motion'
+import { IoClose } from 'react-icons/io5'
 
 
 interface SidebarProps {
+  hide:()=>void
   onSortChange: (sortValue: string) => void
   onPriceRangeChange: (min: number, max: number) => void
   onRatingChange: (rating: number) => void
   onSearchChange:(e:React.ChangeEvent<HTMLInputElement>)=>void
 }
-const Sidebar: React.FC<SidebarProps> = ({ onSortChange, onPriceRangeChange, onRatingChange,onSearchChange }) => {
+const Sidebar: React.FC<SidebarProps> = ({ onSortChange, onPriceRangeChange, onRatingChange,onSearchChange,hide }) => {
   // State for collapsible sections
   const [expandedSections, setExpandedSections] = useState({
     sort: true,
@@ -78,7 +80,12 @@ const Sidebar: React.FC<SidebarProps> = ({ onSortChange, onPriceRangeChange, onR
 
 
   return (
-    <aside className='bg-white shadow-2xl rounded-lg p-6 h-fit top-24 poppins'>
+    <aside className='bg-white shadow-2xl rounded-lg p-6 h-fit w-full top-24 poppins'>
+      <div className='w-full flex justify-end '>
+        <button
+          onClick={hide}
+          className='p-2 rounded-full mb-4 border border-green-500 cursor-pointer'><IoClose /></button>
+        </div>
       <input
         type="text"
         name='search-input'
