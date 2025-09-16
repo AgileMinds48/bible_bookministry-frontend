@@ -30,7 +30,7 @@ const Menu = ({ onClose, }: MenuProps) => {
     {icon: <FaShoppingCart />,label: 'My cart', href: '/cart' },
   ];
   return (
-    <div className="  bg-white p-4 poppins flex flex-col overflow-hidden h-screen">
+    <div className="  white-gradient p-4 poppins flex flex-col overflow-hidden h-screen">
       <div
         onClick={onClose}
         className='p-2 border-2 border-green-500 w-fit flex ml-auto rounded-full'>
@@ -47,7 +47,7 @@ const Menu = ({ onClose, }: MenuProps) => {
       </div>
         </div>}
       <AnimatePresence>
-      <ul className='mt-10'>
+      <ul className='mt-4'>
         {navItems.map(({ label, href,icon },id) => (
           <Link key={label} href={href} className='flex items-center space-x-2  border-b border-gray-300'>
             <motion.div
@@ -72,7 +72,7 @@ const Menu = ({ onClose, }: MenuProps) => {
       {loggedIn ?
         (
         // <div className='mt-10 text-2xl flex gap-2 justify-center items-center text-white bg-[#15278c] rounded-lg py-2 '>
-       <button className="p-4 mt-auto text-2xl flex gap-2 justify-center items-center text-white blue-gradient rounded-lg py-2 ">
+       <button className="p-4 mt-auto mb-10 text-2xl flex gap-2 justify-center items-center text-white blue-gradient rounded-lg py-2 ">
          <TbLogout2
           onClick={handleLogout}
               className="text-2xl text-white" />

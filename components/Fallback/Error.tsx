@@ -18,7 +18,7 @@ const Error = () => {
   return (
     <>
       {/* <BDHeader/> */}
-    <div className='h-[40dvh] w-full flex flex-col justify-center items-center poppins'>
+    <div className='md:h-[40dvh] w-full flex flex-col justify-center items-center poppins'>
       
       <Image src={error} alt='no connection' height={80} />
       <div className='bg-red-100 border-red-500 border rounded-2xl p-6 flex flex-col items-center'>

@@ -20,6 +20,10 @@
 .green-gradient {
   @apply bg-gradient-to-tr to-[#317402] from-[#56c10b];
 }
+.white-gradient {
+  @apply bg-gradient-to-br from-white  to-[#e5e9ff];
+}
+
 .center {
   align-items: center;
   justify-content: space-between;

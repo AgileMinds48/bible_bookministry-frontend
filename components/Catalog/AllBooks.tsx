@@ -15,7 +15,6 @@ import { useCartStore } from '@/app/utils/cartStore';
 import Error from '../Fallback/Error';
 import Categories from './Categories';
 import { categories } from '@/app/utils/catalog';
-import { div } from 'framer-motion/client';
 import { CiFilter } from 'react-icons/ci';
 export interface category{
   categoryName: string,
@@ -282,9 +281,9 @@ useEffect(() => {
     setShowSidebar(!showSidebar)
   }
   return (
-    <section className={`px-8 pb-10 poppins ${showSidebar?"":""}`}>
+    <section className={`px-4 md:px-6 pb-10 poppins ${showSidebar?"":""}`}>
       <div className='relative'>
-        <h1 className="lg:text-5xl text-3xl whitespace-nowrap text-center font-bold bg-gradient-to-br rounded-2xl from-[#5a88a7]/40 to-[#5a88a7]/20  py-10">
+        <h1 className="lg:text-5xl text-2xl  text-center font-bold bg-gradient-to-br rounded-2xl from-[#5a88a7]/40 to-[#5a88a7]/20  md:py-10 py-4">
           All
           <span className=" text-transparent bg-clip-text blue-gradient">
             {' '}
