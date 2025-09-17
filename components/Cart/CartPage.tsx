@@ -13,16 +13,16 @@ const CartPage = () => {
   const clearCart = useCartStore((s) => s.clearCart);
   const subtotal = useCartStore((s) => s.getTotalPrice());
 
-  const DELIVERY_FEE = 10;
+  const DELIVERY_FEE = items.length>0?10:0;
   const grandTotal = subtotal + DELIVERY_FEE;
 
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-white poppins mt-20 mb-10">
+    <div className="min-h-screen flex flex-col justify-between px-4 bg-white poppins mt-20 mb-10">
       <div className="max-w-7xl mx-auto w-full flex flex-col">
-        <h1 className="text-3xl font-semibold mt-12 mb-8 text-[#15278c]">Books Cart</h1>
+        <h1 className="text-3xl font-semibold mt-12 mb-8 text-[#15278c]"> Cart</h1>
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Cart Items Table */}
-          <div className="flex-1 bg-white rounded-lg p-6 shadow-sm">
+          <div className="flex-1 bg-white rounded-lg p-6 ">
             {items.length === 0 ? (
               <div className="py-12 text-center text-gray-600 text-2xl font-semibold">
                 <Image src={empty_cart} alt='empty cart illustration' className='mx-auto mb-2'/>
