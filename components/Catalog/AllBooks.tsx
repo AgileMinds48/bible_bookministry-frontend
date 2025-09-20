@@ -291,7 +291,8 @@ useEffect(() => {
           </span>{' '}
         </h1>
      
-        <div className={`w-full gap-x-30 grid ${allBooks.length>0&&showSidebar?"grid-cols-[20em_1fr]":""} h-full`}>
+        <div className={`w-full gap-x-30 grid ${allBooks.length > 0 && showSidebar ? "grid-cols-[20em_1fr]" : ""} h-full`}>
+          {/* sidebar div*/}
           {
              showSidebar &&
             allBooks.length>0 &&
@@ -309,24 +310,27 @@ useEffect(() => {
                   hide={handleShowSidebar}
             />
             </motion.div>}
-          
+          {/* categories */}
+          <div>
           {
             allBooks.length > 0 &&
-            <div className='flex items-baseline'>
-                {
-                  !showSidebar &&
-                  <div>
-                <button
-                className=' flex gap-1 items-center bg-gray-300 hover:bg-gray-400 transition duration-150 rounded-full p-2 px-4 text-black text-sm font-bold cursor-pointer'
-                  onClick={handleShowSidebar}
-                >
-                  <CiFilter />
-                  Filters</button>
-              </div>}
+            // < className='flex items-baseline'>
+            //     {
+            //       !showSidebar &&
+            //       <div>
+            //     {/* <button
+            //     className=' flex gap-1 items-center bg-gray-300 hover:bg-gray-400 transition duration-150 rounded-full p-2 px-4 text-black text-sm font-bold cursor-pointer'
+            //       onClick={handleShowSidebar}
+            //     >
+            //       <CiFilter />
+            //       Filters</button> */}
+            //   </div>}
+            
             <Categories
+            show={handleShowSidebar}
           onSelect={handleCategorySelect}
                 selectedCat={selectedCategory} />
-          </div>
+           
           }
         <div
           ref={carouselRef}
@@ -368,7 +372,8 @@ useEffect(() => {
               ))}
 
           </div>
-        </div>
+          </div>
+          </div>
         {!loading && !error && allBooks.length > 0 &&
           (
             <Page

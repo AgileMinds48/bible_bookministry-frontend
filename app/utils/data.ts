@@ -172,8 +172,8 @@ export const sortOptions = [
   { value: 'author-desc', label: 'Author: Z - A', icon: BsSortAlphaUp },
   { value: 'price-asc', label: 'Price: Low to High', icon: BsSortUp },
   { value: 'price-desc', label: 'Price: High to Low', icon: BsSortDown },
-  { value: 'rating-desc', label: 'Highest Rated', icon: GiStarsStack },
-  { value: 'rating-asc', label: 'Lowest Rated', icon: WiStars },
+  // { value: 'rating-desc', label: 'Highest Rated', icon: GiStarsStack },
+  // { value: 'rating-asc', label: 'Lowest Rated', icon: WiStars },
   // { value: 'newest', label: 'Newest First' },
   // { value: 'popular', label: 'Most Popular' }
 ];

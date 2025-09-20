@@ -23,8 +23,7 @@ const Loading = ({captioned}:LoadingProps) => {
     10: "Waiting for the angels to deliver your books",
     11: "Praying for faster internet",
     12: "The books are having a fellowship meeting",
-    13: "Turning the other page...",
-    14: "Revival in progress, books incoming"
+    13: "Revival in progress, books incoming"
   }
   const number = Math.floor(Math.random() * 14) + 1;
   const label: boolean = captioned;

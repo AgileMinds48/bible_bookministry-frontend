@@ -1,5 +1,5 @@
 "use client"
-import { userEmail, username } from '@/app/utils/logininfo';
+import { userEmail, username, userRole } from '@/app/utils/logininfo';
 import { capitalise, handleLogout, isLoggedIn } from '@/app/utils/auth';
 import { AnimatePresence,motion } from 'framer-motion';
 import Link from 'next/link';
@@ -8,10 +8,10 @@ import { FaShoppingCart } from 'react-icons/fa';
 import { FaPeopleRoof, FaRegCircleUser } from 'react-icons/fa6';
 import { GrCatalog } from 'react-icons/gr';
 import { IoMdClose, IoMdHome } from 'react-icons/io';
-import { MdBookOnline } from 'react-icons/md';
 import { TbLogout2 } from 'react-icons/tb';
 import ModalWrapper from '../Modal/ModalWrapper';
-import { ModalProvider, useModal } from '../Modal/ModalContext';
+import { useModal } from '../Modal/ModalContext';
+import { BsGraphUpArrow } from 'react-icons/bs';
 
 interface MenuProps{
   onClose: () => void
@@ -24,9 +24,12 @@ const Menu = ({ onClose, }: MenuProps) => {
   const navItems = [
     { icon:<IoMdHome />, label: 'Home', href: '/' },
     { icon:<GrCatalog /> ,label: 'Catalogue', href: '/catalogue' },
-    { icon:<MdBookOnline />,label: 'E-books', href: '/e-books' },
     {icon: <FaPeopleRoof />,label: 'About us', href: '/about-us' },
     // {icon: <MdFavorite/>,label: 'My wishlist', href: '' },
+    ...(loggedIn && userRole === "ADMIN"
+      ? [{ icon: <BsGraphUpArrow />,label:"Dashboard",href: '/admin/dashboard' }]
+      :[]
+    ), 
     {icon: <FaShoppingCart />,label: 'My cart', href: '/cart' },
   ];
   return (
@@ -49,7 +52,7 @@ const Menu = ({ onClose, }: MenuProps) => {
       <AnimatePresence>
       <ul className='mt-4'>
         {navItems.map(({ label, href,icon },id) => (
-          <Link key={label} href={href} className='flex items-center space-x-2  border-b border-gray-300'>
+          <Link key={label} href={href} className='flex items-center space-x-2  border-b border-gray-300 hover:bg-gray-200'>
             <motion.div
                 initial={{opacity:0 ,x: 100 }}
               animate={{ opacity: 1, x: 0 }}

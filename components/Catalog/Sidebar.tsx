@@ -84,7 +84,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onSortChange, onPriceRangeChange, onR
       <div className='w-full flex justify-end '>
         <button
           onClick={hide}
-          className='p-2 rounded-full mb-4 border border-green-500 cursor-pointer'><IoClose /></button>
+          className='p-2 rounded-full mb-4 border border-green-500 cursor-pointer hover:bg-gray-200'><IoClose /></button>
         </div>
       <input
         type="text"
