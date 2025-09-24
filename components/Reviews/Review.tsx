@@ -32,7 +32,7 @@ const Review = ({ book }: ReviewProps) => {
         </div>
         <div className='flex items-center gap-2 font-semibold  p-4 mt-4'>
           <div className='bg-gray-400  rounded-full h-16 w-16 border'>
-            <Image src={headshot} alt="image of reviewer" className='object-cover object-center rounded-full h-full w-full'/>
+            {/* <Image src={headshot} alt="image of reviewer" className='object-cover object-center rounded-full h-full w-full'/> */}
             <Image src="/Bookdetails/headshot.jpg" alt="image of reviewer" className='object-cover object-center rounded-full h-full w-full'/>
             </div>
             <em>You</em>

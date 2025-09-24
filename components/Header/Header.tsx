@@ -45,7 +45,7 @@ const Header = () => {
   const { showSignUp } = useModal();
 
     const profileColors = ["blue-bg", "green-bg", "grey-bg"]
-  const colorNumber= Math.random()*10
+  const colorNumber = Math.floor(Math.random() * profileColors.length);
   return (
     <>
       <nav className={`p-4 md:max-w-[90em] md:min-w-3xl mx-auto md:p-4 md:px-10 flex justify-center poppins antialiased transition-all duration-1000 ease-in-out z-[9999] fixed shrink-0  lg:top-2 top-0 left-0 right-0 md:rounded-lg lg:left-10 lg:right-10 shadow-sm backdrop-blur-2xl outline-2 outline-[#B0D4E3] bg-[#B0D4E3]/60 poppins`}>
