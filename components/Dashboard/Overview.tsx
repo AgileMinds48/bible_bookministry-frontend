@@ -98,7 +98,7 @@ const Overview = () => {
 };
 
   return (
-    <div className=' grid grid-cols-4 md:gap-4 rounded-3xl w-full'>
+    <div className=' grid lg:grid-cols-4 gap-y-6 md:gap-4 rounded-3xl w-full'>
       {Object.entries(mockOverviewData).map(([key, { label, value, theme, icon }],id) => {
         const t = themeMap[theme as keyof typeof themeMap];
         
@@ -115,7 +115,7 @@ const Overview = () => {
               <span className={`text-3xl ${t.iconText}`}>{icon}</span>
             </div>
             <p className='text-sm font-medium text-right'>{label}<br />
-              <span className='text-3xl font-medium text-black'>{value}</span>
+              <span className='text-3xl font-bold lg:font-medium text-black'>{value}</span>
             </p>
           </div>
         );

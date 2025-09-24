@@ -43,9 +43,9 @@ const ProfileMenu = ({openMenu}:ProfileMenuProps) => {
 
         {isLoading ?
         <Loader/>
-                : <span className='flex items-center gap-2 '>
+                : <span className='flex items-center text-black gap-1 text-xl'>
                   <TbLogout2
-                    className="text-2xl text- " />
+                    className=" text-black" />
                   Logout</span>
               }
       </button>

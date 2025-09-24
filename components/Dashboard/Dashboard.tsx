@@ -88,16 +88,13 @@ const Dashboard = () => {
 
   return (
     <>
-      
-      <section className='relative min-h-screen ml-[18em] mt-8  p-8 inter bg-gray-200/30 rounded-2xl '>
-        <div className='flex items-baseline justify-between mb-4'>
+      <section className='relative min-h-screen lg:ml-[18em] ml-[6em] mt-14 inter bg-gray-200/30 rounded-2xl '>
+        <div className='flex items-baseline flex-col lg:flex-row justify-between mb-4'>
           <h1 className='text-5xl mb-1'>Hello, <span className='text-[#15278c]'>{capitalise(username)}</span></h1>
          <p className='text-gray-700'>{monthInWords} {day}, {year} &nbsp;<span className='border-l-2 border-black'> </span> {time}</p>
-</div>
-      
-     
+</div> 
       <Overview/>
-       <div className=' grid grid-cols-2 gap-8 grid-rows-auto items-end-safe'>
+       <div className=' grid lg:grid-cols-2 gap-8 grid-rows-auto items-end-safe overflow-x-scroll'>
          <SalesChart data={mockSalesData} />
          <TopSellingBooksChart data={mockTopSelling}/>
          </div>

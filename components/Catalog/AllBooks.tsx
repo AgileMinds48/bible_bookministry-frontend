@@ -295,12 +295,13 @@ useEffect(() => {
           {/* sidebar div*/}
           {
              showSidebar &&
-            allBooks.length>0 &&
+            allBooks.length > 0 &&
+            <AnimatePresence>
             <motion.div
                 initial={{ x: -10,opacity:0 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ x: -10, opacity: 0 }}
-                transition={{duration:0.2}}
+                transition={{duration:0.5}}
                 className='sticky bottom-0 top-24 h-fit w-[25em] left-0'>
             <Sidebar
               onSortChange={handleSortChange}
@@ -309,7 +310,8 @@ useEffect(() => {
                   onSearchChange={handleSearch}
                   hide={handleShowSidebar}
             />
-            </motion.div>}
+                </motion.div>
+            </AnimatePresence>}
           {/* categories */}
           <div>
           {

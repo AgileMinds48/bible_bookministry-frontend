@@ -3,7 +3,6 @@ import { userEmail, username, userRole } from '@/app/utils/logininfo';
 import { capitalise, handleLogout, isLoggedIn } from '@/app/utils/auth';
 import { AnimatePresence,motion } from 'framer-motion';
 import Link from 'next/link';
-import React, { useState } from 'react'
 import { FaShoppingCart } from 'react-icons/fa';
 import { FaPeopleRoof, FaRegCircleUser } from 'react-icons/fa6';
 import { GrCatalog } from 'react-icons/gr';
@@ -32,6 +31,9 @@ const Menu = ({ onClose, }: MenuProps) => {
     ), 
     {icon: <FaShoppingCart />,label: 'My cart', href: '/cart' },
   ];
+
+  const profileColors = ["blue-gradient", "green-gradient", "grey-gradient"]
+  const colorNumber= Math.random()*2
   return (
     <div className="  white-gradient p-4 poppins flex flex-col overflow-hidden h-screen">
       <div

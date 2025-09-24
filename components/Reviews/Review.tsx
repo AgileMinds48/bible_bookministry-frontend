@@ -1,6 +1,6 @@
 "use client"
 import { Book } from '@/app/utils/data';
-import { headshot } from '@/public';
+// import { headshot } from '@/public';
 import Image from 'next/image';
 import React, { useState } from 'react'
 import { FaPenAlt, FaStar } from 'react-icons/fa';
@@ -33,6 +33,7 @@ const Review = ({ book }: ReviewProps) => {
         <div className='flex items-center gap-2 font-semibold  p-4 mt-4'>
           <div className='bg-gray-400  rounded-full h-16 w-16 border'>
             <Image src={headshot} alt="image of reviewer" className='object-cover object-center rounded-full h-full w-full'/>
+            <Image src="/Bookdetails/headshot.jpg" alt="image of reviewer" className='object-cover object-center rounded-full h-full w-full'/>
             </div>
             <em>You</em>
             <div className='w-1 h-1 bg-gray-400 rounded-full'></div>

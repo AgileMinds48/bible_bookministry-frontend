@@ -5,7 +5,7 @@ import { FaEye, FaEyeSlash, FaLock } from 'react-icons/fa6';
 import { AiOutlineLoading } from 'react-icons/ai';
 import { } from '@/app/utils/data';
 import Image from 'next/image';
-import { google, logo2 } from '@/public';
+// import { google, logo2 } from '@/public';
 import { MdEmail } from 'react-icons/md';
 import { handleLoggedIn } from '@/app/utils/auth';
 
@@ -198,7 +198,7 @@ const Login = ({handleCloseModal,onSignUpClick}: LoginProps) => {
               <div className="flex whitespace-nowrap justify-center pr-4  p-2  items-center w-[60%] rounded-full border-[#15278c] border-2 m-auto">
                 <Image
                   className="h-10 w-10 object-contain cursor-pointer"
-                  src={google}
+                  src="/google.svg"
                   alt="google"
                 />
                 <p>Continue with Google</p>

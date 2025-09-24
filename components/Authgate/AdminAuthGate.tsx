@@ -6,6 +6,7 @@ import ModalWrapper from "@/components/Modal/ModalWrapper";
 import AdminSidebar from "@/components/Dashboard/AdminSidebar";
 import Link from "next/link";
 import Loader from "../Loader/Loader";
+import { BiHomeAlt } from "react-icons/bi";
 
 export default function AdminAuthGate({ children }: { children: React.ReactNode }) {
   const [authChecked, setAuthChecked] = useState(false);
@@ -29,13 +30,13 @@ export default function AdminAuthGate({ children }: { children: React.ReactNode 
       <div className="min-h-screen bg-gray-100 flex flex-col">
         <header className=" border-white border-b bg-[#15278c] text-white px-8 py-4 flex items-center justify-between fixed left-0 right-0 z-[999]">
           <h1 className="text-2xl font-bold ">Admin Dashboard</h1>
-          <Link href={"/"} className='underline underline-blue-400'>Go to Home</Link>
+          <Link href={"/"} className='underline underline-blue-400 flex items-center gap-1'><BiHomeAlt className="text-2xl"/><span className="hidden lg:block"> Go to Home </span></Link>
         </header>
         <div className='flex flex-1 min-h-0'>
           <div className='fixed top-0 bottom-0 '>
             <AdminSidebar />
           </div>
-          <main className="flex-1 p-8 overflow-auto">
+          <main className="flex-1 p-4 lg:p-8 overflow-auto">
             {children}
           </main>
         </div>

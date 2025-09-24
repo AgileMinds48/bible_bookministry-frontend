@@ -29,7 +29,7 @@ const Loading = ({captioned}:LoadingProps) => {
   const label: boolean = captioned;
   return (
     <div className='text-center mx-auto w-fit flex flex-col items-center ' >
-      <Image src={Loader} alt="loading" width={100} height={100} className='mb-4' />
+        <Image src="/Loader/Loader.svg" alt="Loading..." className="w-16 h-16 mx-auto animate-spin" />
       {label && <span>{labels[number]}</span>}
     </div>
   )

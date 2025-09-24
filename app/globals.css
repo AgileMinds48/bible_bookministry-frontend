@@ -20,10 +20,19 @@
 .green-gradient {
   @apply bg-gradient-to-tr to-[#317402] from-[#56c10b];
 }
-.white-gradient {
-  @apply bg-gradient-to-br from-white  to-[#e5e9ff];
+.grey-gradient {
+  @apply bg-gradient-to-br from-white  to-[#919297] border border-green-400;
 }
-
+/*Profile colors*/
+.blue-bg {
+  @apply bg-gradient-to-r from-[#15278c] to-[#0f1b62] border border-white text-white;
+}
+.green-bg {
+  @apply bg-gradient-to-tr to-[#317402] from-[#56c10b] border border-white;
+}
+.grey-bg {
+  @apply bg-gradient-to-br from-gray-200  to-gray-400 border border-green-400 text-black;
+}
 .center {
   align-items: center;
   justify-content: space-between;
