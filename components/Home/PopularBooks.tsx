@@ -38,7 +38,7 @@ const PopularBooks = () => {
             </Link>
             </button>
           </div>
-        <div className='flex shrink-0 lg:px-16 lg:p-8 overflow-hidden lg:gap-8 lg:gap-y-14 md:justify-start justify-around gap-y-8 md:gap-x-18 gap-4 flex-wrap'>
+        <div className='flex shrink-0  lg:p-8 overflow-hidden lg:gap-8 lg:gap-y-14 md:justify-start justify-around gap-y-8 md:gap-x-18 gap-4 flex-wrap'>
           {popularBooks.map(({img,title,author,price,rating},index) => (
              <div key={index} className='rounded-2xl'>
           <div className='grid grid-cols-1 grid-rows-[60%_40%] cursor-pointer hover:shadow-xl transition duration-100 lg:h-[22em] h-[18em] lg:w-[14em] w-[10em] shadow-lg rounded-2xl overflow-hidden'>
