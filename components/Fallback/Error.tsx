@@ -20,7 +20,7 @@ const Error = () => {
       {/* <BDHeader/> */}
     <div className='md:h-[40dvh] w-full flex flex-col justify-center items-center poppins'>
       
-      <Image src={error} alt='no connection' height={80} />
+      <Image src="\Error\error.jpg" alt='no connection' height={80} />
       <div className='bg-red-100 border-red-500 border rounded-2xl p-6 flex flex-col items-center'>
       <p className='text-sm = max-w-2xl text-center mb-4 text-black'>Something went wrong. Check your internet connection and try refreshing the page. 
       </p>

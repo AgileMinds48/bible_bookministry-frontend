@@ -327,7 +327,7 @@ useEffect(() => {
             //       <CiFilter />
             //       Filters</button> */}
             //   </div>}
-            <div className='w-full overflow-x-scroll'>
+            <div className='w-full overflow-x-scroll hide-scrollbar'>
             <Categories
             show={handleShowSidebar}
           onSelect={handleCategorySelect}

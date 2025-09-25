@@ -25,7 +25,7 @@ const CartPage = () => {
           <div className="flex-1 bg-white rounded-lg p-6 ">
             {items.length === 0 ? (
               <div className="py-12 text-center text-gray-600 text-2xl font-semibold">
-                <Image src={empty_cart} alt='empty cart illustration' className='mx-auto mb-2'/>
+                <Image src="/Cart/empty_cart.jpg" width={500} height={500} alt='empty cart illustration' className='mx-auto mb-2'/>
                 You have an empty shelf
               </div>
             ) : (

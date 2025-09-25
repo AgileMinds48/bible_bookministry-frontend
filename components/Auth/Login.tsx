@@ -91,7 +91,7 @@ const Login = ({handleCloseModal,onSignUpClick}: LoginProps) => {
         <div
           className='hidden md:block content-center w-full h-full'
         >
-          <Image priority={true} src={logo2} alt='Bible and book ministry logo' className='w-7xl object-cover' />
+          <Image priority={true} src="/logo2.png" alt='Bible and book ministry logo' className='w-7xl object-cover' />
         </div>
         <div className="bg-white p-5 pt-10 md:p-24 lg:px-8">
           <form onSubmit={handleSubmit}>
