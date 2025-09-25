@@ -10,7 +10,7 @@ const Landing = () => {
     <main className={`h-[80dvh] pt-20 hero-background overflow-hidden  flex flex-col justify-center items-center`} >
       <div className='max-w-7xl flex flex-col items-center'>
         <div className='b w-full p-4 md:p-10 flex flex-col items-center md:items-start justify-center'>
-          <h1 className='md:text-5xl lg:text-6xl text-3xl max-w-4xl poppins font-semibold text-white text-center drop-shadow-xl'>
+          <h1 className='md:text-5xl lg:text-6xl text-3xl max-w-4xl poppins font-semibold text-white text-center drop-shadow-xl lg:leading-20'>
             Grow in Grace with
             {" "}
             {/* <span className='bg-red-900 text-transparent bg-clip-text font-medium'> */}
@@ -23,7 +23,7 @@ const Landing = () => {
               </span>
 
           </h1>
-          <p className=' mx-auto   mt-4 text-md md:text-lg font-medium text-center text-white'>
+          <p className=' mx-auto lg:max-w-2xl mt-4 text-md md:text-lg font-medium text-center text-white'>
             Browse our handpicked selection of Bibles and books rooted in sound doctrine and spiritual growth.
           </p>
           <div className='md:mt-10 mt-10 flex flex-col md:flex-row gap-4 justify-center  mx-auto'>

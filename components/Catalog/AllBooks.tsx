@@ -327,16 +327,16 @@ useEffect(() => {
             //       <CiFilter />
             //       Filters</button> */}
             //   </div>}
-            
+            <div className='w-full overflow-x-scroll'>
             <Categories
             show={handleShowSidebar}
           onSelect={handleCategorySelect}
                 selectedCat={selectedCategory} />
-           
+           </div>
           }
         <div
           ref={carouselRef}
-          className="flex flex-wrap relative shrink-0  py-8 overflow-hidden gap-8 justify-start pl-4"
+          className="flex flex-wrap relative shrink-0  py-8 overflow-hidden gap-8 justify-evenly px-4 md:justify-start"
         >
           
           {loading ?

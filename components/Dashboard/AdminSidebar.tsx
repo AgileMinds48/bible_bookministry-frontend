@@ -45,10 +45,10 @@ const AdminSidebar = () => {
   ]
 
   return (
-    <nav className='h-full pt-20 left-0 transition duration-1000 lg:max-w-[20em] border-r max-w-xl border-b-gray-700 bg-[#B0D4E3] text-black p-4 flex flex-col z-[990]'>
+    <nav className='h-full overflow-y-scroll pt-20 left-0 transition duration-1000 lg:max-w-[20em] border-r max-w-xl border-b-gray-700 bg-[#B0D4E3] text-black p-4 flex flex-col z-[990]'>
       <div className='flex flex-col items-center lg:items-start '>
         <div className='flex gap-2 mb-2'>
-          <Image src="/logo.png" alt="logo" className='shrink-0' />
+          <Image src="/logo.png" width={80} height={80} alt="logo" className='shrink-0' />
           <h1 className='font-semibold text-xl hidden lg:block'>Bible and Book Ministry</h1>
         </div>
         <p className=' rounded-3xl flex gap-1 items-center text-sm w-fit '><FaLock /> <span className='bg-white px-2 rounded-3xl text-green-400 hidden lg:block'> Admin</span></p>

@@ -38,7 +38,7 @@ const BookDiv: React.FC<BookDiv> = ({
       catName = category.toLowerCase().trim() as categories;
     }
   return (
-     <div className="grid grid-cols-1 grid-rows-[60%_40%] cursor-auto hover:shadow-xl transition duration-100 h-[24em] max-w-[12em] shadow-lg rounded-2xl overflow-hidden">
+     <div className="grid grid-cols-1 grid-rows-[60%_40%] cursor-auto hover:shadow-xl transition duration-100 md:h-[24em] h-[18em] max-w-[9em] md:max-w-[12em] shadow-lg rounded-2xl overflow-hidden">
       <div className="group h-full relative before:pointer-events-none before:absolute before:inset-0 before:bottom-0 before:bg-linear-to-t  before:from-black/30 before:from-0% before:via-black/10 before:via-60% before:to-black/0 before:to-100% before:opacity-0 hover:before:opacity-100 before:transition before:duration-500  rounded-2xl overflow-hidden cursor-pointer">
         <Link key={id} href={`/book/${id}`}>
         <Image
@@ -46,7 +46,7 @@ const BookDiv: React.FC<BookDiv> = ({
             width={192}
             height={280}
             alt={title}
-            className="h-full w-full object-cover object-center"
+            className="h-full w-full object-cover object-center bg-gray-500"
           />
           </Link>
             <div 
@@ -71,11 +71,11 @@ const BookDiv: React.FC<BookDiv> = ({
 </div>
           </div>
                 <div className="p-2 px-2 flex flex-col h-full">
-                  <p title={title} className="line-clamp-2  font-semibold text-[#051363] leading-[1.3em] mb-1 cursor-default">
+                  <p title={title} className="line-clamp-2 text-sm md:text-lg font-semibold text-[#051363] leading-[1.3em] mb-1 cursor-default">
                     {title}
                   </p>
                   <div className="w-full flex items-center gap-2 mt-">
-                    <p className="text-sm text-gray-500 line-clamp-2">{author}</p>
+                    <p className="text-[0.8em] md:text-sm text-gray-500 line-clamp-2">{author}</p>
                     {/* <div className="bg-[#15278c] w-[5px] h-[5px] rounded-full shrink-0"></div> */}
                     {/* <span className="text-sm flex items-baseline translate-y-0.5">
                       <FaStar className="text-[#eca624]" /> {rating}
@@ -84,13 +84,13 @@ const BookDiv: React.FC<BookDiv> = ({
                   <div className='flex flex-col mt-auto'>
                   <div className=" flex item-center  pr-2">
                     <div className="flex gap-2">
-                      <p className="flex gap-1 items-center font-semibold">
+                      <p className="flex gap-1 items-center font-semibold text-sm md:text-lg">
                         <RiMoneyDollarCircleLine className='text-[#56c10b]'/> ₵{price}.00
                       </p>
                       <span className="border-r border"></span>
                       <p
                         title={`${amountInStock} available copies`}
-                        className="flex items-baseline-last gap-0.5 text-sm mb-0.5"
+                        className="flex items-baseline-last gap-0.5 text-sm md:text-lg "
                       >
                 <ImBooks className='translate-y-0.5 ' />
                 {amountInStock}

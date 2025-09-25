@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 const poppins = Poppins({
   subsets: ["latin"],
-  weight:["400","600","700"]
+  weight:["400","500","600","700"]
 })
 
 export default function RootLayout({  
@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={` antialiased ${poppins.className}`}
+        className={` antialiased ${poppins.className} font-mono`}
       >
      
         {children}

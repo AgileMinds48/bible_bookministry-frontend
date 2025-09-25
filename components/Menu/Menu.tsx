@@ -32,10 +32,9 @@ const Menu = ({ onClose, }: MenuProps) => {
     {icon: <FaShoppingCart />,label: 'My cart', href: '/cart' },
   ];
 
-  const profileColors = ["blue-gradient", "green-gradient", "grey-gradient"]
-  const colorNumber= Math.random()*2
+
   return (
-    <div className="  white-gradient p-4 poppins flex flex-col overflow-hidden h-screen">
+    <div className="  bg-white p-4 poppins flex flex-col overflow-scroll h-screen">
       <div
         onClick={onClose}
         className='p-2 border-2 border-green-500 w-fit flex ml-auto rounded-full'>
