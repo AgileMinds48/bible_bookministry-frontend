@@ -15,6 +15,7 @@ import { useCartStore } from '@/app/utils/cartStore';
 import Error from '../Fallback/Error';
 import Categories from './Categories';
 import { categories } from '@/app/utils/catalog';
+import { CiSearch } from 'react-icons/ci';
 export interface category{
   categoryName: string,
   categoryId: string,
@@ -302,7 +303,7 @@ useEffect(() => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ x: "-25em", }}
                 transition={{duration:0.1}}
-                className='sticky bottom-0 top-24 h-fit w-[25em] left-0'>
+                className='sticky bottom-0 top-24 h-fit w-full md:w-[25em] left-0'>
             <Sidebar
               onSortChange={handleSortChange}
               onPriceRangeChange={handlePriceRangeChange}
@@ -312,23 +313,28 @@ useEffect(() => {
             />
                 </motion.div>
             }
-              </AnimatePresence>
+          </AnimatePresence>
+        
+
           {/* categories */}
           <div>
           {
-            allBooks.length > 0 &&
-            // < className='flex items-baseline'>
-            //     {
-            //       !showSidebar &&
-            //       <div>
-            //     {/* <button
-            //     className=' flex gap-1 items-center bg-gray-300 hover:bg-gray-400 transition duration-150 rounded-full p-2 px-4 text-black text-sm font-bold cursor-pointer'
-            //       onClick={handleShowSidebar}
-            //     >
-            //       <CiFilter />
-            //       Filters</button> */}
-            //   </div>}
-            <div className='w-full overflow-x-scroll hide-scrollbar'>
+              allBooks.length > 0 &&
+              // search and categories 
+              <div className='w-full overflow-x-scroll hide-scrollbar'>
+                    <div className='w-full flex items-center justify-center mt-4'>
+            <div className='max-w-4xl w-full h-10 rounded-full p-1  border-2 relative'>
+              <input type="text"
+                placeholder='Search for a book by title or name of author'
+                value={searchInput}
+                onChange={handleSearch}
+            className='w-full h-full outline-none pl-8 md:text-lg text-sm '
+              />
+              <div className='bg-gray-300  absolute top-[50%] -translate-y-[50%] flex justify-center items-center p-1 rounded-full '>
+                <CiSearch className='text-xl' />
+                </div>
+              </div>
+          </div>
             <Categories
             show={handleShowSidebar}
           onSelect={handleCategorySelect}
