@@ -1,5 +1,8 @@
 import Dashboard from '@/components/Dashboard/Dashboard'
-import React from 'react'
+
+export const metadata = {
+  title: "Admin Dashboard - Bible and Book Ministry Ghana"
+}
 
 const page = () => {
   return (
