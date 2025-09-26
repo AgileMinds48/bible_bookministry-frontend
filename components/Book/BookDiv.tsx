@@ -62,7 +62,7 @@ const BookDiv: React.FC<BookDiv> = ({
                   />
         </div>        
 
-          <div className={`absolute top-2  right-2 rounded-xl bg-teal-400 h-7 p-1 text-sm w-fit
+          <div className={`absolute top-2  right-2 rounded-xl  h-7 p-1 text-sm w-fit
           ${getCategoryBg(catName)}
           `}>
   {typeof category === "object" && category !== null && "categoryName" in category
@@ -71,7 +71,7 @@ const BookDiv: React.FC<BookDiv> = ({
 </div>
           </div>
                 <div className="p-2 px-2 flex flex-col h-full">
-                  <p title={title} className="line-clamp-2 text-sm md:text-lg font-semibold text-[#051363] leading-[1.3em] mb-1 cursor-default">
+                  <p title={title} className="line-clamp-2 text-sm md:text-[1em] font-semibold text-[#051363] leading-[1.3em] mb-1 cursor-default">
                     {title}
                   </p>
                   <div className="w-full flex items-center gap-2 mt-">
@@ -84,13 +84,13 @@ const BookDiv: React.FC<BookDiv> = ({
                   <div className='flex flex-col mt-auto'>
                   <div className=" flex item-center  pr-2">
                     <div className="flex gap-2">
-                      <p className="flex gap-1 items-center font-semibold text-sm md:text-lg">
+                      <p className="flex gap-1 items-center font-semibold text-sm md:text-[1em]">
                         <RiMoneyDollarCircleLine className='text-[#56c10b]'/> ₵{price}.00
                       </p>
                       <span className="border-r border"></span>
                       <p
                         title={`${amountInStock} available copies`}
-                        className="flex items-baseline-last gap-0.5 text-sm md:text-lg "
+                        className="flex items-baseline-last gap-0.5 text-sm md:text-[1em]"
                       >
                 <ImBooks className='translate-y-0.5 ' />
                 {amountInStock}

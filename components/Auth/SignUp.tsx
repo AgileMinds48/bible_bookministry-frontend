@@ -130,7 +130,7 @@ if (!res.ok) {
           // style={{ background: "url(/pattern-bg.png)" }}
           className='hidden md:block content-center w-full h-full'
         >
-        <Image priority={true} src="/logo2.png" alt='Bible and book ministry logo' className='w-7xl object-cover'/>
+        <Image priority={true} src="/logo2.png" width={800} height={800} alt='Bible and book ministry logo' className='w-7xl object-cover'/>
 </div>
       <div className="bg-white pt-10 p-5 md:p-24 lg:px-8">
         <form onSubmit={handleSubmit}>
@@ -279,7 +279,9 @@ if (!res.ok) {
           <div className="flex justify-center pr-4  p-2  items-center w-[60%] rounded-full border-[#15278c] border-2 m-auto">
             <Image
               className="h-10 object-contain cursor-pointer"
-              src="google.svg"
+                  src="google.svg"
+                    width={100}
+                  height={100}
               alt="google"
                 />
                 <p>Continue with Google</p>

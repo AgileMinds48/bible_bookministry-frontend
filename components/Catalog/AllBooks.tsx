@@ -15,7 +15,6 @@ import { useCartStore } from '@/app/utils/cartStore';
 import Error from '../Fallback/Error';
 import Categories from './Categories';
 import { categories } from '@/app/utils/catalog';
-import { CiFilter } from 'react-icons/ci';
 export interface category{
   categoryName: string,
   categoryId: string,
@@ -292,16 +291,17 @@ useEffect(() => {
         </h1>
      
         <div className={`w-full gap-x-30 grid ${allBooks.length > 0 && showSidebar ? "grid-cols-[20em_1fr]" : ""} h-full`}>
+          <AnimatePresence>
           {/* sidebar div*/}
           {
              showSidebar &&
             allBooks.length > 0 &&
-            <AnimatePresence>
+            
             <motion.div
-                initial={{ x: -10,opacity:0 }}
+                initial={{ x: -50,opacity:0 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ x: -10, opacity: 0 }}
-                transition={{duration:0.5}}
+                exit={{ x: "-25em", }}
+                transition={{duration:0.1}}
                 className='sticky bottom-0 top-24 h-fit w-[25em] left-0'>
             <Sidebar
               onSortChange={handleSortChange}
@@ -311,7 +311,8 @@ useEffect(() => {
                   hide={handleShowSidebar}
             />
                 </motion.div>
-            </AnimatePresence>}
+            }
+              </AnimatePresence>
           {/* categories */}
           <div>
           {

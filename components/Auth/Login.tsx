@@ -91,7 +91,7 @@ const Login = ({handleCloseModal,onSignUpClick}: LoginProps) => {
         <div
           className='hidden md:block content-center w-full h-full'
         >
-          <Image priority={true} src="/logo2.png" alt='Bible and book ministry logo' className='w-7xl object-cover' />
+          <Image priority={true} src="/logo2.png" width={800} height={800} alt='Bible and book ministry logo' className='w-7xl object-cover' />
         </div>
         <div className="bg-white p-5 pt-10 md:p-24 lg:px-8">
           <form onSubmit={handleSubmit}>
@@ -199,6 +199,8 @@ const Login = ({handleCloseModal,onSignUpClick}: LoginProps) => {
                 <Image
                   className="h-10 w-10 object-contain cursor-pointer"
                   src="/google.svg"
+                  width={100}
+                  height={100}
                   alt="google"
                 />
                 <p>Continue with Google</p>
