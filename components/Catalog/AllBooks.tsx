@@ -16,6 +16,8 @@ import Error from '../Fallback/Error';
 import Categories from './Categories';
 import { categories } from '@/app/utils/catalog';
 import { CiSearch } from 'react-icons/ci';
+import { useModal } from '../Modal/ModalContext';
+import { isLoggedIn } from '@/app/utils/auth';
 export interface category{
   categoryName: string,
   categoryId: string,
@@ -238,7 +240,12 @@ useEffect(() => {
     return Object.fromEntries(allBooks.map((b) => [b.id, idsInCart.has(b.id)]));
   }, [cartItems, allBooks]);
 
+  const { showSignUp } = useModal();
   const handleAddToCart = (id: number) => {
+    if (!isLoggedIn()) {
+      showSignUp()
+      return;
+    }
     const book = allBooks.find((b) => b.id === id);
     if (!book) return;
 

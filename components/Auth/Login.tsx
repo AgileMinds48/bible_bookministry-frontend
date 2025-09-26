@@ -8,6 +8,7 @@ import Image from 'next/image';
 // import { google, logo2 } from '@/public';
 import { MdEmail } from 'react-icons/md';
 import { handleLoggedIn } from '@/app/utils/auth';
+import { FaGoogle, FaUser } from 'react-icons/fa';
 
 interface LoginProps {
   handleCloseModal: () => void
@@ -121,8 +122,8 @@ const Login = ({handleCloseModal,onSignUpClick}: LoginProps) => {
                   </span>
                 )}
                 <span className="absolute left-4 z-1 top-[50%] -translate-y-[50%] text-gray-800">
-                  {inputName === "usernameorEmail"
-                    ? <MdEmail />
+                  {inputName === "usernameOrEmail"
+                    ? <FaUser />
                     : <FaLock />
                   }
                 </span>
@@ -194,18 +195,19 @@ const Login = ({handleCloseModal,onSignUpClick}: LoginProps) => {
               <div className='after:content-[""] after:block lg:w-[45%] w-[25%] h-0.5 right-0 bg-gray-500 top-[50%] absolute hidden sm:block'></div>
 
             </div>
-            <button className='   w-full'>
-              <div className="flex whitespace-nowrap justify-center text-[0.8em] md:text-lg md:pr-4 p-2  items-center w-[60%] rounded-full border-[#15278c] border-2 m-auto">
-                <Image
-                  className="h-10 w-10 object-contain cursor-pointer"
+           
+              <button className="w-fit gap-2 flex whitespace-nowrap justify-center text-[0.8em] md:text-lg md:px-8 p-2  items-center rounded-full border-[#15278c] border-2 m-auto">
+                {/* <Image
+                  className="md:h-10 md:w-10 object-contain cursor-pointer"
                   src="/google.svg"
                   width={100}
                   height={100}
                   alt="google"
-                />
-                <p>Continue with Google</p>
-              </div>
-            </button>
+                /> */}
+                <FaGoogle className='text-[#15278c]' />
+                <p className='md:text-sm '>Continue with Google</p>
+              </button>
+            
             <p className="text-gray-500 text-left mt-4 text-[1em]">
               Don&apos;t have an account?{' '}
               <button onClick={onSignUpClick} className="underline  cursor-pointer text-[#15278c]">

@@ -8,6 +8,7 @@ import { SignUpFormData, signUpField } from '@/app/utils/data';
 import Image from 'next/image';
 // import { google,  logo2 } from '@/public';
 import { MdEmail, MdOutlinePhoneEnabled } from 'react-icons/md';
+import { FaGoogle } from 'react-icons/fa';
 
 interface SignUpProps{
   onLoginClick?:(showLogin:boolean)=>void
@@ -275,17 +276,15 @@ if (!res.ok) {
           <div className='after:content-[""] after:block lg:w-[45%] w-[25%] h-0.5 right-0 bg-gray-500 top-[50%] absolute hidden sm:block'></div>
 
             </div>
-        <button className='whitespace-nowrap w-full'>
-          <div className="flex justify-center pr-4  p-2  items-center w-[60%] rounded-full border-[#15278c] border-2 m-auto">
-            <Image
-              className="h-10 object-contain cursor-pointer"
-                  src="google.svg"
-                    width={100}
-                  height={100}
-              alt="google"
-                />
-                <p>Continue with Google</p>
-              </div>
+        <button className="w-fit gap-2 flex whitespace-nowrap justify-center text-[0.8em] md:text-lg md:px-8 p-2  items-center rounded-full border-[#15278c] border-2 m-auto">
+          {/* <Image
+            className="md:h-10 md:w-10 object-contain cursor-pointer"
+            src="/google.svg"
+            width={100}
+            height={100}
+            alt="google"
+          /> */}
+        <FaGoogle className='text-[#15278c]' />          <p className='md:text-sm'>Continue with Google</p>
         </button>
           <p className="text-gray-500 text-left mt-4 text-[1em]">
             Already a user?{' '}
