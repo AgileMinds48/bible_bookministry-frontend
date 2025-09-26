@@ -429,13 +429,14 @@ useEffect(() => {
         }
       </div>
       <AnimatePresence>
-        {showPopup.addedToCart && (<motion.div
+        {showPopup.addedToCart && (
+          <motion.div
           key="cart-popup"
           initial={{ x: 200, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ type: "spring", duration: 0.4 }}
           exit={{ x: 200, opacity: 0 }}
-          className='fixed bottom-10 right-4 h-32 w-[26em]  rounded-2xl p-2 bg-white/90 backdrop-blur-xl border-2 border-gray-400'>
+          className='fixed overflow-hidden bottom-[80%] z-[999999] md:bottom-10 right-[50%] translate-x-[50%] md:translate-0 md:right-4 '>
           <CartPopup bookName={popupBookDetails.bookName} image={popupBookDetails.image} isAdded={popupBookDetails.isAdded} />
         </motion.div>)}
 
