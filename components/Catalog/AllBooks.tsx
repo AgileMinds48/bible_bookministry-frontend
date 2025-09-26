@@ -281,7 +281,7 @@ useEffect(() => {
     setShowSidebar(!showSidebar)
   }
   return (
-    <section className={`px-4 md:px-6 pb-10 poppins ${showSidebar?"":""}`}>
+    <section className={`px-4 md:px-6 pb-10 poppins ${showSidebar ? '' : ''}`}>
       <div className='relative'>
         <h1 className="lg:text-5xl text-2xl  text-center font-bold bg-gradient-to-br rounded-2xl from-[#5a88a7]/40 to-[#5a88a7]/20  md:py-10 py-4">
           All
@@ -290,31 +290,57 @@ useEffect(() => {
             available books
           </span>{' '}
         </h1>
-     
-        <div className={`w-full gap-x-30 grid ${allBooks.length > 0 && showSidebar ? "grid-cols-[20em_1fr]" : ""} h-full`}>
+
+        <div className={`w-full gap-x-30 grid md:${allBooks.length > 0 && showSidebar ? "grid-cols-[20em_1fr]" : ""} h-full`}>
+          {/* Sidebar for md+ screens (left column) */}
           <AnimatePresence>
-          {/* sidebar div*/}
-          {
-             showSidebar &&
-            allBooks.length > 0 &&
-            
-            <motion.div
-                initial={{ x: -50,opacity:0 }}
+            {showSidebar && allBooks.length > 0 && (
+              <motion.div
+                initial={{ x: -50, opacity: 0 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ x: "-25em", }}
-                transition={{duration:0.1}}
-                className='sticky bottom-0 top-24 h-fit w-full md:w-[25em] left-0'>
-            <Sidebar
-              onSortChange={handleSortChange}
-              onPriceRangeChange={handlePriceRangeChange}
-              onRatingChange={handleRatingChange}
+                exit={{ x: "-25em", opacity: 0 }}
+                transition={{ duration: 0.1 }}
+                className="sticky bottom-0 top-24 h-fit w-[25em] left-0 hidden md:block"
+              >
+                <Sidebar
+                  onSortChange={handleSortChange}
+                  onPriceRangeChange={handlePriceRangeChange}
+                  onRatingChange={handleRatingChange}
                   onSearchChange={handleSearch}
                   hide={handleShowSidebar}
-            />
-                </motion.div>
-            }
+                />
+              </motion.div>
+            )}
           </AnimatePresence>
-        
+
+          {/* Sidebar overlay for small screens */}
+          <AnimatePresence>
+            {showSidebar && allBooks.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: -40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -40 }}
+                transition={{ duration: 0.2 }}
+                className="fixed inset-0 z-40 flex items-center justify-center md:hidden"
+              >
+                {/* Backdrop */}
+                <div
+                  className="fixed inset-0 backdrop-blur-xl bg-opacity-40 z-30"
+                  onClick={handleShowSidebar}
+                />
+                {/* Sidebar content */}
+                <div className="relative z-40 w-full max-w-md mx-auto mt-8">
+                  <Sidebar
+                    onSortChange={handleSortChange}
+                    onPriceRangeChange={handlePriceRangeChange}
+                    onRatingChange={handleRatingChange}
+                    onSearchChange={handleSearch}
+                    hide={handleShowSidebar}
+                  />
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* categories */}
           <div>
