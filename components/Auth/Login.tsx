@@ -195,7 +195,7 @@ const Login = ({handleCloseModal,onSignUpClick}: LoginProps) => {
 
             </div>
             <button className='   w-full'>
-              <div className="flex whitespace-nowrap justify-center pr-4  p-2  items-center w-[60%] rounded-full border-[#15278c] border-2 m-auto">
+              <div className="flex whitespace-nowrap justify-center text-[0.8em] md:text-lg md:pr-4 p-2  items-center w-[60%] rounded-full border-[#15278c] border-2 m-auto">
                 <Image
                   className="h-10 w-10 object-contain cursor-pointer"
                   src="/google.svg"

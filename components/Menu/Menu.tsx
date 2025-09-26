@@ -76,9 +76,11 @@ const Menu = ({ onClose, }: MenuProps) => {
       {loggedIn ?
         (
         // <div className='mt-10 text-2xl flex gap-2 justify-center items-center text-white bg-[#15278c] rounded-lg py-2 '>
-       <button className="p-4 mt-auto mb-10 text-2xl flex gap-2 justify-center items-center text-white blue-gradient rounded-lg py-2 ">
+          <button
+       onClick={handleLogout}
+            className="p-4 mt-auto mb-10 text-2xl flex gap-2 justify-center items-center text-white blue-gradient rounded-lg py-2 ">
          <TbLogout2
-          onClick={handleLogout}
+          
               className="text-2xl text-white" />
             Logout
         </button>
@@ -88,7 +90,7 @@ const Menu = ({ onClose, }: MenuProps) => {
         
         (<button
          onClick={()=>showSignUp()} 
-          className='mt-auto text-2xl flex gap-2 justify-center items-center text-white bg-[#15278c] rounded-lg py-2 '>
+          className='mt-auto mb-10 text-2xl flex gap-2 justify-center items-center text-white bg-[#15278c] rounded-lg py-2 '>
           <FaRegCircleUser
             
             className='text-white ' />

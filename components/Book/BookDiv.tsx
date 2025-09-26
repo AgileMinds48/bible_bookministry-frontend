@@ -71,7 +71,7 @@ const BookDiv: React.FC<BookDiv> = ({
 </div>
           </div>
                 <div className="p-2 px-2 flex flex-col h-full">
-                  <p title={title} className="line-clamp-2 text-sm md:text-[1em] font-semibold text-[#051363] leading-[1.3em] mb-1 cursor-default">
+                  <p title={title} className="line-clamp-2 text-sm md:text-[1em] font-semibold text-[#051363] md:leading-[1.3em] mb-1 cursor-default">
                     {title}
                   </p>
                   <div className="w-full flex items-center gap-2 mt-">
@@ -98,7 +98,7 @@ const BookDiv: React.FC<BookDiv> = ({
                     </div>
                    
                   </div>
-                    <button className={`mt-1 p-[0.4em] rounded-lg text-sm transition duration-150   cursor-pointer     border border-[#15278c] ${added?.[id] ? "text-white bg-[#15278c] hover:bg-[#040d42]" : "text-[#15278c] hover:bg-[#15278c] bg-white hover:text-white"} `}
+                    <button className={`mt-1 p-[0.4em] rounded-lg md:text-sm text-[0.8em] transition duration-150 cursor-pointer whitespace-nowrap border border-[#15278c] ${added?.[id] ? "text-white bg-[#15278c] hover:bg-[#040d42]" : "text-[#15278c] hover:bg-[#15278c] bg-white hover:text-white"} `}
                       onClick={() => handleAddToCart(id)}>
                    {added?.[id] ? "Remove from cart" : <span className='flex items-center justify-center gap-2'><FaCartPlus /> Add to cart </span>}
                   </button>
