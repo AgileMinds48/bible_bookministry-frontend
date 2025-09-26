@@ -39,7 +39,7 @@ const PopularBooks = () => {
             </button>
         </div>
         <div className='w-fit flex flex-col mx-auto'>
-        <div className='flex mx-auto shrink-0 p-4 lg:p-8 overflow-hidden lg:gap-y-14 md:justify-start justify-around gap-y-8 gap-4 flex-wrap'>
+        <div className='flex max-w-7xl mx-auto shrink-0 p-4 lg:p-8 overflow-hidden lg:gap-y-14  justify-around gap-y-8 gap-4 flex-wrap'>
           {popularBooks.map(({img,title,author,price,rating},index) => (
              <div key={index} className='rounded-2xl'>
           <div className='grid grid-cols-1 grid-rows-[60%_40%] cursor-pointer hover:shadow-xl transition duration-100 lg:h-[22em] h-[18em] lg:w-[12em] w-[9em] shadow-lg rounded-2xl overflow-hidden'>

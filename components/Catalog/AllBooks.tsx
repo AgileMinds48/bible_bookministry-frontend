@@ -298,7 +298,7 @@ useEffect(() => {
           </span>{' '}
         </h1>
 
-        <div className={`w-full gap-x-30 grid md:${allBooks.length > 0 && showSidebar ? "grid-cols-[20em_1fr]" : ""} h-full`}>
+        <div className={`w-full gap-x-30 grid ${allBooks.length > 0 && showSidebar ? "grid-cols-[20em_1fr]" : ""} h-full`}>
           {/* Sidebar for md+ screens (left column) */}
           <AnimatePresence>
             {showSidebar && allBooks.length > 0 && (
@@ -354,7 +354,7 @@ useEffect(() => {
           {
               allBooks.length > 0 &&
               // search and categories 
-              <div className='w-full overflow-x-scroll hide-scrollbar'>
+              <div className='w-full '>
                     <div className='w-full flex items-center justify-center mt-4'>
             <div className='max-w-4xl w-full h-10 rounded-full p-1  border-2 relative'>
               <input type="text"
@@ -376,7 +376,7 @@ useEffect(() => {
           }
         <div
           ref={carouselRef}
-          className="flex flex-wrap relative shrink-0  py-8 overflow-hidden gap-8 justify-evenly px-4 md:justify-start"
+          className="flex flex-wrap max-w-7xl mx-auto relative shrink-0  py-8 overflow-hidden gap-8 justify-evenly px-4 "
         >
           
           {loading ?
