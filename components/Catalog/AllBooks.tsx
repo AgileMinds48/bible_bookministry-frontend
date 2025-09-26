@@ -9,7 +9,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import FavPopup from '../Popups/FavPopup';
 import BookDiv from '../Book/BookDiv';
 import axios from 'axios';
-import Loading from './loading';
+import SkeletonLoader from '../Loader/Skeletonloader';
 import Page from '../Pages/Page';
 import { useCartStore } from '@/app/utils/cartStore';
 import Error from '../Fallback/Error';
@@ -37,7 +37,7 @@ interface ApiBook {
 const AllBooks = () => {
   //data fetching
   const [allBooks, setAllBooks] = useState<Book[]>([])
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [totalPages, setTotalPages] = useState<number>();
   const [error, setError] = useState<string>();
@@ -380,8 +380,8 @@ useEffect(() => {
         >
           
           {loading ?
-            <div className='w-full h-36'>
-              <Loading captioned={true} />
+            <div className='w-full'>
+              <SkeletonLoader count={20} />
             </div>
             : error ?
               (

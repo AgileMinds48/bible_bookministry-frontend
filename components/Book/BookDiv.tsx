@@ -46,7 +46,7 @@ const BookDiv: React.FC<BookDiv> = ({
             width={192}
             height={280}
             alt={title}
-            className="h-full w-full object-cover object-center bg-gray-500"
+            className="h-full w-full object-cover object-center bg-gradient-to-br from-gray-400 via-white to-gray-400"
           />
           </Link>
             <div 
