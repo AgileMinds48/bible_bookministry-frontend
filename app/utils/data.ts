@@ -3,8 +3,6 @@ import { bk1, bk2, bk3, bk4, bk5, bk6, bk7, bk8, headshot, headshot2, headshot3,
 import { StaticImageData } from "next/image"
 import { ComponentType } from "react";
 import { BsSortAlphaDown, BsSortAlphaUp, BsSortDown, BsSortUp } from "react-icons/bs";
-import { GiStarsStack } from "react-icons/gi";
-import { WiStars } from "react-icons/wi";
 
 //function to fetch added or fav'ed items
 export const setItemsToLocalStorage = (key: string, value: unknown) => {
